@@ -106,6 +106,19 @@ var webpackConfig = merge(baseWebpackConfig, {
       filename: 'service-worker.js',
       staticFileGlobs: ['dist/**/*.{js,html,css}'],
       minify: true,
+      // see: https://github.com/GoogleChrome/sw-precache
+      runtimeCaching: [{
+        // all URLs containing "/rest/" anywhere in the URL
+        urlPattern: /\/rest\//,
+        // ... will be be fetched from the network first. If this fails, get them from the cache
+        handler: 'networkFirst',
+        options: {
+          networkTimeoutSeconds: 10,
+          cache: {
+            name: 'rest-cache'
+          }
+        }
+      }],
       stripPrefix: 'dist/'
     })
   ]
