@@ -4,6 +4,10 @@
 
 This application is a PWA (https://en.wikipedia.org/wiki/Progressive_web_app[Progressive Web App]).
 
+All static web resources will be pre-loaded by the service worker.
+All calls to the _/rest_ URLs will be cached and service with the previously downloaded version if the app is offline.
+From a developer's point of view you should be able to develop the application in offline mode and it will 'just work' in offline mode.
+
 Offline functionality is not available in development mode.
 It is only available in production mode (that is: when you run _npm run build_).
 
