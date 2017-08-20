@@ -1,11 +1,11 @@
 import Vue from 'vue'
-import Hello from '@/components/Hello'
+import Schedule from '@/components/Schedule'
 
-describe('Hello.vue', () => {
+describe('Schedule.vue', () => {
   it('should render correct contents', () => {
-    const Constructor = Vue.extend(Hello)
+    const Constructor = Vue.extend(Schedule)
     const vm = new Constructor().$mount()
     expect(vm.$el.querySelector('.hello h1').textContent)
-      .to.equal('Welcome to Your Vue.js PWA')
+      .to.equal('Schedule')
   })
 })
