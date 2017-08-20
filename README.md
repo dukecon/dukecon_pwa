@@ -28,3 +28,42 @@ npm test
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## TODOs Vue.js Komponenten
+
+### Header
+
+* Logo
+* Suchen
+* Anmeldung
+* Navigation
+* Sprache
+
+### Footer
+* Links
+
+### Talkseite
+
+* Filter
+* Tageswahl
+* Zeitslots
+* Events
+** Zeit
+** Raum
+** Track
+** Plätze
+** Sprache
+* Abstract
+* Sprecher
+** Foto
+** Social Media Links
+
+### Sprecherseite
+* Sprecherdetails
+** Social Media Links
+** Foto
+* Bio
+* Event
+
+### Sprecher-Details
+
