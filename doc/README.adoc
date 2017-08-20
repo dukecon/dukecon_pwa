@@ -1,0 +1,19 @@
+# Documentation for Developers
+
+## Offline Functionality
+
+This application is a PWA (https://en.wikipedia.org/wiki/Progressive_web_app[Progressive Web App]).
+
+Offline functionality is not available in development mode.
+It is only available in production mode (that is: when you run _npm run build_).
+
+To test the offline functionality you will usually deploy it to a server and you'll need the REST resources to be available in a relative path.
+
+To test it locally there is a switch in Conference.js to run it locally for the JavaLand conference:
+
+----
+npm run build
+npm install -g serve
+serve dist
+----
+

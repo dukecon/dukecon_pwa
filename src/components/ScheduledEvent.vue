@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import Events from '../Events'
+  import Conference from '../Conference'
 
   export default {
     name: 'scheduledEvent',
@@ -33,7 +33,7 @@
     },
     methods: {
       fetchData () {
-        this.event = Events.getEvent(this.$route.params.eventId)
+        this.event = Conference.getEvent(this.$route.params.eventId)
       }
     }
   }

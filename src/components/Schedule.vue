@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Events from '../Events'
+import Conference from '../Conference'
 export default {
   name: 'schedule',
   data () {
@@ -19,7 +19,7 @@ export default {
     }
   },
   created () {
-    this.events = Events.getAllEvents()
+    this.events = Conference.getAllEvents()
   }
 }
 </script>
