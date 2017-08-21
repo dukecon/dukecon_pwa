@@ -5,7 +5,7 @@ describe('Schedule.vue', () => {
   it('should render correct contents', () => {
     const Constructor = Vue.extend(Schedule)
     const vm = new Constructor().$mount()
-    expect(vm.$el.querySelector('.hello h1').textContent)
+    expect(vm.$el.querySelector('.schedule h1').textContent)
       .to.equal('Schedule')
   })
 })
