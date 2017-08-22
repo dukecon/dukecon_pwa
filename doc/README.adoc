@@ -1,4 +1,43 @@
+:toc:
 # Documentation for Developers
+
+## Getting started
+
+### Installation of Tools
+
+To get started in the project install the following Tools:
+
+Node and NPM::
+Download from https://nodejs.org/en/, choose the LTS version
+
+IntelliJ from JetBrains::
+The "ultimate edition" will allow also JavaScript development.
+
+Vue.js Plugin from Jetbrains for IntelliJ::
+Ensure that you install the one from JetBrains, not the other Vue.js plugin. +
+https://plugins.jetbrains.com/plugin/9442-vue-js
+
+AsciiDoc Plugin for IntelliJ::
+This will allow you to preview and edit the *.adoc-files in the project.
+They are used for documentation.
+
+### Configuration of the tools
+
+In IntelliJ disable the option "Use safe write", otherwise the hot-reload functionality will not work.
+
+### Developing the application
+
+Run once every time the dependencies change:
+
+----
+npm install
+----
+
+To run using hot-reload development mode:
+
+----
+npm run dev
+----
 
 ## Offline Functionality
 
@@ -21,3 +60,9 @@ npm install -g serve
 serve dist
 ----
 
+## Authentication
+
+This project uses Keycloak for authentication: http://www.keycloak.org/
+
+Keycloak needs to be initialized first, as it will use URL redirects that would other wise interfere with the Vue.js router.
+The Keycloak client library is wrapped in DuekconKeycloak.js as a singleton for the project.

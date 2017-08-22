@@ -5,6 +5,7 @@
         <span>DukeCon Conference Planner</span>
       </router-link>
     </header>
+    <login />
     <main>
       <router-view></router-view>
     </main>
@@ -12,7 +13,10 @@
 </template>
 
 <script>
+  import Login from './components/navbar/Login.vue'
+
   export default {
+    components: {Login},
     name: 'app'
   }
 </script>
