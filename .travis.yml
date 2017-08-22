@@ -1,3 +1,23 @@
 language: node_js
+addons:
+  # add chrome for headless testing (used by e2e testing)
+  chrome: stable
+  # add Java 8 for Selenium (used by e2e testing)
+  apt:
+    packages:
+      - oracle-java8-set-default
 node_js:
-  - "stable"
+  - "6"
+script:
+  # show Java version (used by e2e testing)
+  - java -version
+  - npm run unit
+  # https://stackoverflow.com/questions/41487659/nightwatch-selenium-socket-hang-up
+  # without xvfb-run chrome/seleniums driver hangs despite of the headless parameters
+  - xvfb-run npm run e2e_headless -- --verbose
+after_failure:
+  - cat /home/travis/build/dukecon/dukecon_pwa/selenium-debug.log
+  - cat /home/travis/build/dukecon/dukecon_pwa/npm-debug.log
+cache:
+  directories:
+  - node_modules

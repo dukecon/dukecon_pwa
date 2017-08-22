@@ -21,7 +21,7 @@ module.exports = {
     default: {
       selenium_port: 4444,
       selenium_host: 'localhost',
-      silent: true,
+      silent: false,
       globals: {
         devServerURL: 'http://localhost:' + (process.env.PORT || config.dev.port)
       }
@@ -32,6 +32,21 @@ module.exports = {
         browserName: 'chrome',
         javascriptEnabled: true,
         acceptSslCerts: true
+      }
+    },
+
+    chromeheadless: {
+      silent: false,
+      retry_attempts: 1,
+      desiredCapabilities: {
+        browserName: 'chrome',
+        javascriptEnabled: true,
+        acceptSslCerts: true,
+        chromeOptions: {
+          args: [
+            '--disable-gpu --no-sandbox --headless --window-size=1920,1080'
+          ]
+        }
       }
     },
 
