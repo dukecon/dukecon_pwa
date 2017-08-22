@@ -12,7 +12,7 @@ Vue.config.productionTip = false
 
 function initVue () {
   Vue.use(Router)
-  var router = new Router({
+  const router = new Router({
     routes: [
       {
         path: '/',
@@ -42,7 +42,8 @@ $(document).ready(function () {
     // keycloak will do URL redirects. This interferes with Vue Router, therefore init Vue afterwards
     initVue()
   }).error(function () {
-    alert('failed to initialize')
+    console.log('failed to initialize keycloak - might be in testing mode')
+    initVue()
   })
 })
 
