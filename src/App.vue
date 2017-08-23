@@ -9,14 +9,18 @@
     <main>
       <router-view></router-view>
     </main>
+    <footer>
+      <links />
+    </footer>
   </div>
 </template>
 
 <script>
   import Login from './components/navbar/Login.vue'
+  import Links from './components/footer/Links.vue'
 
   export default {
-    components: {Login},
+    components: {Login, Links},
     name: 'app'
   }
 </script>
@@ -24,6 +28,10 @@
 <style>
   body {
     margin: 0;
+  }
+
+  header a {
+    color: white;
   }
 
   #app {

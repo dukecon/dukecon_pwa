@@ -2,7 +2,7 @@
 
 > A Vue.js project
 
-## Build & Dependency Status
+## Build and Dependency Status
 
 * [![Build Status](https://travis-ci.org/dukecon/dukecon_pwa.svg?branch=master)](https://travis-ci.org/dukecon/dukecon_pwa)
 

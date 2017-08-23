@@ -3,7 +3,7 @@ import Vue from 'vue'
 
 const events = {}
 
-var init
+var initData
 
 var base = ''
 
@@ -14,8 +14,8 @@ if (window.location.href.indexOf('http://localhost:5000') !== -1) {
 
 axios.get(base + 'rest/init.json')
   .then(function (response) {
-    init = response.data
-    axios.get(base + 'rest/conferences/' + init.id)
+    initData = response.data
+    axios.get(base + 'rest/conferences/' + initData.id)
       .then(function (response) {
         response.data.events.forEach(v => {
           Vue.set(events, v.id, v)
@@ -29,13 +29,21 @@ axios.get(base + 'rest/init.json')
     console.log(error)
   })
 
-export default class Events {
+export default class Conference {
   static getEvent (eventId) {
     return events[eventId]
   }
 
   static getAllEvents () {
     return events
+  }
+
+  static getLinks () {
+    return {
+      imprint: initData.imprint['de'],
+      privacy: initData.privacy['de'],
+      termsOfUse: initData.termsOfUse['de']
+    }
   }
 }
 
