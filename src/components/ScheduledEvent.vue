@@ -15,25 +15,28 @@
     name: 'scheduledEvent',
     data () {
       return {
-        event: null
+        eventId: null,
+        events: Conference.getAllEvents()
       }
     },
     created () {
       // fetch the data when the view is created and the data is
       // already being observed
-      this.fetchData()
+      this.fetchEventId()
     },
     computed: {
-      fullMessage: function () {
-        return 'Welcome to Your Vue.js PWA' + this.$route.params.eventId
+      // the data for the event can change once data is re-loaded in events or the eventId has been changed
+      event: function () {
+        return this.events[this.eventId]
       }
     },
     watch: {
+      // the route information might change if someone changes the URL or uses a bookmark
       '$route': 'fetchData'
     },
     methods: {
-      fetchData () {
-        this.event = Conference.getEvent(this.$route.params.eventId)
+      fetchEventId () {
+        this.eventId = this.$route.params.eventId
       }
     }
   }

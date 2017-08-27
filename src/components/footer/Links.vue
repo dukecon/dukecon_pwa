@@ -1,8 +1,8 @@
 <template>
   <div class="footer hidden">
-    <a v-if='links.imprint' target="_blank" :href="links.imprint">Imprint</a>
-    <a v-if='links.privacy' target="_blank" :href="links.privacy">Privacy</a>
-    <a v-if='links.termsOfUse' target="_blank" :href="links.termsOfUse">Terms of Use</a>
+    <a v-if='imprint' target="_blank" :href="imprint">Imprint</a>
+    <a v-if='privacy' target="_blank" :href="privacy">Privacy</a>
+    <a v-if='termsOfUse' target="_blank" :href="termsOfUse">Terms of Use</a>
     <span id="poweredByDukecon">powered by<a href="http://www.dukecon.org" target="_blank">DukeCon</a></span>
   </div>
 </template>
@@ -14,11 +14,19 @@
     name: 'links',
     data () {
       return {
-        links: null
+        conference: Conference.getConference()
       }
     },
-    created () {
-      this.links = Conference.getLinks()
+    computed: {
+      imprint: function () {
+        return this.conference.imprint['de']
+      },
+      privacy: function () {
+        return this.conference.privacy['de']
+      },
+      termsOfUse: function () {
+        return this.conference.termsOfUse['de']
+      }
     }
   }
 

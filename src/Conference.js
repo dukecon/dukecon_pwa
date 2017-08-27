@@ -3,9 +3,15 @@ import Vue from 'vue'
 
 const events = {}
 
-var initData
+/* pre-initialize properties with an empty value to ease use in other components.
+Values will be updated once init.js has been loaded. */
+const conference = {
+  imprint: {},
+  privacy: {},
+  termsOfUse: {}
+}
 
-var base = ''
+let base = ''
 
 // test if we are running in local served mode to test offline mode
 if (window.location.href.indexOf('http://localhost:5000') !== -1) {
@@ -14,8 +20,12 @@ if (window.location.href.indexOf('http://localhost:5000') !== -1) {
 
 axios.get(base + 'rest/init.json')
   .then(function (response) {
-    initData = response.data
-    axios.get(base + 'rest/conferences/' + initData.id)
+    for (const key in response.data) {
+      if (response.data.hasOwnProperty(key)) {
+        Vue.set(conference, key, response.data[key])
+      }
+    }
+    axios.get(base + 'rest/conferences/' + conference.id)
       .then(function (response) {
         response.data.events.forEach(v => {
           Vue.set(events, v.id, v)
@@ -38,12 +48,8 @@ export default class Conference {
     return events
   }
 
-  static getLinks () {
-    return {
-      imprint: initData.imprint['de'],
-      privacy: initData.privacy['de'],
-      termsOfUse: initData.termsOfUse['de']
-    }
+  static getConference () {
+    return conference
   }
 }
 
