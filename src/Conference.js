@@ -1,6 +1,10 @@
 import axios from 'axios'
 import Vue from 'vue'
 
+/* the following objects (events, conference) are the global data model for this application.
+   They are read only for the users, but they will be updated asynchronously when the data is loaded, they might be
+   updated with new data periodically as well. Use the references returned to bind them to your model. */
+
 const events = {}
 
 /* pre-initialize properties with an empty value to ease use in other components.

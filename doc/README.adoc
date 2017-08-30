@@ -95,3 +95,11 @@ This project uses Keycloak for authentication: http://www.keycloak.org/
 
 Keycloak needs to be initialized first, as it will use URL redirects that would other wise interfere with the Vue.js router.
 The Keycloak client library is wrapped in DuekconKeycloak.js as a singleton for the project.
+
+## Data Model
+
+The application uses a global data model for events and conference data.
+It is loaded by Conference.js.
+To all other components of the application it is readonly.
+But they will be updated asynchronously when the data is loaded initially, they might be updated with new data periodically as well in the future.
+Use the references returned to bind them to your model.
