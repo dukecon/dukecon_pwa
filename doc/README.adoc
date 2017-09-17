@@ -1,9 +1,9 @@
 :toc:
-# Documentation for Developers
+= Documentation for Developers
 
-## Getting started
+== Getting started
 
-### Installation of Tools
+=== Installation of Tools
 
 To get started in the project install the following Tools:
 
@@ -21,11 +21,11 @@ AsciiDoc Plugin for IntelliJ::
 This will allow you to preview and edit the *.adoc-files in the project.
 They are used for documentation.
 
-### Configuration of the tools
+=== Configuration of the tools
 
 In IntelliJ disable the option "Use safe write", otherwise the hot-reload functionality will not work.
 
-### Developing the application
+=== Developing the application
 
 Run once every time the dependencies change:
 
@@ -43,13 +43,22 @@ See _conf/index.js_ for details on how to configure this.
 npm run dev
 ----
 
-### Testing the application
+=== Testing the application
 
 To run all unit tests run
 
 ----
 npm run unit
 ----
+
+You can run all tests in an infinite loop
+
+----
+npm run unitloop
+----
+
+NOTE: It might happen that PhantomJS terminates due to inactivity.
+In this case open up the URL in Chrome: http://localhost:9876/
 
 To run the integration tests you need a local Chrome browser installed.
 You'll also need a connection to the internet as this will start the frontend in development mode that will proxy all _/rest_ resources to _https://latest.dukecon.org/javaland/2017_.
@@ -68,7 +77,7 @@ See _.travis.yml_ for details.
 npm run e2e_headless
 ----
 
-## Offline Functionality
+== Offline Functionality
 
 This application is a PWA (https://en.wikipedia.org/wiki/Progressive_web_app[Progressive Web App]).
 
@@ -89,17 +98,47 @@ npm install -g serve
 serve dist
 ----
 
-## Authentication
+== Authentication
 
 This project uses Keycloak for authentication: http://www.keycloak.org/
 
 Keycloak needs to be initialized first, as it will use URL redirects that would other wise interfere with the Vue.js router.
 The Keycloak client library is wrapped in DuekconKeycloak.js as a singleton for the project.
 
-## Data Model
+== Data Model
 
 The application uses a global data model for events and conference data.
 It is loaded by Conference.js.
 To all other components of the application it is readonly.
 But they will be updated asynchronously when the data is loaded initially, they might be updated with new data periodically as well in the future.
 Use the references returned to bind them to your model.
+
+== Internationalization
+
+This application used https://kazupon.github.io/vue-i18n/en/[vue-i18n].
+
+Add all messages keys to _Internationalization.js_.
+To present a translated key in your component, add code like this in JavaScript or the HTML templates.
+
+[source,javascript]
+.Code to be used in JavaScript
+----
+$t('imprint')
+----
+
+[source,html]
+.Code to be used as part of HTML Template
+----
+<a>{{ $t('imprint') }}</a>
+----
+
+=== Testing components for unit tests
+
+Some best practices - see the unit tests in _test/unit/specs_ for examples.
+
+. Always test one component at a time.
+. To mock calls to other components, use the _sinon_ Sandbox
+. To mock XMLHttpRequest calls by _axios_, use _moxios_
+. To test a Vue component you'll need to crate a _Vue_ instance and mount it.
+This can contain a minimal template and also other components.
+. Once something changes in the view, wrap the next part in _vm.$nextTick_

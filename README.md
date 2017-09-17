@@ -24,6 +24,9 @@ npm run build --report
 # run unit tests
 npm run unit
 
+# run unit tests in a loop
+npm run unitloop
+
 # run e2e tests
 npm run e2e
 
@@ -39,12 +42,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 * Logo
 * Suchen
-* Anmeldung
 * Navigation
-* Sprache
-
-### Footer
-* Links
 
 ### Talkseite
 

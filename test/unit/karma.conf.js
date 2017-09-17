@@ -18,6 +18,9 @@ module.exports = function (config) {
       '../../node_modules/babel-polyfill/dist/polyfill.js',
       './index.js'
     ],
+    proxies: {
+      '/static/': '/static/'
+    },
     preprocessors: {
       './index.js': ['webpack', 'sourcemap']
     },

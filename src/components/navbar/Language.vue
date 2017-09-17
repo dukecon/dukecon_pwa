@@ -1,0 +1,28 @@
+<template>
+  <img class="language" alt="Sprache umschalten / Change language" title="Sprache umschalten / Change language" v-on:click='change' :src="imgurl" />
+</template>
+
+<script language="">
+  export default {
+    name: 'language',
+    methods: {
+      change: function (event) {
+        if (this.$i18n.locale === 'de') {
+          this.$i18n.locale = 'en'
+        } else {
+          this.$i18n.locale = 'de'
+        }
+      }
+    },
+    computed: {
+      imgurl: function () {
+        return 'static/img/icons/' + this.$i18n.locale + '.png'
+      }
+    }
+  }
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style>
+
+</style>

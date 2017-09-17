@@ -5,22 +5,24 @@
         <span>DukeCon Conference Planner</span>
       </router-link>
     </header>
-    <login />
+    <language ></language>
+    <login ></login>
     <main>
       <router-view></router-view>
     </main>
     <footer>
-      <links />
+      <links ></links>
     </footer>
   </div>
 </template>
 
 <script>
+  import Language from './components/navbar/Language.vue'
   import Login from './components/navbar/Login.vue'
   import Links from './components/footer/Links.vue'
 
   export default {
-    components: {Login, Links},
+    components: {Login, Language, Links},
     name: 'app'
   }
 </script>

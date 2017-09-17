@@ -7,6 +7,7 @@ import Router from 'vue-router'
 import Schedule from '@/components/Schedule'
 import ScheduledEvent from '@/components/ScheduledEvent'
 import $ from 'jquery'
+import { i18n } from './Internationalization.js'
 
 Vue.config.productionTip = false
 
@@ -32,7 +33,8 @@ function initVue () {
     el: '#app',
     router,
     template: '<App/>',
-    components: {App}
+    components: {App},
+    i18n
   })
 }
 

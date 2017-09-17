@@ -1,8 +1,8 @@
 <template>
   <div class="footer hidden">
-    <a v-if='imprint' target="_blank" :href="imprint">Imprint</a>
-    <a v-if='privacy' target="_blank" :href="privacy">Privacy</a>
-    <a v-if='termsOfUse' target="_blank" :href="termsOfUse">Terms of Use</a>
+    <a class="imprint" v-if='imprint' target="_blank" :href="imprint">{{ $t('imprint') }}</a>
+    <a v-if='privacy' target="_blank" :href="privacy">{{ $t('privacy') }}</a>
+    <a v-if='termsOfUse' target="_blank" :href="termsOfUse">{{ $t('termsOfUse') }}</a>
     <span id="poweredByDukecon">powered by<a href="http://www.dukecon.org" target="_blank">DukeCon</a></span>
   </div>
 </template>
@@ -19,13 +19,13 @@
     },
     computed: {
       imprint: function () {
-        return this.conference.imprint['de']
+        return this.conference.imprint[this.$i18n.locale]
       },
       privacy: function () {
-        return this.conference.privacy['de']
+        return this.conference.privacy[this.$i18n.locale]
       },
       termsOfUse: function () {
-        return this.conference.termsOfUse['de']
+        return this.conference.termsOfUse[this.$i18n.locale]
       }
     }
   }
