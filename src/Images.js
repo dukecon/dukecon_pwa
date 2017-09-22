@@ -1,18 +1,19 @@
 import axios from 'axios'
 import Vue from 'vue'
 
-/* the following objects (events, conference) are the global data model for this application.
+/* the following images are the global data model for this application.
    They are read only for the users, but they will be updated asynchronously when the data is loaded, they might be
    updated with new data periodically as well. Use the references returned to bind them to your model. */
 
-const events = {}
+const defaultImage = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' // 1px transparent
 
 /* pre-initialize properties with an empty value to ease use in other components.
 Values will be updated once init.js has been loaded. */
-const conference = {
-  imprint: {},
-  privacy: {},
-  termsOfUse: {}
+const images = {
+  conferenceImage: defaultImage,
+  conferenceFavIcon: defaultImage,
+  defaultImage: defaultImage,
+  streamImages: {}
 }
 
 let base = ''
@@ -32,22 +33,13 @@ const init = function () {
     return
   }
   initialized = true
-  axios.get(base + 'rest/init.json')
+  axios.get(base + 'rest/image-resources.json')
     .then(function (response) {
       for (const key in response.data) {
         if (response.data.hasOwnProperty(key)) {
-          Vue.set(conference, key, response.data[key])
+          Vue.set(images, key, response.data[key])
         }
       }
-      axios.get(base + 'rest/conferences/' + conference.id)
-        .then(function (response) {
-          response.data.events.forEach(v => {
-            Vue.set(events, v.id, v)
-          })
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
     })
     .catch(function (error) {
       // it seems that we are working in development mode but are offline
@@ -62,14 +54,10 @@ const init = function () {
 }
 
 export default class Conference {
-  static getAllEvents () {
+  static getImages () {
     init()
-    return events
+    return images
   }
 
-  static getConference () {
-    init()
-    return conference
-  }
 }
 

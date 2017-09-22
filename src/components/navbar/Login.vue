@@ -1,11 +1,11 @@
 <template>
-  <div class="login">
+  <span class="login">
     <span v-if='keycloak.isLoggedIn'>logged in as: {{ keycloak.name }} ({{ keycloak.userName }})<br /></span>
     <span style="cursor: pointer">
       <span v-on:click='login' v-if='!keycloak.isLoggedIn'>(login)</span>
       <span v-on:click='logout' v-if='keycloak.isLoggedIn'>(logout)</span>
     </span>
-  </div>
+  </span>
 </template>
 
 <script language="">
@@ -19,10 +19,10 @@
       }
     },
     methods: {
-      login: function (event) {
+      login: function () {
         this.keycloak.login()
       },
-      logout: function (event) {
+      logout: function () {
         this.keycloak.logout()
       }
     }

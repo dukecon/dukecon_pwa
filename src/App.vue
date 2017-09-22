@@ -1,12 +1,10 @@
 <template>
   <div id="app">
     <header>
-      <router-link to="/">
-        <span>DukeCon Conference Planner</span>
-      </router-link>
+      <homeicon></homeicon>
+      <language ></language>
+      <login ></login>
     </header>
-    <language ></language>
-    <login ></login>
     <main>
       <router-view></router-view>
     </main>
@@ -20,9 +18,11 @@
   import Language from './components/navbar/Language.vue'
   import Login from './components/navbar/Login.vue'
   import Links from './components/footer/Links.vue'
+  import Homeicon from './components/navbar/Homeicon.vue'
 
   export default {
-    components: {Login, Language, Links},
+    components: {
+      Homeicon, Login, Language, Links},
     name: 'app'
   }
 </script>
@@ -56,14 +56,4 @@
     color: #ffffff;
   }
 
-  header span {
-    display: block;
-    position: relative;
-    font-size: 20px;
-    line-height: 1;
-    letter-spacing: .02em;
-    font-weight: 400;
-    box-sizing: border-box;
-    padding-top: 16px;
-  }
 </style>

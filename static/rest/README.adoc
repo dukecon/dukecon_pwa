@@ -1,0 +1,7 @@
+= Static test responses
+
+These are static files that are used in development mode.
+They will be used automatically from _Conference.js_ and _Images.js_ once they detect the browser isn't online.
+
+Again, this is only used in development mode.
+The files are not included in a production environment.
