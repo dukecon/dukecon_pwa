@@ -5,24 +5,35 @@ import Vue from 'vue'
    They are read only for the users, but they will be updated asynchronously when the data is loaded, they might be
    updated with new data periodically as well. Use the references returned to bind them to your model. */
 
-const events = {}
+let events
 
-/* pre-initialize properties with an empty value to ease use in other components.
-Values will be updated once init.js has been loaded. */
-const conference = {
-  imprint: {},
-  privacy: {},
-  termsOfUse: {}
-}
+let conference
 
 let base = ''
+
+let initialized = false
+
+function reset () {
+  initialized = false
+
+  events = {}
+
+  /* pre-initialize properties with an empty value to ease use in other components.
+  Values will be updated once init.js has been loaded. */
+  conference = {
+    imprint: {},
+    privacy: {},
+    termsOfUse: {}
+  }
+}
+
+// ability to reset is needed for testing this component
+reset()
 
 // test if we are running in local served mode to test offline mode
 if (window.location.href.indexOf('http://localhost:5000') !== -1) {
   base = 'https://latest.dukecon.org/javaland/2017/'
 }
-
-let initialized = false
 
 /**
  * Support lazy initialization of content to facilitate testing.
@@ -70,6 +81,11 @@ export default class Conference {
   static getConference () {
     init()
     return conference
+  }
+
+  // use this for testing
+  static _reset () {
+    reset()
   }
 }
 
