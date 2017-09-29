@@ -25,7 +25,7 @@ describe('Schedule.vue', () => {
     }).$mount()
     // then ...
     // ... item is shown
-    expect(vm.$el.querySelector('.schedule h1').textContent)
+    expect(vm.$el.querySelector('.schedule h2').textContent)
       .to.equal('Schedule')
     // TODO: mock conference to see that events are properly shown
   })

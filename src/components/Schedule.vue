@@ -1,27 +1,34 @@
 <template>
-  <div class="schedule">
-    <h1>Schedule</h1>
-    <ul>
-      <li v-for="(value, key) in events">
-        <router-link :to="{ name: 'scheduledEvent', params: { eventId: key }}">Go to Event {{ key }}: {{ value.title }}</router-link>
-      </li>
-    </ul>
+  <div class="content">
+    <div class="content-wrapper">
+      <div class="schedule">
+        <h2>Schedule</h2>
+        <ul>
+          <li v-for="(value, key) in events">
+            <router-link :to="{ name: 'scheduledEvent', params: { eventId: key }}">Go to Event {{ key }}: {{ value.title
+              }}
+            </router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Conference from '../Conference'
-export default {
-  name: 'schedule',
-  data () {
-    return {
-      events: null
+  import Conference from '../Conference'
+
+  export default {
+    name: 'schedule',
+    data () {
+      return {
+        events: null
+      }
+    },
+    created () {
+      this.events = Conference.getAllEvents()
     }
-  },
-  created () {
-    this.events = Conference.getAllEvents()
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
