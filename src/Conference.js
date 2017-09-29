@@ -7,6 +7,14 @@ import Vue from 'vue'
 
 let events
 
+let speakers
+
+let locations
+
+let languages
+
+let tracks
+
 let conference
 
 let base = ''
@@ -17,6 +25,14 @@ function reset () {
   initialized = false
 
   events = {}
+
+  speakers = {}
+
+  locations = {}
+
+  languages = {}
+
+  tracks = {}
 
   /* pre-initialize properties with an empty value to ease use in other components.
   Values will be updated once init.js has been loaded. */
@@ -55,6 +71,18 @@ const init = function () {
           response.data.events.forEach(v => {
             Vue.set(events, v.id, v)
           })
+          response.data.speakers.forEach(v => {
+            Vue.set(speakers, v.id, v)
+          })
+          response.data.metaData.locations.forEach(v => {
+            Vue.set(locations, v.id, v)
+          })
+          response.data.metaData.languages.forEach(v => {
+            Vue.set(languages, v.id, v)
+          })
+          response.data.metaData.tracks.forEach(v => {
+            Vue.set(tracks, v.id, v)
+          })
         })
         .catch(function (error) {
           console.log(error)
@@ -76,6 +104,26 @@ export default class Conference {
   static getAllEvents () {
     init()
     return events
+  }
+
+  static getAllSpeakers () {
+    init()
+    return speakers
+  }
+
+  static getAllLocations () {
+    init()
+    return locations
+  }
+
+  static getAllLanguages () {
+    init()
+    return languages
+  }
+
+  static getAllTracks () {
+    init()
+    return tracks
   }
 
   static getConference () {

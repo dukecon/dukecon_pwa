@@ -1,42 +1,44 @@
 <template>
-  <div class="talk">
-    <template v-if="event">
-      <h1>Scheduled Event</h1>
-      <h2>{{ event.title }}</h2>
-      <p>{{ event.abstractText}}</p>
-    </template>
+  <div id="speakerpage" class="content-wrapper">
+    <div class="content">
+      <speaker :speaker="speaker" v-if="speaker"></speaker>
+    </div>
   </div>
 </template>
 
 <script>
-  import Conference from '../Conference'
+  import Conference from '../../Conference'
+  import Speaker from './Speaker.vue'
 
   export default {
-    name: 'scheduledEvent',
+    components: {
+      Speaker
+    },
+    name: 'speakerPage',
     data () {
       return {
-        eventId: null,
-        events: Conference.getAllEvents()
+        speakerId: null,
+        speakers: Conference.getAllSpeakers()
       }
     },
     created () {
       // fetch the data when the view is created and the data is
       // already being observed
-      this.fetchEventId()
+      this.fetchSpeakerId()
     },
     computed: {
       // the data for the event can change once data is re-loaded in events or the eventId has been changed
-      event: function () {
-        return this.events[this.eventId]
+      speaker: function () {
+        return this.speakers[this.speakerId]
       }
     },
     watch: {
       // the route information might change if someone changes the URL or uses a bookmark
-      '$route': 'fetchData'
+      '$route': 'fetchSpeakerId'
     },
     methods: {
-      fetchEventId () {
-        this.eventId = this.$route.params.eventId
+      fetchSpeakerId () {
+        this.speakerId = this.$route.params.speakerId
       }
     }
   }

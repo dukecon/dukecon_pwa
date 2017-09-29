@@ -7,12 +7,24 @@ const messages = {
   de: {
     'termsOfUse': 'Nutzungsbedingungen',
     'imprint': 'Impressum',
-    'privacy': 'Datenschutz'
+    'privacy': 'Datenschutz',
+    'simultan': 'mit Simultanübersetzung',
+    'speaker': 'Sprecher',
+    'fullyBooked': 'voll besetzt',
+    'speakertalks': 'Talks dieses Sprechers',
+    'other_speakertalks': 'Weitere Talks dieses Sprechers',
+    'noOtherTalks': '-- keine --'
   },
   en: {
     'termsOfUse': 'Terms of use',
     'imprint': 'Legal mentions',
-    'privacy': 'Privacy'
+    'privacy': 'Privacy',
+    'simultan': 'with live translation',
+    'speaker': 'Speakers',
+    'fullyBooked': 'fully booked',
+    'speakertalks': 'Talks held by this speaker',
+    'other_speakertalks': 'Other talks held by this speaker',
+    'noOtherTalks': '-- none --'
   }
 }
 

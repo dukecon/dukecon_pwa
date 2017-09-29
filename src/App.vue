@@ -12,9 +12,7 @@
         </div>
       </h1>
     </div>
-    <main>
-      <router-view></router-view>
-    </main>
+    <router-view></router-view>
     <footer>
       <links></links>
     </footer>

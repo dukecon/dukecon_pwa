@@ -1,8 +1,9 @@
-require('./assets/css/style.css')
+require('./assets/css/pure-min.css')
 require('./assets/css/side-menu.css')
+require('./assets/css/dukecon.less')
+require('./assets/css/style.css')
 // TODO load javaland style conditionally
 require('./assets/css/javaland-style.css')
-require('./assets/css/dukecon.less')
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
@@ -10,7 +11,8 @@ import App from './App'
 import DukeconKeycloak from './DukeconKeycloak'
 import Router from 'vue-router'
 import Schedule from '@/components/Schedule'
-import ScheduledEvent from '@/components/ScheduledEvent'
+import ScheduledEvent from '@/components/event/ScheduledEvent'
+import SpeakerPage from '@/components/event/SpeakerPage'
 import $ from 'jquery'
 import { i18n } from './Internationalization.js'
 
@@ -29,6 +31,11 @@ function initVue () {
         path: '/scheduledEvent/:eventId',
         name: 'scheduledEvent',
         component: ScheduledEvent
+      },
+      {
+        path: '/speaker/:speakerId',
+        name: 'speakerPage',
+        component: SpeakerPage
       }
     ]
   })
