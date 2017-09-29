@@ -1,0 +1,1397 @@
+/************************************************************************************
+/* Automatically generated css file; do not edit!! (instead go to /less/dukecon.less) *
+ ************************************************************************************/
+//--------------------------- GLOBALS ---------------------------------------------------
+
+@mediumGray: #777;
+@lightGray: #ddd;
+@offWhite: #eee;
+@boxShadowColor: #666;
+@white: #fff;
+
+@fontFamily: Arial, Ubuntu, Helvetica, Nimbus Sans L, Droid Sans, FreeSans, Liberation Sans, Trebuchet MS, Sans-Serif;
+
+* {
+    -webkit-overflow-scrolling: touch;
+}
+html, body {
+    width:100%;
+    height:99%;
+    margin:0;
+    color: @mediumGray;
+}
+
+body  {
+    font-family: @fontFamily;
+    text-align:left;
+}
+
+table, th, td {
+    border: 1px solid @lightGray;
+    vertical-align: top;
+    padding: 5px;
+}
+
+#search-area {
+    float: left;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 5px;
+    width: 14em;
+    z-index: 1010;
+    img {
+        color: @white;
+        height: 32px;
+        margin-top: -3px;
+    }
+    input {
+        -webkit-appearance: none;
+        &::placeholder {
+            color: #aaa;
+        }
+        font-size: smaller;
+        font-weight: normal;
+        color: #777;
+        vertical-align: top;
+        width: 80%;
+        padding: 1px;
+        border: 1px solid;
+        height: 24px;
+    }
+}
+.search-result {
+    #talks-grid {
+      background: white;
+      table, tr, td {
+        border: none;
+        border-collapse: collapse;
+      }
+      div.talk-widget, .talk-cell {
+        width: 90%;
+        display: block;
+      }
+      .uparrow {
+        display: none;
+      }
+    }
+}
+#login-area {
+    display: inline-block;
+    width: auto;
+    vertical-align: top;
+    img {
+        color: @white;
+        &:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+    }
+    .button, .username {
+        font-size:80%;
+        vertical-align:middle;
+        display: inline-block;
+    }
+    .button {
+        background: transparent;
+        padding:0;
+        margin:0;
+    }
+    .username {
+        margin-right:0;
+        padding-left:0;
+        line-height: 2em;
+        color: white;
+    }
+    a.username:hover {
+        color: @white;
+        text-decoration: underline;
+    }
+    .gravatar {
+        margin:0;
+        padding:0;
+        vertical-align: top;
+        img {
+            height: 30px;
+            width: 30px;
+            border-radius: 5px;
+            vertical-align: middle;
+            margin-top: -2px;
+        }
+    }
+}
+
+button, .button {
+    background-color: @offWhite;
+    border: 0 none rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.8);
+    font-weight:bold;
+    font-size:smaller;
+    line-height: normal;
+    text-align: center;
+    padding: 0.7em;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    &:active {
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 0 6px rgba(0, 0, 0, 0.2) inset;
+    }
+    &:hover {
+        background-color:@offWhite;
+    }
+}
+button {
+    &.highlightBack:hover {
+        cursor: default;
+    }
+    &.day-widescreen {
+        display: inline-block;
+    }
+    &.day-smallscreen {
+        display: none;
+    }
+}
+
+td {
+    background-color:@white;
+}
+
+.header {
+    img {
+        height: 1.8em;
+        margin: 0;
+    }
+}
+
+#language-select {
+    margin-left:5px;
+    img {
+        cursor: pointer;
+        float:none;
+        vertical-align:middle;
+        height: 1.5em;
+    }
+}
+
+a {
+    font-weight:normal;
+    padding: 0.2em 0.5em;
+    text-decoration:none;
+    display:inline;
+    transition: background 0.5s;
+}
+
+#menu-veil {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+}
+.mainmenu.active {
+    cursor: default;
+}
+
+h1 {
+    height: 2em;
+    overflow: hidden;
+    margin-bottom: 0;
+    margin-top: 0;
+    clear:both;
+    font-size:120%;
+    line-height:1.9em;
+    text-align: right;
+
+    #mainmenu-items {
+        top: 0;
+        right: 0;
+    }
+    #mainmenu-items, #mainmenu-button {
+        height: 2em;
+        overflow: hidden;
+        display: inline-block;
+        margin:0;
+        padding: 0;
+        a {
+            display: inline-block;
+            max-width: 12em;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    }
+    #pagetitle, #mainmenu-button {
+        display: none;
+    }
+    a, span {
+        vertical-align: top;
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 2em;
+        display: inline-block;
+        color: @white;
+        margin: 0;
+    }
+    a:hover {
+        color: @white;
+    }
+    a#logo {
+        display: inline-block;
+        float: left;
+        height: 2em;
+        background: white;
+        overflow: hidden;
+        padding: 0 10px 0 5px;
+    }
+    #backbutton_before {
+        display: none;
+        border-radius: 4px;
+        border-style: none none solid solid;
+        border-width: 0 0 1px 1px;
+        content: " ";
+        height: 1em;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        width: 1em;
+        float:left;
+        position:relative;
+        top: 9px;
+        left: 8px;
+    }
+    a#backbutton {
+        display:none;
+        border-radius: 4px;
+        float: left;
+        font-size:smaller;
+        font-weight: bold;
+        overflow: hidden;
+        margin: 6px 10px 5px -5px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 4px;
+        border: 1px solid;
+        border-left: none;
+    }
+}
+
+h2 {
+    font-size:110%;
+    text-align: left;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.badge {
+    color: rgba(0, 0, 0, 0.8);
+    border-radius: 100%;
+    height: 14px;
+    width: 14px;
+    font-weight: bold;
+    line-height: 14px;
+    margin-top: 6px;
+    font-size: 12px;
+    text-align: center;
+    display: inline-block;
+    float: right;
+    margin-right: 3px;
+    padding: 1px;
+}
+#menuLink .badge {
+    margin-top: -6px;
+    margin-right: -10px;
+    border: 1px solid;
+    &.favorites {
+        margin-top: -9px;
+        margin-left: 9px;
+        background-image: url('../img/StarFilledBlack.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        opacity: 0.8;
+        background-size: 14px;
+    }
+}
+.filter-box, .filter-settings {
+    padding:0;
+    position:relative;
+	.filter-button {
+		cursor: pointer;
+		float: right;
+		padding-bottom: 6px;
+		transform: rotate(180deg);
+	}
+	.filter-category {
+        cursor: pointer;
+		font-weight:bold;
+		display: block;
+		padding: 5px;
+		margin: 0 0 5px 0;
+		button {
+			vertical-align:middle;
+			float:right;
+			padding:0.4em;
+			margin:0 5px 0 0;
+			font-size:smaller;
+
+		}
+	}
+
+	.filter-values {
+		margin-left: 5px;
+		margin-right:5px;
+		margin-bottom:5px;
+		font-size:smaller;
+		line-height:1.5em;
+		input[type=checkbox] {
+			display:none;
+		}
+		input[type="checkbox"] + label {
+			padding: 2px;
+			margin-left: 0;
+			display:block;
+			vertical-align:middle;
+			cursor:pointer;
+		}
+		input[type="checkbox"]:checked + label:before {
+			content: url('../img/checkbox_checked.png');
+		}
+
+		input[type="checkbox"] + label:before {
+			content: url('../img/checkbox.png');
+			padding-right:3px;
+			vertical-align:middle;
+		}
+		div:hover {
+			background: @lightGray;
+		}
+	}
+	.collapsed {
+		.filter-button {
+			padding-top: 6px;
+			transform: none;
+		}
+		.filter-values {
+			display: none;
+		}
+	}
+}
+
+.filter-settings {
+    padding:0;
+    margin-bottom:5px;
+}
+
+.filter-box > * {
+    display:block;
+}
+
+#filter-veil {
+    top:0;
+    position: absolute;
+    height:100%;
+    width:100%;
+    background-color:rgba(0, 0, 0, 0.1);
+    z-index: 0;
+    visibility: hidden;
+    &.shown {
+        z-index: 2000;
+        visibility: visible;
+    }
+}
+
+.quicksearch {
+    width: 98%;
+}
+
+#days_filter {
+    margin-bottom: 2px;
+}
+
+.talk-info {
+    background: @white;
+}
+
+#content {
+    margin-left: 5px;
+    min-width: 250px;
+}
+
+#timetable.content, #layout.content {
+    max-width: none;
+}
+
+.content{
+    margin-top: 3em;
+    margin-bottom:2.5em;
+    * {
+        transition: height 0.5s ease, width 0.5s ease;
+        vertical-align: text-top;
+    }
+}
+
+#nav {
+    margin-left:5px;
+    margin-right: 5px;
+    background-color: @white;
+    padding:0;
+    width:96%;
+    border: 1px solid @lightGray;
+}
+
+#talks-grid {
+    background-color: @offWhite;
+    table {
+        border-collapse:separate;
+        border-color:transparent;
+        width: 100%;
+        table-layout: fixed;
+    }
+    td:first-child {
+        padding-top:5px;
+        width:36px;
+    }
+    .talk-cell {
+        cursor: pointer;
+    }
+}
+
+div.time-cell {
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    position: relative;
+    top: 25px;
+    /* Internet Explorer */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+.uparrow {
+    display:block;
+    height:1px;
+    position: relative;
+    top: -20px;
+    left: -49px;
+    font-weight:bold;
+    font-size:150%;
+}
+div.talk-widget  {
+    border-bottom: none;
+    display: inline-block;
+    width: 30%;
+    margin: 5px;
+    padding: 5px;
+}
+div.talk-cell {
+    background-color: @white;
+    vertical-align:top;
+    display: inline-block;
+    min-width:200px;
+    width: 100%;
+    line-height:1.1em;
+    border-bottom: none;
+}
+div.title {
+    font-weight:bold;
+    width:100%;
+    a {
+        font-weight: bold;
+    }
+}
+.language-icon {
+    color: #949494;
+    vertical-align: baseline;
+    height: 14px;
+    width: 20px;
+    font-size: 14px;
+}
+
+#visualization {
+    .vis-item-content {
+        width: 100%;
+    }
+    div.talk-cell {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        min-width: 1px;
+        div.title {
+            overflow: hidden;
+            width: 100%;
+            margin-left: 24px;
+            .language-icon {
+                position: absolute;
+                left: 0;
+                top: 1px;
+            }
+            a {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                display: inline-block;
+                width: 85%;
+            }
+        }
+    }
+}
+
+.talk-info {
+    position: relative;
+    display:block;
+    width: 100%;
+}
+
+div.track {
+    font-weight:bold;
+    font-size:smaller;
+    font-style:italic;
+    display:block;
+    span {
+        font-style:italic;
+        font-weight: normal;
+    }
+}
+div.room {
+    font-weight:bold;
+    font-size: smaller;
+    display:block;
+}
+div.speaker span {
+    font-size: smaller;
+    font-weight:bold;
+}
+div.time {
+    display:inline-block;
+    font-weight: bold;
+    font-size: smaller;
+}
+div.room span, div.time span {
+    font-weight: normal;
+}
+.time, .track, .room, .time *, .track *, .room * {
+    vertical-align: middle;
+    img {
+        vertical-align: text-top;
+    }
+}
+
+span.twitter a {
+    display: block;
+    vertical-align: top;
+    padding-left: 0;
+}
+
+.speakerinfo {
+    font-weight: normal;
+    vertical-align: top;
+    img {
+        width: 42px;
+        float: left;
+        margin-right: 5px;
+        cursor: pointer;
+    }
+    .title {
+        cursor: pointer;
+        a {
+            padding: 0;
+        }
+    }
+    .track {
+        white-space: normal;
+    }
+}
+a .speakerinfo {
+    font-weight: inherit;
+}
+
+.time-extra {
+    font-weight: bold;
+    font-size: smaller;
+    display:block;
+}
+
+.time-extra * {
+    vertical-align: middle;
+}
+
+/* SPEAKERS PAGE */
+.speakertalks .speaker {
+    display:none;
+}
+#speakers, #talkinfo {
+    border-spacing: 5px;
+    border-collapse: separate;
+    background: @offWhite;
+    border:none;
+    padding:0;
+    width: 100%;
+}
+#speakers .speakerinfo .talk-cell {
+    min-width: 80px;
+    width:90%;
+    padding: 12px;
+    background:transparent;
+    white-space: normal;
+}
+#speakers .speakerdetails {
+    width: 30%;
+}
+#speakers .speakertalks {
+    div.talk-widget, .talk-cell {
+        width: 90%;
+        display: block;
+    }
+}
+#speakers .speakerdetails {
+    width: 30%;
+}
+/* SPEAKER DETAIL PAGE */
+#speakersubpage {
+    font-size: 90%;
+    .speaker-content {
+        margin-top: 10px;
+    }
+    .speaker-portrait {
+        width: 30%;
+    }
+    .speaker-overview {
+        width: 50%;
+    }
+}
+#speakerpage {
+    .speaker-portrait {
+        width: 40%;
+    }
+}
+#speakerpage, #speakersubpage {
+    .speaker-content {
+        border: 1px solid @lightGray;
+        background: @offWhite;
+        padding: 5px;
+        display: flex;
+        align-items: stretch;
+        flex-direction: row;
+        .speaker-portrait {
+            padding: 10px 10px 10px 0;
+            img {
+                width: 100%;
+            }
+        }
+        .speaker-contact {
+            padding-top: 10px;
+            line-height: normal;
+            background: white;
+            h2 {
+                line-height: 1.6em;
+                font-size: 140%;
+                margin: 0 0 0 0;
+            }
+            table {
+                border: none;
+                vertical-align: top;
+            }
+            th, td {
+                border: none;
+                font-size: 80%;
+                padding: 5px 0;
+                vertical-align: top;
+                line-height: 1.1em;
+                a {
+                    vertical-align: top;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+        .speaker-function {
+            font-size: 80%;
+            margin-bottom: 20px;
+        }
+        .speaker-socialmedia {
+            span {
+                padding: 0;
+                margin: 0;
+            }
+            a {
+                width: 32px;
+                margin: 0;
+                padding: 0;
+                display: inline-block;
+            }
+            img {
+                height: 32px;
+                width: 32px;
+            }
+        }
+    }
+    .speaker-overview {
+        padding: 5px;
+        background: white;
+        border: 1px solid @lightGray;
+        min-width: 40%;
+        .flexbox {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+        }
+    }
+    .speaker-talks {
+        border: 1px solid @lightGray;
+        background: white;
+        padding: 5px;
+        margin-left: 5px;
+        width: 60%;
+        flex-grow: 1;
+        div.talk-widget {
+            width: 99%;
+            display: block;
+            .talk-cell {
+                width: 100%;
+                display: block;
+            }
+        }
+    }
+}
+/* TALK DETAIL PAGE */
+#talkinfo .talk-details {
+    width:30%;
+    min-width:300px;
+}
+#talkinfo .label {
+    font-weight: bold;
+    display: inline-block;
+    line-height: normal;
+    a {
+      padding: 0;
+      &.speaker-link {
+          font-weight: inherit;
+          font-style: inherit;
+          margin: 0;
+      }
+    }
+}
+#talkinfo .title {
+    display: inline-block;
+    width:auto;
+}
+#talkinfo .speaker-list {
+    margin-bottom: 15px;
+}
+#talkinfo div.talk-abstract {
+    margin-top:15px;
+}
+#talkinfo td {
+    padding: 1em;
+}
+
+/* Footer */
+.content-wrapper {
+    min-height: 80%;
+}
+
+.talk-content {
+    overflow: auto;
+    padding-bottom: 30px;
+}
+
+.header {
+    background: white;
+    top: 0;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    z-index: 1005; /* side-menu has 1000 */
+    box-shadow: 0 0 4px 2px @boxShadowColor;
+}
+
+.footer {
+    background: white;
+    bottom: 0;
+    font-size: smaller;
+    padding:0.5em;
+    margin:0;
+    position: fixed;
+    text-align: center;
+    min-height: 1em;
+    width: 100%;
+    z-index: 1005; /* side-menu has 1000 */
+    box-shadow: 0 0 4px -2px #000000;
+    #poweredByDukecon {
+        position: absolute;
+        right: 1em;
+        padding: 0.2em 1em 0 0;
+        font-size: smaller;
+    }
+}
+
+#update-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: left;
+    z-index: 10;
+    display: inline-block;
+    padding: 6px;
+    font-size: smaller;
+}
+
+.fully-booked {
+    color: red;
+    margin-top: -2em;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1.2em;
+    font-size: 300%;
+    width: auto;
+    border-top: 8px double red;
+    border-bottom: 8px double red;
+    opacity: 0.6;
+    transform: rotate(-25deg);
+    &.stamp {
+        margin-top: auto;
+        font-size: 150%;
+        opacity: 0.7;
+        position: absolute;
+        top:40px;
+        left:40px;
+    }
+}
+
+/* FAVOURITES */
+.as-favorite {
+    cursor: pointer;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.fav-detail {
+    margin-top: 1px;
+    margin-right: 2px;
+    vertical-align: middle;
+}
+.fav-smallscreen {
+    display: none;
+}
+.fav-largescreen {
+    display: inline;
+}
+
+.vis-content .fav-smallscreen, .vis-content .fav-largescreen {
+    display: none;
+}
+
+/* IMPRINT */
+.imprint {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding:1em;
+}
+
+.imprint p {
+    font-size: 11pt;
+    line-height: 15pt;
+    margin: 0;
+    padding: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+#loading {
+    background: url('../img/ajax-circle.gif') no-repeat center 20%;
+    height: 150%;
+    width: 100%;
+}
+
+#nothingtoshow {
+    font-weight: bold;
+    text-align:center;
+    vertical-align:top;
+    padding:5em 0;
+    width:100%;
+}
+
+#nothingtoshow a {
+    font-weight: bold;
+    padding:0;
+}
+
+#cookies {
+    z-index: 2000;
+    position: absolute;
+    top : 0;
+    left: 0;
+    padding: 7px;
+    width: 99%;
+    text-align: center;
+    background: @white;
+    box-shadow: 0 2px 3px 0 @boxShadowColor;
+}
+#cookies a {
+    padding: 0;
+    margin: 0;
+}
+
+#alert-window {
+    border: 1px solid;
+    position: absolute;
+    top : 1px;
+    left: 1px;
+    width: 350px;
+    text-align: center;
+    background: @white;
+    box-shadow: 0 2px 3px 0 @boxShadowColor;
+    visibility: hidden;
+}
+.alert-title {
+    margin: 0;
+    padding: 5px;
+}
+.alert-body, .alert-button {
+    padding: 10px;
+}
+.alert-button {
+    margin-top: 10px;
+    border-top: 1px solid @lightGray;
+}
+
+#alert-window.shown {
+    z-index: 2000;
+    visibility: visible;
+}
+
+.day-short {
+    display:none;
+}
+.day-long {
+    display:inline;
+}
+.talk-cell .speaker {
+    display:block;
+}
+/* Cut-off for menu  */
+@media (max-width: 1090px) {
+    .filter-box, .filter-settings {
+        .filter-values {
+            input[type="checkbox"] + label {
+                font-size: 115%;
+                line-height: 2em;
+            }
+        }
+    }
+    #menu-veil {
+        &.shown {
+            position: fixed;
+            top:0;
+            width: auto;
+            height: auto;
+            bottom: 0;
+            left:0;
+            right: 0;
+            background: rgba(0,0,0,0);
+        }
+    }
+    .has-search {
+        h1 {
+            #mainmenu-button {
+                display: inline-block;
+                float: right;
+                padding-right: 5px;
+                font-size: smaller;
+                cursor: pointer;
+                img {
+                    vertical-align: middle;
+                }
+            }
+            #mainmenu-items {
+                height: auto;
+                font-size: smaller;
+                width: 250px;
+                position: fixed;
+                display: none;
+                top: 40px;
+                right: 0;
+                &.shown {
+                    display: block;
+                    box-shadow: 0 2px 3px 0 @boxShadowColor;
+                }
+                a {
+                    display: block;
+                    max-width: none;
+                }
+            }
+        }
+        .mainmenu {
+            display: block;
+            border-bottom: 1px solid @white;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .mainmenu:last-child {
+            display: block;
+            border-bottom: none;
+            padding-bottom: 5px;
+        }
+        #language-select {
+            margin-left:0;
+        }
+        #login-area {
+            .username {
+                display:none;
+            }
+        }
+    }
+}
+/* RESPONSIVE TWEAKS for small screens */
+@media (max-width: 768px) {
+    h1 {
+        #mainmenu-button {
+            display: inline-block;
+            float: right;
+            padding-right: 5px;
+            font-size: smaller;
+            cursor: pointer;
+            img {
+                vertical-align: middle;
+            }
+        }
+        #mainmenu-items {
+            height: auto;
+            font-size: smaller;
+            width: 250px;
+            position: fixed;
+            display: none;
+            top: 40px;
+            right: 0;
+            &.shown {
+                display: block;
+                box-shadow: 0 2px 3px 0 @boxShadowColor;
+            }
+            a {
+                display: block;
+                max-width: none;
+            }
+        }
+    }
+    .mainmenu {
+        display: block;
+        border-bottom: 1px solid @white;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .mainmenu:last-child {
+        display: block;
+        border-bottom: none;
+        padding-bottom: 5px;
+    }
+    #language-select {
+        margin-left:0;
+    }
+    #login-area {
+        position: absolute;
+        right: 2em;
+        .username {
+            display:none;
+        }
+    }
+    div.talk-widget  {
+        display:block;
+        width:95%;
+        border-bottom: 1px solid @lightGray;
+    }
+    div.time-cell {
+        top: 7px;
+    }
+    div.talk-widget:last-child  {
+        border-bottom: none;
+    }
+    #talks-grid td:first-child {
+        width:15px;
+    }
+    .uparrow {
+        left: -37px;
+    }
+    .fav-smallscreen {
+        display: inline-block;
+        height:3em;
+        width: 10%;
+        float: left;
+    }
+    .fav-largescreen {
+        display: none;
+    }
+    .vis-content .fav-smallscreen, .vis-content .fav-largescreen {
+        display: none;
+    }
+    .talk-info {
+        display:inline-block;
+        width: 90%;
+    }
+    .talk-cell div.room, .talk-cell div.time, .talk-cell div.time-extra  {
+        display:inline-block;
+        padding-right: 5px;
+    }
+    .talk-cell div.room, .talk-cell div.room {
+        display: block;
+        max-width: 100px;
+        overflow: visible;
+        white-space:nowrap;
+    }
+    .talk-cell div.track {
+        display:none
+    }
+    .day-short {
+        display:inline;
+    }
+    .day-long {
+        display:none;
+    }
+    div.talk-cell div.title {
+        position: relative;
+        display: block;
+        width: 100%;
+        .language-icon {
+            position: absolute;
+            right: 0;
+            top: 55px;
+            &.no-speaker {
+                top: 40px;
+            }
+        }
+        a {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            display: inline-block;
+            width: 100%;
+        }
+    }
+    #visualization {
+        div.talk-cell div.title {
+            margin-left: 0;
+            padding-left: 22px;
+            .language-icon {
+                position: absolute;
+                right: auto;
+                left: 0;
+                top: 1px;
+                &.no-speaker {
+                    top: 1px;
+                }
+            }
+        }
+    }
+    .talk-cell .speaker {
+        //display:none;
+    }
+    .content {
+        font-size: 95%;
+        padding: 0;
+        width:98%;
+    }
+    h1 {
+        text-align: left;
+        #pagetitle {
+            display: inline-block;
+        }
+        a#logo {
+            display: none;
+        }
+        #backbutton_before {
+            display:inline-block;
+        }
+        a#backbutton {
+            cursor: pointer;
+            display:inline-block;
+            width: 55px;
+        }
+    }
+    #talkpage h1 #pagetitle {
+        display: none;
+    }
+    h2 {
+        margin-left:5px;
+    }
+    button.day-widescreen {
+        display: none;
+    }
+    button.day-smallscreen {
+        display: inline-block;
+        padding: 10px 3px;
+    }
+
+    #search-area {
+        width: auto;
+        input {
+            width: 60%;
+            border-radius: 4px;
+        }
+    }
+    #speakers {
+        table-layout: fixed;
+        width: 100%;
+        .speakerdetails {
+            display:none;
+        }
+        .speakertalks {
+            width: 90%;
+        }
+        .speakerinfo {
+            width: 95px;
+            white-space: normal;
+            img {
+                float: none;
+                display: block;
+            }
+            .talk-cell {
+                width:90px;
+                padding: 0;
+                .title {
+                    a {
+                        white-space: normal;
+                    }
+                }
+                div.track, div.room {
+                    display: block;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+    #speakerpage, #speakersubpage {
+        .speaker-content {
+            display: block;
+        }
+        h1 #pagetitle {
+            display: none;
+        }
+        img.speaker-portrait {
+            width: 100%;
+        }
+        .speaker-overview {
+            display: block;
+            width: auto;
+        }
+        .speaker-talks {
+            margin-left: 0;
+            margin-top: 5px;
+            display: block;
+            width: auto;
+            div.talk-widget {
+                width: 95%;
+            }
+        }
+    }
+    #talkinfo {
+        display:block;
+        min-width:0;
+        border-spacing: 0;
+        width:auto;
+    }
+    #talkinfo td, #talkinfo .talk-details {
+        display:block;
+        min-width:0;
+        width:auto;
+        margin:5px;
+    }
+    #alert-window {
+        width: 240px;
+    }
+    #cookies {
+        width: 94%;
+    }
+}
+
+/* PURE CSS overrides */
+.pure-g {
+    letter-spacing: 0;
+}
+
+/* VIS-JS overrides */
+.vis-itemset .vis-group {
+    background: #eee;
+    min-height: 97px;
+}
+.vis-label {
+    min-height: 97px;
+}
+.vis-left {
+    width: 120px;
+    white-space: normal;
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+.vis-item.vis-range {
+    z-index: 1;
+    border-radius: 0;
+    background-color: #fff;
+    border-color: #ddd;
+}
+
+.timeline-menu {
+    text-align: right;
+    position: relative;
+    padding: 5px 0;
+}
+
+.timeline-menu input {
+    border: 1px solid #777;
+    font-weight: bold;
+    background: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+}
+.timeline-menu input:hover {
+    background: #ddd;
+}
+@media (max-width: 768px) {
+    .vis-left {
+        width: 80px;
+    }
+    .fully-booked {
+        &.stamp {
+            top: 20px;
+            line-height: 1.2em;
+            font-size: 120%;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        font-size: 95%;
+        padding: 0;
+        width:98%;
+        margin-bottom: 3.5em;
+    }
+    #menu {
+        bottom: 53px;
+    }
+    .footer {
+        height: 2.5em;
+        #poweredByDukecon {
+            top: 2.8em;
+        }
+    }
+    .hideOnMobile {
+        display: none !important;
+    }
+}
+@media (max-width: 360px) {
+    .has-search {
+        h1 {
+            #search-area {
+                width: 60%;
+            }
+        }
+    }
+}

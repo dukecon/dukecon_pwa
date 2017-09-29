@@ -1,5 +1,5 @@
 <template>
-  <div class="footer hidden">
+  <div class="footer">
     <a class="imprint" v-if='imprint' target="_blank" :href="imprint">{{ $t('imprint') }}</a>
     <a v-if='privacy' target="_blank" :href="privacy">{{ $t('privacy') }}</a>
     <a v-if='termsOfUse' target="_blank" :href="termsOfUse">{{ $t('termsOfUse') }}</a>

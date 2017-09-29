@@ -1,0 +1,165 @@
+body {
+    color: #777;
+}
+
+/*
+Add transition to containers so they can push in and out.
+*/
+#layout,
+#menu,
+#nav,
+.menu-link {
+    -webkit-transition: margin-left 0.2s ease-out;
+    -moz-transition: margin-left 0.2s ease-out;
+    -ms-transition: margin-left 0.2s ease-out;
+    -o-transition: margin-left 0.2s ease-out;
+    transition: margin-left 0.2s ease-out;
+}
+
+/*
+This is the parent `<div>` that contains the menu and the content area.
+*/
+#layout {
+    position: relative;
+    padding-left: 0;
+}
+    #layout.active #menu {
+        margin-left: 0px;
+        width: 267px;
+    }
+
+    #layout.active .menu-link {
+        left: 0px;
+    }
+/*
+The content `<div>` is where all your content goes.
+*/
+.content {
+    margin: 0 auto;
+    padding: 0 2em;
+    max-width: 1200px;
+    line-height: 1.6em;
+}
+
+/*
+The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
+appears on the left side of the page.
+*/
+
+#menu {
+    width: 260px;
+    position:fixed;
+    left: 0;
+    top: 66px;
+    bottom: 40px;
+    z-index: 1000; /* so the menu or its navicon stays above all content */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2.5em;
+}
+
+/* -- Dynamic Button For Responsive Menu -------------------------------------*/
+
+/*
+The button to open/close the Menu is custom-made and not part of Pure. Here's
+how it works:
+*/
+
+/*
+`.menu-link` represents the responsive menu toggle that shows/hides on
+small screens.
+*/
+.menu-link {
+    border-top: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    position: absolute;
+    padding-right:5px;
+    display: block; /* show this only on small screens */
+    left: -4px; /* "#menu width" */
+    background: #fff;
+    font-size: 10px; /* change this value to increase/decrease button size */
+    z-index: 10;
+    width:26px;
+    height: 26px;
+    top: 3px;
+}
+
+.menu-link span.stretch {
+	position: relative;
+	display: block;
+}
+
+.menu-link span.stretch {
+	width:26px;
+	background-image: url('../img/filter.png');
+	background-repeat:no-repeat;
+}
+
+
+/* -- Responsive Styles (Media Queries) ------------------------------------- */
+
+/*
+Hides the menu at `48em`, but modify this based on your app's needs.
+*/
+@media (min-width: 769px) {
+
+    .content {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    #layout {
+        padding-left: 260px; /* left col width "#menu" */
+        left: 0;
+    }
+
+    .menu-link {
+        position: absolute;
+        left: 0;
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Only apply this when the window is small. Otherwise, the following
+    case results in extra padding on the left:
+        * Make the window small.
+        * Tap the menu to trigger the active state.
+        * Make the window large again.
+    */
+
+    #layout {
+        padding-left: 0px; /* left col width "#menu" */
+        left: 0;
+    }
+    #menu {
+        left: -260px;
+        overflow-y: auto;
+    }
+
+    .menu-link {
+        position: fixed;
+        top: 70px;
+        left: 0;
+    }
+
+    #layout.active .menu-link {
+        left: 260px;
+    }
+    #layout.active #menu {
+        left: 0;
+    }
+
+    #layout.active {
+        padding-left: 260px; /* left col width "#menu" */
+    }
+    #days_filter {
+        margin-left: 34px;
+    }
+}
+
+/* dukecon stuff */
+.custom-restricted-width {
+    display: inline-block;
+ }

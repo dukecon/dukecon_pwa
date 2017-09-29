@@ -20,7 +20,7 @@ describe('Language.vue', () => {
     }).$mount()
     expect(vm.$i18n.locale).to.equal('de')
     vm.$i18n.locale = 'de'
-    vm.$el.querySelector('img').click()
+    vm.$el.querySelector('a').click()
     expect(vm.$i18n.locale).to.equal('en')
   })
 })

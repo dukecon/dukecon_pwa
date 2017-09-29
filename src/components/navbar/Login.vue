@@ -1,11 +1,11 @@
 <template>
-  <span class="login">
+  <div id="login-area">
     <span v-if='keycloak.isLoggedIn'>logged in as: {{ keycloak.name }} ({{ keycloak.userName }})<br /></span>
-    <span style="cursor: pointer">
-      <span v-on:click='login' v-if='!keycloak.isLoggedIn'>(login)</span>
-      <span v-on:click='logout' v-if='keycloak.isLoggedIn'>(logout)</span>
-    </span>
-  </span>
+    <a class="button">
+      <img alt="Sign in/Register" v-on:click='login' v-if='!keycloak.isLoggedIn' src="../../assets/img/unlock_24px.svg">
+      <img alt="Sign out" v-on:click='logout' v-if='keycloak.isLoggedIn' src="../../assets/img/lock_24px.svg">
+    </a>
+  </div>
 </template>
 
 <script language="">

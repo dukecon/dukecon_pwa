@@ -1,0 +1,73 @@
+/* colors only; retrieve from backend later!*/
+.dark {
+    color: #888;
+    border-color: #888;
+}
+.darkBack {
+    background-color: #888;
+}
+.darkLink {
+    color: #666;
+}
+.darkLinkBack {
+    background-color: #888;
+}
+.hover {
+    color: #aaa;
+}
+.hoverBack {
+    color: #aaa;
+}
+.reverse {
+    color: #fff;
+}
+.reverseBack {
+    background-color: #fff;
+}
+.highlight {
+    color: #fff;
+}
+.highlightBack {
+    background-color: #fff;
+}
+.alternate {
+    color: #bf5a00;
+}
+.alternateBack {
+    background-color: #bf5a00;
+}
+a {
+    color: #888;
+}
+a:hover {
+    color: #aaa;
+}
+
+h1 a:hover {
+    background-color: #aaa;
+}
+
+h1 a.active:hover {
+    background-color: #fff;
+    color: #aaa;
+}
+button.highlightBack:hover {
+    background-color: #aaa;
+}
+
+/* custom styles sometimes take a while longer to load; smooth out the color change a little */
+.dark,
+.darkBack,
+.darkLink,
+.darkLinkBack,
+.reverse,
+.reverseBack,
+.highlight,
+.highlightBack,
+.alternate,
+.alternateBack,
+a {
+    transition: color 0.3s, background-color 0.3s;
+}
+
+

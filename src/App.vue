@@ -1,15 +1,22 @@
 <template>
   <div id="app">
-    <header>
-      <homeicon></homeicon>
-      <language ></language>
-      <login ></login>
-    </header>
+    <div class="header">
+      <h1 id="headertitle" class="darkBack reverse">
+        <homeicon></homeicon>
+        <div id="login-area" class="darkBack">
+          <login></login>
+        </div>
+        <div id="mainmenu-items" class="darkBack">
+          <talks></talks>
+          <language></language>
+        </div>
+      </h1>
+    </div>
     <main>
       <router-view></router-view>
     </main>
     <footer>
-      <links ></links>
+      <links></links>
     </footer>
   </div>
 </template>
@@ -19,41 +26,15 @@
   import Login from './components/navbar/Login.vue'
   import Links from './components/footer/Links.vue'
   import Homeicon from './components/navbar/Homeicon.vue'
+  import Talks from './components/navbar/Talks.vue'
 
   export default {
     components: {
-      Homeicon, Login, Language, Links},
+      Talks, Homeicon, Login, Language, Links
+    },
     name: 'app'
   }
 </script>
 
 <style>
-  body {
-    margin: 0;
-  }
-
-  header a {
-    color: white;
-  }
-
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #2c3e50;
-  }
-
-  main {
-    text-align: center;
-    margin-top: 40px;
-  }
-
-  header {
-    margin: 0;
-    height: 56px;
-    padding: 0 16px 0 24px;
-    background-color: #35495E;
-    color: #ffffff;
-  }
-
 </style>
