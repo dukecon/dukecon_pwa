@@ -42,6 +42,7 @@ describe('Conference.js', () => {
     const events = Conference.getAllEvents()
     const eventsByDay = Conference.getEventsByDay()
     expect(size(events)).to.equal(0)
+    expect(size(eventsByDay)).to.equal(0)
     // when ...
     // ... initialized
     moxios.wait(function () {
