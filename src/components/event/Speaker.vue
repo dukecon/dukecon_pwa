@@ -50,7 +50,7 @@
   import Conference from '../../Conference'
   import Event from './Event.vue'
 
-  var base
+  var base = ''
 
   // test if we are running in local served mode to test offline mode
   if (window.location.href.indexOf('http://localhost:5000') !== -1) {
