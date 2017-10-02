@@ -40,6 +40,7 @@ describe('Conference.js', () => {
     // given ....
     // ... an empty conference
     const events = Conference.getAllEvents()
+    const eventsByDay = Conference.getEventsByDay()
     expect(size(events)).to.equal(0)
     // when ...
     // ... initialized
@@ -60,7 +61,8 @@ describe('Conference.js', () => {
           }).then(function () {
             // then ...
             // ... conference data is filled
-            expect(size(events)).to.equal(2)
+            expect(size(events)).to.equal(3)
+            expect(size(eventsByDay)).to.equal(2)
             done()
           })
         })

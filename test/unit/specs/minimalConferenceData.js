@@ -471,6 +471,26 @@ const data = {
       'veryPopular': true,
       'fullyBooked': false,
       'numberOfFavorites': 0
+    },
+    {
+      'id': '529516',
+      'trackId': '2',
+      'audienceId': '2',
+      'typeId': '1',
+      'locationId': '15',
+      'start': '2017-03-29T12:00:00',
+      'end': '2017-03-29T12:40:00',
+      'title': 'Everything as code',
+      'speakerIds': [
+        '374893'
+      ],
+      'abstractText': 'Zeitgemäße Entwickler müssen eine Vielzahl an Sprachen sicher beherrschen. Wir definieren unsere Entwicklungsumgebung mit Gradle, wir bauen unsere Software in Java, Kotlin oder sogar JavaScript. Wir verwenden Groovy und Scala, um unsere Software zu testen. Die Build-Pipeline wird per DSL und JSON definiert. Mit YAML und Python beschreiben wir die Infrastruktur und das Deployment unserer Anwendungen. Die Dokumentation unserer Architekturen erledigen wir mit AsciiDoc und JRuby. Willkommen in Babel! Hallo, Softwareindustrialisierung!\n\nUse the right tool for the job! Das ist das Motto dieser Session. Jede Sprache hat Stärken in einer bestimmten Domäne. Diese Stärken gilt es zu nutzen. Aber einfach blind jede gerade angesagte Sprache einzusetzen, ist sicherlich nicht die Lösung. Genau das versuchen wir mit dieser Session zu vermitteln. Stattdessen braucht es eine gut integrierte und abgestimmte Tool-Chain. Wir berichten aus der Praxis: What worked for us and what did not.',
+      'languageId': '1',
+      'demo': true,
+      'simultan': false,
+      'veryPopular': true,
+      'fullyBooked': false,
+      'numberOfFavorites': 0
     }
   ]
 }

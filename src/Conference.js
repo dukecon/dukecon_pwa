@@ -1,11 +1,14 @@
 import axios from 'axios'
 import Vue from 'vue'
+import { groupBy } from 'lodash'
 
 /* the following objects (events, conference) are the global data model for this application.
    They are read only for the users, but they will be updated asynchronously when the data is loaded, they might be
    updated with new data periodically as well. Use the references returned to bind them to your model. */
 
 let events
+
+let eventsByDay
 
 let speakers
 
@@ -25,6 +28,8 @@ function reset () {
   initialized = false
 
   events = {}
+
+  eventsByDay = {}
 
   speakers = {}
 
@@ -83,6 +88,12 @@ const init = function () {
           response.data.metaData.tracks.forEach(v => {
             Vue.set(tracks, v.id, v)
           })
+          let days = groupBy(Conference.getAllEvents(), function (event) { return event.start ? new Date(event.start).toDateString() : null })
+          for (let day in days) {
+            if (days.hasOwnProperty(day)) {
+              Vue.set(eventsByDay, day, days[day])
+            }
+          }
         })
         .catch(function (error) {
           console.log(error)
@@ -129,6 +140,11 @@ export default class Conference {
   static getConference () {
     init()
     return conference
+  }
+
+  static getEventsByDay () {
+    init()
+    return eventsByDay
   }
 
   // use this for testing

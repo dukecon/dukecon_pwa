@@ -4,10 +4,13 @@
       <div class="schedule">
         <h2>Schedule</h2>
         <ul>
-          <li v-for="(value, key) in events">
-            <router-link :to="{ name: 'scheduledEvent', params: { eventId: key }}">Go to Event {{ key }}: {{ value.title
-              }}
-            </router-link>
+          <li v-for="(events, day) in eventsByDay">
+            {{ day }}
+            <ul>
+              <li v-for="(value, key) in events">
+                <router-link :to="{ name: 'scheduledEvent', params: { eventId: key }}">Go to Event {{ key }}: {{ value.title }}</router-link>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -22,11 +25,13 @@
     name: 'schedule',
     data () {
       return {
-        events: null
+        events: null,
+        eventsByDay: null
       }
     },
     created () {
       this.events = Conference.getAllEvents()
+      this.eventsByDay = Conference.getEventsByDay()
     }
   }
 </script>
