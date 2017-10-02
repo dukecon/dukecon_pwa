@@ -8,7 +8,7 @@
             {{ day }}
             <ul>
               <li v-for="(value, key) in events">
-                <router-link :to="{ name: 'scheduledEvent', params: { eventId: key }}">Go to Event {{ key }}: {{ value.title }}</router-link>
+                <router-link :to="{ name: 'scheduledEventPage', params: { eventId: key }}">Go to Event {{ key }}: {{ value.title }}</router-link>
               </li>
             </ul>
           </li>

@@ -20,8 +20,8 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   plugins: [
-    // include only specific languages from momentJS
-    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /de|en/)
+    // include only specific languages from momentJS, en included already by default
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /de/)
   ],
   resolve: {
     extensions: ['.js', '.vue', '.json'],

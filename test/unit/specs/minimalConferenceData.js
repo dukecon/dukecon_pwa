@@ -136,78 +136,6 @@ const data = {
         'icon': 'track_1.png'
       },
       {
-        'id': '2',
-        'order': 1,
-        'names': {
-          'de': 'Core Java & JVM-Sprachen',
-          'en': 'Core Java & JVM-Languages'
-        },
-        'icon': 'track_1.png'
-      },
-      {
-        'id': '3',
-        'order': 1,
-        'names': {
-          'de': 'Frontend & Mobile Computing ',
-          'en': 'Frontend & Mobile Computing '
-        },
-        'icon': 'track_1.png'
-      },
-      {
-        'id': '4',
-        'order': 1,
-        'names': {
-          'de': 'IDE & Tools',
-          'en': 'IDE & Tools'
-        },
-        'icon': 'track_1.png'
-      },
-      {
-        'id': '5',
-        'order': 1,
-        'names': {
-          'de': 'Container und Microservices',
-          'en': 'Container and Microservices'
-        },
-        'icon': 'track_1.png'
-      },
-      {
-        'id': '6',
-        'order': 1,
-        'names': {
-          'de': 'Architektur & Sicherheit',
-          'en': 'architecture & security '
-        },
-        'icon': 'track_1.png'
-      },
-      {
-        'id': '7',
-        'order': 1,
-        'names': {
-          'de': 'Internet der Dinge',
-          'en': 'Internet of Things'
-        },
-        'icon': 'track_1.png'
-      },
-      {
-        'id': '8',
-        'order': 1,
-        'names': {
-          'de': 'Enterprise Java',
-          'en': 'Enterprise Java'
-        },
-        'icon': 'track_1.png'
-      },
-      {
-        'id': '9',
-        'order': 1,
-        'names': {
-          'de': 'JVM-Sprachen',
-          'en': 'JVM Languages'
-        },
-        'icon': 'track_1.png'
-      },
-      {
         'id': '10',
         'order': 7,
         'names': {
@@ -215,15 +143,6 @@ const data = {
           'en': 'Newcomer'
         },
         'icon': 'track_7.png'
-      },
-      {
-        'id': '11',
-        'order': 8,
-        'names': {
-          'de': 'Java EE - Early Adopters',
-          'en': 'Java EE - Early Adopters'
-        },
-        'icon': 'track_8.png'
       }
     ],
     'locations': [
@@ -491,6 +410,47 @@ const data = {
       'veryPopular': true,
       'fullyBooked': false,
       'numberOfFavorites': 0
+    }
+  ],
+  speakers: [
+    {
+      'id': '364675',
+      'name': 'Bert Ertman',
+      'firstname': 'Bert',
+      'lastname': 'Ertman',
+      'company': 'Luminis',
+      'twitter': '@BertErtman',
+      'bio': 'Bert Ertman is a fellow at Luminis in the Netherlands. In addition to his day job he has served as the leader for NLJUG (4,000 members) for the past decade. A frequent speaker on Java and software architecture all over the world, he is also the author of Building Modular Cloud Applications with OSGi and a serial conference organizer. In 2008, Bert was honored with the coveted title of Java Champion by an international panel of Java leaders and luminaries. Bert Ertman is a JavaOne RockStar speaker and a Duke\'s Choice award winner.',
+      'eventIds': [
+        '529268'
+      ]
+    },
+    {
+      'id': '375158',
+      'name': 'Willem Dekker',
+      'firstname': 'Willem',
+      'lastname': 'Dekker',
+      'company': 'Luminis',
+      'linkedin': 'https://www.linkedin.com/in/willemjdekker/',
+      'bio': 'Willem is fascinated with computers as long as he can remember. He started coding when he was eight years old and began his professional career as a Full Stack developer in 2000. After 16 years he has built up a tremendous amount of experience in building enterprise systems for large and smaller companies. Willem favourite quote is: "Keep things as simple as possible, but no simpler". As a pragmatist, he is always seeking for the balance between quality, functionality and not to forget: fun!',
+      'eventIds': [
+        '529268'
+      ]
+    },
+    {
+      'id': '364068',
+      'name': 'Thomas Bauer',
+      'firstname': 'Thomas',
+      'lastname': 'Bauer',
+      'company': 'Xaidat GmbH',
+      'website': 'http://www.xaidat.com',
+      'twitter': 'https://twitter.com/_417',
+      'xing': 'https://www.xing.com/profile/Thomas_Bauer168',
+      'linkedin': 'https://www.linkedin.com/in/xaidat/',
+      'bio': 'Thomas Bauer started to program at the age of 9yrs and since them software development and engineering plays a big part in his life. | He started as a freelancer, worked for Google in CA, founded two software companies, audits and gives advice to companies about software engineering and speaks about technology related to the field.',
+      'eventIds': [
+        '529697'
+      ]
     }
   ]
 }

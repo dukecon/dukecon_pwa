@@ -33,7 +33,7 @@
 <script>
   import Conference from '../../Conference'
   import Images from '../../Images'
-  const unknownImage = require('../../assets/img/Unknown.png')
+  const unknownImage = require('@/assets/img/Unknown.png')
   import Moment from 'moment'
 
   var getTimeCategory = function (duration) {
@@ -87,7 +87,7 @@
       },
       languageIcon: function () {
         // TODO: different icon when this.event.simultan - seems to be broken in old app
-        return require('../../assets/img/lang_' + this.languages[this.event.languageId].code + '.png')
+        return require('@/assets/img/lang_' + this.languages[this.event.languageId].code + '.png')
       },
       track: function () {
         return this.tracks[this.event.trackId]

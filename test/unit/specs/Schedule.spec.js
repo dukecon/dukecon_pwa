@@ -11,7 +11,7 @@ describe('Schedule.vue', () => {
       routes: [
         {
           path: '/scheduledEvent/:eventId',
-          name: 'scheduledEvent'
+          name: 'scheduledEventPage'
         }
       ]
     })

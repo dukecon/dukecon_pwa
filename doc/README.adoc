@@ -82,7 +82,14 @@ npm run e2e_headless
 This application is a PWA (https://en.wikipedia.org/wiki/Progressive_web_app[Progressive Web App]).
 
 All static web resources will be pre-loaded by the service worker.
-All calls to the _/rest_ URLs will be cached and service with the previously downloaded version if the app is offline.
+
+*Caching Strategy _fastest_:*
+All calls to the _/rest_ URLs will be cached and serviced with the previously downloaded version.
+If the application is online, a new version will be fetched from the network and will be returned by the next request.
+
+Future versions might differentiate between URLs and choose _networkFirst_ to wait for a given time to get a fresh response.
+
+See _webpack.prod.conf.js_ section _SWPrecacheWebpackPlugin_ on how to configure it.
 From a developer's point of view you should be able to develop the application in offline mode and it will 'just work' in offline mode.
 
 Offline functionality is not available in development mode.
@@ -92,9 +99,15 @@ To test the offline functionality you will usually deploy it to a server and you
 
 To test it locally there is a switch in Conference.js to run it locally for the JavaLand conference:
 
+Run once to install serve globally
+----
+npm install -g serve
+----
+
+Run after every change of the source
+
 ----
 npm run build
-npm install -g serve
 serve dist
 ----
 
@@ -112,6 +125,17 @@ It is loaded by Conference.js.
 To all other components of the application it is readonly.
 But they will be updated asynchronously when the data is loaded initially, they might be updated with new data periodically as well in the future.
 Use the references returned to bind them to your model.
+
+== Components
+
+A Vue.js app is broken down to components.
+Each route will be one component.
+Components for each route are registered in _main.js_.
+
+Best practices:
+
+* If the page will interact with the route, i.e. to extract a URL parameter, it can be helpful to separate this part from the real logic of the page.
+The _SpeakerPage.vue (interacts with the route) and _Speaker.vue_ (displays speaker data and can be re-used) is a good example.
 
 == Internationalization
 
@@ -131,6 +155,44 @@ $t('imprint')
 ----
 <a>{{ $t('imprint') }}</a>
 ----
+
+== Localization
+
+To show dates and times for different locales, we use _https://momentjs.com/docs/[MomentJS]_.
+
+We don't use a global setting for the locale of MomentJS to support calculated functions for localized dates.
+Please use the following sample code to format a given date:
+
+[source,javascript]
+----
+// pick any given date
+Moment(this.event.start)
+  // set the locale for this instance
+  .locale(this.$i18n.locale)
+  // format it as needed
+  .format('dddd, Do MMM, HH:mm')
+----
+
+At the moment only the en- (default) and de-locales are imported, seel _ContextReplacementPlugin_ in _webpack.base.conf.js_.
+
+== Optimization for production
+
+The command _npm run build_ creates the folder _dist_.
+This is served as static pages from a production server.
+
+You can analyze the contents of the created files by running _npm run build --report_. This creates and serves a _report.html_ file in the _dist_ folder.
+Use it to analyze the contents and sizes of the bundle created.
+The smaller the size, the faster the app will load.
+
+The following files are not needed in production and should be excluded:
+
+report.html::
+Bundle analyzer report (created by _npm run build --report_)
+
+*.map::
+Source Map Files
+
+== Testing
 
 === Testing components for unit tests
 

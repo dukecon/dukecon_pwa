@@ -8,7 +8,7 @@
                                              alt="Favorit +-" title="Favorit +-"
                                              data-bind="click: toggleFavourite, clickBubble: false, attr:{src: talk.favicon}"/>
                                              -->
-          <router-link :to="{ name: 'scheduledEvent', params: { eventId: event.id }}" style="padding: 0">{{event.title}}</router-link>
+          <router-link :to="{ name: 'scheduledEventPage', params: { eventId: event.id }}" style="padding: 0">{{event.title}}</router-link>
         </div>
 
         <div class="fully-booked stamp" v-if="event.fullyBooked">{{ $t('fullyBooked') }}</div>

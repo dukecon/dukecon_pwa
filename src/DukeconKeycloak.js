@@ -1,9 +1,15 @@
 import Keycloak from 'keycloak-js'
 
+var base = ''
+
+if (window.location.href.indexOf('http://localhost:5000') !== -1) {
+  base = 'https://latest.dukecon.org/javaland/2017/'
+}
+
 /* This provides the Keycloak instance plus some enhancements regarding login status.
  * The Keycloak instance is a singleton that will be used throughout the application. */
 
-var keycloak = Keycloak('rest/keycloak.json')
+var keycloak = Keycloak(base + 'rest/keycloak.json')
 
 // add properties so that Vue known about them from the start
 keycloak.isLoggedIn = false

@@ -111,7 +111,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         // all URLs containing "/rest/" anywhere in the URL
         urlPattern: /\/rest\//,
         // ... will be be fetched from the network first. If this fails, get them from the cache
-        handler: 'networkFirst',
+        handler: 'fastest', // alternative: networkFirst
         options: {
           networkTimeoutSeconds: 10,
           cache: {

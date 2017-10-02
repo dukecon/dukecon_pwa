@@ -42,31 +42,13 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 * Suchen
 * Navigation
+* Navigation Responsive/Hamburger
 
 ### Talkseite
 
 * Filter
 * Tageswahl
 * Zeitslots
-* Events
-** Zeit
-** Raum
-** Track
-** Plätze
-** Sprache
-* Abstract
-* Sprecher
-** Foto
-** Social Media Links
-
-### Sprecherseite
-* Sprecherdetails
-** Social Media Links
-** Foto
-* Bio
-* Event
-
-### Sprecher-Details
 
 ## Funktionalität
 

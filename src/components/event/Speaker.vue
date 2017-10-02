@@ -50,6 +50,13 @@
   import Conference from '../../Conference'
   import Event from './Event.vue'
 
+  var base
+
+  // test if we are running in local served mode to test offline mode
+  if (window.location.href.indexOf('http://localhost:5000') !== -1) {
+    base = 'https://latest.dukecon.org/javaland/2017/'
+  }
+
   var toUrl = function (media, url) {
     if (media === 'twitter') {
       if (!url.indexOf('http') === 0) {
@@ -71,7 +78,7 @@
           return {
             media: m,
             url: toUrl(m, s[m]),
-            src: require('../../assets/img/social_' + m + '.svg')
+            src: require('@/assets/img/social_' + m + '.svg')
           }
         })
       return {
@@ -82,13 +89,16 @@
     computed: {
       speakerImageUrl: function () {
         if (this.speaker.photoId) {
-          return 'rest/speaker/images/' + this.speaker.photoId
+          return base + 'rest/speaker/images/' + this.speaker.photoId
         } else {
-          return require('../../assets/img/UnknownUser.png')
+          return require('@/assets/img/UnknownUser.png')
         }
       },
       speakerEvents: function () {
-        return this.speaker.eventIds.filter(e => { return e !== this.parentEventId }).map(e => this.events[e])
+        return this.speaker.eventIds
+          .filter(e => { return e !== this.parentEventId })
+          .map(e => this.events[e])
+          .filter(e => { return e !== undefined })
       }
     }
   }

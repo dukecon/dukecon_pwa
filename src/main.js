@@ -11,7 +11,7 @@ import App from './App'
 import DukeconKeycloak from './DukeconKeycloak'
 import Router from 'vue-router'
 import Schedule from '@/components/Schedule'
-import ScheduledEvent from '@/components/event/ScheduledEvent'
+import ScheduledEventPage from '@/components/event/ScheduledEventPage'
 import SpeakerPage from '@/components/event/SpeakerPage'
 import $ from 'jquery'
 import { i18n } from './Internationalization.js'
@@ -29,8 +29,8 @@ function initVue () {
       },
       {
         path: '/scheduledEvent/:eventId',
-        name: 'scheduledEvent',
-        component: ScheduledEvent
+        name: 'scheduledEventPage',
+        component: ScheduledEventPage
       },
       {
         path: '/speaker/:speakerId',

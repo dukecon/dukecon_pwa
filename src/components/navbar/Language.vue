@@ -1,6 +1,6 @@
 <template>
   <a class="mainmenu darkBack reverse" id="language-select" v-on:click='change'>
-    <img class="language" alt="Sprache umschalten / Change language" title="Sprache umschalten / Change language" :src="imgurl" />
+    <img class="language" alt="Sprache umschalten / Change language" title="Sprache umschalten / Change language" :src="img" />
   </a>
 </template>
 
@@ -17,8 +17,8 @@
       }
     },
     computed: {
-      imgurl: function () {
-        return 'static/img/icons/' + this.$i18n.locale + '.png'
+      img: function () {
+        return require('@/assets/img/' + this.$i18n.locale + '.png')
       }
     }
   }
