@@ -86,11 +86,11 @@
         return this.languages[this.event.languageId]
       },
       languageIcon: function () {
-        var prefix = 'assets/img/'
+        var prefix = ''
         if (!this.event.simultan) {
           prefix += 'lang_'
         }
-        return require(prefix + this.languages[this.event.languageId].code + '.png')
+        return require('@/assets/img/' + prefix + this.languages[this.event.languageId].code + '.png')
       },
       track: function () {
         return this.tracks[this.event.trackId]
