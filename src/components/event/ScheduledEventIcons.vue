@@ -24,7 +24,7 @@
     <div class="room">
       <span style="margin-left: -2px;" class="language-icon">&#128172;</span>
       <span>{{ language.names[this.$i18n.locale] }}</span>
-      <template v-if="event.simultan">{{ $t('simultan') }}</template>
+      <span v-if="event.simultan">{{ $t('simultan') }}</span>
       <img alt="" class="language-icon" :src="languageIcon">
     </div>
   </div>
@@ -86,8 +86,11 @@
         return this.languages[this.event.languageId]
       },
       languageIcon: function () {
-        // TODO: different icon when this.event.simultan - seems to be broken in old app
-        return require('@/assets/img/lang_' + this.languages[this.event.languageId].code + '.png')
+        var prefix = 'assets/img/'
+        if (!this.event.simultan) {
+          prefix += 'lang_'
+        }
+        return require(prefix + this.languages[this.event.languageId].code + '.png')
       },
       track: function () {
         return this.tracks[this.event.trackId]
