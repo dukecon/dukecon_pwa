@@ -175,6 +175,13 @@ Moment(this.event.start)
 
 At the moment only the en- (default) and de-locales are imported, seel _ContextReplacementPlugin_ in _webpack.base.conf.js_.
 
+== Miscellaneous
+
+* All router views are cached using the _<keep-alive/>_ tag. This avoid long initial rendering times when returning on the _SpeakersPage_. It should be re-evaluated if this needs too much RAM.
+* If you have multiple images on a page, consider lazy loading of the images (see _SpeakersPage.vue_ uses _VueLazyLoad_ for this.
+* The scrolling position for each page is saved and restored on route navigation (see initialization of _VueRouter_).
+This is not using the HTML5 router as this requires the server file handling to be updated as all routes of the frontend will also appear as bookmarks in the backend.
+
 == Optimization for production
 
 The command _npm run build_ creates the folder _dist_.

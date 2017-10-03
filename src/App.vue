@@ -8,11 +8,15 @@
         </div>
         <div id="mainmenu-items" class="darkBack">
           <talks></talks>
+          <speakers></speakers>
           <language></language>
         </div>
       </h1>
     </div>
-    <router-view></router-view>
+    <!-- this keep-alive allows ultra-fast switching between views, especially the speakers page -->
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
     <footer>
       <links></links>
     </footer>
@@ -25,10 +29,11 @@
   import Links from './components/footer/Links.vue'
   import Homeicon from './components/navbar/Homeicon.vue'
   import Talks from './components/navbar/Talks.vue'
+  import Speakers from './components/navbar/Speakers.vue'
 
   export default {
     components: {
-      Talks, Homeicon, Login, Language, Links
+      Speakers, Talks, Homeicon, Login, Language, Links
     },
     name: 'app'
   }

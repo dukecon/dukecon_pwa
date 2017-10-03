@@ -61,6 +61,9 @@
     },
     computed: {
       abstractTextHtml: function () {
+        if (!this.event.abstractText) {
+          return ''
+        }
         return this.event.abstractText.split('\n').join('<br />')
       },
       eventSpeaker: function () {
