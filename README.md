@@ -52,4 +52,5 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 ## Funktionalität
 
-** Favoriten
+* Favoriten
+* Language-Selector soll sich die Sprache merken (IndexDB? Cookie?)

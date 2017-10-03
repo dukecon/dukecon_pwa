@@ -3,6 +3,7 @@
     <div class="header">
       <h1 id="headertitle" class="darkBack reverse">
         <homeicon></homeicon>
+        <backbutton></backbutton>
         <div id="login-area" class="darkBack">
           <login></login>
         </div>
@@ -34,9 +35,11 @@
   import Speakers from './components/navbar/Speakers.vue'
   import Feedback from './components/navbar/Feedback.vue'
   import Conference from './components/navbar/Conference.vue'
+  import Backbutton from './components/navbar/Backbutton.vue'
 
   export default {
     components: {
+      Backbutton,
       Conference,
       Feedback,
       Speakers,
