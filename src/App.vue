@@ -7,13 +7,14 @@
         <div id="login-area" class="darkBack">
           <login></login>
         </div>
-        <div id="mainmenu-items" class="darkBack">
+        <div id="mainmenu-items" :class="{ darkBack: true, shown: mobileMenuOpen}">
           <talks></talks>
           <speakers></speakers>
           <feedback></feedback>
           <conference></conference>
           <language></language>
         </div>
+        <div id="mainmenu-button"><img @click="toggle" src="./assets/img/menu_24px.svg"></div>
       </h1>
     </div>
     <!-- this keep-alive allows ultra-fast switching between views, especially the speakers page -->
@@ -49,7 +50,24 @@
       Language,
       Links
     },
-    name: 'app'
+    name: 'app',
+    data () {
+      return {
+        mobileMenuOpen: false
+      }
+    },
+    created () {
+      // ensure the mobile menu is closed on every navigation
+      this.$router.beforeEach((to, from, next) => {
+        this.mobileMenuOpen = false
+        next()
+      })
+    },
+    methods: {
+      toggle: function () {
+        this.mobileMenuOpen = !this.mobileMenuOpen
+      }
+    }
   }
 </script>
 
