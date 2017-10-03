@@ -44,7 +44,9 @@ function reset () {
   conference = {
     imprint: {},
     privacy: {},
-    termsOfUse: {}
+    termsOfUse: {},
+    homeUrl: null,
+    homeTitle: null
   }
 }
 
@@ -69,6 +71,9 @@ const init = function () {
       for (const key in response.data) {
         if (response.data.hasOwnProperty(key)) {
           Vue.set(conference, key, response.data[key])
+        }
+        if (!conference.homeTitle) {
+          conference.homeTitle = conference.name
         }
       }
       axios.get(base + 'rest/conferences/' + conference.id)

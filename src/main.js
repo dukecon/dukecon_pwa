@@ -14,6 +14,7 @@ import Schedule from '@/components/Schedule'
 import ScheduledEventPage from '@/components/event/ScheduledEventPage'
 import SpeakerPage from '@/components/event/SpeakerPage'
 import SpeakersPage from '@/components/event/SpeakersPage'
+import FeedbackPage from '@/components/FeedbackPage'
 import $ from 'jquery'
 import { i18n } from './Internationalization.js'
 import VueLazyload from 'vue-lazyload'
@@ -24,6 +25,7 @@ Vue.use(VueLazyload)
 function initVue () {
   Vue.use(VueRouter)
   const router = new VueRouter({
+    linkExactActiveClass: 'dark reverseBack',
     routes: [
       {
         path: '/',
@@ -44,6 +46,11 @@ function initVue () {
         path: '/speakers',
         name: 'speakersPage',
         component: SpeakersPage
+      },
+      {
+        path: '/feedback',
+        name: 'feedbackPage',
+        component: FeedbackPage
       }
     ]
   })

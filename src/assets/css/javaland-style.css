@@ -1,5 +1,5 @@
 .dark {
-  color: #1aa3b1;
+  color: #1aa3b1!important;
   border-color: #1aa3b1;
 }
 .darkBack {
@@ -28,7 +28,7 @@
   color: #fff;
 }
 .reverseBack {
-  background-color: #fff;
+  background-color: #fff!important;
 }
 .highlight {
   color: #ddee55;

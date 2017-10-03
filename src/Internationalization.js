@@ -13,7 +13,9 @@ const messages = {
     'fullyBooked': 'voll besetzt',
     'speakertalks': 'Talks dieses Sprechers',
     'other_speakertalks': 'Weitere Talks dieses Sprechers',
-    'noOtherTalks': '-- keine --'
+    'noOtherTalks': '-- keine --',
+    'feedback': 'Feedback',
+    'feedback_content': '<span>Rückmeldungen zur Conference Planner Webseite bitte per Mail an</span> <a href="mailto:feedback@dukecon.org" title="email">feedback@dukecon.org</a> <span>oder direkt</span><a href="https://github.com/dukecon/dukecon/issues" title="Isssuetracker">hier</a> <span>ein Ticket erfassen!</span>'
   },
   en: {
     'termsOfUse': 'Terms of use',
@@ -24,7 +26,9 @@ const messages = {
     'fullyBooked': 'fully booked',
     'speakertalks': 'Talks held by this speaker',
     'other_speakertalks': 'Other talks held by this speaker',
-    'noOtherTalks': '-- none --'
+    'noOtherTalks': '-- none --',
+    'feedback': 'Feedback',
+    'feedback_content': '<span>Please send any feedback about the Conference Planner website via mail to</span> <a href="mailto:feedback@dukecon.org">feedback@dukecon.org</a> <span>or</span> <a href="https://github.com/dukecon/dukecon/issues" title="Isssuetracker">create a ticket here</a> <span>!</span>'
   }
 }
 

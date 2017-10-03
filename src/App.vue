@@ -9,6 +9,8 @@
         <div id="mainmenu-items" class="darkBack">
           <talks></talks>
           <speakers></speakers>
+          <feedback></feedback>
+          <conference></conference>
           <language></language>
         </div>
       </h1>
@@ -30,10 +32,19 @@
   import Homeicon from './components/navbar/Homeicon.vue'
   import Talks from './components/navbar/Talks.vue'
   import Speakers from './components/navbar/Speakers.vue'
+  import Feedback from './components/navbar/Feedback.vue'
+  import Conference from './components/navbar/Conference.vue'
 
   export default {
     components: {
-      Speakers, Talks, Homeicon, Login, Language, Links
+      Conference,
+      Feedback,
+      Speakers,
+      Talks,
+      Homeicon,
+      Login,
+      Language,
+      Links
     },
     name: 'app'
   }
