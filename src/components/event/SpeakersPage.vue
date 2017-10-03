@@ -6,10 +6,10 @@
         <td class="speakerinfo">
           <div class="talk-cell">
             <div class="title darkLink">
-              <a data-bind="attr : { href : 'speaker.html#speaker?speakerId=' + id }">
+              <router-link :to="{ name: 'speakerPage', params: { speakerId: speaker.id }}">
                 <img alt="" v-lazy="speakerImageUrl(speaker)">
                 <span>{{speaker.name}}</span>
-              </a>
+              </router-link>
             </div>
             <div class="track"><span>{{speaker.company}}</span></div>
             <div class="room">

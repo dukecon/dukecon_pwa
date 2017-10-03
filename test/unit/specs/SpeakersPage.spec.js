@@ -49,7 +49,12 @@ describe('SpeakersPage.vue', () => {
         {
           path: '/scheduledEvent/:eventId',
           name: 'scheduledEventPage'
+        },
+        {
+          path: '/speaker/:speakerId',
+          name: 'speakerPage'
         }
+
       ]
     })
     // ... and a Vue instance with the component
