@@ -18,6 +18,8 @@
             </div>
           </div>
 
+          <favourite :event="event" />
+
           <scheduled-event-icons :event="event"/>
 
           <div class="fully-booked" v-if="event.fullyBooked">{{ $t('fullyBooked') }}</div>
@@ -45,9 +47,11 @@
   import ScheduledEventIcons from './ScheduledEventIcons.vue'
   import Twitter from './Twitter.vue'
   import Speaker from './Speaker.vue'
+  import Favourite from './Favourite.vue'
 
   export default {
     components: {
+      Favourite,
       Speaker,
       Twitter,
       ScheduledEventIcons

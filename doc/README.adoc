@@ -79,15 +79,31 @@ npm run e2e_headless
 
 == Offline Functionality
 
+=== For settings and favourites
+
+All settings are stored in localstorage.
+This also includes the favourites.
+This allows small values to be retrieved synchronously and without much overhead.
+
+The browser uses a separate store for each hostname and port.
+The application adds a prefix of URL path to allow multiple instances of DukeCon to be hosted on the same host.
+See _Settings.js_ for the implementation.
+
+=== For the application
+
 This application is a PWA (https://en.wikipedia.org/wiki/Progressive_web_app[Progressive Web App]).
 
 All static web resources will be pre-loaded by the service worker.
+
+=== For the data
 
 *Caching Strategy _fastest_:*
 All calls to the _/rest_ URLs will be cached and serviced with the previously downloaded version.
 If the application is online, a new version will be fetched from the network and will be returned by the next request.
 
 Future versions might differentiate between URLs and choose _networkFirst_ to wait for a given time to get a fresh response.
+
+=== Configuring and testing teh service workers and PWA functionality
 
 See _webpack.prod.conf.js_ section _SWPrecacheWebpackPlugin_ on how to configure it.
 From a developer's point of view you should be able to develop the application in offline mode and it will 'just work' in offline mode.

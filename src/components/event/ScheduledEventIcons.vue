@@ -12,9 +12,9 @@
         <img width="16" height="16" src="../../assets/img/chair.svg" alt="Plätze"/>
         <span>{{ location.capacity }}</span>
       </template>
-      <template v-if="event.numberOfFavorites !== undefined">
+      <template v-if="numberOfFavorites !== undefined">
         <img width="16" height="16" src="../../assets/img/StarFilled.png" alt="Favoriten"/>
-        <span>{{ event.numberOfFavorites }}</span>
+        <span>{{ numberOfFavorites }}</span>
       </template>
     </div>
     <div class="track" v-if="track">
@@ -33,6 +33,8 @@
 <script>
   import Conference from '../../Conference'
   import Images from '../../Images'
+  import Favourites from '../../Favourites'
+
   const unknownImage = require('@/assets/img/Unknown.png')
   import Moment from 'moment'
 
@@ -54,7 +56,8 @@
         locations: Conference.getAllLocations(),
         languages: Conference.getAllLanguages(),
         tracks: Conference.getAllTracks(),
-        images: Images.getImages()
+        images: Images.getImages(),
+        favourites: Favourites.getFavorites()
       }
     },
     computed: {
@@ -101,6 +104,13 @@
           image = unknownImage
         }
         return image
+      },
+      numberOfFavorites: function () {
+        if (!this.event.numberOfFavorites === undefined) {
+          return undefined
+        } else {
+          return (this.favourites[this.event.id] === true ? 1 : 0) + this.event.numberOfFavorites
+        }
       }
 
     }

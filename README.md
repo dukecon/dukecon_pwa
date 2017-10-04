@@ -41,8 +41,6 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ### Header
 
 * Suchen
-* Navigation
-* Navigation Responsive/Hamburger
 
 ### Talkseite
 
@@ -52,5 +50,5 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 ## Funktionalität
 
-* Favoriten
-* Language-Selector soll sich die Sprache merken (IndexDB? Cookie?)
+* Login komplett umsetzen (inkl. Anzeigen der Nuzterdaten und Speichern der Anmeldung als Offline Token)
+* Favoriten aus dem Backend laden / im Backend speichern

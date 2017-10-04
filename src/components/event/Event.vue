@@ -3,11 +3,7 @@
     <div :class="timeClass">
       <div class="talk-info">
         <div class="title darkLink">
-          <!-- TODO
-              <img class="fav-largescreen" style="cursor:pointer; margin-right: 2px;"
-                                             alt="Favorit +-" title="Favorit +-"
-                                             data-bind="click: toggleFavourite, clickBubble: false, attr:{src: talk.favicon}"/>
-                                             -->
+          <favourite :event="event" :small="true"/>
           <router-link :to="{ name: 'scheduledEventPage', params: { eventId: event.id }}" style="padding: 0">{{event.title}}</router-link>
         </div>
 
@@ -23,6 +19,7 @@
 <script>
   import ScheduledEventIcons from './ScheduledEventIcons.vue'
   import Conference from '../../Conference'
+  import Favourite from './Favourite.vue'
 
   var getTimeCategory = function (duration) {
     if (typeof duration === 'undefined' || (duration > 30 && duration <= 60)) {
@@ -36,6 +33,7 @@
 
   export default {
     components: {
+      Favourite,
       ScheduledEventIcons
     },
     props: {

@@ -16,7 +16,9 @@ const messages = {
     'noOtherTalks': '-- keine --',
     'feedback': 'Feedback',
     'feedback_content': '<span>Rückmeldungen zur Conference Planner Webseite bitte per Mail an</span> <a href="mailto:feedback@dukecon.org" title="email">feedback@dukecon.org</a> <span>oder direkt</span><a href="https://github.com/dukecon/dukecon/issues" title="Isssuetracker">hier</a> <span>ein Ticket erfassen!</span>',
-    'backbutton': 'Zurück'
+    'backbutton': 'Zurück',
+    'saveAsFavourite': 'Als Favorit speichern',
+    'removeFavourite': 'Favorit gespeichert'
   },
   en: {
     'termsOfUse': 'Terms of use',
@@ -30,7 +32,9 @@ const messages = {
     'noOtherTalks': '-- none --',
     'feedback': 'Feedback',
     'feedback_content': '<span>Please send any feedback about the Conference Planner website via mail to</span> <a href="mailto:feedback@dukecon.org">feedback@dukecon.org</a> <span>or</span> <a href="https://github.com/dukecon/dukecon/issues" title="Isssuetracker">create a ticket here</a> <span>!</span>',
-    'backbutton': 'Back'
+    'backbutton': 'Back',
+    'saveAsFavourite': 'Save as favorite',
+    'removeFavourite': 'Favourite saved'
   }
 }
 

@@ -1,10 +1,15 @@
 <template>
   <a class="mainmenu darkBack reverse" id="language-select" v-on:click='change'>
-    <img class="language" alt="Sprache umschalten / Change language" title="Sprache umschalten / Change language" :src="img" />
+    <img class="language" alt="Sprache umschalten / Change language" title="Sprache umschalten / Change language"
+         :src="img"/>
   </a>
 </template>
 
 <script language="">
+  import Settings from '../../Settings'
+
+  const selectedLanguagKey = 'dukecon_language'
+
   export default {
     name: 'language',
     methods: {
@@ -14,12 +19,16 @@
         } else {
           this.$i18n.locale = 'de'
         }
+        Settings.saveSetting(selectedLanguagKey, this.$i18n.locale)
       }
     },
     computed: {
       img: function () {
         return require('@/assets/img/' + this.$i18n.locale + '.png')
       }
+    },
+    created: function () {
+      this.$i18n.locale = Settings.getSetting(selectedLanguagKey, this.$i18n.locale)
     }
   }
 </script>
