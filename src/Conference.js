@@ -16,6 +16,8 @@ let locations
 
 let languages
 
+let audiences
+
 let tracks
 
 let conference
@@ -36,6 +38,8 @@ function reset () {
   locations = {}
 
   languages = {}
+
+  audiences = {}
 
   tracks = {}
 
@@ -90,6 +94,9 @@ const init = function () {
           response.data.metaData.languages.forEach(v => {
             Vue.set(languages, v.id, v)
           })
+          response.data.metaData.audiences.forEach(v => {
+            Vue.set(audiences, v.id, v)
+          })
           response.data.metaData.tracks.forEach(v => {
             Vue.set(tracks, v.id, v)
           })
@@ -135,6 +142,11 @@ export default class Conference {
   static getAllLanguages () {
     init()
     return languages
+  }
+
+  static getAllAudiences () {
+    init()
+    return audiences
   }
 
   static getAllTracks () {

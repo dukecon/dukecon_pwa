@@ -1,5 +1,6 @@
 <template>
-  <div class="content">
+  <div id="layout" class="content" :class="{active: menuVisible}">
+    <filter-events @menuVisible="onMenuVisibleChange"/>
     <div class="content-wrapper">
       <div class="schedule">
         <h2>Schedule</h2>
@@ -8,7 +9,9 @@
             {{ day }}
             <ul>
               <li v-for="(value, key) in events">
-                <router-link :to="{ name: 'scheduledEventPage', params: { eventId: value.id }}">Go to Event {{ key }}: {{ value.title }}</router-link>
+                <router-link :to="{ name: 'scheduledEventPage', params: { eventId: value.id }}">Go to Event {{ key
+                  }}: {{ value.title }}
+                </router-link>
               </li>
             </ul>
           </li>
@@ -20,18 +23,28 @@
 
 <script>
   import Conference from '../Conference'
+  import FilterEvents from './schedule/FilterEvents.vue'
 
   export default {
+    components: {
+      FilterEvents
+    },
     name: 'schedule',
     data () {
       return {
         events: null,
-        eventsByDay: null
+        eventsByDay: null,
+        menuVisible: false
       }
     },
     created () {
       this.events = Conference.getAllEvents()
       this.eventsByDay = Conference.getEventsByDay()
+    },
+    methods: {
+      onMenuVisibleChange (newValue) {
+        this.menuVisible = newValue
+      }
     }
   }
 </script>

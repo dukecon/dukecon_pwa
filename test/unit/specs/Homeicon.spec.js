@@ -5,7 +5,7 @@ import Images from '../../../src/Images'
 import Router from 'vue-router'
 
 describe('Homeicon.vue', () => {
-  let sandbox
+  var sandbox
   beforeEach(function () {
     sandbox = sinon.sandbox.create()
   })

@@ -1,11 +1,10 @@
 import Vue from 'vue'
-import ScheduledEvent from '@/components/event/ScheduledEvent'
-import Router from 'vue-router'
+import FilterEvents from '@/components/schedule/FilterEvents'
 import { i18n } from '@/Internationalization.js'
 import Conference from '../../../src/Conference'
 import minimalConferenceData from './minimalConferenceData.js'
 
-describe('ScheduledEvent.vue', () => {
+describe('FilterEvents.vue', () => {
   var sandbox
   beforeEach(function () {
     sandbox = sinon.sandbox.create()
@@ -19,13 +18,6 @@ describe('ScheduledEvent.vue', () => {
 
   it('should render correct contents', () => {
     // given ...
-    // .. defined speakers
-    var callbackGetAllSpeakers = sandbox.stub(Conference, 'getAllSpeakers')
-    var speakers = {}
-    minimalConferenceData.data.speakers.forEach(v => {
-      speakers[v.id] = v
-    })
-    callbackGetAllSpeakers.returns(speakers)
     // .. defined tracks
     var callbackGetAllTracks = sandbox.stub(Conference, 'getAllTracks')
     var tracks = {}
@@ -54,41 +46,19 @@ describe('ScheduledEvent.vue', () => {
       audiences[v.id] = v
     })
     callbackGetAllAudiences.returns(audiences)
-    // .. any event
-    var anEvent = minimalConferenceData.data.events[0]
-    // ... and a router
-    Vue.use(Router)
-    const router = new Router({
-      routes: [
-        {
-          path: '/speaker/:speakerId',
-          name: 'speakerPage'
-        }
-      ]
-    })
     // ... and a Vue instance with the component
     const vm = new Vue({
       components: {
-        ScheduledEvent
+        FilterEvents
       },
-      template: '<div><scheduled-event :event="event"></scheduled-event></div>',
-      data () {
-        return {
-          event: anEvent
-        }
-      },
-      router,
+      template: '<div><filter-events></filter-events></div>',
       i18n
     }).$mount()
     // then ...
     // ... item is shown
-    expect(vm.$el.querySelector('.content span').textContent)
-      .to.equal('Fallacies of Distributed Computing: What If Networks Fail?')
-    expect(vm.$el.querySelector('.speaker-contact h2').textContent)
-      .to.equal('Bert Ertman')
-    expect(vm.$el.querySelector('.time > span').textContent)
-      .to.equal('Dienstag, 28. Mrz., 14:00 (40 min)')
-    expect(vm.$el.querySelector('.as-favorite > span').textContent)
-      .to.equal('Als Favorit speichern')
+    expect(vm.$el.querySelector('.filter-settings > span > span').textContent)
+      .to.equal('Filter-Optionen')
+    expect(vm.$el.querySelector('.filter-box > div:nth-child(1) > div > span').textContent.trim())
+      .to.equal('Zielgruppe')
   })
 })

@@ -1,8 +1,20 @@
 import Vue from 'vue'
 import Schedule from '@/components/Schedule'
 import Router from 'vue-router'
+import { i18n } from '@/Internationalization.js'
 
 describe('Schedule.vue', () => {
+  var sandbox
+  beforeEach(function () {
+    sandbox = sinon.sandbox.create()
+    i18n.locale = 'de'
+  })
+
+  afterEach(function () {
+    sandbox.restore()
+    i18n.locale = 'de'
+  })
+
   it('should render correct contents', () => {
     // given ...
     // ... and a router
@@ -21,7 +33,8 @@ describe('Schedule.vue', () => {
         Schedule
       },
       template: '<div><schedule></schedule></div>',
-      router
+      router,
+      i18n
     }).$mount()
     // then ...
     // ... item is shown
