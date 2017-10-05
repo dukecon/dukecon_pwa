@@ -151,7 +151,11 @@ Components for each route are registered in _main.js_.
 Best practices:
 
 * If the page will interact with the route, i.e. to extract a URL parameter, it can be helpful to separate this part from the real logic of the page.
-The _SpeakerPage.vue (interacts with the route) and _Speaker.vue_ (displays speaker data and can be re-used) is a good example.
+The _SpeakerPage.vue_ (interacts with the route) and _Speaker.vue_ (displays speaker data and can be re-used) is a good example.
+
+* A sub-components can emit events to notify the parent.
+For example _FilterEvents.vue_ emits an event to give the latest status if the filters are open or closed.
+The parent component sets a corresponding CSS class that shows/hides the filters in mobile mode.
 
 == Internationalization
 
