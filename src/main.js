@@ -18,6 +18,7 @@ import FeedbackPage from '@/components/FeedbackPage'
 import $ from 'jquery'
 import { i18n } from './Internationalization.js'
 import VueLazyload from 'vue-lazyload'
+import Eventbus from './Eventbus.js'
 
 Vue.config.productionTip = false
 Vue.use(VueLazyload)
@@ -54,6 +55,8 @@ function initVue () {
       }
     ]
   })
+
+  Vue.use(Eventbus)
 
   /* eslint-disable no-new */
   const app = new Vue({

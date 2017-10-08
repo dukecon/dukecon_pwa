@@ -21,6 +21,13 @@ AsciiDoc Plugin for IntelliJ::
 This will allow you to preview and edit the *.adoc-files in the project.
 They are used for documentation.
 
+Vue.js devtools for Google Chrome::
+This allows you to inspect your Vue application at runtime as long as you are using the development view.
+Use F12 as normal to open the Chrome developer tools and you'll find another tab _Vue_. +
+You can inspect the component hierarchy, the state of each component and all events created.
+As the application grows more complex, you might need to hit the _Refresh_ button to see the up-to-date information. +
+https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd[Vue.js devtools in Chrome Store]
+
 === Configuration of the tools
 
 In IntelliJ disable the option "Use safe write", otherwise the hot-reload functionality will not work.
@@ -156,6 +163,38 @@ The _SpeakerPage.vue_ (interacts with the route) and _Speaker.vue_ (displays spe
 * A sub-components can emit events to notify the parent.
 For example _FilterEvents.vue_ emits an event to give the latest status if the filters are open or closed.
 The parent component sets a corresponding CSS class that shows/hides the filters in mobile mode.
+
+* If some changes in a component need to be broadcasted to (potentially) multiple other components or if the components are not in the same hierarchy, use the application's eventbus.
+The eventbus is initialized in the _Eventbus.js_ as a mixin.
+The instance is available within every other Vue instance. +
+It has been first used within the _FilterEvent.vue_ component:
++
+[source,javascript,indent=0]
+----
+      publishFilterSettings: function () {
+        /* ... */
+        this.eventbus.$emit('filter', filter)
+      },
+----
++
+It is consumed for example within the _Schedule.vue_:
++
+[source,javascript,indent=0]
+----
+    created () {
+      this.eventbus.$on('filter', this.filterEventReceived)
+    },
+    beforeDestroy: function () {
+      this.eventbus.$off('filter', this.filterEventReceived)
+    },
+    methods: {
+      filterEventReceived (filter) {
+        this.filter = filter
+      }
+    }
+----
+
+NOTE: you can inspect all events using the Vue developers tools by looking at the _Events_ tab.
 
 == Internationalization
 

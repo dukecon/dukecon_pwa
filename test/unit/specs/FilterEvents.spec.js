@@ -3,6 +3,7 @@ import FilterEvents from '@/components/schedule/FilterEvents'
 import { i18n } from '@/Internationalization.js'
 import Conference from '../../../src/Conference'
 import minimalConferenceData from './minimalConferenceData.js'
+import Eventbus from '../../../src/Eventbus'
 
 describe('FilterEvents.vue', () => {
   var sandbox
@@ -47,6 +48,7 @@ describe('FilterEvents.vue', () => {
     })
     callbackGetAllAudiences.returns(audiences)
     // ... and a Vue instance with the component
+    Vue.use(Eventbus)
     const vm = new Vue({
       components: {
         FilterEvents

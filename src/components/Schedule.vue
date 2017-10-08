@@ -4,6 +4,7 @@
     <div class="content-wrapper">
       <div class="schedule">
         <h2>Schedule</h2>
+        Filter: {{ filter }}
         <ul>
           <li v-for="(events, day) in eventsByDay">
             {{ day }}
@@ -32,18 +33,24 @@
     name: 'schedule',
     data () {
       return {
-        events: null,
-        eventsByDay: null,
-        menuVisible: false
+        events: Conference.getAllEvents(),
+        eventsByDay: Conference.getEventsByDay(),
+        menuVisible: false,
+        filter: null
       }
     },
     created () {
-      this.events = Conference.getAllEvents()
-      this.eventsByDay = Conference.getEventsByDay()
+      this.eventbus.$on('filter', this.filterEventReceived)
+    },
+    beforeDestroy: function () {
+      this.eventbus.$off('filter', this.filterEventReceived)
     },
     methods: {
       onMenuVisibleChange (newValue) {
         this.menuVisible = newValue
+      },
+      filterEventReceived (filter) {
+        this.filter = filter
       }
     }
   }

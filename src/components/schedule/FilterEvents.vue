@@ -28,6 +28,8 @@
         <div class="filter-box">
           <!-- HACK: make saveActiveFilters part of the view to trigger save on every change -->
           {{ saveActiveFilters }}
+          {{ publishFilterSettings }}
+          <!-- END OF HACK -->
           <div v-for="filter in filters">
             <div :class="{ collapsed: filterStatus[filter.filterKey].open === false} ">
                         <span class="filter-category darkBack reverse" @click="toggleCategory(filter)">
@@ -180,6 +182,30 @@
         filterKeys.forEach(k => {
           Settings.saveSetting(filterActivePrefix + k, Object.entries(this.filterStatus[k].values).filter(a => a[1] === true).map(a => a[0]))
         })
+      },
+      publishFilterSettings: function () {
+        // publish current filter settings. Will emit 'null' if filters are not active
+        // HACK: this only works if saveActiveFilters is part of the view as it would otherwise not trigger.
+        let filter = null
+        if (this.filtersActive) {
+          // fill contents only if filters are active
+          filter = {
+            onlyFavourites: this.onlyFavourites,
+            categories: {}
+          }
+          filterKeys.forEach(entry => {
+            filter.categories[entry] = {}
+            Object.keys(this.filterStatus[entry].values).forEach((k) => {
+              // PARANOIA:
+              // * ensure that we touch all entries so that we listen correctly for all changes
+              // * deep copy by value to create an immutable object
+              if (this.filterStatus[entry].values[k] === true) {
+                filter.categories[entry][k] = this.filterStatus[entry].values[k]
+              }
+            })
+          })
+        }
+        this.eventbus.$emit('filter', filter)
       },
       totalFilterCount: function () {
         // return the total count

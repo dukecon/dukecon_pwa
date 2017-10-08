@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Schedule from '@/components/Schedule'
 import Router from 'vue-router'
 import { i18n } from '@/Internationalization.js'
+import Eventbus from '../../../src/Eventbus'
 
 describe('Schedule.vue', () => {
   var sandbox
@@ -19,6 +20,7 @@ describe('Schedule.vue', () => {
     // given ...
     // ... and a router
     Vue.use(Router)
+    Vue.use(Eventbus)
     const router = new Router({
       routes: [
         {
@@ -27,7 +29,6 @@ describe('Schedule.vue', () => {
         }
       ]
     })
-    // ... and a Vue instance with the component
     const vm = new Vue({
       components: {
         Schedule
