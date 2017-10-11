@@ -1,6 +1,8 @@
 # dukecon_pwa
 
-> A Vue.js project
+This implements a conference planner for different Conferences, for example [JavaLand](http://javaland.eu).
+
+The current development status can be found here: [JavaLand 2018](https://latest.dukecon.org/pwa/javaland/2018/)
 
 ## Build and Dependency Status
 
@@ -41,12 +43,6 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ### Header
 
 * Suchen
-
-### Talkseite
-
-* Filter
-* Tageswahl
-* Zeitslots
 
 ## Funktionalität
 

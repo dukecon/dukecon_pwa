@@ -5,7 +5,7 @@ import { i18n } from '@/Internationalization.js'
 import Eventbus from '../../../src/Eventbus'
 
 describe('Schedule.vue', () => {
-  var sandbox
+  let sandbox
   beforeEach(function () {
     sandbox = sinon.sandbox.create()
     i18n.locale = 'de'
@@ -39,8 +39,7 @@ describe('Schedule.vue', () => {
     }).$mount()
     // then ...
     // ... item is shown
-    expect(vm.$el.querySelector('.schedule h2').textContent)
-      .to.equal('Schedule')
-    // TODO: mock conference to see that events are properly shown
+    expect(vm.$el.querySelector('#talks-grid div.title a').textContent)
+      .to.equal('Microservice-Anwendungen mit Docker')
   })
 })

@@ -26,7 +26,12 @@ const messages = {
     'language': 'Sprache',
     'level': 'Zielgruppe',
     'track': 'Stream',
-    'location': 'Ort'
+    'location': 'Ort',
+    'uparrow': 'nach oben',
+    'notalksfound': 'Keine Talks gefunden; bitte die Filter ',
+    'deactivate': 'Deaktivieren',
+    'or': ' oder ',
+    'disablefavorites': 'Ist eventuell die Einstellung "Nur Favoriten" aktiviert?'
   },
   en: {
     'termsOfUse': 'Terms of use',
@@ -50,7 +55,12 @@ const messages = {
     'language': 'Language',
     'level': 'Audience',
     'track': 'Stream',
-    'location': 'Location'
+    'location': 'Location',
+    'uparrow': 'back to top',
+    'notalksfound': 'No talks found; please perform a filter ',
+    'deactivate': 'Deactivation',
+    'or': ' or ',
+    'disablefavorites': 'Also check if you have "Only Favorites" selected.'
   }
 }
 

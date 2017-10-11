@@ -10,10 +10,8 @@ module.exports = {
 
     browser
       .url(devServer)
-      .waitForElementVisible('#app', 5000)
-      .assert.elementPresent('.schedule')
-      .assert.containsText('h2', 'Schedule')
-      // .assert.elementCount('img', 1)
+      .waitForElementVisible('#talks-grid', 5000)
+      .assert.containsText('#talks-grid div.title a', 'Pipeline as code: Continuous Delivery with Jenkins 2')
       .end()
   }
 }

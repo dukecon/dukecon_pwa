@@ -82,7 +82,7 @@
   export default {
     name: 'filter-events',
     data () {
-      var filterStatus = {}
+      let filterStatus = {}
       filterKeys.forEach(k => {
         filterStatus[k] = {open: false, values: {}}
         Settings.getSetting(filterActivePrefix + k, []).forEach(v => {
@@ -102,7 +102,7 @@
     },
     computed: {
       filters: function () {
-        var filters = [
+        let filters = [
           {
             filterKey: 'level'
           },
@@ -186,6 +186,51 @@
       publishFilterSettings: function () {
         // publish current filter settings. Will emit 'null' if filters are not active
         // HACK: this only works if saveActiveFilters is part of the view as it would otherwise not trigger.
+        this.publishCurrentStatus()
+      },
+      totalFilterCount: function () {
+        // return the total count
+        return Object.values(this.filters).map(f => f.selectedFilterCount).reduce((a, b) => a + b)
+      }
+    },
+    watch: {
+      filtersActive: function (newSetting) {
+        Settings.saveSetting(filterActiveKey, newSetting)
+      },
+      onlyFavourites: function (newSetting) {
+        Settings.saveSetting(favsActive, newSetting)
+      },
+      menuVisible: function (newValue) {
+        this.$emit('menuVisible', newValue)
+      }
+    },
+    created () {
+      this.eventbus.$on('filter.reset', this.resetFilters)
+      this.eventbus.$on('filter.deactivate', this.deactivateFilters)
+      this.eventbus.$on('filter.init', this.publishCurrentStatus)
+    },
+    beforeDestroy: function () {
+      this.eventbus.$off('filter.reset', this.resetFilters)
+      this.eventbus.$on('filter.deactivate', this.deactivateFilters)
+    },
+    methods: {
+      toggleCategory: function (filter) {
+        this.filterStatus[filter.filterKey].open = !this.filterStatus[filter.filterKey].open
+      },
+      toggleMenu: function () {
+        this.menuVisible = !this.menuVisible
+      },
+      resetFilters: function () {
+        this.filtersActive = true
+        this.onlyFavourites = false
+        filterKeys.forEach(k => {
+          this.filterStatus[k].values = {}
+        })
+      },
+      deactivateFilters: function () {
+        this.filtersActive = false
+      },
+      publishCurrentStatus: function () {
         let filter = null
         if (this.filtersActive) {
           // fill contents only if filters are active
@@ -205,37 +250,7 @@
             })
           })
         }
-        this.eventbus.$emit('filter', filter)
-      },
-      totalFilterCount: function () {
-        // return the total count
-        return Object.values(this.filters).map(f => f.selectedFilterCount).reduce((a, b) => a + b)
-      }
-    },
-    watch: {
-      filtersActive: function (newSetting) {
-        Settings.saveSetting(filterActiveKey, newSetting)
-      },
-      onlyFavourites: function (newSetting) {
-        Settings.saveSetting(favsActive, newSetting)
-      },
-      menuVisible: function (newValue) {
-        this.$emit('menuVisible', newValue)
-      }
-    },
-    methods: {
-      toggleCategory: function (filter) {
-        this.filterStatus[filter.filterKey].open = !this.filterStatus[filter.filterKey].open
-      },
-      toggleMenu: function () {
-        this.menuVisible = !this.menuVisible
-      },
-      resetFilters: function () {
-        this.filtersActive = true
-        this.onlyFavourites = false
-        filterKeys.forEach(k => {
-          this.filterStatus[k].values = {}
-        })
+        this.eventbus.$emit('filter.status', filter)
       }
     }
   }
