@@ -50,7 +50,7 @@ appears on the left side of the page.
     width: 260px;
     position:fixed;
     left: 0;
-    top: 66px;
+    top: 48px;
     bottom: 40px;
     z-index: 1000; /* so the menu or its navicon stays above all content */
     overflow-y: auto;

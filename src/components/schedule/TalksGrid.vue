@@ -13,7 +13,9 @@
         </template>
       </div>
     </div>
-    <div id="nothingtoshow" class="alternate" v-if="groupedTalks.length === 0 && Object.keys(events).length > 0"><span>{{$t('notalksfound')}}</span>
+    <!-- the condition "Object.keys(eventsByDay).length > 0" prevents the message to be shown when no events have been loaded yet -->
+    <div id="nothingtoshow" class="alternate" v-if="groupedTalks.length === 0 && Object.keys(eventsByDay).length > 0">
+      <span>{{$t('notalksfound')}}</span>
       <a class="clickable" @click='deactivateFilters'>{{$t('deactivate')}}</a> <span>{{$t('or')}}</span>
       <a class="clickable" @click='resetFilters'>{{$t('reset')}}</a><span>!</span><br>
       <span>{{$t('disablefavorites')}}</span>
@@ -29,7 +31,7 @@
             <div data-bind="foreach: talks">
               <event :event="talk" v-for="talk in group.talks" :key="talk.id"></event>
             </div>
-            <a class="uparrow" style="cursor:pointer" :title="$t('uparrow')" @click="goUp">&uArr;</a>
+            <a class="uparrow clickable" :title="$t('uparrow')" @click="goUp">&uArr;</a>
           </td>
         </tr>
       </table>
@@ -60,7 +62,7 @@
     name: 'talks-grid',
     data () {
       return {
-        events: Conference.getAllEvents(),
+        eventsByDay: Conference.getEventsByDay(),
         isoDate: null,
         filter: null,
         favourites: Favourites.getFavorites()
@@ -68,11 +70,8 @@
     },
     computed: {
       days: function () {
-        let dates = {}
-        Object.values(this.events).map(e => e.start.substr(0, 10))
-          .forEach(e => { dates[e] = true })
-        dates = Object.keys(dates).sort()
-        if (this.day === null) {
+        let dates = Object.keys(this.eventsByDay).sort()
+        if (this.isoDate === null && dates.length > 0) {
           this.isoDate = dates[0]
         }
         return dates.map(e => {
@@ -87,19 +86,21 @@
         })
       },
       selectedDay: function () {
-        if (this.isoDate === null) {
-          return this.days[0].isoDate
+        let dates = Object.keys(this.eventsByDay).sort()
+        if (this.isoDate === null && dates.length > 0) {
+          return dates[0]
         } else {
           return this.isoDate
         }
       },
       groupedTalks: function () {
         let groupedTalks = {}
-        Object.values(this.events)
+        if (this.selectedDay === null) {
+          // no data has been loaded yet
+          return {}
+        }
+        Object.values(this.eventsByDay[this.selectedDay])
           .filter(e => {
-            if (e.start.substr(0, 10) !== this.selectedDay) {
-              return false
-            }
             if (this.filter !== null) {
               // if the filter is active, filter all categories and favourites
               if (Object.keys(this.filter.categories.language).length > 0) {

@@ -100,12 +100,10 @@ const init = function () {
           response.data.metaData.tracks.forEach(v => {
             Vue.set(tracks, v.id, v)
           })
-          let days = groupBy(Conference.getAllEvents(), function (event) { return event.start ? new Date(event.start).toDateString() : null })
-          for (let day in days) {
-            if (days.hasOwnProperty(day)) {
-              Vue.set(eventsByDay, day, days[day])
-            }
-          }
+          let days = groupBy(events, function (event) { return event.start ? event.start.substr(0, 10) : null })
+          Object.entries(days).forEach(e => {
+            Vue.set(eventsByDay, e[0], e[1])
+          })
         })
         .catch(function (error) {
           console.log(error)

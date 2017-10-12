@@ -6,7 +6,7 @@ The current development status can be found here: [JavaLand 2018](https://latest
 
 ## Build and Dependency Status
 
-* [![Build Status](https://travis-ci.org/dukecon/dukecon_pwa.svg?branch=master)](https://travis-ci.org/dukecon/dukecon_pwa)
+* [![Build Status](https://travis-ci.org/dukecon/dukecon_pwa.svg?branch=develop)](https://travis-ci.org/dukecon/dukecon_pwa)
 
 ## Build Setup
 
@@ -48,3 +48,10 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 * Login komplett umsetzen (inkl. Anzeigen der Nuzterdaten und Speichern der Anmeldung als Offline Token)
 * Favoriten aus dem Backend laden / im Backend speichern
+* Fav-Icon dynamisch setzen
+* Konferenz-CSS dynamisch setzen
+
+## Future
+
+* Separate Route für jeden einzelnen Tag in der Übersicht
+* Reihenfolge der Vorträge in der TalksGrid definieren

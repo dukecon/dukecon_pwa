@@ -173,7 +173,7 @@ It has been first used within the _FilterEvent.vue_ component:
 ----
       publishFilterSettings: function () {
         /* ... */
-        this.eventbus.$emit('filter', filter)
+        this.eventbus.$emit('filter.status', filter)
       },
 ----
 +
@@ -182,10 +182,10 @@ It is consumed for example within the _Schedule.vue_:
 [source,javascript,indent=0]
 ----
     created () {
-      this.eventbus.$on('filter', this.filterEventReceived)
+      this.eventbus.$on('filter.status', this.filterEventReceived)
     },
     beforeDestroy: function () {
-      this.eventbus.$off('filter', this.filterEventReceived)
+      this.eventbus.$off('filter.status', this.filterEventReceived)
     },
     methods: {
       filterEventReceived (filter) {
@@ -193,6 +193,10 @@ It is consumed for example within the _Schedule.vue_:
       }
     }
 ----
+
+* Events should have a prefix that identifies the component (for example "_filter._")
+
+
 
 NOTE: you can inspect all events using the Vue developers tools by looking at the _Events_ tab.
 

@@ -205,13 +205,22 @@
       }
     },
     created () {
+      /* use this event in other components to reset the filter. This is used for example if a component
+       * finds out that no results are shown any more due to the filters. */
       this.eventbus.$on('filter.reset', this.resetFilters)
+
+      /* use this event in other components to deactivate the filter. This is used for example if a component
+       * finds out that no results are shown any more due to the filters. */
       this.eventbus.$on('filter.deactivate', this.deactivateFilters)
+
+      /* use this event in other components to ask the current status to be published. This might be handy
+       * whenever a new component is initialized and wants to have the up-to-date status. */
       this.eventbus.$on('filter.init', this.publishCurrentStatus)
     },
     beforeDestroy: function () {
       this.eventbus.$off('filter.reset', this.resetFilters)
-      this.eventbus.$on('filter.deactivate', this.deactivateFilters)
+      this.eventbus.$off('filter.deactivate', this.deactivateFilters)
+      this.eventbus.$off('filter.init', this.publishCurrentStatus)
     },
     methods: {
       toggleCategory: function (filter) {
