@@ -34,9 +34,9 @@
   import Conference from '../../Conference'
   import Images from '../../Images'
   import Favourites from '../../Favourites'
+  import Moment from 'moment'
 
   const unknownImage = require('@/assets/img/Unknown.png')
-  import Moment from 'moment'
 
   function getTimeCategory (duration) {
     if (typeof duration === 'undefined' || (duration > 30 && duration <= 60)) {

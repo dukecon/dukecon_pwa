@@ -58,6 +58,4 @@ export default class Conference {
     init()
     return images
   }
-
 }
-

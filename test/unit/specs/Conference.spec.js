@@ -17,7 +17,7 @@ describe('Conference.js', () => {
     // given ....
     // ... an empty conference
     const conference = Conference.getConference()
-    expect(conference.imprint['de']).to.be.undefined
+    expect(conference.imprint['de']).to.be.an('undefined')
     // when ...
     // ... initialized
     moxios.wait(function () {

@@ -190,5 +190,4 @@ export default class Favorites {
     initialLoadFromServer()
     return favorites
   }
-
 }

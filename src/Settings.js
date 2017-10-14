@@ -34,5 +34,4 @@ export default class Settings {
       }
     }
   }
-
 }

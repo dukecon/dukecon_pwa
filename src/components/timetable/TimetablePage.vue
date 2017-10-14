@@ -205,7 +205,7 @@
               horizontal: -1, // if two events occur in the same room directly after one another, keep them in the same line (0 doesn't work)
               vertical: 5
             },
-            axis: 5   // minimal margin between items and the axis
+            axis: 5 // minimal margin between items and the axis
           },
           orientation: 'top'
         }

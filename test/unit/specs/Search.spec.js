@@ -32,7 +32,7 @@ describe('Search.vue', () => {
     }).$mount()
     // then ...
     // ... item is undefined
-    expect(vm.$el.querySelector('#search-area > input')).to.be.null
+    expect(vm.$el.querySelector('#search-area > input')).to.equal(null)
   })
 
   it('should render search box if visibility is set to true', done => {
@@ -50,14 +50,14 @@ describe('Search.vue', () => {
       router
     }).$mount()
     // ... search box not visible
-    expect(vm.$el.querySelector('#search-area > input')).to.be.null
+    expect(vm.$el.querySelector('#search-area > input')).to.equal(null)
     // when ...
     // ... send visible event
     vm.eventbus.$emit('search.visible', true)
     vm.$nextTick(() => {
       // then ...
       // ... search box is shown
-      expect(vm.$el.querySelector('#search-area > input')).to.be.defined
+      expect(vm.$el.querySelector('#search-area > input')).to.not.be.an('undefined')
       // ... Placeholder is Suchen
       expect(vm.$el.querySelector('#search-area > input').attributes.placeholder.value).to.equal('Suchen')
       done()

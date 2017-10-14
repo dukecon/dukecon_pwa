@@ -219,4 +219,3 @@ export default class Conference {
     reset()
   }
 }
-

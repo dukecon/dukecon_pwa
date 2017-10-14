@@ -28,16 +28,16 @@ describe('PleaseLogin.vue', () => {
       i18n
     }).$mount()
     // ... alert box not visible
-    expect(vm.$el.querySelector('#alert-window')).to.be.null
+    expect(vm.$el.querySelector('#alert-window')).to.equal(null)
     // when ...
     // ... callback called
-    expect(registerPleaseLoginCallback.called).to.be.true
+    expect(registerPleaseLoginCallback.called).to.equal(true)
     registerPleaseLoginCallback.getCalls()[0].args[0]()
     // ... wait for next rendering
     vm.$nextTick(() => {
       // then ...
       // ... alert box is shown
-      expect(vm.$el.querySelector('#alert-window')).to.be.defined
+      expect(vm.$el.querySelector('#alert-window')).not.to.be.an('undefined')
       done()
     })
   })

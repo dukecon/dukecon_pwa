@@ -84,6 +84,4 @@ export default class DukeconKeycloak {
     keycloak.isLoggedIn = false
     keycloak.logout()
   }
-
 }
-
