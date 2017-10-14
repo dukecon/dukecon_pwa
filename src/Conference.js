@@ -50,7 +50,8 @@ function reset () {
     privacy: {},
     termsOfUse: {},
     homeUrl: null,
-    homeTitle: null
+    homeTitle: null,
+    authEnabled: false
   }
 }
 

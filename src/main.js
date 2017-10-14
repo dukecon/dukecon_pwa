@@ -100,7 +100,7 @@ function initVue () {
 
 // keycloak will add an iframe. Therefore wait for DOM to be ready first
 $(document).ready(function () {
-  DukeconKeycloak.getKeycloak().init({onLoad: 'check-sso'}).success(function (authenticated) {
+  DukeconKeycloak.init().success(function (authenticated) {
     // keycloak will do URL redirects. This interferes with Vue Router, therefore init Vue afterwards
     initVue()
   }).error(function () {

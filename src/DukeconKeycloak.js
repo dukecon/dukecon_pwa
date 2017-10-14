@@ -1,4 +1,5 @@
 import Keycloak from 'keycloak-js'
+import Settings from './Settings'
 
 var base = ''
 
@@ -16,25 +17,73 @@ keycloak.isLoggedIn = false
 keycloak.name = null
 keycloak.userName = null
 
+function saveTokens () {
+  Settings.saveSetting('keycloak_token', keycloak.token)
+  Settings.saveSetting('keycloak_refreshToken', keycloak.refreshToken)
+  Settings.saveSetting('keycloak_idToken', keycloak.idToken)
+  Settings.saveSetting('keycloak_timeSkew', keycloak.timeSkew)
+}
+
+function clearTokens () {
+  Settings.clearSetting('keycloak_token')
+  Settings.clearSetting('keycloak_refreshToken')
+  Settings.clearSetting('keycloak_idToken')
+  Settings.clearSetting('keycloak_timeSkew')
+}
+
+keycloak.onAuthRefreshSuccess = function () {
+  saveTokens()
+}
+
 keycloak.onAuthSuccess = function () {
+  saveTokens()
   keycloak.isLoggedIn = true
-  keycloak.loadUserInfo().success(function (info) {
-    keycloak.name = info.name
-    keycloak.userName = info.preferred_username
-  }).error(function (result) {
-    console.log('Unable to load user profile')
-    console.log('result.status: ' + (result && result.status))
-    console.log('result.text: ' + (result && result.text))
+  keycloak.updateToken(30).success(() => {
+    keycloak.loadUserInfo().success(function (info) {
+      keycloak.name = info.name
+      keycloak.userName = info.preferred_username
+    }).error(function (result) {
+      console.log('Unable to load user profile')
+      console.log('result.status: ' + (result && result.status))
+      console.log('result.text: ' + (result && result.text))
+    })
+  }).error(() => {
+    console.log('unable to refresh token to load user info')
   })
 }
 
-keycloak.onAuthLogout = function () {
-  keycloak.isLoggedIn = false
-}
-
 export default class DukeconKeycloak {
+  static init () {
+    keycloak.timeSkew = Settings.getSetting('keycloak_timeSkew')
+    const initResult = keycloak.init({
+      // when using checkLoginIframe, the check-sso option doesn't require a redirect on initialization
+      // but checkLoginIframe doesn't work with offline tokens, as there is no current session with Keycloak
+      // onLoad: 'check-sso',
+      scope: 'offline_access',
+      checkLoginIframe: false,
+      token: Settings.getSetting('keycloak_token'),
+      idToken: Settings.getSetting('keycloak_idToken'),
+      refreshToken: Settings.getSetting('keycloak_refreshToken')
+    })
+    if (Settings.getSetting('keycloak_refreshToken') !== undefined) {
+      keycloak.isLoggedIn = true
+    }
+    return initResult
+  }
+
   static getKeycloak () {
     return keycloak
   }
+
+  static login () {
+    keycloak.login({scope: 'offline_access'})
+  }
+
+  static logout () {
+    clearTokens()
+    keycloak.isLoggedIn = false
+    keycloak.logout()
+  }
+
 }
 

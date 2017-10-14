@@ -25,4 +25,14 @@ export default class Settings {
     }
   }
 
+  static clearSetting (settingKey) {
+    if (localStorage) {
+      try {
+        localStorage.removeItem(context + settingKey)
+      } catch (e) {
+        console.log('ERROR in clear setting', e)
+      }
+    }
+  }
+
 }

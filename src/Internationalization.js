@@ -31,7 +31,8 @@ const messages = {
     'notalksfound': 'Keine Talks gefunden; bitte die Filter ',
     'deactivate': 'Deaktivieren',
     'or': ' oder ',
-    'disablefavorites': 'Ist eventuell die Einstellung "Nur Favoriten" aktiviert?'
+    'disablefavorites': 'Ist eventuell die Einstellung "Nur Favoriten" aktiviert?',
+    'loggedIn': 'eingeloggt'
   },
   en: {
     'termsOfUse': 'Terms of use',
@@ -60,7 +61,8 @@ const messages = {
     'notalksfound': 'No talks found; please perform a filter ',
     'deactivate': 'Deactivation',
     'or': ' or ',
-    'disablefavorites': 'Also check if you have "Only Favorites" selected.'
+    'disablefavorites': 'Also check if you have "Only Favorites" selected.',
+    'loggedIn': 'logged in'
   }
 }
 

@@ -40,6 +40,9 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 ## TODOs Vue.js Komponenten
 
+* Cookie Meldung
+* Stundenplan
+
 ### Header
 
 * Suchen

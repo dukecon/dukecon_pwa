@@ -4,14 +4,14 @@
       <h1 id="headertitle" class="darkBack reverse">
         <homeicon></homeicon>
         <backbutton></backbutton>
-        <div id="login-area" class="darkBack">
+        <div id="login-area" class="darkBack" v-if="conference.authEnabled">
           <login></login>
         </div>
         <div id="mainmenu-items" :class="{ darkBack: true, shown: mobileMenuOpen}">
           <talks></talks>
           <speakers></speakers>
           <feedback></feedback>
-          <conference></conference>
+          <conference-link></conference-link>
           <language></language>
         </div>
         <div id="mainmenu-button"><img @click="toggle" src="./assets/img/menu_24px.svg"></div>
@@ -35,13 +35,14 @@
   import Talks from './components/navbar/Talks.vue'
   import Speakers from './components/navbar/Speakers.vue'
   import Feedback from './components/navbar/Feedback.vue'
-  import Conference from './components/navbar/Conference.vue'
+  import ConferenceLink from './components/navbar/Conference.vue'
   import Backbutton from './components/navbar/Backbutton.vue'
+  import Conference from './Conference'
 
   export default {
     components: {
       Backbutton,
-      Conference,
+      ConferenceLink,
       Feedback,
       Speakers,
       Talks,
@@ -53,7 +54,8 @@
     name: 'app',
     data () {
       return {
-        mobileMenuOpen: false
+        mobileMenuOpen: false,
+        conference: Conference.getConference()
       }
     },
     created () {
