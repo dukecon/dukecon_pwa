@@ -6,7 +6,6 @@
     </a>
     <span class="username" v-if='keycloak.isLoggedIn'
           :title="keycloak.name + ' (' + keycloak.userName + ')'">{{$t('loggedIn')}}<br/></span>
-    <!-- TODO: the old dukecon app contained a link to the account management, but no conference seems to use this? -->
   </div>
 </template>
 

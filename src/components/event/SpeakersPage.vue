@@ -1,6 +1,10 @@
 <template>
   <div class="content">
-    <table id="speakers">
+    <div class="alternate" v-if="Object.keys(speakers).length === 0">
+      <img src="../../assets/img/ajax-circle.gif" />
+    </div>
+
+    <table id="speakers" v-if="Object.keys(speakers).length > 0">
       <tbody>
       <tr tbody v-for="speaker in sortedSpeakers">
         <td class="speakerinfo">

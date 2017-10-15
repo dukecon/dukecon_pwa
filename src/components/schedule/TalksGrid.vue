@@ -21,6 +21,10 @@
       <span>{{$t('disablefavorites')}}</span>
     </div>
 
+    <div class="alternate" v-if="Object.keys(eventsByDay).length === 0">
+      <img src="../../assets/img/ajax-circle.gif" />
+    </div>
+
     <div id="talks-grid" v-if="groupedTalks.length > 0">
       <table v-for="group in groupedTalks">
         <tr>

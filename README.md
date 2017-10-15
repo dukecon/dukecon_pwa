@@ -4,11 +4,15 @@ This implements a conference planner for different Conferences, for example [Jav
 
 The current development status can be found here: [JavaLand 2018](https://latest.dukecon.org/pwa/javaland/2018/)
 
-## Build and Dependency Status
+## Build Status
 
 * [![Build Status](https://travis-ci.org/dukecon/dukecon_pwa.svg?branch=develop)](https://travis-ci.org/dukecon/dukecon_pwa)
 
-## Build Setup
+## Developer Docs
+
+You find more information in the [developer docs](doc/README.adoc)
+
+Use the following NPM commands to start developing. 
 
 ``` bash
 # install dependencies
@@ -36,25 +40,28 @@ npm run e2e
 npm test
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## TODOs 
 
-## TODOs Vue.js Komponenten
-
-* Cookie Meldung
-* Stundenplan
+* Timetable
 
 ### Header
 
-* Suchen
+* Search
 
-## Funktionalität
+### Functionality
 
-* Login komplett umsetzen (inkl. Anzeigen der Nuzterdaten und Speichern der Anmeldung als Offline Token)
-* Favoriten aus dem Backend laden / im Backend speichern
-* Fav-Icon dynamisch setzen
-* Konferenz-CSS dynamisch setzen
+* Favorites load/save from/to backend
+* dynamic fav-icon
+* conference CSS dynamically
+* redirect old links with parsing ID i.e. with talks.html
+* show error message if speaker ID or event ID given in URL doesn't exist
 
-## Future
+### Future
 
-* Separate Route für jeden einzelnen Tag in der Übersicht
-* Reihenfolge der Vorträge in der TalksGrid definieren
+* Separate route for each day in the overview: this will allow back-navigation when switching days and direct routing to a specific day
+* define order of talks in TalksGrid: this will give stable sorting independent of order in the backend
+
+### Out-of-scope
+
+* Cookie warning - no longer used by DOAG
+* link to account management when logged in - not used by any conference
