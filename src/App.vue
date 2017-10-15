@@ -68,6 +68,11 @@
         next()
       })
     },
+    watch: {
+      '$route' (to, from) {
+        this.eventbus.$emit('search.reset')
+      }
+    },
     methods: {
       toggle: function () {
         this.mobileMenuOpen = !this.mobileMenuOpen
