@@ -1,5 +1,5 @@
 <template>
-  <span>
+  <span style="float: left">
     <span id="backbutton_before"></span><a id="backbutton" onclick="window.history.back();">{{$t('backbutton')}}</a>
   </span>
 </template>
