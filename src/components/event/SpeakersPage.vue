@@ -58,23 +58,32 @@
     data () {
       return {
         speakers: Conference.getAllSpeakers(),
-        events: Conference.getAllEvents()
+        events: Conference.getAllEvents(),
+        searchTerm: null
       }
+    },
+    created () {
+      this.eventbus.$on('search.term', this.searchEventReceived)
+    },
+    beforeDestroy: function () {
+      this.eventbus.$off('search.term', this.searchEventReceived)
     },
     computed: {
       // the data for the event can change once data is re-loaded in events or the eventId has been changed
       sortedSpeakers: function () {
-        return Object.entries(this.speakers).map(e => e[1]).sort((a, b) => {
-          const l1 = a.lastname.toUpperCase()
-          const l2 = b.lastname.toUpperCase()
-          if (l1 === l2) {
-            return 0
-          } else if (l1 < l2) {
-            return -1
-          } else {
-            return 1
-          }
-        })
+        return Object.entries(this.speakers).map(e => e[1])
+          .filter(s => this.search(s))
+          .sort((a, b) => {
+            const l1 = a.lastname.toUpperCase()
+            const l2 = b.lastname.toUpperCase()
+            if (l1 === l2) {
+              return 0
+            } else if (l1 < l2) {
+              return -1
+            } else {
+              return 1
+            }
+          })
       }
     },
     methods: {
@@ -96,6 +105,12 @@
           .filter(e => { return e !== this.parentEventId })
           .map(e => this.events[e])
           .filter(e => { return e !== undefined })
+      },
+      searchEventReceived (term) {
+        this.searchTerm = term
+      },
+      search: function (speaker) {
+        return this.searchTerm === null || [speaker.name, speaker.company].join().toLocaleLowerCase().includes(this.searchTerm.toLowerCase())
       }
     }
   }
