@@ -4,6 +4,7 @@
       <h1 id="headertitle" class="darkBack reverse">
         <homeicon></homeicon>
         <backbutton></backbutton>
+        <search></search>
         <div id="login-area" class="darkBack" v-if="conference.authEnabled">
           <login></login>
         </div>
@@ -37,11 +38,13 @@
   import Feedback from './components/navbar/Feedback.vue'
   import ConferenceLink from './components/navbar/Conference.vue'
   import Backbutton from './components/navbar/Backbutton.vue'
+  import Search from './components/navbar/Search.vue'
   import Conference from './Conference'
 
   export default {
     components: {
       Backbutton,
+      Search,
       ConferenceLink,
       Feedback,
       Speakers,

@@ -63,8 +63,10 @@
     data () {
       return {
         eventsByDay: Conference.getEventsByDay(),
+        speakers: Conference.getAllSpeakers(),
         isoDate: null,
         filter: null,
+        searchTerm: null,
         favourites: Favourites.getFavorites()
       }
     },
@@ -101,6 +103,13 @@
         }
         Object.values(this.eventsByDay[this.selectedDay])
           .filter(e => {
+            if (this.searchTerm !== null) {
+              let abstractText = e.abstractText || ''
+              let speakerInfos = e.speakerIds.map(id => this.speakers[id]).map(s => [s.name, s.company].join()).join()
+              return e.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+                abstractText.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+                speakerInfos.toLowerCase().includes(this.searchTerm.toLowerCase())
+            }
             if (this.filter !== null) {
               // if the filter is active, filter all categories and favourites
               if (Object.keys(this.filter.categories.language).length > 0) {
@@ -151,10 +160,12 @@
     },
     created () {
       this.eventbus.$on('filter.status', this.filterEventReceived)
+      this.eventbus.$on('search.term', this.searchEventReceived)
       this.eventbus.$emit('filter.init')
     },
     beforeDestroy: function () {
       this.eventbus.$off('filter.status', this.filterEventReceived)
+      this.eventbus.$off('search.term', this.searchEventReceived)
     },
     methods: {
       updateDay: function (day) {
@@ -168,6 +179,9 @@
       },
       filterEventReceived (filter) {
         this.filter = filter
+      },
+      searchEventReceived (term) {
+        this.searchTerm = term
       },
       goUp () {
         window.scrollTo(0, 0)

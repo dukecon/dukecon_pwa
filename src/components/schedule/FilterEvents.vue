@@ -235,6 +235,7 @@
         filterKeys.forEach(k => {
           this.filterStatus[k].values = {}
         })
+        this.eventbus.$emit('search.reset')
       },
       deactivateFilters: function () {
         this.filtersActive = false
