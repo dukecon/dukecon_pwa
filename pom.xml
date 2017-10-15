@@ -64,6 +64,7 @@
               <goal>install-node-and-npm</goal>
             </goals>
           </execution>
+          <!-- install all necessary NPM package -->
           <execution>
             <id>npm install</id>
             <phase>generate-resources</phase>
@@ -72,6 +73,17 @@
             </goals>
             <configuration>
               <arguments>install</arguments>
+            </configuration>
+          </execution>
+          <!-- update pre-existing NPM package with latest version -->
+          <execution>
+            <id>npm update</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <arguments>update</arguments>
             </configuration>
           </execution>
           <execution>
