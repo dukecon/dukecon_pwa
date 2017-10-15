@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="header">
+    <div class="header has-search">
       <h1 id="headertitle" class="darkBack reverse">
         <homeicon></homeicon>
         <backbutton></backbutton>
