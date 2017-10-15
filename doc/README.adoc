@@ -245,6 +245,14 @@ Moment(this.event.start)
 
 At the moment only the en- (default) and de-locales are imported, seel _ContextReplacementPlugin_ in _webpack.base.conf.js_.
 
+== Search
+
+* a search box exists in header
+* you can search for events on Talks page with title, abstract, speaker name and company
+* you can search for speakers on Sprecher page with speaker name and company
+* after each keypress a event will fired and catched of TalksGrid and SpeakersPage
+* the search input will be reseted on filter reset or route switch
+
 == Miscellaneous
 
 * All router views are cached using the _<keep-alive/>_ tag. This avoid long initial rendering times when returning on the _SpeakersPage_. It should be re-evaluated if this needs too much RAM.

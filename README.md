@@ -47,10 +47,6 @@ npm test
 
 * Timetable
 
-### Header
-
-* Search
-
 ### Functionality
 
 * Favorites load/save from/to backend
@@ -62,6 +58,7 @@ npm test
 ### Future
 
 * Separate route for each day in the overview: this will allow back-navigation when switching days and direct routing to a specific day
+* hide days without events while searching/filtering
 * define order of talks in TalksGrid: this will give stable sorting independent of order in the backend
 
 ### Out-of-scope
