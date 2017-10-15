@@ -15,7 +15,6 @@ import ScheduledEventPage from '@/components/event/ScheduledEventPage'
 import SpeakerPage from '@/components/event/SpeakerPage'
 import SpeakersPage from '@/components/event/SpeakersPage'
 import FeedbackPage from '@/components/FeedbackPage'
-import $ from 'jquery'
 import { i18n } from './Internationalization.js'
 import VueLazyload from 'vue-lazyload'
 import Eventbus from './Eventbus.js'
@@ -98,14 +97,11 @@ function initVue () {
   })
 }
 
-// keycloak will add an iframe. Therefore wait for DOM to be ready first
-$(document).ready(function () {
-  DukeconKeycloak.init().success(function (authenticated) {
-    // keycloak will do URL redirects. This interferes with Vue Router, therefore init Vue afterwards
-    initVue()
-  }).error(function () {
-    console.log('failed to initialize keycloak - might be in testing mode')
-    initVue()
-  })
+DukeconKeycloak.init().success(function (authenticated) {
+  // keycloak will do URL redirects. This interferes with Vue Router, therefore init Vue afterwards
+  initVue()
+}).error(function () {
+  console.log('failed to initialize keycloak - might be in testing mode')
+  initVue()
 })
 
