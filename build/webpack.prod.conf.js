@@ -98,6 +98,10 @@ var webpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../static'),
         to: config.build.assetsSubDirectory,
         ignore: ['.*', 'rest/**']
+      },
+      {
+        from: path.resolve(__dirname, '../.htaccess'),
+        to: config.build.assetsSubDirectory + '/..'
       }
     ]),
     // service worker caching
