@@ -18,6 +18,9 @@ Use the following NPM commands to start developing.
 # install dependencies
 npm install
 
+# update dependencies
+npm update
+
 # serve with hot reload at localhost:8080
 npm run dev
 
