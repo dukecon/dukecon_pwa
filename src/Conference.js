@@ -107,6 +107,13 @@ const init = function () {
           })
         })
         .catch(function (error) {
+          // it seems that we are working in development mode but are offline
+          // (and we haven't tried the static path yet as it would otherwise lead to a loop)
+          if (window.location.href.indexOf('http://localhost:8080') !== -1 && base.indexOf('static') === -1) {
+            base = '/static/'
+            initialized = false
+            init()
+          }
           console.log(error)
         })
     })
