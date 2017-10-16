@@ -49,7 +49,6 @@ npm test
 
 ### Functionality
 
-* Favorites load/save from/to backend
 * dynamic fav-icon
 * conference CSS dynamically
 * redirect old links with parsing ID i.e. with talks.html
