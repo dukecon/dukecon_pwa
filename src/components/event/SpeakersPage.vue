@@ -49,6 +49,11 @@
   }
 
   export default {
+    beforeRouteEnter: (to, from, next) => {
+      next(vm => {
+        vm.eventbus.$emit('search.visible', true)
+      })
+    },
     components: {
       Event,
       Twitter,

@@ -70,7 +70,7 @@
     },
     watch: {
       '$route' (to, from) {
-        this.eventbus.$emit('search.reset')
+        this.eventbus.$emit('search.visible', false)
       }
     },
     methods: {

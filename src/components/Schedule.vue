@@ -11,6 +11,11 @@
   import TalksGrid from './schedule/TalksGrid.vue'
 
   export default {
+    beforeRouteEnter: (to, from, next) => {
+      next(vm => {
+        vm.eventbus.$emit('search.visible', true)
+      })
+    },
     components: {
       TalksGrid,
       FilterEvents
