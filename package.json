@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "babel-polyfill": "^6.26.0",
     "keycloak-js": "^3.2.1",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
@@ -105,6 +106,7 @@
   "browserslist": [
     "> 1%",
     "last 2 versions",
-    "not ie <= 8"
+    "not ie <= 8",
+    "ie > 9"
   ]
 }
