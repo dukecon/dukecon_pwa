@@ -112,8 +112,8 @@ var webpackConfig = merge(baseWebpackConfig, {
       minify: true,
       // see: https://github.com/GoogleChrome/sw-precache
       runtimeCaching: [{
-        // all URLs containing "/rest/" anywhere in the URL
-        urlPattern: /\/rest\//,
+        // some URLs containing "/rest/", also the favicon
+        urlPattern: /\/(rest\/(image-resources.json|init.json|conferences|speaker|keycloak.json)|img\/favicon.ico)/,
         // ... will be be fetched from the network first. If this fails, get them from the cache
         handler: 'fastest', // alternative: networkFirst
         options: {

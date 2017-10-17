@@ -32,6 +32,11 @@ module.exports = {
         target: 'https://latest.dukecon.org/javaland/2017',
         changeOrigin: true,
         ws: true
+      },
+      '/img/favicon.ico': {
+        target: 'https://latest.dukecon.org/javaland/2017',
+        changeOrigin: true,
+        ws: true
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

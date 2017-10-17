@@ -49,7 +49,6 @@ npm test
 
 ### Functionality
 
-* dynamic fav-icon
 * conference CSS dynamically
 * redirect old links with parsing ID i.e. with talks.html
 * show error message if speaker ID or event ID given in URL doesn't exist
