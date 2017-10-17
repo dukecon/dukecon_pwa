@@ -51,7 +51,8 @@ function reset () {
     termsOfUse: {},
     homeUrl: null,
     homeTitle: null,
-    authEnabled: false
+    authEnabled: false,
+    name: null
   }
 }
 
@@ -80,6 +81,7 @@ const init = function () {
         if (!conference.homeTitle) {
           conference.homeTitle = conference.name
         }
+        document.title = conference.name
       }
       axios.get(base + 'rest/conferences/' + conference.id)
         .then(function (response) {
