@@ -20,7 +20,7 @@ let base = ''
 
 // test if we are running in local served mode to test offline mode
 if (window.location.href.indexOf('http://localhost:5000') !== -1) {
-  base = 'https://latest.dukecon.org/javaland/2017/'
+  base = 'https://latest.dukecon.org/javaland/2018/'
 }
 
 let initialized = false

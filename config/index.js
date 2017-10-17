@@ -29,12 +29,12 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/rest': {
-        target: 'https://latest.dukecon.org/javaland/2017',
+        target: 'https://latest.dukecon.org/javaland/2018',
         changeOrigin: true,
         ws: true
       },
       '/img/favicon.ico': {
-        target: 'https://latest.dukecon.org/javaland/2017',
+        target: 'https://latest.dukecon.org/javaland/2018',
         changeOrigin: true,
         ws: true
       }

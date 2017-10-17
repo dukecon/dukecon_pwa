@@ -4,7 +4,7 @@ import Settings from './Settings'
 var base = ''
 
 if (window.location.href.indexOf('http://localhost:5000') !== -1) {
-  base = 'https://latest.dukecon.org/javaland/2017/'
+  base = 'https://latest.dukecon.org/javaland/2018/'
 }
 
 /* This provides the Keycloak instance plus some enhancements regarding login status.
