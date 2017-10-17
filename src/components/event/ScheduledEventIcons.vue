@@ -2,7 +2,7 @@
   <div>
     <div :class="timeClass">
       <img width="16" height="16" src="../../assets/img/Clock.png" alt="Startzeit" title="Startzeit"/>
-      <span>{{ startDayTime }} ({{ durationInMinutes }} min)</span>
+      <span>{{ startDayTime }} <template v-if="durationInMinutes !== undefined">({{ durationInMinutes }} min)</template></span>
     </div>
     <div class="room">
       <img width="16" height="16" src="../../assets/img/Home.png" alt="Raum" title="Raum"/>
@@ -38,7 +38,7 @@
   const unknownImage = require('@/assets/img/Unknown.png')
   import Moment from 'moment'
 
-  var getTimeCategory = function (duration) {
+  function getTimeCategory (duration) {
     if (typeof duration === 'undefined' || (duration > 30 && duration <= 60)) {
       return 'regular'
     }
@@ -63,21 +63,18 @@
     computed: {
       durationInMinutes: function () {
         if (!this.event.start || !this.event.end) {
-          return ''
+          return undefined
         }
-        var dateStart = new Date(this.event.start)
-        var dateEnd = new Date(this.event.end)
-        var millis = dateEnd - dateStart
+        const dateStart = new Date(this.event.start)
+        const dateEnd = new Date(this.event.end)
+        const millis = dateEnd - dateStart
         return millis / 1000 / 60
       },
       startDayTime: function () {
         return Moment(this.event.start).locale(this.$i18n.locale).format('dddd, Do MMM, HH:mm')
       },
       timeClass: function () {
-        var dateStart = new Date(this.event.start)
-        var dateEnd = new Date(this.event.end)
-        var millis = dateEnd - dateStart
-        return getTimeCategory(millis / 1000 / 60) === 'regular' ? 'time' : 'time-extra alternate'
+        return getTimeCategory(this.durationInMinutes) === 'regular' ? 'time' : 'time-extra alternate'
       },
       location: function () {
         return this.locations[this.event.locationId]
@@ -89,7 +86,7 @@
         return this.languages[this.event.languageId]
       },
       languageIcon: function () {
-        var prefix = ''
+        let prefix = ''
         if (!this.event.simultan) {
           prefix += 'lang_'
         }
@@ -99,14 +96,14 @@
         return this.tracks[this.event.trackId]
       },
       trackIcon: function () {
-        var image = this.images.streamImages[this.event.trackId]
+        let image = this.images.streamImages[this.event.trackId]
         if (!image) {
           image = unknownImage
         }
         return image
       },
       numberOfFavorites: function () {
-        if (!this.event.numberOfFavorites === undefined) {
+        if (this.event.numberOfFavorites === undefined) {
           return undefined
         } else {
           return (this.favourites[this.event.id] === true ? 1 : 0) + this.event.numberOfFavorites
