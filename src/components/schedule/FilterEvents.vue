@@ -216,11 +216,15 @@
       /* use this event in other components to ask the current status to be published. This might be handy
        * whenever a new component is initialized and wants to have the up-to-date status. */
       this.eventbus.$on('filter.init', this.publishCurrentStatus)
+
+      /* catches this event to deactivate the filter, if the search term is 3 or more characters long */
+      this.eventbus.$on('search.term', this.searchEventReceived)
     },
     beforeDestroy: function () {
       this.eventbus.$off('filter.reset', this.resetFilters)
       this.eventbus.$off('filter.deactivate', this.deactivateFilters)
       this.eventbus.$off('filter.init', this.publishCurrentStatus)
+      this.eventbus.$off('search.term', this.searchEventReceived)
     },
     methods: {
       toggleCategory: function (filter) {
@@ -239,6 +243,13 @@
       },
       deactivateFilters: function () {
         this.filtersActive = false
+      },
+      searchEventReceived: function (term) {
+        if (term.length >= 3) {
+          this.filtersActive = false
+        } else {
+          this.filtersActive = true
+        }
       },
       publishCurrentStatus: function () {
         let filter = null

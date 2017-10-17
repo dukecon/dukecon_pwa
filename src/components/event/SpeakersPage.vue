@@ -64,7 +64,7 @@
       return {
         speakers: Conference.getAllSpeakers(),
         events: Conference.getAllEvents(),
-        searchTerm: null
+        searchTerm: ''
       }
     },
     created () {
@@ -115,7 +115,7 @@
         this.searchTerm = term
       },
       search: function (speaker) {
-        return this.searchTerm === null || [speaker.name, speaker.company].join().toLocaleLowerCase().includes(this.searchTerm.toLowerCase())
+        return [speaker.name, speaker.company].join().toLocaleLowerCase().includes(this.searchTerm.toLowerCase())
       }
     }
   }

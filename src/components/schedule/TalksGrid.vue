@@ -1,6 +1,6 @@
 <template>
-  <div id="content" data-bind="css: { 'search-result' : $root.searchTerm().length > 2 }">
-    <div id="swipeable" data-bind="visible: searchTerm().length <= 2">
+  <div id="content" v-bind:class="{'search-result': this.searchTerm.length > 2}">
+    <div id="swipeable" v-if="this.searchTerm.length < 3">
       <div id="days_filter">
         <template v-for="day in days">
           <button class="day-widescreen" type="button" @click="updateDay(day)"
@@ -28,11 +28,11 @@
     <div id="talks-grid" v-if="groupedTalks.length > 0">
       <table v-for="group in groupedTalks">
         <tr>
-          <td data-bind="visible: $root.searchTerm().length <= 2">
+          <td v-if="this.searchTerm != null && this.searchTerm.length < 3">
             <div class="time-cell title">{{group.slotDisplay}}</div>
           </td>
           <td>
-            <div data-bind="foreach: talks">
+            <div>
               <event :event="talk" v-for="talk in group.talks" :key="talk.id"></event>
             </div>
             <a class="uparrow clickable" :title="$t('uparrow')" @click="goUp">&uArr;</a>
@@ -70,7 +70,7 @@
         speakers: Conference.getAllSpeakers(),
         isoDate: null,
         filter: null,
-        searchTerm: null,
+        searchTerm: '',
         favourites: Favourites.getFavorites()
       }
     },
@@ -107,7 +107,7 @@
         }
         Object.values(this.eventsByDay[this.selectedDay])
           .filter(e => {
-            if (this.searchTerm !== null) {
+            if (this.searchTerm.length >= 3) {
               let abstractText = e.abstractText || ''
               let speakerInfos = e.speakerIds.map(id => this.speakers[id]).map(s => [s.name, s.company].join()).join()
               return e.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
