@@ -39,11 +39,9 @@
                                   v-if="filter.selectedFilterCount > 0">{{ filter.selectedFilterCount }} </span>
                         </span>
               <div class="filter-values">
-                <div v-for="filterValue in filter.filterValues"
-                     data-bind="click: $parents[1].updateFilterCount($parent)">
+                <div v-for="filterValue in filter.filterValues">
                   <input :id="filter.filterKey + '-' + filterValue.id" type="checkbox"
-                         v-model="filterStatus[filter.filterKey].values[filterValue.id]"
-                         data-bind="checkedValue: $data, checked: $data.selected"/>
+                         v-model="filterStatus[filter.filterKey].values[filterValue.id]"/>
                   <label :for="filter.filterKey + '-' + filterValue.id">{{ filterValue.name }}</label>
                 </div>
               </div>
