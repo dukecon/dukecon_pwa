@@ -7,17 +7,25 @@
     <title>dukecon_pwa</title>
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <!-- Add to home screen for Android and modern mobile browsers -->
+    <!-- TODO provide a manifest.json dynamically with the conference name and conference logos
     <link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath %>static/manifest.json">
+    -->
+    <!-- TODO choose theme color based on conference (?)
     <meta name="theme-color" content="#4DBA87">
+    -->
 
     <!-- Add to home screen for Safari on iOS -->
+    <!-- TODO: make icons and app name dynamic
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="dukecon_pwa">
     <link rel="apple-touch-icon" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/apple-touch-icon-152x152.png">
+    -->
     <!-- Add to home screen for Windows -->
+    <!-- TODO: make icons and app name dynamic
     <meta name="msapplication-TileImage" content="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/msapplication-icon-144x144.png">
     <meta name="msapplication-TileColor" content="#000000">
+    -->
     <% for (var chunk of webpack.chunks) {
         for (var file of chunk.files) {
           if (file.match(/\.(js|css)$/)) { %>
