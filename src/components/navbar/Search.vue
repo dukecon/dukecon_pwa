@@ -22,10 +22,12 @@
     created () {
       this.eventbus.$on('search.reset', this.resetSearchTerm)
       this.eventbus.$on('search.visible', this.setVisible)
+      this.eventbus.$on('search.init', this.publishCurrentStatus)
     },
     beforeDestroy: function () {
       this.eventbus.$off('search.reset', this.resetSearchTerm)
       this.eventbus.$off('search.visible', this.setVisible)
+      this.eventbus.$off('search.init', this.publishCurrentStatus)
     },
     methods: {
       resetSearchTerm: function () {
@@ -33,6 +35,9 @@
       },
       setVisible: function (visible) {
         this.visible = visible
+      },
+      publishCurrentStatus: function () {
+        this.eventbus.$emit('search.term', this.term)
       }
     }
   }

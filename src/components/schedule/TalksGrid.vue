@@ -22,13 +22,13 @@
     </div>
 
     <div class="alternate" v-if="Object.keys(eventsByDay).length === 0">
-      <img src="../../assets/img/ajax-circle.gif" />
+      <img src="../../assets/img/ajax-circle.gif"/>
     </div>
 
     <div id="talks-grid" v-if="groupedTalks.length > 0">
       <table v-for="group in groupedTalks">
         <tr>
-          <td v-if="this.searchTerm != null && this.searchTerm.length < 3">
+          <td v-if="searchTerm.length < 3">
             <div class="time-cell title">{{group.slotDisplay}}</div>
           </td>
           <td>
@@ -67,6 +67,7 @@
     data () {
       return {
         eventsByDay: Conference.getEventsByDay(),
+        events: Conference.getAllEvents(),
         speakers: Conference.getAllSpeakers(),
         isoDate: null,
         filter: null,
@@ -105,45 +106,51 @@
           // no data has been loaded yet
           return {}
         }
-        Object.values(this.eventsByDay[this.selectedDay])
-          .filter(e => {
-            if (this.searchTerm.length >= 3) {
+        let filteredTalks
+        if (this.searchTerm.length >= 3) {
+          filteredTalks = Object.values(this.events)
+            .filter(e => {
               let abstractText = e.abstractText || ''
               let speakerInfos = e.speakerIds.map(id => this.speakers[id]).map(s => [s.name, s.company].join()).join()
               return e.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
                 abstractText.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
                 speakerInfos.toLowerCase().includes(this.searchTerm.toLowerCase())
-            }
-            if (this.filter !== null) {
-              // if the filter is active, filter all categories and favourites
-              if (Object.keys(this.filter.categories.language).length > 0) {
-                if (this.filter.categories.language[e.languageId] === undefined) {
-                  return false
+            })
+        } else {
+          filteredTalks = Object.values(this.eventsByDay[this.selectedDay])
+            .filter(e => {
+              if (this.filter !== null) {
+                // if the filter is active, filter all categories and favourites
+                if (Object.keys(this.filter.categories.language).length > 0) {
+                  if (this.filter.categories.language[e.languageId] === undefined) {
+                    return false
+                  }
+                }
+                if (Object.keys(this.filter.categories.level).length > 0) {
+                  if (this.filter.categories.level[e.audienceId] === undefined) {
+                    return false
+                  }
+                }
+                if (Object.keys(this.filter.categories.track).length > 0) {
+                  if (this.filter.categories.track[e.trackId] === undefined) {
+                    return false
+                  }
+                }
+                if (Object.keys(this.filter.categories.location).length > 0) {
+                  if (this.filter.categories.location[e.locationId] === undefined) {
+                    return false
+                  }
+                }
+                if (this.filter.onlyFavourites) {
+                  if (this.favourites[e.id] === undefined) {
+                    return false
+                  }
                 }
               }
-              if (Object.keys(this.filter.categories.level).length > 0) {
-                if (this.filter.categories.level[e.audienceId] === undefined) {
-                  return false
-                }
-              }
-              if (Object.keys(this.filter.categories.track).length > 0) {
-                if (this.filter.categories.track[e.trackId] === undefined) {
-                  return false
-                }
-              }
-              if (Object.keys(this.filter.categories.location).length > 0) {
-                if (this.filter.categories.location[e.locationId] === undefined) {
-                  return false
-                }
-              }
-              if (this.filter.onlyFavourites) {
-                if (this.favourites[e.id] === undefined) {
-                  return false
-                }
-              }
-            }
-            return true
-          })
+              return true
+            })
+        }
+        filteredTalks
           .forEach(e => {
             const c = groupedTalks[e.start]
             if (c === undefined) {
@@ -166,6 +173,7 @@
       this.eventbus.$on('filter.status', this.filterEventReceived)
       this.eventbus.$on('search.term', this.searchEventReceived)
       this.eventbus.$emit('filter.init')
+      this.eventbus.$emit('search.init')
     },
     beforeDestroy: function () {
       this.eventbus.$off('filter.status', this.filterEventReceived)

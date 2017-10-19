@@ -69,6 +69,7 @@
     },
     created () {
       this.eventbus.$on('search.term', this.searchEventReceived)
+      this.eventbus.$emit('search.init')
     },
     beforeDestroy: function () {
       this.eventbus.$off('search.term', this.searchEventReceived)
