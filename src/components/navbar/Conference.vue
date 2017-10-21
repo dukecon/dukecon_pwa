@@ -1,5 +1,5 @@
 <template>
-  <a target="_blank" class="mainmenu darkBack reverse" :href="conference.homeUrl">{{ conference.homeTitle }}</a>
+  <a target="_blank" class="mainmenu darkBack" :href="conference.homeUrl">{{ conference.homeTitle }}</a>
 </template>
 
 <script language="">

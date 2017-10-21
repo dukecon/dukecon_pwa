@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/speakers" class="mainmenu darkBack reverse">{{ $t('speaker') }}</router-link>
+  <router-link to="/speakers" class="mainmenu darkBack">{{ $t('speaker') }}</router-link>
 </template>
 
 <script language="">

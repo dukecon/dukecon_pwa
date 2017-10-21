@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/feedback" class="mainmenu darkBack reverse">{{ $t('feedback') }}</router-link>
+  <router-link to="/feedback" class="mainmenu darkBack">{{ $t('feedback') }}</router-link>
 </template>
 
 <script language="">

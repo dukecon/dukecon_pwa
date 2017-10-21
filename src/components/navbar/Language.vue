@@ -1,5 +1,5 @@
 <template>
-  <a class="mainmenu darkBack reverse" id="language-select" v-on:click='change'>
+  <a class="mainmenu darkBack" id="language-select" v-on:click='change'>
     <img class="language" alt="Sprache umschalten / Change language" title="Sprache umschalten / Change language"
          :src="img"/>
   </a>

@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/" class="mainmenu darkBack reverse">Talks</router-link>
+  <router-link to="/" class="mainmenu darkBack">Talks</router-link>
 </template>
 
 <script language="">

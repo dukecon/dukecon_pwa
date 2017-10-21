@@ -3,8 +3,6 @@ require('./assets/css/pure-min.css')
 require('./assets/css/side-menu.css')
 require('./assets/css/dukecon.less')
 require('./assets/css/style.css')
-// TODO load javaland style conditionally
-require('./assets/css/javaland-style.css')
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
@@ -26,7 +24,7 @@ Vue.use(VueLazyload)
 function initVue () {
   Vue.use(VueRouter)
   const router = new VueRouter({
-    linkExactActiveClass: 'dark reverseBack',
+    linkExactActiveClass: 'dark reverseBack active',
     routes: [
       {
         path: '/',
