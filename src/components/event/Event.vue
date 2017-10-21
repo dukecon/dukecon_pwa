@@ -36,9 +36,7 @@
       Favourite,
       ScheduledEventIcons
     },
-    props: {
-      event
-    },
+    props: ['event'],
     name: 'event',
     data () {
       return {
