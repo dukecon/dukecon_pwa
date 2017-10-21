@@ -3,7 +3,8 @@ import Vue from 'vue'
 import { groupBy } from 'lodash'
 import Favorites from './Favourites'
 
-const refreshIntervalMs = 90000
+const refreshIntervalFavoritesMs = 90 * 1000
+const refreshIntervalEventsMs = 30 * 60 * 1000
 
 /* the following objects (events, conference) are the global data model for this application.
    They are read only for the users, but they will be updated asynchronously when the data is loaded, they might be
@@ -30,7 +31,11 @@ let initialized = false
 
 let talkUpdateIsRunning = false
 
-function getTalkUpdates () {
+let eventUpdateIntervalHandle
+
+let favoritesUpdateIntervalHandle
+
+function getFavoritesAndBookingsUpdates () {
   if (talkUpdateIsRunning) {
     return
   }
@@ -48,6 +53,52 @@ function getTalkUpdates () {
     })
     .catch(() => {
       talkUpdateIsRunning = false
+    })
+}
+
+function getEvents () {
+  axios.get(base + 'rest/conferences/' + conference.id)
+    .then(function (response) {
+      response.data.events.forEach(v => {
+        Vue.set(events, v.id, v)
+      })
+      response.data.speakers.forEach(v => {
+        Vue.set(speakers, v.id, v)
+      })
+      response.data.metaData.locations.forEach(v => {
+        Vue.set(locations, v.id, v)
+      })
+      response.data.metaData.languages.forEach(v => {
+        Vue.set(languages, v.id, v)
+      })
+      response.data.metaData.audiences.forEach(v => {
+        Vue.set(audiences, v.id, v)
+      })
+      response.data.metaData.tracks.forEach(v => {
+        Vue.set(tracks, v.id, v)
+      })
+      let days = groupBy(events, function (event) { return event.start ? event.start.substr(0, 10) : null })
+      Object.entries(days).forEach(e => {
+        Vue.set(eventsByDay, e[0], e[1])
+      })
+      Favorites.updateEventsWithLocalFavorites()
+      if (!favoritesUpdateIntervalHandle) {
+        favoritesUpdateIntervalHandle = window.setInterval(getFavoritesAndBookingsUpdates, refreshIntervalFavoritesMs)
+      }
+      if (!eventUpdateIntervalHandle) {
+        eventUpdateIntervalHandle = window.setInterval(getEvents, refreshIntervalEventsMs)
+      }
+      getFavoritesAndBookingsUpdates()
+    })
+    .catch(function (error) {
+      // it seems that we are working in development mode but are offline
+      // (and we haven't tried the static path yet as it would otherwise lead to a loop)
+      if (window.location.href.indexOf('http://localhost:8080') !== -1 && base.indexOf('static') === -1) {
+        base = '/static/'
+        initialized = false
+        init()
+      }
+      console.log(error)
     })
 }
 
@@ -108,43 +159,7 @@ const init = function () {
         }
         document.title = conference.name
       }
-      axios.get(base + 'rest/conferences/' + conference.id)
-        .then(function (response) {
-          response.data.events.forEach(v => {
-            Vue.set(events, v.id, v)
-          })
-          response.data.speakers.forEach(v => {
-            Vue.set(speakers, v.id, v)
-          })
-          response.data.metaData.locations.forEach(v => {
-            Vue.set(locations, v.id, v)
-          })
-          response.data.metaData.languages.forEach(v => {
-            Vue.set(languages, v.id, v)
-          })
-          response.data.metaData.audiences.forEach(v => {
-            Vue.set(audiences, v.id, v)
-          })
-          response.data.metaData.tracks.forEach(v => {
-            Vue.set(tracks, v.id, v)
-          })
-          let days = groupBy(events, function (event) { return event.start ? event.start.substr(0, 10) : null })
-          Object.entries(days).forEach(e => {
-            Vue.set(eventsByDay, e[0], e[1])
-          })
-          Favorites.updateEventsWithLocalFavorites()
-          window.setInterval(getTalkUpdates, refreshIntervalMs)
-        })
-        .catch(function (error) {
-          // it seems that we are working in development mode but are offline
-          // (and we haven't tried the static path yet as it would otherwise lead to a loop)
-          if (window.location.href.indexOf('http://localhost:8080') !== -1 && base.indexOf('static') === -1) {
-            base = '/static/'
-            initialized = false
-            init()
-          }
-          console.log(error)
-        })
+      getEvents()
     })
     .catch(function (error) {
       // it seems that we are working in development mode but are offline
