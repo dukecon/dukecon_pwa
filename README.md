@@ -45,7 +45,8 @@ npm test
 
 ## TODOs 
 
-* Timetable
+* Warning, if user is not logged in and adds his/her first favorite
+* Deep Links to search query like 'https://latest.dukecon.org/javaland/2017/?search=Falk'
 
 ### Functionality
 
