@@ -44,7 +44,7 @@ function getTalkUpdates () {
         }
       })
       Favorites.updateEventsWithLocalFavorites()
-      talkUpdateIsRunning = true
+      talkUpdateIsRunning = false
     })
     .catch(() => {
       talkUpdateIsRunning = false
