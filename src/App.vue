@@ -18,6 +18,11 @@
         <div id="mainmenu-button"><img @click="toggle" src="./assets/img/menu_24px.svg"></div>
       </h1>
     </div>
+    <div id="loading" class="alternate" v-if="Object.keys(events).length === 0">
+      &nbsp;
+    </div>
+
+
     <!-- this keep-alive allows ultra-fast switching between views, especially the speakers page -->
     <keep-alive>
       <router-view></router-view>
@@ -58,7 +63,8 @@
     data () {
       return {
         mobileMenuOpen: false,
-        conference: Conference.getConference()
+        conference: Conference.getConference(),
+        events: Conference.getAllEvents()
       }
     },
     created () {
