@@ -1,5 +1,5 @@
 <template>
-  <span v-if="small" @click="toggleFavourite">
+  <span v-if="mode==='small'" @click.prevent="toggleFavourite">
     <template v-if="favourite === false">
       <img style="cursor:pointer; margin-right: 2px;" class="fav-largescreen" title="Add to Favourites" src="../../assets/img/StarLine.png"/>
     </template>
@@ -7,7 +7,15 @@
       <img style="cursor:pointer; margin-right: 2px;" class="fav-largescreen" title="Remove from Favourites" src="../../assets/img/StarFilled.png"/>
     </template>
   </span>
-  <div v-else class="as-favorite alternate" @click="toggleFavourite">
+  <div class="fav-smallscreen" v-else-if="mode==='mobile'" @click.prevent="toggleFavourite">
+    <template v-if="favourite === false">
+        <img style="cursor:pointer; margin-right: 2px;" title="Add to Favourites" src="../../assets/img/StarLine.png"/>
+    </template>
+    <template v-else>
+      <img style="cursor:pointer; margin-right: 2px;" title="Remove from Favourites" src="../../assets/img/StarFilled.png"/>
+    </template>
+  </div>
+  <div v-else class="as-favorite alternate" @click.prevent="toggleFavourite">
     <template v-if="favourite === false">
       <img class="fav-detail" title="Add to Favourites" src="../../assets/img/StarLine.png"/>
       <span>{{ $t('saveAsFavourite') }}</span>
@@ -24,7 +32,7 @@
 
   export default {
     name: 'favourite',
-    props: ['event', 'small'],
+    props: ['event', 'mode'],
     data () {
       return {
         favourites: Favourites.getFavorites()

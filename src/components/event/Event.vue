@@ -1,17 +1,19 @@
 <template>
   <div class="talk-widget">
     <div :class="timeClass">
-      <div class="talk-info">
-        <div class="title darkLink">
-          <favourite :event="event" :small="true"/>
-          <router-link :to="{ name: 'scheduledEventPage', params: { eventId: event.id }}" style="padding: 0">{{event.title}}</router-link>
+      <favourite :event="event" :mode="'mobile'"/>
+      <router-link :to="{ name: 'scheduledEventPage', params: { eventId: event.id }}" style="padding: 0">
+        <div class="talk-info">
+          <div class="title darkLink">
+            <favourite :event="event" :mode="'small'"/>
+            <a>{{event.title}}</a> <!-- the a is for preservation of the hover effect....  -->
+          </div>
+          <div class="fully-booked stamp" v-if="event.fullyBooked">{{ $t('fullyBooked') }}</div>
+          <div class="speaker" v-for="s in eventSpeaker"><span>{{ s.name }}</span></div>
+
+          <scheduled-event-icons :event="event"/>
         </div>
-
-        <div class="fully-booked stamp" v-if="event.fullyBooked">{{ $t('fullyBooked') }}</div>
-        <div class="speaker" v-for="s in eventSpeaker"><span>{{ s.name }}</span></div>
-
-        <scheduled-event-icons :event="event"/>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
