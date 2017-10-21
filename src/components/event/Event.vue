@@ -7,11 +7,12 @@
           <div class="title darkLink">
             <favourite :event="event" :mode="'small'"/>
             <a>{{event.title}}</a> <!-- the a is for preservation of the hover effect....  -->
+            <img v-if="mode === 'grid'" class="language-icon" :src="languageIcon">
           </div>
           <div class="fully-booked stamp" v-if="event.fullyBooked">{{ $t('fullyBooked') }}</div>
           <div class="speaker" v-for="s in eventSpeaker"><span>{{ s.name }}</span></div>
 
-          <scheduled-event-icons :event="event"/>
+          <scheduled-event-icons :event="event" :mode="mode"/>
         </div>
       </router-link>
     </div>
@@ -38,16 +39,24 @@
       Favourite,
       ScheduledEventIcons
     },
-    props: ['event'],
+    props: ['event', 'mode'],
     name: 'event',
     data () {
       return {
-        speakers: Conference.getAllSpeakers()
+        speakers: Conference.getAllSpeakers(),
+        languages: Conference.getAllLanguages()
       }
     },
     computed: {
       eventSpeaker: function () {
         return this.event.speakerIds.map(id => this.speakers[id])
+      },
+      languageIcon: function () {
+        let prefix = ''
+        if (!this.event.simultan) {
+          prefix += 'lang_'
+        }
+        return require('@/assets/img/' + prefix + this.languages[this.event.languageId].code + '.png')
       },
       timeClass: function () {
         var dateStart = new Date(this.event.start)

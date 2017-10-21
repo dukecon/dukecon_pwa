@@ -19,11 +19,11 @@
     </div>
     <div class="track" v-if="track">
       <img width="16" height="16" :src="trackIcon" alt="Stream" title="Stream"/>
-      <span>{{ track.names[this.$i18n.locale] }}</span>
+      <span>{{ track.names[$i18n.locale] }}</span>
     </div>
-    <div class="room">
+    <div class="room" v-if="mode !== 'grid'">
       <span style="margin-left: -2px;" class="language-icon">&#128172;</span>
-      <span>{{ language.names[this.$i18n.locale] }}</span>
+      <span>{{ language.names[$i18n.locale] }}</span>
       <span v-if="event.simultan">{{ $t('simultan') }}</span>
       <img alt="" class="language-icon" :src="languageIcon">
     </div>
@@ -50,7 +50,7 @@
 
   export default {
     name: 'scheduledEventIcons',
-    props: ['event'],
+    props: ['event', 'mode'],
     data () {
       return {
         locations: Conference.getAllLocations(),

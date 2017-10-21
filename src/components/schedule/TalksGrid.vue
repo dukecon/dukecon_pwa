@@ -29,7 +29,7 @@
           </td>
           <td>
             <div>
-              <event :event="talk" v-for="talk in group.talks" :key="talk.id"></event>
+              <event :event="talk" :mode="'grid'" v-for="talk in group.talks" :key="talk.id"></event>
             </div>
             <a class="uparrow clickable" :title="$t('uparrow')" @click="goUp">&uArr;</a>
           </td>
