@@ -24,8 +24,8 @@
               </tr>
               </tbody>
             </table>
-            <div class="speaker-socialmedia" v-for="m in socialMedias">
-            <span :class="'speaker-' + m.media">
+            <div class="speaker-socialmedia">
+            <span  v-for="m in socialMedias" :class="'speaker-' + m.media">
               <a target="_blank" :href="m.url">
                 <img :src="m.src" :alt="m.media"/>
               </a>

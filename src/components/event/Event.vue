@@ -21,7 +21,7 @@
   import Conference from '../../Conference'
   import Favourite from './Favourite.vue'
 
-  var getTimeCategory = function (duration) {
+  function getTimeCategory (duration) {
     if (typeof duration === 'undefined' || (duration > 30 && duration <= 60)) {
       return 'regular'
     }
