@@ -1,12 +1,13 @@
 import axios from 'axios'
 import Vue from 'vue'
 import { groupBy } from 'lodash'
+import Favorites from './Favourites'
+
+const refreshIntervalMs = 90000
 
 /* the following objects (events, conference) are the global data model for this application.
    They are read only for the users, but they will be updated asynchronously when the data is loaded, they might be
    updated with new data periodically as well. Use the references returned to bind them to your model. */
-const refreshIntevalMs = 5000
-
 let events
 
 let eventsByDay
@@ -27,13 +28,26 @@ let base = ''
 
 let initialized = false
 
+let talkUpdateIsRunning = false
+
 function getTalkUpdates () {
+  if (talkUpdateIsRunning) {
+    return
+  }
+  talkUpdateIsRunning = true
   axios.get(base + 'rest/eventsBooking/' + conference.id)
     .then(function (response) {
       response.data.forEach(val => {
-        events[val.eventId].numberOfFavorites = val.numberOfFavorites
-        events[val.eventId].fullyBooked = val.fullyBooked
+        if (events[val.eventId]) {
+          events[val.eventId].numberOfFavorites = val.numberOfFavorites
+          events[val.eventId].fullyBooked = val.fullyBooked
+        }
       })
+      Favorites.updateEventsWithLocalFavorites()
+      talkUpdateIsRunning = true
+    })
+    .catch(() => {
+      talkUpdateIsRunning = false
     })
 }
 
@@ -118,7 +132,8 @@ const init = function () {
           Object.entries(days).forEach(e => {
             Vue.set(eventsByDay, e[0], e[1])
           })
-          window.setInterval(getTalkUpdates, refreshIntevalMs)
+          Favorites.updateEventsWithLocalFavorites()
+          window.setInterval(getTalkUpdates, refreshIntervalMs)
         })
         .catch(function (error) {
           // it seems that we are working in development mode but are offline

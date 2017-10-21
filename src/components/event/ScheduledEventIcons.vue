@@ -103,13 +103,8 @@
         return image
       },
       numberOfFavorites: function () {
-        if (this.event.numberOfFavorites === undefined) {
-          return undefined
-        } else {
-          return (this.favourites[this.event.id] === true ? 1 : 0) + this.event.numberOfFavorites
-        }
+        return this.event.numberOfFavorites
       }
-
     }
   }
 </script>

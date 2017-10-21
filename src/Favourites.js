@@ -2,6 +2,7 @@ import Settings from './Settings'
 import Vue from 'vue'
 import Dukecloak from './DukeconKeycloak'
 import axios from 'axios'
+import Conference from './Conference'
 
 const favoritesKey = 'dukeconfavs'
 
@@ -129,7 +130,12 @@ function saveToSettings () {
 
 export default class Favorites {
   static toggleFavorite (eventId) {
+    let events = Conference.getAllEvents()
     if (favorites[eventId] === true) {
+      if (events[eventId].numberOfFavorites > 0) {
+        // Paranoia: don't allow numberOfFavorites to be negative
+        events[eventId].numberOfFavorites--
+      }
       Vue.delete(favorites, eventId)
       // remove it from the add queue, or add it to the remove queue
       if (favoritesToAdd.has(eventId)) {
@@ -138,6 +144,7 @@ export default class Favorites {
         favoritesToRemove.add(eventId)
       }
     } else {
+      events[eventId].numberOfFavorites++
       Vue.set(favorites, eventId, true)
       // remove it from the remove queue, or add it to the add queue
       if (favoritesToRemove.has(eventId)) {
@@ -148,6 +155,21 @@ export default class Favorites {
     }
     saveToSettings()
     syncWithServer()
+  }
+
+  /**
+   * This will update the Favorites as loaded from the server with the favorites that are currently
+   * waiting to be saved on the server.
+   */
+  static updateEventsWithLocalFavorites () {
+    let events = Conference.getAllEvents()
+    favoritesToAdd.forEach(e => events[e].numberOfFavorites++)
+    favoritesToRemove.forEach(e => {
+      if (events[e].numberOfFavorites > 0) {
+        // Paranoia: don't allow numberOfFavorites to be negative
+        events[e].numberOfFavorites--
+      }
+    })
   }
 
   static getFavorites () {
