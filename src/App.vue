@@ -10,6 +10,7 @@
         </div>
         <div id="mainmenu-items" :class="{ darkBack: true, shown: mobileMenuOpen}">
           <talks></talks>
+          <timetable></timetable>
           <speakers></speakers>
           <feedback></feedback>
           <conference-link></conference-link>
@@ -45,9 +46,11 @@
   import Backbutton from './components/navbar/Backbutton.vue'
   import Search from './components/navbar/Search.vue'
   import Conference from './Conference'
+  import Timetable from './components/navbar/Timetable.vue'
 
   export default {
     components: {
+      Timetable,
       Backbutton,
       Search,
       ConferenceLink,

@@ -33,7 +33,8 @@ const messages = {
     'or': ' oder ',
     'disablefavorites': 'Ist eventuell die Einstellung "Nur Favoriten" aktiviert?',
     'loggedIn': 'eingeloggt',
-    'search': 'Suchen'
+    'search': 'Suchen',
+    'timetable': 'Stundenplan'
   },
   en: {
     'termsOfUse': 'Terms of use',
@@ -64,7 +65,8 @@ const messages = {
     'or': ' or ',
     'disablefavorites': 'Also check if you have "Only Favorites" selected.',
     'loggedIn': 'logged in',
-    'search': 'Search'
+    'search': 'Search',
+    'timetable': 'Timetable'
   }
 }
 

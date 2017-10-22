@@ -14,6 +14,7 @@ import ScheduledEventPage from '@/components/event/ScheduledEventPage'
 import SpeakerPage from '@/components/event/SpeakerPage'
 import SpeakersPage from '@/components/event/SpeakersPage'
 import FeedbackPage from '@/components/FeedbackPage'
+import TimetablePage from '@/components/timetable/TimetablePage.vue'
 import { i18n } from './Internationalization.js'
 import VueLazyload from 'vue-lazyload'
 import Eventbus from './Eventbus.js'
@@ -30,6 +31,11 @@ function initVue () {
         path: '/',
         name: 'schedule',
         component: Schedule
+      },
+      {
+        path: '/timetable',
+        name: 'timetable',
+        component: TimetablePage
       },
       {
         path: '/scheduledEvent/:eventId',
