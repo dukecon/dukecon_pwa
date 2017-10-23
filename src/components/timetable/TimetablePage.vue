@@ -35,8 +35,9 @@
 <script>
   import Conference from '../../Conference'
   import TimetableItem from './TimetableItem'
-  // use this one instead of 'vis' to make formatting of date locale specific (reason unknown)
-  import Vis from 'vis/index-timeline-graph2d'
+  // use this one instead of 'vis' to have a smaller dependency
+  // must only use parts in the 'dist' folder as babel would otherwise not apply transpiling
+  let Vis = require('../../../node_modules/vis/dist/vis-timeline-graph2d.min')
   import Moment from 'moment'
   import Vue from 'vue'
 
