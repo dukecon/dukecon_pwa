@@ -50,7 +50,6 @@ npm test
 
 ### Functionality
 
-* conference CSS dynamically
 * redirect old links with parsing ID i.e. with talks.html
 * show error message if speaker ID or event ID given in URL doesn't exist
 
@@ -61,6 +60,7 @@ npm test
 * define order of talks in TalksGrid: this will give stable sorting independent of order in the backend
 * Provide an offline app using a manifest (see index.html - currently commented out as it will require to have a conference specific manifest.json and icons)
 * Use mixins to eliminate duplicate code
+* Lazy-Load vis library (to minimize memory footprint and load time)
 
 ### Out-of-scope
 

@@ -12,6 +12,11 @@
         <span data-bind="resource: 'disablefavorites'"></span>
       </div>
 
+      <!-- HACK: make calculateOptions and calculatedItems change  -->
+      {{ calculateOptions }}
+      {{ calculatedItems }}
+      <!-- END OF HACK -->
+
       <div id="talks-schedule">
         <div class="timeline-menu">
           <input @click="zoom(-0.2)" type="button" id="zoomIn" value="+"/>
@@ -30,9 +35,40 @@
 <script>
   import Conference from '../../Conference'
   import TimetableItem from './TimetableItem'
-  import Vis from 'vis'
+  // use this one instead of 'vis' to make formatting of date locale specific (reason unknown)
+  import Vis from 'vis/index-timeline-graph2d'
   import Moment from 'moment'
   import Vue from 'vue'
+
+  const hiddenDates = [
+    // these don't normally need to change because of the "repeat", so leave it hard-coded
+    // TODO: Vis hiddenDates only seem to work as long as the year matches the year of the conference
+    {
+      start: '2018-01-01T20:00:00',
+      end: '2018-01-02T07:30:00',
+      repeat: 'daily'
+    }
+  ]
+
+  function getNewTimePoint (oldTime, hours) {
+    let index, hiddenStart, hiddenEnd, hiddenSpan
+    const oldMoment = Moment(oldTime)
+    let newMoment = Moment(oldTime).add(hours, 'hours')
+    for (index in hiddenDates) {
+      hiddenStart = Moment(hiddenDates[index].start)
+      hiddenEnd = Moment(hiddenDates[index].end)
+      hiddenSpan = hiddenEnd.diff(hiddenStart, 'minutes')
+      if (hours > 0 && (newMoment.hour() > hiddenStart.hour() || oldMoment.day() < newMoment.day())) {
+        newMoment = newMoment.add(hiddenSpan, 'minutes')
+        break
+      }
+      if (hours < 0 && (newMoment.hour() < hiddenEnd.hour() || oldMoment.day() > newMoment.day())) {
+        newMoment = newMoment.subtract(hiddenSpan, 'minutes')
+        break
+      }
+    }
+    return newMoment
+  }
 
   require('../../../node_modules/vis/dist/vis.css')
 
@@ -52,30 +88,75 @@
     components: {Event},
     name: 'timetable-page',
     data () {
+      // add timeline, items, group and + shownComponents outside of watched elements
+      // as they are updated by the computed elements
+      this.timeline = null
+      this.items = null
+      this.groups = null
+      this.shownComponents = new Map()
       return {
         events: Conference.getAllEvents(),
         locations: Conference.getAllLocations(),
-        conference: Conference.getConference(),
-        visible: false,
-        shownComponents: new Map(),
-        timeline: null
+        conference: Conference.getConference()
       }
     },
     mounted: function () {
       this.draw()
     },
-    watch: {
-      'events': function () {
-        // ensure that the timetable is redrawn once the events have been loaded
-        this.draw()
+    computed: {
+      calculateOptions: function () {
+        // always calculate options so Vue known when to re-calculate the options
+        const options = this.getOptions()
+        // but only set this to the timeline if it is already rendered
+        if (this.timeline) {
+          this.timeline.setOptions(options)
+          // we need to rebind the Vue components as otherwise the click events will not work
+          this.timeline.redraw()
+          window.setTimeout(() => {
+            this.rebindVueTimetableItems(true)
+          }, 0)
+        }
+      },
+      calculatedItems: function () {
+        // always calculate locations and items so Vue known when to re-calculate the options
+        const locations = this.generateLocations()
+        const items = this.generateTableItems()
+        // but only set this to the timeline if it is already rendered
+        if (this.timeline) {
+          locations.forEach(e => {
+            if (this.groups.get(e.id)) {
+              this.groups.update(e)
+            } else {
+              this.groups.add(e)
+            }
+          })
+          this.groups.getIds().filter(id => this.locations[id] === undefined).forEach(id => this.groups.remove(id))
+
+          items.forEach(e => {
+            if (this.items.get(e.id)) {
+              this.items.update(e)
+            } else {
+              this.items.add(e)
+            }
+          })
+          this.items.getIds().filter(id => this.events[id] === undefined).forEach(id => this.items.remove(id))
+          // we need to rebind the Vue components as otherwise the click events will not work
+          window.setTimeout(() => {
+            this.timeline.redraw()
+            window.setTimeout(() => {
+              this.rebindVueTimetableItems(true)
+            }, 0)
+          }, 0)
+        }
       }
     },
-    computed: {},
     methods: {
-      generateLocations: function (visGroup) {
+      generateLocations: function () {
+        let locations = []
         Object.values(this.locations).sort(sortByOrder).forEach(l => {
-          visGroup.add({id: l.id, order: l.order, content: l.names[this.$i18n.locale]})
+          locations.push({id: l.id, order: l.order, content: l.names[this.$i18n.locale]})
         })
+        return locations
       },
       minStartTime: function () {
         let startTime
@@ -84,6 +165,9 @@
             startTime = e.start
           }
         })
+        if (!startTime) {
+          startTime = '2017-01-01T08:00:00'
+        }
         return Moment(startTime).locale(this.$i18n.locale)
       },
       maxEndTime: function () {
@@ -93,10 +177,13 @@
             endTime = e.end
           }
         })
+        if (!endTime) {
+          endTime = '2017-01-02T20:00:00'
+        }
         return Moment(endTime)
       },
       getOptions: function () {
-        let talkOptions = {
+        return {
           locale: this.$i18n.locale,
           stack: false,
           min: this.minStartTime(),
@@ -105,11 +192,7 @@
           max: this.maxEndTime(),
           moveable: true,
           zoomable: false,
-          hiddenDates: {
-            start: '2016-01-01T20:00:00',
-            end: '2016-01-02T07:30:00',
-            repeat: 'daily'
-          },
+          hiddenDates: hiddenDates,
           editable: false,
           dataAttributes: ['tooltip', 'id'],
           margin: {
@@ -118,21 +201,20 @@
           },
           orientation: 'top'
         }
-        return talkOptions
       },
-
       generateTableItems: function () {
         let tableItems = []
         Object.values(this.events).forEach(event => {
-          let tableItem = {
-            id: event.id,
-            group: event.locationId,
-            tooltip: event.title,
-            content: '<aside id="ev-' + event.id + '"></aside>',
-            start: event.start,
-            end: event.end
+          if (event !== undefined) {
+            tableItems.push({
+              id: event.id,
+              group: event.locationId,
+              tooltip: event.title,
+              content: '<aside id="ev-' + event.id + '"></aside>',
+              start: event.start,
+              end: event.end
+            })
           }
-          tableItems.push(tableItem)
         })
         return tableItems
       },
@@ -150,27 +232,29 @@
           end: this.timeline.options.end
         })
       },
-      rebindVueTimetableItems: function () {
+      rebindVueTimetableItems: function (clear) {
         let timeline = this.timeline
-        let shownComponents = this.shownComponents
         let items = timeline.getVisibleItems()
+        let shownComponents = this.shownComponents
+        if (clear === true) {
+          shownComponents.forEach((item, key, map) => {
+            item.$destroy()
+            map.delete(key)
+          })
+        }
         items.filter(id => !shownComponents.has(id)).forEach(id => {
-          let e = this.events[id]
-          let vm = new Vue({
-            ...TimetableItem,
-            propsData: {
-              event: e,
-              name: 'timetable-item'
-            },
-            parent: this
-          }).$mount('#ev-' + e.id)
-          shownComponents.set(id, vm)
-        })
-        // items will not be destroyed once they have been displayed - maybe only when data changes
-        items.filter(id => !shownComponents.has(id)).forEach(id => {
-          let vm = shownComponents.get(id)
-          vm.$destroy()
-          shownComponents.delete(id)
+          if (document.getElementById('ev-' + id) !== null) {
+            let e = this.events[id]
+            let vm = new Vue({
+              ...TimetableItem,
+              propsData: {
+                event: e,
+                name: 'timetable-item'
+              },
+              parent: this
+            }).$mount('#ev-' + e.id)
+            shownComponents.set(id, vm)
+          }
         })
         window.setTimeout(() => {
           // we bound the Vue components, the height of the elements changed
@@ -180,41 +264,33 @@
       },
       move: function (hours) {
         const range = this.timeline.getWindow()
-        const newStart = Moment(range.start).add(hours, 'hours')
-        const newEnd = Moment(range.end).add(hours, 'hours')
+        const newStart = getNewTimePoint(range.start, hours)
+        const newEnd = getNewTimePoint(range.end, hours)
         this.timeline.setWindow({
           start: newStart,
           end: newEnd
         })
       },
       draw: function () {
-        if (Object.keys(this.events).length === 0) {
-          return
-        }
-        // remove previous components
-        this.shownComponents.forEach((item, key, map) => {
-          item.$destroy()
-          map.delete(key)
-        })
         // clear previous container
         const container = document.getElementById('visualization')
         container.innerHTML = ''
 
         // create timeline
-        const groups = new Vis.DataSet()
-        this.generateLocations(groups)
-        const options = this.getOptions() // firstStart, lastEnd)
         this.timeline = new Vis.Timeline(container)
         const timeline = this.timeline
-        timeline.setOptions(options)
-        timeline.setGroups(groups)
+        timeline.setOptions(this.getOptions())
+        this.groups = new Vis.DataSet(this.generateLocations())
+        timeline.setGroups(this.groups)
+        this.items = new Vis.DataSet(this.generateTableItems())
+        timeline.setItems(this.items)
 
-        timeline.setItems(new Vis.DataSet(this.generateTableItems()))
-
+        // once the range changes and more items become visible we need to re-bind the missing elements
+        // no parameter 'true' here as this would otherwise slow down the rendering and is not necessary
         timeline.on('rangechange', this.rebindVueTimetableItems)
 
         window.setTimeout(() => {
-          this.rebindVueTimetableItems()
+          this.rebindVueTimetableItems(true)
         }, 0)
       }
     }

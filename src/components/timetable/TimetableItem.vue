@@ -1,5 +1,6 @@
 <template>
-  <event :mode="'grid'" :event="event"></event>
+  <!-- add the ID to the event so that we can un- and re-bind this in the timetable -->
+  <event :mode="'grid'" :event="event" :id="'ev-' + event.id"></event>
 </template>
 
 <script>
