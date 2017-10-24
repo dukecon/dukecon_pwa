@@ -35,10 +35,12 @@
 <script>
   import Conference from '../../Conference'
   import TimetableItem from './TimetableItem'
-  // use this one instead of 'vis' to have a smaller dependency
-  // must only use parts in the 'dist' folder as babel would otherwise not apply transpiling
-  let Vis = require('../../../node_modules/vis/dist/vis-timeline-graph2d.min')
   import Moment from 'moment'
+  // use this one instead of 'vis' to have a smaller dependency
+  // and avoid two instances of moment.js that would lead to not-changing date locale
+  // to make this work, the babel-loader in the webpack.base.conf.js needs to include the vis files
+  // as they will not be transpiled otherwise and would not work in phantomJS and Internet Explorer
+  import Vis from '../../../node_modules/vis/index-timeline-graph2d'
   import Vue from 'vue'
 
   const hiddenDates = [
@@ -243,6 +245,7 @@
             map.delete(key)
           })
         }
+        let boundComponents = false
         items.filter(id => !shownComponents.has(id)).forEach(id => {
           if (document.getElementById('ev-' + id) !== null) {
             let e = this.events[id]
@@ -254,14 +257,17 @@
               },
               parent: this
             }).$mount('#ev-' + e.id)
+            boundComponents = true
             shownComponents.set(id, vm)
           }
         })
-        window.setTimeout(() => {
-          // we bound the Vue components, the height of the elements changed
-          // let's ask timeline to redraw - this will adjust the heights
-          timeline.redraw()
-        }, 0)
+        if (boundComponents) {
+          window.setTimeout(() => {
+            // we bound the Vue components, the height of the elements changed
+            // let's ask timeline to redraw - this will adjust the heights
+            timeline.redraw()
+          }, 0)
+        }
       },
       move: function (hours) {
         const range = this.timeline.getWindow()
@@ -288,11 +294,7 @@
 
         // once the range changes and more items become visible we need to re-bind the missing elements
         // no parameter 'true' here as this would otherwise slow down the rendering and is not necessary
-        timeline.on('rangechange', this.rebindVueTimetableItems)
-
-        window.setTimeout(() => {
-          this.rebindVueTimetableItems(true)
-        }, 0)
+        timeline.on('changed', this.rebindVueTimetableItems)
       }
     }
   }
