@@ -1,0 +1,72 @@
+:toc:
+= Documentation of Interfaces
+
+== Provided Interfaces
+
+This list of provided interfaces is a guide for those who want to integrate with the Web application.
+There are no REST-interfaces (as it is a client-only HTML application).
+But there are Links that you can use to jump directly to the designated functionality.
+
+All links assume that you have prepend the base URL.
+For your convenience a link to the latest build of this software is stated here.
+
+/ (Start Page)::
+The standard page a user should navigate to.
+This usually show currently an overview of talks and a filter and a search field +
+https://latest.dukecon.org/pwa/javaland/2018/
+
+/#/timetable (Timetable)::
+This show a timetable. It is scrollable horizontally and zoomable.
+Currently there are no filters and there is no search field, but this may change over time.
+https://latest.dukecon.org/pwa/javaland/2018/#/timetable
+
+/#/speakers (Speakers)::
+This is analphabetically list of all speakers and their talks.
+https://latest.dukecon.org/pwa/javaland/2018/#/speakers
+
+/#/speaker/<speakerId> (single Speaker)::
+Link to a specific speaker. +
+https://latest.dukecon.org/pwa/javaland/2018/#/speaker/378511
+
+/#/scheduledEvent/<eventId> (single Event or Talk)::
+Link to a specific talk. +
+https://latest.dukecon.org/pwa/javaland/2018/#/scheduledEvent/548978
+
+== Consumed Interfaces
+
+This list of consumed interfaces provides a guide for those who setup an environment for a new conference or a new server in general.
+
+All links assume that you have prepend the base URL.
+For your convenience a link to the latest build of this software is stated here.
+
+rest/init.json::
+Base conference information, provides i.e. the conferenceId for the following calls. +
+https://latest.dukecon.org/pwa/javaland/2018/rest/init.json
+
+rest/conferences/<conferenceId>/styles.css::
+Styles for a specific conference
+https://latest.dukecon.org/pwa/javaland/2018/rest/conferences/javaland2018/styles.css
+
+rest/conferences/<conferenceId>::
+All events, speakers and metadata (rooms, tracks) +
+https://latest.dukecon.org/javaland/2018/rest/conferences/javaland2018
+
+rest/image-resources.json::
+Icons for the conference, i.e. for each track +
+https://latest.dukecon.org/pwa/javaland/2018/rest/image-resources.json
+
+rest/speaker/images/<photoId>::
+Photo of a specific speaker. +
+https://latest.dukecon.org/pwa/javaland/2018/rest/speaker/images/54b7e39e34aabbdf3c6a6e10e24c7821
+
+rest/eventsBooking/<conferenceId>::
+Current number of favorites and fully booked settings. +
+https://latest.dukecon.org/javaland/2018/rest/eventsBooking/javaland2018
+
+rest/preferences::
+Get preferences (favorites) of current user.
+Requires login.
+Authentication can be done with a session (when called from a browser directly) or via access token (when used via AJAX from the app).
+When you call the URL with the browser you'll be redirected to a login page.
+To update the preferences for a user we use POST to send a full set of preferences. +
+https://latest.dukecon.org/javaland/2018/rest/preferences

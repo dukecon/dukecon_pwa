@@ -1,0 +1,104 @@
+= Dukecon PWA HTML Client
+
+== Intention - why this project exists
+
+This implements a conference planner for different Conferences, for example http://javaland.eu[JavaLand].
+
+There are different clients for users. This client is the HTML and JavaScript client.
+
+Build Status: image:https://travis-ci.org/dukecon/dukecon_pwa.svg?branch=develop[Build Status,link=https://travis-ci.org/dukecon/dukecon_pwa]
+
+The current development version can be found here: https://latest.dukecon.org/pwa/javaland/2018/[JavaLand 2018]
+
+== Overview
+
+Functionality:
+
+. show talks and speakers in different views
+
+. filter and search
+
+. set favorites of the talks you plan to visit
+
+. sync favorites with the central server after login
+
+. offline functionality
+
+. usability on both mobile and desktop
+
+Requirements:
+
+. JavaScript is required to use this client
+
+. A modern browser (Google Chrome, Internet Explorer 9+, Mozilla Firefox)
+
+. Internet connection (at least on first load)
+
+== Developer and Admin Docs
+
+You find more information for developers in the link:doc/DEVELOPER.adoc[developer docs]
+
+You find more information about consumed and provided interfaces in the link:doc/INTERFACES.adoc[interfaces docs]
+
+Use the following NPM commands to start developing.
+
+[source,bash]
+----
+# install dependencies
+npm install
+
+# update dependencies
+npm update
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
+
+# run unit tests
+npm run unit
+
+# run unit tests in a loop
+npm run unitloop
+
+# run e2e tests
+npm run e2e
+
+# run all tests
+npm test
+----
+
+== TODOs
+
+* Warning, if user is not logged in and adds his/her first favorite
+* Deep Links to search query like 'https://latest.dukecon.org/javaland/2017/?search=Falk[https://latest.dukecon.org/javaland/2017/?search=Falk]'
+
+=== Functionality
+
+* redirect old links with parsing ID i.e. with talks.html
+* show error message if speaker ID or event ID given in URL doesn't exist
+
+=== Future
+
+* Separate route for each day in the overview: this will allow back-navigation when switching days and direct routing to a specific day
+* hide days without events while searching/filtering
+* define order of talks in TalksGrid: this will give stable sorting independent of order in the backend
+* Provide an offline app using a manifest (see index.html - currently commented out as it will require to have a conference specific manifest.json and icons)
+* Use mixins to eliminate duplicate code
+
+Performance:
+
+* Use Object.freeze for faster rendering
+* Use Vue virtual scroller for faster rendering
+* Use computed properties in TimetablePage.vue
+* Use date-fns instead of Moment.js for performance
+* Lazy-Load vis library (to minimize memory footprint and load time)
+
+=== Out-of-scope
+
+* Cookie warning - no longer used by DOAG
+* link to account management when logged in - not used by any conference
