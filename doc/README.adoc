@@ -226,6 +226,19 @@ $t('imprint')
 <a>{{ $t('imprint') }}</a>
 ----
 
+== Integration of Vis in the timetable view
+
+For the timetable view in _TimetablePage.vue_ the visualisation library http://visjs.org/docs/timeline[Vis Timetable] is used.
+This has no native Vue.js integration, therefore we take the following approach:
+
+. once the Timetable component is bound to the DOM initialize Vis Timetable with dummy elements for each event (method _draw()_).
+Each dummy event has the event ID as unique DOM ID.
+
+. once the Vis Timetable is rendered, call _rebindVueTimetableItems()_ binds the event components to each dummy event using the event's DOM IDs.
+This then renders the content of the events and replaces the dummy content.
+
+. When the Timetable is reset, moved, zoomed other events are bound as they become visible.
+
 == Localization
 
 To show dates and times for different locales, we use _https://momentjs.com/docs/[MomentJS]_.
@@ -256,7 +269,9 @@ At the moment only the en- (default) and de-locales are imported, seel _ContextR
 == Miscellaneous
 
 * All router views are cached using the _<keep-alive/>_ tag. This avoid long initial rendering times when returning on the _SpeakersPage_. It should be re-evaluated if this needs too much RAM.
+
 * If you have multiple images on a page, consider lazy loading of the images (see _SpeakersPage.vue_ uses _VueLazyLoad_ for this.
+
 * The scrolling position for each page is saved and restored on route navigation (see initialization of _VueRouter_).
 This is not using the HTML5 router as this requires the server file handling to be updated as all routes of the frontend will also appear as bookmarks in the backend.
 

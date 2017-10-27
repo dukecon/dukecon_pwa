@@ -66,3 +66,7 @@ npm test
 
 * Cookie warning - no longer used by DOAG
 * link to account management when logged in - not used by any conference
+* Use Object.freeze for faster rendering
+* Use Vue virtual scroller for faster rendering
+* Use computed properties in TimetablePage.vue
+* Use date-fns instead of Moment.js for performance

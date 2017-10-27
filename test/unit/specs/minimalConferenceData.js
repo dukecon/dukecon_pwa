@@ -147,116 +147,6 @@ const data = {
     ],
     'locations': [
       {
-        'id': '1',
-        'order': 1,
-        'names': {
-          'de': 'Silverado Theater',
-          'en': 'Silverado Theater'
-        },
-        'icon': 'location_1.png',
-        'capacity': 1000
-      },
-      {
-        'id': '2',
-        'order': 10,
-        'names': {
-          'de': 'JUG-Café',
-          'en': 'JUG-Café'
-        },
-        'icon': 'location_10.png',
-        'capacity': 0
-      },
-      {
-        'id': '3',
-        'order': 11,
-        'names': {
-          'de': 'Workshop-Raum Juno',
-          'en': 'Workshop-Raum Juno'
-        },
-        'icon': 'location_11.png',
-        'capacity': 0
-      },
-      {
-        'id': '4',
-        'order': 12,
-        'names': {
-          'de': 'JavaInnovationLab',
-          'en': 'JavaInnovationLab'
-        },
-        'icon': 'location_12.png',
-        'capacity': 0
-      },
-      {
-        'id': '5',
-        'order': 13,
-        'names': {
-          'de': 'Quantum 1',
-          'en': 'Quantum 1'
-        },
-        'icon': 'location_13.png',
-        'capacity': 0
-      },
-      {
-        'id': '6',
-        'order': 14,
-        'names': {
-          'de': 'Quantum 2',
-          'en': 'Quantum 2'
-        },
-        'icon': 'location_14.png',
-        'capacity': 0
-      },
-      {
-        'id': '7',
-        'order': 15,
-        'names': {
-          'de': 'Quantum 3',
-          'en': 'Quantum 3'
-        },
-        'icon': 'location_15.png',
-        'capacity': 0
-      },
-      {
-        'id': '8',
-        'order': 16,
-        'names': {
-          'de': 'Quantum 4',
-          'en': 'Quantum 4'
-        },
-        'icon': 'location_16.png',
-        'capacity': 0
-      },
-      {
-        'id': '9',
-        'order': 17,
-        'names': {
-          'de': 'Dambali (Hotel Matamba)',
-          'en': 'Dambali (Hotel Matamba)'
-        },
-        'icon': 'location_17.png',
-        'capacity': 0
-      },
-      {
-        'id': '10',
-        'order': 18,
-        'names': {
-          'de': 'Bambuti (Hotel Matamba)',
-          'en': 'Bambuti (Hotel Matamba)'
-        },
-        'icon': 'location_18.png',
-        'capacity': 0
-      },
-      {
-        'id': '11',
-        'order': 19,
-        'names': {
-          'de': 'Wang Wei (Hotel Ling Bao)',
-          'en': 'Wang Wei (Hotel Ling Bao)'
-        },
-        'icon': 'location_19.png',
-        'capacity': 0
-      },
-      {
         'id': '12',
         'order': 2,
         'names': {
@@ -297,36 +187,6 @@ const data = {
         'capacity': 250
       },
       {
-        'id': '16',
-        'order': 5,
-        'names': {
-          'de': 'Quantum 3+4',
-          'en': 'Quantum 3+4'
-        },
-        'icon': 'location_5.png',
-        'capacity': 250
-      },
-      {
-        'id': '17',
-        'order': 6,
-        'names': {
-          'de': 'Eventhalle',
-          'en': 'Eventhalle'
-        },
-        'icon': 'location_6.png',
-        'capacity': 400
-      },
-      {
-        'id': '18',
-        'order': 7,
-        'names': {
-          'de': 'Neptun',
-          'en': 'Neptun'
-        },
-        'icon': 'location_7.png',
-        'capacity': 120
-      },
-      {
         'id': '19',
         'order': 8,
         'names': {
@@ -335,16 +195,6 @@ const data = {
         },
         'icon': 'location_8.png',
         'capacity': 60
-      },
-      {
-        'id': '20',
-        'order': 9,
-        'names': {
-          'de': 'Community Hall',
-          'en': 'Community Hall'
-        },
-        'icon': 'location_9.png',
-        'capacity': 0
       }
     ],
     'defaultIcon': 'Unknown.png'

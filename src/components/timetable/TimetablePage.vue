@@ -43,36 +43,6 @@
   import Vis from '../../../node_modules/vis/index-timeline-graph2d'
   import Vue from 'vue'
 
-  const hiddenDates = [
-    // these don't normally need to change because of the "repeat", so leave it hard-coded
-    // TODO: Vis hiddenDates only seem to work as long as the year matches the year of the conference
-    {
-      start: '2018-01-01T20:00:00',
-      end: '2018-01-02T07:30:00',
-      repeat: 'daily'
-    }
-  ]
-
-  function getNewTimePoint (oldTime, hours) {
-    let index, hiddenStart, hiddenEnd, hiddenSpan
-    const oldMoment = Moment(oldTime)
-    let newMoment = Moment(oldTime).add(hours, 'hours')
-    for (index in hiddenDates) {
-      hiddenStart = Moment(hiddenDates[index].start)
-      hiddenEnd = Moment(hiddenDates[index].end)
-      hiddenSpan = hiddenEnd.diff(hiddenStart, 'minutes')
-      if (hours > 0 && (newMoment.hour() > hiddenStart.hour() || oldMoment.day() < newMoment.day())) {
-        newMoment = newMoment.add(hiddenSpan, 'minutes')
-        break
-      }
-      if (hours < 0 && (newMoment.hour() < hiddenEnd.hour() || oldMoment.day() > newMoment.day())) {
-        newMoment = newMoment.subtract(hiddenSpan, 'minutes')
-        break
-      }
-    }
-    return newMoment
-  }
-
   require('../../../node_modules/vis/dist/vis.css')
 
   const sortByOrder = function (o1, o2) {
@@ -99,8 +69,7 @@
       this.shownComponents = new Map()
       return {
         events: Conference.getAllEvents(),
-        locations: Conference.getAllLocations(),
-        conference: Conference.getConference()
+        locations: Conference.getAllLocations()
       }
     },
     mounted: function () {
@@ -151,9 +120,43 @@
             }, 0)
           }, 0)
         }
+      },
+      hiddenDates: function () {
+        // these don't normally need to change because of the "repeat", so leave it hard-coded
+        // Vis hiddenDates only seem to work as long as the year matches the year of the conference
+        let startDate = this.minStartTime().startOf('day').set('hour', 20)
+        let endDate = startDate.clone().add(1, 'day').set('hour', 7).set('minute', 30)
+        return [
+          {
+            start: startDate,
+            end: endDate,
+            repeat: 'daily'
+          }
+        ]
       }
     },
     methods: {
+      getNewTimePoint: function (oldTime, hours) {
+        let index, hiddenStart, hiddenEnd, hiddenSpan
+        const oldMoment = Moment(oldTime).local()
+        let newMoment = Moment(oldTime).add(hours, 'hours')
+        for (index in this.hiddenDates) {
+          hiddenStart = Moment(this.hiddenDates[index].start)
+          hiddenEnd = Moment(this.hiddenDates[index].end)
+          hiddenSpan = hiddenEnd.diff(hiddenStart, 'minutes')
+          if (hours > 0 && (newMoment.hour() * 60 + newMoment.minute() > hiddenStart.hour() * 60 + hiddenStart.minute() ||
+              oldMoment.day() < newMoment.day())) {
+            newMoment = newMoment.add(hiddenSpan, 'minutes')
+            break
+          }
+          if (hours < 0 && (newMoment.hour() * 60 + newMoment.minute() < hiddenEnd.hour() * 60 + hiddenEnd.minute() ||
+              oldMoment.day() > newMoment.day())) {
+            newMoment = newMoment.subtract(hiddenSpan, 'minutes')
+            break
+          }
+        }
+        return newMoment
+      },
       generateLocations: function () {
         let locations = []
         Object.values(this.locations).sort(sortByOrder).forEach(l => {
@@ -195,7 +198,7 @@
           max: this.maxEndTime(),
           moveable: true,
           zoomable: false,
-          hiddenDates: hiddenDates,
+          hiddenDates: this.hiddenDates,
           editable: false,
           dataAttributes: ['tooltip', 'id'],
           margin: {
@@ -247,7 +250,7 @@
         }
         let boundComponents = false
         items.filter(id => !shownComponents.has(id)).forEach(id => {
-          if (document.getElementById('ev-' + id) !== null) {
+          if (this.$el.querySelector('#ev-' + id) !== null) {
             let e = this.events[id]
             let vm = new Vue({
               ...TimetableItem,
@@ -271,18 +274,24 @@
       },
       move: function (hours) {
         const range = this.timeline.getWindow()
-        const newStart = getNewTimePoint(range.start, hours)
-        const newEnd = getNewTimePoint(range.end, hours)
+        let newStart = this.getNewTimePoint(range.start, hours)
+        let newEnd = this.getNewTimePoint(range.end, hours)
+        if (newStart.isBefore(this.minStartTime())) {
+          newEnd = this.minStartTime().add(Moment(range.end).diff(Moment(range.start), 'minutes'), 'minutes')
+          newStart = this.minStartTime()
+        }
+        if (newEnd.isAfter(this.maxEndTime()) || newStart.isBefore(this.minStartTime())) {
+          newStart = this.maxEndTime().subtract(Moment(range.end).diff(Moment(range.start), 'minutes'), 'minutes')
+          newEnd = this.maxEndTime()
+        }
+        // out of range
         this.timeline.setWindow({
           start: newStart,
           end: newEnd
         })
       },
       draw: function () {
-        // clear previous container
-        const container = document.getElementById('visualization')
-        container.innerHTML = ''
-
+        let container = this.$el.querySelector('#visualization')
         // create timeline
         this.timeline = new Vis.Timeline(container)
         const timeline = this.timeline
@@ -291,7 +300,6 @@
         timeline.setGroups(this.groups)
         this.items = new Vis.DataSet(this.generateTableItems())
         timeline.setItems(this.items)
-
         // once the range changes and more items become visible we need to re-bind the missing elements
         // no parameter 'true' here as this would otherwise slow down the rendering and is not necessary
         timeline.on('changed', this.rebindVueTimetableItems)
