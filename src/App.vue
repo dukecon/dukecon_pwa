@@ -79,7 +79,10 @@
     },
     watch: {
       '$route' (to, from) {
-        this.eventbus.$emit('search.visible', false)
+        if (to.path !== from.path) {
+          // only changes in path (but not query parameters) should hide the search
+          this.eventbus.$emit('search.visible', false)
+        }
       }
     },
     methods: {

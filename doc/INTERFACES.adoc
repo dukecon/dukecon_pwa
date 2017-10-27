@@ -32,6 +32,14 @@ https://latest.dukecon.org/pwa/javaland/2018/#/speaker/378511
 Link to a specific talk. +
 https://latest.dukecon.org/pwa/javaland/2018/#/scheduledEvent/548978
 
+...?search=<term> (search term as query parameter)::
+Hand over a search term as a query parameter.
+Special characters need to be URL encoded.
+German Umlauts need to be encoded as two bytes.
+You can use the following online tool to encode strings: https://meyerweb.com/eric/tools/dencoder/ +
+You can hand over a search term with any URL, but search will only filter the events if the page is search enabled. +
+https://latest.dukecon.org/pwa/javaland/2018/#/?search=L%C3%B6sung
+
 == Consumed Interfaces
 
 This list of consumed interfaces provides a guide for those who setup an environment for a new conference or a new server in general.

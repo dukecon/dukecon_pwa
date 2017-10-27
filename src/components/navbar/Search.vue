@@ -15,6 +15,11 @@
       }
     },
     watch: {
+      '$route' (to, from) {
+        if (to.query['search']) {
+          this.term = to.query['search']
+        }
+      },
       term: function (newValue) {
         this.eventbus.$emit('search.term', newValue)
       }
@@ -23,6 +28,9 @@
       this.eventbus.$on('search.reset', this.resetSearchTerm)
       this.eventbus.$on('search.visible', this.setVisible)
       this.eventbus.$on('search.init', this.publishCurrentStatus)
+      if (this.$route.query['search']) {
+        this.term = this.$route.query['search']
+      }
     },
     beforeDestroy: function () {
       this.eventbus.$off('search.reset', this.resetSearchTerm)
