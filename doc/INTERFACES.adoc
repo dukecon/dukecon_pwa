@@ -63,6 +63,10 @@ rest/eventsBooking/<conferenceId>::
 Current number of favorites and fully booked settings. +
 https://latest.dukecon.org/javaland/2018/rest/eventsBooking/javaland2018
 
+img/favicon.ico::
+Fav-Icon of the conference for the browser tab and also for bookmarks.
+https://latest.dukecon.org/pwa/javaland/2018/img/favicon.ico
+
 rest/preferences::
 Get preferences (favorites) of current user.
 Requires login.
