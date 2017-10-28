@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="33.867mm"
+   height="33.867mm"
+   version="1.1"
+   viewBox="0 0 33.866665 33.866665"
+   id="svg8"
+   sodipodi:docname="search.svg"
+   inkscape:version="0.92.1 r15371">
+  <defs
+     id="defs12" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1338"
+     inkscape:window-height="480"
+     id="namedview10"
+     showgrid="false"
+     inkscape:pagecheckerboard="true"
+     inkscape:zoom="1.8437318"
+     inkscape:cx="64.000631"
+     inkscape:cy="64.000631"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg8" />
+  <metadata
+     id="metadata2">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="g6">
+    <path
+       transform="scale(.26458)"
+       d="m57.143 28.879c-13.321 5.68e-4 -24.12 10.8-24.119 24.121 5.66e-4 13.32 10.799 24.119 24.119 24.119 3.1945 1.22e-4 6.2409-0.62611 9.0312-1.7539l18.219 24.461 10.775-8.0234-18.43-24.746c2.8447-3.9583 4.5252-8.8101 4.5254-14.057 5.11e-4 -13.322-10.799-24.122-24.121-24.121zm0.32812 9.457c7.9759-2.21e-4 14.442 6.4655 14.441 14.441 2.21e-4 7.9759-6.4655 14.442-14.441 14.441-7.9759 2.21e-4 -14.442-6.4655-14.441-14.441-2.21e-4 -7.9759 6.4655-14.442 14.441-14.441z"
+       fill="#fff"
+       opacity=".997"
+       stroke="#fff"
+       stroke-width=".42451"
+       style="paint-order:markers fill stroke"
+       id="path4" />
+  </g>
+</svg>
