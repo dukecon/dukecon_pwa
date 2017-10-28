@@ -1,9 +1,6 @@
 <template>
   <div id="speakerpage" class="content-wrapper">
     <div class="content">
-      <div v-if="Object.keys(speakers).length === 0">
-        <img src="../../assets/img/ajax-circle.gif" />
-      </div>
       <speaker :speaker="speaker" v-if="speaker"></speaker>
     </div>
   </div>

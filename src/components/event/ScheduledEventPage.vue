@@ -1,8 +1,5 @@
 <template>
   <div class="content-wrapper">
-    <div class="content" v-if="Object.keys(events).length === 0">
-      <img src="../../assets/img/ajax-circle.gif" />
-    </div>
     <scheduled-event :event="event" v-if="event"/>
   </div>
 </template>
