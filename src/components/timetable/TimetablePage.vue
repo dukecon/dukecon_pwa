@@ -43,8 +43,6 @@
   import Vis from '../../../node_modules/vis/index-timeline-graph2d'
   import Vue from 'vue'
 
-  require('../../../node_modules/vis/dist/vis.css')
-
   const sortByOrder = function (o1, o2) {
     const l1 = o1.order
     const l2 = o2.order

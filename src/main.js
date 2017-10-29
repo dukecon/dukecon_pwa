@@ -1,4 +1,5 @@
 import 'babel-polyfill'
+require('../node_modules/vis/dist/vis.css')
 require('./assets/css/pure-min.css')
 require('./assets/css/side-menu.css')
 require('./assets/css/dukecon.less')
