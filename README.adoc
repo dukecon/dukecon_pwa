@@ -78,8 +78,8 @@ npm test
 
 === Functionality
 
-* redirect old links with parsing ID i.e. with talks.html
 * show error message if speaker ID or event ID given in URL doesn't exist
+* Hint to log-in when setting fist preferred talk
 
 === Future
 
