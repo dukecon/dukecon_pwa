@@ -23,6 +23,16 @@ import Eventbus from './Eventbus.js'
 Vue.config.productionTip = false
 Vue.use(VueLazyload)
 
+{
+  // check if there is an old style search
+  let href = window.location.href
+  if (href.indexOf('?search=') !== -1 && href.indexOf('#/') === -1) {
+    // there is a search query, but no hash based routing. Prepend the hash before the search.
+    href = href.replace('?search=', '#/?search=')
+    window.location.replace(href)
+  }
+}
+
 function initVue () {
   Vue.use(VueRouter)
   const router = new VueRouter({
