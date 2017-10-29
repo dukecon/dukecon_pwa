@@ -191,7 +191,7 @@
       getOptions: function () {
         return {
           locale: this.$i18n.locale,
-          stack: true,
+          stack: true, // allow for parallel activities in the same room
           min: this.minStartTime(),
           start: this.minStartTime(), // TODO
           end: this.minStartTime().add(4, 'hours'), // TODO
@@ -202,7 +202,11 @@
           editable: false,
           dataAttributes: ['tooltip', 'id'],
           margin: {
-            item: 5, // minimal margin between items
+            item: {
+              // minimal margin between items
+              horizontal: -1, // if two events occur in the same room directly after one another, keep them in the same line (0 doesn't work)
+              vertical: 5
+            },
             axis: 5   // minimal margin between items and the axis
           },
           orientation: 'top'
