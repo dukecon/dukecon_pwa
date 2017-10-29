@@ -5,7 +5,7 @@
 
 This list of provided interfaces is a guide for those who want to integrate with the Web application.
 There are no REST-interfaces (as it is a client-only HTML application).
-But there are Links that you can use to jump directly to the designated functionality.
+But there are links that you can use to jump directly to the designated functionality.
 
 All links assume that you have prepend the base URL.
 For your convenience a link to the latest build of this software is stated here.
@@ -21,7 +21,7 @@ Currently there are no filters and there is no search field, but this may change
 https://latest.dukecon.org/pwa/javaland/2018/#/timetable
 
 /#/speakers (Speakers)::
-This is analphabetically list of all speakers and their talks.
+This is an alphabetical list of all speakers and their talks.
 https://latest.dukecon.org/pwa/javaland/2018/#/speakers
 
 /#/speaker/<speakerId> (single Speaker)::
@@ -39,6 +39,34 @@ German Umlauts need to be encoded as two bytes.
 You can use the following online tool to encode strings: https://meyerweb.com/eric/tools/dencoder/ +
 You can hand over a search term with any URL, but search will only filter the events if the page is search enabled. +
 https://latest.dukecon.org/pwa/javaland/2018/#/?search=L%C3%B6sung
+
+== Deprecated Provided Interfaces
+
+The following URLs were valid with the previous application.
+Old links are forwarded to the new links.
+
+All links assume that you have prepend the base URL.
+For your convenience a link to the latest build of this software is stated here.
+
+feedback.html::
+Links to feedback +
+https://latest.dukecon.org/pwa/javaland/2018/feedback.html
+
+schedule.html::
+Links to schedule +
+https://latest.dukecon.org/pwa/javaland/2018/schedule.html
+
+speakers.html::
+Links to all speakers +
+https://latest.dukecon.org/pwa/javaland/2018/speakers.html
+
+talk.html#talk?talkId=<talkId>::
+Links to a specific talk +
+https://latest.dukecon.org/pwa/javaland/2018/talk.html#talk?talkId=548978
+
+speaker.html#speaker?speakerId=<speakerId>::
+Links to a specific speaker +
+https://latest.dukecon.org/pwa/javaland/2018/speaker.html#speaker?speakerId=378511
 
 == Consumed Interfaces
 
