@@ -1,0 +1,11 @@
+<html>
+<body>
+<p>Redirecting to the new app (<a href=".#/timetable">click here if it doesn't redirect automatically</a>)</p>
+<script type="application/javascript">
+  var href = window.location.href
+  // redirect to new schedule
+  href = href.replace(/schedule\.html.*/, '#/timetable')
+  window.location.replace(href)
+</script>
+</body>
+</html>

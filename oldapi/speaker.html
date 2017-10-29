@@ -1,0 +1,13 @@
+<html>
+<body>
+<p>Redirecting to the new app (<a href=".#/speakers">click here if it doesn't redirect automatically</a>)</p>
+<script type="application/javascript">
+  var href = window.location.href
+  // try to redirect to the exact speaker ID in the new app
+  href = href.replace('speaker.html#speaker?speakerId=', '#/speaker/')
+  // redirect to the start page in case something doesn't match
+  href = href.replace(/speaker\.html.*/, '')
+  window.location.replace(href)
+</script>
+</body>
+</html>

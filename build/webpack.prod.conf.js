@@ -102,6 +102,11 @@ var webpackConfig = merge(baseWebpackConfig, {
       {
         from: path.resolve(__dirname, '../.htaccess'),
         to: config.build.assetsSubDirectory + '/..'
+      },
+      {
+        from: path.resolve(__dirname, '../oldapi'),
+        to: config.build.assetsSubDirectory + '/..',
+        ignore: ['*.adoc']
       }
     ]),
     // service worker caching

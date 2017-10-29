@@ -1,0 +1,13 @@
+<html>
+<body>
+<p>Redirecting to the new app (<a href=".">click here if it doesn't redirect automatically</a>)</p>
+<script type="application/javascript">
+  var href = window.location.href
+  // try to redirect to the exact talk ID in the new app
+  href = href.replace('talk.html#talk?talkId=', '#/scheduledEvent/')
+  // redirect to the start page in case something doesn't match
+  href = href.replace(/talk\.html.*/, '')
+  window.location.replace(href)
+</script>
+</body>
+</html>
