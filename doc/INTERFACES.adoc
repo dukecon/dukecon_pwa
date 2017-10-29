@@ -32,7 +32,7 @@ https://latest.dukecon.org/pwa/javaland/2018/#/speaker/378511
 Link to a specific talk. +
 https://latest.dukecon.org/pwa/javaland/2018/#/scheduledEvent/548978
 
-...?search=<term> (search term as query parameter)::
+/#/...?search=<term> (search term as query parameter)::
 Hand over a search term as a query parameter.
 Special characters need to be URL encoded.
 German Umlauts need to be encoded as two bytes.
@@ -48,25 +48,30 @@ Old links are forwarded to the new links.
 All links assume that you have prepend the base URL.
 For your convenience a link to the latest build of this software is stated here.
 
-feedback.html::
+/feedback.html::
 Links to feedback +
 https://latest.dukecon.org/pwa/javaland/2018/feedback.html
 
-schedule.html::
+/schedule.html::
 Links to schedule +
 https://latest.dukecon.org/pwa/javaland/2018/schedule.html
 
-speakers.html::
+/speakers.html::
 Links to all speakers +
 https://latest.dukecon.org/pwa/javaland/2018/speakers.html
 
-talk.html#talk?talkId=<talkId>::
+/talk.html#talk?talkId=<talkId>::
 Links to a specific talk +
 https://latest.dukecon.org/pwa/javaland/2018/talk.html#talk?talkId=548978
 
-speaker.html#speaker?speakerId=<speakerId>::
+/speaker.html#speaker?speakerId=<speakerId>::
 Links to a specific speaker +
 https://latest.dukecon.org/pwa/javaland/2018/speaker.html#speaker?speakerId=378511
+
+/...?search=<term>::
+Hand over a search term as a query parameter.
+Note that the new API always starts with a _/#/_ before the search term. +
+https://latest.dukecon.org/pwa/javaland/2018/?search=L%C3%B6sung
 
 == Consumed Interfaces
 
