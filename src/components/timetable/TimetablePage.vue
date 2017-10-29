@@ -191,7 +191,7 @@
       getOptions: function () {
         return {
           locale: this.$i18n.locale,
-          stack: false,
+          stack: true,
           min: this.minStartTime(),
           start: this.minStartTime(), // TODO
           end: this.minStartTime().add(4, 'hours'), // TODO
