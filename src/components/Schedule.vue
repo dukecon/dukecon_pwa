@@ -6,7 +6,6 @@
 </template>
 
 <script>
-  import Conference from '../Conference'
   import FilterEvents from './schedule/FilterEvents.vue'
   import TalksGrid from './schedule/TalksGrid.vue'
 
@@ -23,8 +22,6 @@
     name: 'schedule',
     data () {
       return {
-        events: Conference.getAllEvents(),
-        eventsByDay: Conference.getEventsByDay(),
         menuVisible: false
       }
     },
