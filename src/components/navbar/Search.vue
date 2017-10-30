@@ -28,6 +28,7 @@
       this.eventbus.$on('search.reset', this.resetSearchTerm)
       this.eventbus.$on('search.visible', this.setVisible)
       this.eventbus.$on('search.init', this.publishCurrentStatus)
+      this.eventbus.$on('search.term', this.appendQueryParam)
       if (this.$route.query['search']) {
         this.term = this.$route.query['search']
       }
@@ -36,6 +37,7 @@
       this.eventbus.$off('search.reset', this.resetSearchTerm)
       this.eventbus.$off('search.visible', this.setVisible)
       this.eventbus.$off('search.init', this.publishCurrentStatus)
+      this.eventbus.$off('search.term', this.appendQueryParam)
     },
     methods: {
       resetSearchTerm: function () {
@@ -46,6 +48,10 @@
       },
       publishCurrentStatus: function () {
         this.eventbus.$emit('search.term', this.term)
+      },
+      appendQueryParam: function (term) {
+        const queryParam = term ? '?search=' + term : ''
+        window.history.pushState(null, null, window.location.href.split('?')[0] + queryParam)
       }
     }
   }
