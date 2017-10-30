@@ -25,7 +25,7 @@
           <input @click="move(2)" type="button" id="moveRight" value="&gt;"/>
           <input @click="reset" type="button" id="reset" value="o"/>
         </div>
-        <div id="visualization">
+        <div ref="visualization">
         </div>
       </div>
     </div>
@@ -293,7 +293,7 @@
         })
       },
       draw: function () {
-        let container = this.$el.querySelector('#visualization')
+        let container = this.$refs.visualization
         // create timeline
         this.timeline = new Vis.Timeline(container)
         const timeline = this.timeline
