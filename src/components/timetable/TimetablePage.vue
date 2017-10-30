@@ -25,7 +25,7 @@
           <input @click="move(2)" type="button" id="moveRight" value="&gt;"/>
           <input @click="reset" type="button" id="reset" value="o"/>
         </div>
-        <div ref="visualization">
+        <div ref="visualization" id="visualization">
         </div>
       </div>
     </div>
