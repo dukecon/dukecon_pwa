@@ -79,7 +79,6 @@ npm test
 === Functionality
 
 * show error message if speaker ID or event ID given in URL doesn't exist
-* Hint to log-in when setting fist preferred talk
 
 === Future
 
