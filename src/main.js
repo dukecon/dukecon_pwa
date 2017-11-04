@@ -14,6 +14,7 @@ import TimetablePage from '@/components/timetable/TimetablePage.vue'
 import { i18n } from './Internationalization.js'
 import VueLazyload from 'vue-lazyload'
 import Eventbus from './Eventbus.js'
+import Favorites from './Favourites'
 
 require('../node_modules/vis/dist/vis.css')
 require('./assets/css/pure-min.css')
@@ -34,7 +35,13 @@ Vue.use(VueLazyload)
   }
 }
 
+let vueInitialized = false
+
 function initVue () {
+  if (vueInitialized === true) {
+    return
+  }
+  vueInitialized = true
   Vue.use(VueRouter)
   const router = new VueRouter({
     linkActiveClass: 'dark reverseBack active',
@@ -118,8 +125,15 @@ function initVue () {
   })
 }
 
+// keycloak will do URL redirects. This interferes with Vue Router
+if (window.location.href.indexOf('?redirect_fragment') === -1) {
+  // this is no redirect, so it is save to initialize Vue now
+  initVue()
+}
+
 DukeconKeycloak.init().success(function (authenticated) {
-  // keycloak will do URL redirects. This interferes with Vue Router, therefore init Vue afterwards
+  // getting the favorites will trigger the initial as we can ensure only here that the user has been logged in
+  Favorites.getFavorites()
   initVue()
 }).error(function () {
   console.log('failed to initialize keycloak - might be in testing mode')

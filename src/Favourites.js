@@ -21,6 +21,9 @@ let loadedFromServer = false
 
 /* initially sync with server just once per start of the app */
 function initialLoadFromServer () {
+  if (!Dukecloak.getKeycloak().isLoggedIn) {
+    return
+  }
   if (loadedFromServer) {
     return
   }
