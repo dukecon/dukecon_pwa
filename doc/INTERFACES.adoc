@@ -10,6 +10,8 @@ But there are links that you can use to jump directly to the designated function
 All links assume that you have prepend the base URL.
 For your convenience a link to the latest build of this software is stated here.
 
+=== Interfaces for users
+
 / (Start Page)::
 The standard page a user should navigate to.
 This usually show currently an overview of talks and a filter and a search field +
@@ -39,6 +41,16 @@ German Umlauts need to be encoded as two bytes.
 You can use the following online tool to encode strings: https://meyerweb.com/eric/tools/dencoder/ +
 You can hand over a search term with any URL, but search will only filter the events if the page is search enabled. +
 https://latest.dukecon.org/pwa/javaland/2018/#/?search=L%C3%B6sung
+
+=== Interfaces for operations
+
+The following URLs are helpful for administrating stuff:
+
+/COMMITHASH::
+Commit hash this was built on +
+https://latest.dukecon.org/pwa/javaland/2018/COMMITHASH
+
+There are also BRANCH and VERSION but they currently don't provide additional information as the central build checks out a specific commit ID and then builds it.
 
 == Deprecated Provided Interfaces
 
