@@ -16,7 +16,7 @@ describe('Search.vue', () => {
     i18n.locale = 'de'
   })
 
-  it('should render search box', () => {
+  it('should not render search box by default', () => {
     // given ...
     // ... and a Vue instance with the component
     Vue.use(Eventbus)
@@ -31,9 +31,36 @@ describe('Search.vue', () => {
       router
     }).$mount()
     // then ...
-    // ... search box is shown
-    expect(vm.$el.querySelector('#search-area > input')).to.be.defined
-    // ... Placeholder is Suchen
-    expect(vm.$el.querySelector('#search-area > input').attributes.placeholder.value).to.equal('Suchen')
+    // ... item is undefined
+    expect(vm.$el.querySelector('#search-area > input')).to.be.null
+  })
+
+  it('should render search box if visibility is set to true', done => {
+    // given ...
+    // ... and a Vue instance with the component
+    Vue.use(Eventbus)
+    Vue.use(Router)
+    const router = new Router({})
+    const vm = new Vue({
+      components: {
+        Search
+      },
+      template: '<div><search></search></div>',
+      i18n,
+      router
+    }).$mount()
+    // ... search box not visible
+    expect(vm.$el.querySelector('#search-area > input')).to.be.null
+    // when ...
+    // ... send visible event
+    vm.eventbus.$emit('search.visible', true)
+    vm.$nextTick(() => {
+      // then ...
+      // ... search box is shown
+      expect(vm.$el.querySelector('#search-area > input')).to.be.defined
+      // ... Placeholder is Suchen
+      expect(vm.$el.querySelector('#search-area > input').attributes.placeholder.value).to.equal('Suchen')
+      done()
+    })
   })
 })

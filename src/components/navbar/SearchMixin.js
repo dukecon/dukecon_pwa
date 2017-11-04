@@ -11,16 +11,10 @@ export default {
     }
   },
   activated: function () {
-    /* this appends a new CSS to the header at the very end. This ensures that it gets the highest
-       priority and it will override the standard hidden setting */
-    let style = document.createElement('style')
-    style.type = 'text/css'
-    style.appendChild(document.createTextNode('#search-area { display: inline-block; }'))
-    this.styleNode = style.childNodes[0] // a reference I store in the data hash
-    document.head.appendChild(style)
+    this.eventbus.$emit('search.visible', true)
   },
   deactivated: function () {
-    this.styleNode.remove()
+    this.eventbus.$emit('search.visible', false)
   },
   created () {
     this.eventbus.$on('search.term', this.searchEventReceived)
