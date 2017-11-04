@@ -160,12 +160,6 @@ const init = function () {
         document.title = conference.name
       }
       getEvents()
-      /* load CSS of conference */
-      var link = document.createElement('link')
-      link.setAttribute('rel', 'stylesheet')
-      link.setAttribute('type', 'text/css')
-      link.setAttribute('href', 'rest/conferences/' + conference.id + '/styles.css')
-      document.getElementsByTagName('head')[0].appendChild(link)
     })
     .catch(function (error) {
       // it seems that we are working in development mode but are offline
