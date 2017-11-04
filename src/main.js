@@ -1,9 +1,4 @@
 import 'babel-polyfill'
-require('../node_modules/vis/dist/vis.css')
-require('./assets/css/pure-min.css')
-require('./assets/css/side-menu.css')
-require('./assets/css/dukecon.less')
-require('./assets/css/style.css')
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
@@ -19,6 +14,12 @@ import TimetablePage from '@/components/timetable/TimetablePage.vue'
 import { i18n } from './Internationalization.js'
 import VueLazyload from 'vue-lazyload'
 import Eventbus from './Eventbus.js'
+
+require('../node_modules/vis/dist/vis.css')
+require('./assets/css/pure-min.css')
+require('./assets/css/side-menu.css')
+require('./assets/css/dukecon.less')
+require('./assets/css/style.css')
 
 Vue.config.productionTip = false
 Vue.use(VueLazyload)
@@ -36,10 +37,10 @@ Vue.use(VueLazyload)
 function initVue () {
   Vue.use(VueRouter)
   const router = new VueRouter({
-    linkExactActiveClass: 'dark reverseBack active',
+    linkActiveClass: 'dark reverseBack active',
     routes: [
       {
-        path: '/',
+        path: '/schedule',
         name: 'schedule',
         component: Schedule
       },
@@ -67,6 +68,10 @@ function initVue () {
         path: '/feedback',
         name: 'feedbackPage',
         component: FeedbackPage
+      },
+      {
+        path: '*',
+        redirect: '/schedule'
       }
     ]
   })

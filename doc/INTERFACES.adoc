@@ -17,6 +17,10 @@ The standard page a user should navigate to.
 This usually show currently an overview of talks and a filter and a search field +
 https://latest.dukecon.org/pwa/javaland/2018/
 
+/#/schedule (Schedule)::
+Overview of talks and a filter and a search field +
+https://latest.dukecon.org/pwa/javaland/2018/#/schedule
+
 /#/timetable (Timetable)::
 This show a timetable. It is scrollable horizontally and zoomable.
 Currently there are no filters and there is no search field, but this may change over time.

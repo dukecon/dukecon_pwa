@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/" id="logo"><img alt="Zurück zu " title="Zurück zu " :src="imgdata"/></router-link>
+  <router-link to="/schedule" id="logo"><img alt="Zurück zu " title="Zurück zu " :src="imgdata"/></router-link>
 </template>
 
 <script language="">
