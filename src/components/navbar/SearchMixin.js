@@ -13,7 +13,6 @@ export default {
   activated: function () {
     /* this appends a new CSS to the header at the very end. This ensures that it gets the highest
        priority and it will override the standard hidden setting */
-    console.log('activated called')
     let style = document.createElement('style')
     style.type = 'text/css'
     style.appendChild(document.createTextNode('#search-area { display: inline-block; }'))
@@ -21,7 +20,6 @@ export default {
     document.head.appendChild(style)
   },
   deactivated: function () {
-    console.log('deactivated called')
     this.styleNode.remove()
   },
   created () {
