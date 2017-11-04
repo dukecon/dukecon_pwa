@@ -22,7 +22,7 @@
       },
       term: function (newValue) {
         this.eventbus.$emit('search.term', newValue)
-        this.appendQueryParam(newValue)
+        this.updateQueryParam(newValue)
       }
     },
     created () {
@@ -48,10 +48,17 @@
       publishCurrentStatus: function () {
         this.eventbus.$emit('search.term', this.term)
       },
-      appendQueryParam: function (term) {
-        if (window.history) {
-          const queryParam = term ? '?search=' + term : ''
-          window.history.replaceState(null, null, window.location.href.split('?')[0] + queryParam)
+      updateQueryParam: function (term) {
+        // only update the route if it needs to be updated
+        if (term !== this.$route.query['search']) {
+          // clone the existing query and replace the current term
+          let newQuery = Object.assign({}, this.$route.query)
+          if (term && term !== '') {
+            newQuery['search'] = term
+          } else {
+            delete newQuery['search']
+          }
+          this.$router.replace({path: this.$route.path, query: newQuery})
         }
       }
     }
