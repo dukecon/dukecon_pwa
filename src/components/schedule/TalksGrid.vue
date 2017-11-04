@@ -42,6 +42,7 @@
   import Favourites from '../../Favourites'
   import Moment from 'moment'
   import Event from '../event/Event.vue'
+  import SearchMixin from '../navbar/SearchMixin'
 
   const sortByOrder = function (o1, o2) {
     const l1 = o1.slot
@@ -57,6 +58,7 @@
 
   export default {
     components: {Event},
+    mixins: [SearchMixin],
     name: 'talks-grid',
     data () {
       return {
@@ -65,7 +67,6 @@
         speakers: Conference.getAllSpeakers(),
         isoDate: null,
         filter: null,
-        searchTerm: '',
         favourites: Favourites.getFavorites()
       }
     },
@@ -165,13 +166,10 @@
     },
     created () {
       this.eventbus.$on('filter.status', this.filterEventReceived)
-      this.eventbus.$on('search.term', this.searchEventReceived)
       this.eventbus.$emit('filter.init')
-      this.eventbus.$emit('search.init')
     },
     beforeDestroy: function () {
       this.eventbus.$off('filter.status', this.filterEventReceived)
-      this.eventbus.$off('search.term', this.searchEventReceived)
     },
     methods: {
       updateDay: function (day) {
@@ -185,9 +183,6 @@
       },
       filterEventReceived (filter) {
         this.filter = filter
-      },
-      searchEventReceived (term) {
-        this.searchTerm = term
       },
       goUp () {
         window.scrollTo(0, 0)

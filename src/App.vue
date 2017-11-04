@@ -78,14 +78,6 @@
         next()
       })
     },
-    watch: {
-      '$route' (to, from) {
-        if (to.path !== from.path) {
-          // only changes in path (but not query parameters) should hide the search
-          this.eventbus.$emit('search.visible', false)
-        }
-      }
-    },
     methods: {
       toggle: function () {
         this.mobileMenuOpen = !this.mobileMenuOpen

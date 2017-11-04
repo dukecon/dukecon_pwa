@@ -36,6 +36,7 @@
   import Speaker from './Speaker.vue'
   import Twitter from './Twitter.vue'
   import Event from './Event.vue'
+  import SearchMixin from '../navbar/SearchMixin'
 
   var base = ''
 
@@ -45,30 +46,18 @@
   }
 
   export default {
-    beforeRouteEnter: (to, from, next) => {
-      next(vm => {
-        vm.eventbus.$emit('search.visible', true)
-      })
-    },
     components: {
       Event,
       Twitter,
       Speaker
     },
+    mixins: [SearchMixin],
     name: 'speakersPage',
     data () {
       return {
         speakers: Conference.getAllSpeakers(),
-        events: Conference.getAllEvents(),
-        searchTerm: ''
+        events: Conference.getAllEvents()
       }
-    },
-    created () {
-      this.eventbus.$on('search.term', this.searchEventReceived)
-      this.eventbus.$emit('search.init')
-    },
-    beforeDestroy: function () {
-      this.eventbus.$off('search.term', this.searchEventReceived)
     },
     computed: {
       // the data for the event can change once data is re-loaded in events or the eventId has been changed
@@ -107,9 +96,6 @@
           .filter(e => { return e !== this.parentEventId })
           .map(e => this.events[e])
           .filter(e => { return e !== undefined })
-      },
-      searchEventReceived (term) {
-        this.searchTerm = term
       },
       search: function (speaker) {
         return [speaker.name, speaker.company].join().toLocaleLowerCase().includes(this.searchTerm.toLowerCase())

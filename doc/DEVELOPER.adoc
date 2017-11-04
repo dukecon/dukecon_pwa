@@ -262,9 +262,12 @@ At the moment only the en- (default) and de-locales are imported, seel _ContextR
 
 * a search box exists in header
 * you can search for events on Talks page with title, abstract, speaker name and company
-* you can search for speakers on Sprecher page with speaker name and company
+* you can search for speakers on Speaker page with speaker name and company
 * after each keypress a event will fired and catched of TalksGrid and SpeakersPage
-* the search input will be reseted on filter reset or route switch
+* the search input will be reset on filter reset
+
+Each component that wants the search box should use the mixin _SearchMixin_:
+This will toggle the visibility of the search box and subscribe to changes in the search term.
 
 == Miscellaneous
 
