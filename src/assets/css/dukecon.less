@@ -940,15 +940,16 @@ a .speakerinfo {
 }
 
 #alert-window {
+    z-index: 2000;
+    visibility: visible;
     border: 1px solid;
-    position: absolute;
-    top : 1px;
-    left: 1px;
+    position: fixed;
+    top : 150px;
+    left: 40px;
     width: 350px;
     text-align: center;
     background: @white;
     box-shadow: 0 2px 3px 0 @boxShadowColor;
-    visibility: hidden;
 }
 .alert-title {
     margin: 0;
@@ -960,11 +961,6 @@ a .speakerinfo {
 .alert-button {
     margin-top: 10px;
     border-top: 1px solid @lightGray;
-}
-
-#alert-window.shown {
-    z-index: 2000;
-    visibility: visible;
 }
 
 .day-short {

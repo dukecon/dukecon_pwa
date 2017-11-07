@@ -34,7 +34,9 @@ const messages = {
     'disablefavorites': 'Ist eventuell die Einstellung "Nur Favoriten" aktiviert?',
     'loggedIn': 'eingeloggt',
     'search': 'Suchen',
-    'timetable': 'Stundenplan'
+    'timetable': 'Stundenplan',
+    'favoriteAlertTitle': 'Favoriten',
+    'favoriteAlertBody': 'Favoriten werden erst mit Eurem Konto synchronisiert wenn Ihr Euch einloggt bzw. registriert. <br><br>Clickt dazu auf das Schloss-Symbol oben.'
   },
   en: {
     'termsOfUse': 'Terms of use',
@@ -66,7 +68,9 @@ const messages = {
     'disablefavorites': 'Also check if you have "Only Favorites" selected.',
     'loggedIn': 'logged in',
     'search': 'Search',
-    'timetable': 'Timetable'
+    'timetable': 'Timetable',
+    'favoriteAlertTitle': 'Favorites',
+    'favoriteAlertBody': 'Favorites are synchronized with your account once you log in. <br><br>Click the lock symbol at the top to do so.'
   }
 }
 

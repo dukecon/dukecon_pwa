@@ -32,6 +32,7 @@
     <footer>
       <links></links>
     </footer>
+    <please-login></please-login>
   </div>
 </template>
 
@@ -48,9 +49,11 @@
   import Search from './components/navbar/Search.vue'
   import Conference from './Conference'
   import Timetable from './components/navbar/Timetable.vue'
+  import PleaseLogin from './components/PleaseLogin.vue'
 
   export default {
     components: {
+      PleaseLogin,
       Timetable,
       Backbutton,
       Search,

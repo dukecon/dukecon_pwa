@@ -74,8 +74,6 @@ npm test
 
 == TODOs
 
-* Warning, if user is not logged in and adds his/her first favorite
-
 === Functionality
 
 * show error message if speaker ID or event ID given in URL doesn't exist
