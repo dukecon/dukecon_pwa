@@ -550,36 +550,19 @@ div.title {
 }
 
 div.track {
-    font-weight:bold;
-    font-size:smaller;
     font-style:italic;
-    display:block;
-    span {
-        font-style:italic;
-        font-weight: normal;
-    }
 }
-div.room {
-    font-weight:bold;
-    font-size: smaller;
-    display:block;
-}
-div.speaker span {
+div.speaker {
     font-size: smaller;
     font-weight:bold;
 }
-div.time {
-    display:inline-block;
-    font-weight: bold;
-    font-size: smaller;
-}
-div.room span, div.time span {
+div.room, div.time, div.track {
     font-weight: normal;
+    font-size: smaller;
 }
-.time, .track, .room, .time *, .track *, .room * {
-    vertical-align: middle;
+.time, .track, .room {
     img {
-        vertical-align: text-top;
+        vertical-align: text-bottom;
     }
 }
 

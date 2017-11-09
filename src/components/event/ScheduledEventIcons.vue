@@ -2,24 +2,24 @@
   <div>
     <div :class="timeClass">
       <img width="16" height="16" src="../../assets/img/Clock.png" alt="Startzeit" title="Startzeit"/>
-      <span>{{ startDayTime }} <template v-if="durationInMinutes !== undefined">({{ durationInMinutes }} min)</template></span>
+      {{ startDayTime }} <template v-if="durationInMinutes !== undefined">({{ durationInMinutes }} min)</template>
     </div>
     <div class="room">
       <img width="16" height="16" src="../../assets/img/Home.png" alt="Raum" title="Raum"/>
-      <span>{{ locationName }}</span>
+      {{ locationName }}
       <template v-if="location.capacity">
         &nbsp;&nbsp;
         <img width="16" height="16" src="../../assets/img/chair.svg" alt="Plätze"/>
-        <span>{{ location.capacity }}</span>
+        {{ location.capacity }}
       </template>
       <template v-if="numberOfFavorites !== undefined">
         <img width="16" height="16" src="../../assets/img/StarFilled.png" alt="Favoriten"/>
-        <span>{{ numberOfFavorites }}</span>
+        {{ numberOfFavorites }}
       </template>
     </div>
     <div class="track" v-if="track">
       <img width="16" height="16" :src="trackIcon" alt="Stream" title="Stream"/>
-      <span>{{ track.names[$i18n.locale] }}</span>
+      {{ track.names[$i18n.locale] }}
     </div>
     <div class="room" v-if="mode !== 'grid'">
       <span style="margin-left: -2px;" class="language-icon">&#128172;</span>

@@ -8,7 +8,7 @@
             <div class="title darkLink">
               <router-link :to="{ name: 'speakerPage', params: { speakerId: speaker.id }}">
                 <img alt="" v-lazy="speakerImageUrl(speaker)">
-                <span>{{speaker.name}}</span>
+                {{speaker.name}}
               </router-link>
             </div>
             <div class="track"><span>{{speaker.company}}</span></div>
@@ -21,9 +21,7 @@
           <div>{{bioShort(speaker)}}</div>
         </td>
         <td class="speakertalks">
-          <div v-for="event in speakerEvents(speaker)">
-            <event :event="event"/>
-          </div>
+          <event v-for="event in speakerEvents(speaker)" :event="event"/>
         </td>
       </tr>
       </tbody>

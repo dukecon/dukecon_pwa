@@ -10,7 +10,7 @@
             <img v-if="mode === 'grid'" class="language-icon" :src="languageIcon">
           </div>
           <div class="fully-booked stamp" v-if="event.fullyBooked">{{ $t('fullyBooked') }}</div>
-          <div class="speaker" v-for="s in eventSpeaker"><span>{{ s.name }}</span></div>
+          <div class="speaker" v-for="s in eventSpeaker">{{ s.name }}</div>
 
           <scheduled-event-icons :event="event" :mode="mode"/>
         </div>
