@@ -68,7 +68,7 @@ describe('SpeakersPage.vue', () => {
     }).$mount()
     // then ...
     // ... item is shown
-    expect(vm.$el.querySelector('.title span').textContent)
-      .to.equal('Thomas Bauer')
+    expect(vm.$el.querySelector('.title').textContent)
+      .to.contain('Thomas Bauer')
   })
 })

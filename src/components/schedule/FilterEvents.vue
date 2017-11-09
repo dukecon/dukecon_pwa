@@ -39,7 +39,7 @@
                                   v-if="filter.selectedFilterCount > 0">{{ filter.selectedFilterCount }} </span>
                         </span>
               <div class="filter-values">
-                <div v-for="filterValue in filter.filterValues">
+                <div v-for="filterValue in filter.filterValues" :key="filterValue.id">
                   <input :id="filter.filterKey + '-' + filterValue.id" type="checkbox"
                          v-model="filterStatus[filter.filterKey].values[filterValue.id]"/>
                   <label :for="filter.filterKey + '-' + filterValue.id">{{ filterValue.name }}</label>

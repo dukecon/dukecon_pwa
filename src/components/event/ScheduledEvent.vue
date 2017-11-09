@@ -6,7 +6,7 @@
     <table id="talkinfo">
       <tr>
         <td class="talk-details">
-          <div class="speaker-list" v-for="es in eventSpeaker">
+          <div class="speaker-list" v-for="es in eventSpeaker" :key="es.id">
             <div class="label">
               <div>
                 <router-link :to="{ name: 'speakerPage', params: { speakerId: es.id }}" class="speaker-link">
@@ -34,9 +34,7 @@
     <template v-if="eventSpeaker.length > 0">
       <h2> {{ $t('speaker') }} </h2>
       <div id="speakersubpage">
-        <template v-for="s in eventSpeaker">
-          <speaker :speaker="s" :parentEventId="event.id"/>
-        </template>
+        <speaker v-for="s in eventSpeaker" :speaker="s" :parentEventId="event.id" :key="s.id" />
       </div>
     </template>
   </div>

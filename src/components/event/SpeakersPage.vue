@@ -2,7 +2,7 @@
   <div class="content">
     <table id="speakers" v-if="Object.keys(speakers).length > 0">
       <tbody>
-      <tr tbody v-for="speaker in sortedSpeakers">
+      <tr tbody v-for="speaker in sortedSpeakers" :key="speaker.id">
         <td class="speakerinfo">
           <div class="talk-cell">
             <div class="title darkLink">
@@ -21,7 +21,7 @@
           <div>{{bioShort(speaker)}}</div>
         </td>
         <td class="speakertalks">
-          <event v-for="event in speakerEvents(speaker)" :event="event"/>
+          <event v-for="event in speakerEvents(speaker)" :event="event" :key="event.id" />
         </td>
       </tr>
       </tbody>

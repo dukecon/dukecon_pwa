@@ -22,7 +22,7 @@
     </div>
 
     <div id="talks-grid" v-if="groupedTalks.length > 0">
-      <table v-for="group in groupedTalks">
+      <table v-for="group in groupedTalks" :key="group.slotDisplay">
         <tr>
           <td v-if="searchTerm.length < 3">
             <div class="time-cell title">{{group.slotDisplay}}</div>

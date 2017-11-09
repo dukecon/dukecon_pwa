@@ -25,7 +25,7 @@
               </tbody>
             </table>
             <div class="speaker-socialmedia">
-            <span  v-for="m in socialMedias" :class="'speaker-' + m.media">
+            <span  v-for="m in socialMedias" :class="'speaker-' + m.media" :key="m.media">
               <a target="_blank" :href="m.url">
                 <img :src="m.src" :alt="m.media"/>
               </a>
@@ -38,9 +38,7 @@
       <div class="speaker-talks">
         <h2>{{ $t(parentEventId ? 'other_speakertalks' : 'speakertalks') }}</h2>
         <div v-if="speakerEvents.length == 0">{{ $t('noOtherTalks') }}</div>
-        <template v-for="e in speakerEvents">
-          <event :event="e"/>
-        </template>
+        <event v-for="e in speakerEvents" :event="e" :key="e.id"/>
       </div>
     </div>
   </div>
