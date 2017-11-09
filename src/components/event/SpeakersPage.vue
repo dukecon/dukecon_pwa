@@ -11,14 +11,14 @@
                 {{speaker.name}}
               </router-link>
             </div>
-            <div class="track"><span>{{speaker.company}}</span></div>
+            <div class="track">{{speaker.company}}</div>
             <div class="room">
               <twitter :url="speaker.twitter"/>
             </div>
           </div>
         </td>
         <td class="speakerdetails">
-          <div>{{bioShort(speaker)}}</div>
+          {{bioShort(speaker)}}
         </td>
         <td class="speakertalks">
           <event v-for="event in speakerEvents(speaker)" :event="event" :key="event.id" />
