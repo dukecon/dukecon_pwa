@@ -63,19 +63,19 @@ function getEvents () {
         Vue.set(events, v.id, v)
       })
       response.data.speakers.forEach(v => {
-        Vue.set(speakers, v.id, v)
+        Vue.set(speakers, v.id, Object.freeze(v))
       })
       response.data.metaData.locations.forEach(v => {
-        Vue.set(locations, v.id, v)
+        Vue.set(locations, v.id, Object.freeze(v))
       })
       response.data.metaData.languages.forEach(v => {
-        Vue.set(languages, v.id, v)
+        Vue.set(languages, v.id, Object.freeze(v))
       })
       response.data.metaData.audiences.forEach(v => {
-        Vue.set(audiences, v.id, v)
+        Vue.set(audiences, v.id, Object.freeze(v))
       })
       response.data.metaData.tracks.forEach(v => {
-        Vue.set(tracks, v.id, v)
+        Vue.set(tracks, v.id, Object.freeze(v))
       })
       let days = groupBy(events, function (event) { return event.start ? event.start.substr(0, 10) : null })
       Object.entries(days).forEach(e => {

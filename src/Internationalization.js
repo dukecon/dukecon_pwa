@@ -3,7 +3,7 @@ import VueI18n from 'vue-i18n'
 
 Vue.use(VueI18n)
 
-const messages = {
+const messages = Object.freeze({
   de: {
     'termsOfUse': 'Nutzungsbedingungen',
     'imprint': 'Impressum',
@@ -72,7 +72,7 @@ const messages = {
     'favoriteAlertTitle': 'Favorites',
     'favoriteAlertBody': 'Favorites are synchronized with your account once you log in. <br><br>Click the lock symbol at the top to do so.'
   }
-}
+})
 
 // Create VueI18n instance with options
 export let i18n = new VueI18n({
