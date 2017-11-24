@@ -3,14 +3,6 @@
     <!-- use this for testing -->
     <!-- <span @click="draw">redraw</span> -->
     <div id="content">
-      <div id="nothingtoshow" class="alternate" v-if="false">
-        <!-- TODO allow filtering for timetable -->
-        <span data-bind="resource: 'notalksfound'"></span>
-        <a class="clickable" data-bind="click: deactivateFilters, resource: 'deactivate'"></a> <span
-        data-bind="resource: 'or'"></span>
-        <a class="clickable" data-bind="click: resetFilters, resource: 'reset'"></a><span>!</span><br>
-        <span data-bind="resource: 'disablefavorites'"></span>
-      </div>
 
       <!-- HACK: make calculateOptions and calculatedItems change  -->
       {{ calculateOptions }}
