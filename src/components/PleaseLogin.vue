@@ -1,6 +1,6 @@
 <template>
   <div id="alert-window" class="dark" v-if="visible">
-    <div class="alert-title darkBack reverse" data-bind="resource : resourceTitle">{{ $t('favoriteAlertTitle') }}</div>
+    <div class="alert-title darkBack reverse">{{ $t('favoriteAlertTitle') }}</div>
     <div class="alert-body" v-html="$t('favoriteAlertBody')"></div>
     <div class="alert-button">
       <button @click="clicked">OK</button>
