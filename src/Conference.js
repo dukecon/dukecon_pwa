@@ -26,6 +26,10 @@ let tracks
 let conference
 
 let base = ''
+if (window.location.href.indexOf('http://localhost:8080') !== -1) {
+  // uncomment the following line if you want to use static data for local development
+  // base = '/static/'
+}
 
 let initialized = false
 
