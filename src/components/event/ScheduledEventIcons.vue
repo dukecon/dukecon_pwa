@@ -23,8 +23,8 @@
     </div>
     <div class="room" v-if="mode !== 'grid'">
       <span style="margin-left: -2px;" class="language-icon">&#128172;</span>
-      <span>{{ language.names[$i18n.locale] }}</span>
-      <span v-if="event.simultan">{{ $t('simultan') }}</span>
+      {{ language.names[$i18n.locale] }}
+      <template v-if="event.simultan">{{ $t('simultan') }}</template>
       <img alt="" class="language-icon" :src="languageIcon">
     </div>
   </div>
