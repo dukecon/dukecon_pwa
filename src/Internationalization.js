@@ -36,7 +36,11 @@ const messages = Object.freeze({
     'search': 'Suchen',
     'timetable': 'Stundenplan',
     'favoriteAlertTitle': 'Favoriten',
-    'favoriteAlertBody': 'Favoriten werden erst mit Eurem Konto synchronisiert wenn Ihr Euch einloggt bzw. registriert. <br><br>Clickt dazu auf das Schloss-Symbol oben.'
+    'favoriteAlertBody': 'Favoriten werden erst mit Eurem Konto synchronisiert wenn Ihr Euch einloggt bzw. registriert. <br><br>Clickt dazu auf das Schloss-Symbol oben.',
+    'document.slides': 'Presentation',
+    'document.manuscript': 'Manuskript',
+    'document.other': 'Andere',
+    'documentDownload': 'Unterlagen zum Herunterladen'
   },
   en: {
     'termsOfUse': 'Terms of use',
@@ -70,7 +74,11 @@ const messages = Object.freeze({
     'search': 'Search',
     'timetable': 'Timetable',
     'favoriteAlertTitle': 'Favorites',
-    'favoriteAlertBody': 'Favorites are synchronized with your account once you log in. <br><br>Click the lock symbol at the top to do so.'
+    'favoriteAlertBody': 'Favorites are synchronized with your account once you log in. <br><br>Click the lock symbol at the top to do so.',
+    'document.slides': 'Presentation',
+    'document.manuscript': 'Manuscript',
+    'document.other': 'Other',
+    'documentDownload': 'Documents to download'
   }
 })
 

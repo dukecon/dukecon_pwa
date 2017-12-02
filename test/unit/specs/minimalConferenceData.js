@@ -219,7 +219,12 @@ const data = {
       'simultan': false,
       'veryPopular': true,
       'fullyBooked': false,
-      'numberOfFavorites': 0
+      'numberOfFavorites': 0,
+      'documents': {
+        'slides': null,
+        'manuscript': null,
+        'other': null
+      }
     },
     {
       'id': '529697',
@@ -239,7 +244,12 @@ const data = {
       'simultan': false,
       'veryPopular': true,
       'fullyBooked': false,
-      'numberOfFavorites': 0
+      'numberOfFavorites': 0,
+      'documents': {
+        'slides': null,
+        'manuscript': null,
+        'other': null
+      }
     },
     {
       'id': '529516',
@@ -259,7 +269,12 @@ const data = {
       'simultan': false,
       'veryPopular': true,
       'fullyBooked': false,
-      'numberOfFavorites': 0
+      'numberOfFavorites': 0,
+      'documents': {
+        'slides': null,
+        'manuscript': null,
+        'other': null
+      }
     }
   ],
   speakers: [

@@ -13,28 +13,35 @@
                   {{es.name}}
                 </router-link>
                 <span class="speakerinfo" v-if="es.company">{{ es.company }}</span>
-                <twitter :url="es.twitter"/>
+                <twitter :url="es.twitter"></twitter>
               </div>
             </div>
           </div>
 
-          <favourite :event="event" />
+          <favourite :event="event"></favourite>
 
-          <scheduled-event-icons :event="event"/>
+          <scheduled-event-icons :event="event"></scheduled-event-icons>
 
           <div class="fully-booked" v-if="event.fullyBooked">{{ $t('fullyBooked') }}</div>
+
+          <template v-if="documents.length > 0">
+            <div class="label" style="margin-top: 1em">{{ $t('documentDownload') }}</div>
+            <li v-for="entry in documents" :key="entry[0]">
+              <a :href="entry[1]" target="_blank">{{ $t('document.' + entry[0]) }}</a>
+            </li>
+          </template>
 
         </td>
         <td class="talk-abstract">
           <div class="label">Abstract</div>
-          <div class="talk-abstract" v-html="abstractTextHtml"/>
+          <div class="talk-abstract" v-html="abstractTextHtml"></div>
         </td>
       </tr>
     </table>
     <template v-if="eventSpeaker.length > 0">
       <h2> {{ $t('speaker') }} </h2>
       <div id="speakersubpage">
-        <speaker v-for="s in eventSpeaker" :speaker="s" :parentEventId="event.id" :key="s.id" />
+        <speaker v-for="s in eventSpeaker" :speaker="s" :parentEventId="event.id" :key="s.id"></speaker>
       </div>
     </template>
   </div>
@@ -72,6 +79,9 @@
         return this.event.speakerIds
           .map(id => this.speakers[id])
           .filter(s => s !== undefined)
+      },
+      documents: function () {
+        return Object.entries(this.event.documents).filter(a => a[1] !== null)
       }
     }
   }
