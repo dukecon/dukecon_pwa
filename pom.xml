@@ -17,6 +17,7 @@
     <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
     <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
     <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+    <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
     <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
     <node.version>v6.11.3</node.version>
     <npm.version>5.4.2</npm.version>
@@ -138,6 +139,13 @@
         <version>${maven-surefire-plugin.version}</version>
         <configuration>
           <skip>true</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>${maven-jar-plugin.version}</version>
+        <configuration>
+          <skipIfEmpty>true</skipIfEmpty>
         </configuration>
       </plugin>
     </plugins>
