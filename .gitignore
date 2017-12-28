@@ -9,6 +9,8 @@ yarn-error.log*
 test/unit/coverage
 test/e2e/reports
 selenium-debug.log
+# TODO Cleanup package versions, cf. https://github.com/dukecon/dukecon_pwa/issues/32
+package-lock.json
 
 # Editor directories and files
 .idea/
