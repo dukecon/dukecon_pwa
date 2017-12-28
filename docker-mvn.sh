@@ -1,0 +1,8 @@
+#!/bin/bash
+
+exec docker run -it --rm \
+  -v "$HOME/.m2:/root/.m2" \
+  -v "$PWD":/usr/src/mymaven \
+  -w /usr/src/mymaven \
+  dukecon/dukecon-maven:latest \
+  mvn "$@"

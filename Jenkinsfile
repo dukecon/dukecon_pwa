@@ -14,10 +14,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        // using the Pipeline Maven plugin we can set maven configuration settings, publish test results, and annotate the Jenkins console
-        withMaven {
-          sh 'mvn clean verify'
-        }
+        sh './docker-mvn.sh clean verify'
       }
     }
   }
