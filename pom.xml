@@ -12,8 +12,16 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- Plugins and Dependency Versions - keep them in Alphabetical order! -->
+    <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
+    <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
+    <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+    <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
     <node.version>v6.11.3</node.version>
     <npm.version>5.4.2</npm.version>
+
+    <!-- IntelliJ generates new version properties here - move them above every now and then -->
   </properties>
 
   <scm>
@@ -33,7 +41,7 @@
     <plugins>
       <plugin>
         <artifactId>maven-clean-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>${maven-clean-plugin.version}</version>
         <configuration>
           <filesets>
             <fileset>
@@ -50,7 +58,7 @@
       <plugin>
         <groupId>com.github.eirslett</groupId>
         <artifactId>frontend-maven-plugin</artifactId>
-        <version>1.6</version>
+        <version>${frontend-maven-plugin.version}</version>
         <configuration>
           <nodeVersion>${node.version}</nodeVersion>
           <npmVersion>${npm.version}</npmVersion>
@@ -120,14 +128,14 @@
       </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.6.1</version>
+        <version>${maven-compiler-plugin.version}</version>
         <configuration>
           <skip>true</skip>
         </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.19.1</version>
+        <version>${maven-surefire-plugin.version}</version>
         <configuration>
           <skip>true</skip>
         </configuration>
@@ -142,7 +150,7 @@
         <plugins>
           <plugin>
             <artifactId>maven-clean-plugin</artifactId>
-            <version>3.0.0</version>
+            <version>${maven-clean-plugin.version}</version>
             <configuration>
               <filesets>
                 <fileset>
