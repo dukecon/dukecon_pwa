@@ -6,7 +6,11 @@ pipeline {
       label 'docker'
     }
   }
-  
+
+  triggers {
+    pollSCM('* * * * *')
+  }
+
   stages {
     stage('Build') {
       steps {
