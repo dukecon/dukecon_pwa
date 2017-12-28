@@ -12,8 +12,16 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- Plugins and Dependency Versions - keep them in Alphabetical order! -->
+    <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
+    <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
+    <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+    <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
     <node.version>v6.11.3</node.version>
     <npm.version>5.4.2</npm.version>
+
+    <!-- IntelliJ generates new version properties here - move them above every now and then -->
   </properties>
 
   <scm>
@@ -33,7 +41,7 @@
     <plugins>
       <plugin>
         <artifactId>maven-clean-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>${maven-clean-plugin.version}</version>
         <configuration>
           <filesets>
             <fileset>
@@ -50,7 +58,7 @@
       <plugin>
         <groupId>com.github.eirslett</groupId>
         <artifactId>frontend-maven-plugin</artifactId>
-        <version>1.6</version>
+        <version>${frontend-maven-plugin.version}</version>
         <configuration>
           <nodeVersion>${node.version}</nodeVersion>
           <npmVersion>${npm.version}</npmVersion>
@@ -120,14 +128,14 @@
       </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.6.1</version>
+        <version>${maven-compiler-plugin.version}</version>
         <configuration>
           <skip>true</skip>
         </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.19.1</version>
+        <version>${maven-surefire-plugin.version}</version>
         <configuration>
           <skip>true</skip>
         </configuration>
@@ -142,7 +150,7 @@
         <plugins>
           <plugin>
             <artifactId>maven-clean-plugin</artifactId>
-            <version>3.0.0</version>
+            <version>${maven-clean-plugin.version}</version>
             <configuration>
               <filesets>
                 <fileset>
@@ -156,6 +164,93 @@
                   <followSymlinks>false</followSymlinks>
                 </fileset>
               </filesets>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>docker</id>
+      <build>
+        <defaultGoal>package</defaultGoal>
+        <plugins>
+          <plugin>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>3.0.2</version>
+            <executions>
+              <execution>
+                <id>copy-dockerfile</id>
+                <phase>prepare-package</phase>
+                <goals>
+                  <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>${basedir}/target/docker-build/</outputDirectory>
+                  <resources>
+                    <resource>
+                      <directory>${basedir}/docker</directory>
+                      <!--<includes>-->
+                        <!--<include>Dockerfile</include>-->
+                      <!--</includes>-->
+                      <filtering>true</filtering>
+                    </resource>
+                  </resources>
+                </configuration>
+              </execution>
+              <execution>
+                <id>copy-dist</id>
+                <phase>prepare-package</phase>
+                <goals>
+                  <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>${basedir}/target/docker-build/dist</outputDirectory>
+                  <resources>
+                    <resource>
+                      <directory>${basedir}/dist</directory>
+                      <filtering>false</filtering>
+                    </resource>
+                  </resources>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>io.fabric8</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <version>0.21.0</version>
+            <configuration>
+              <images>
+                <image>
+                  <name>dukecon/dukecon-pwa:${project.version}</name>
+                  <build>
+                    <from>httpd:alpine</from>
+                    <maintainer>gerd@aschemann.net</maintainer>
+                    <tags>
+                      <tag>${project.version}</tag>
+                      <tag>latest</tag>
+                    </tags>
+                    <ports>
+                      <port>80</port>
+                    </ports>
+                    <dockerFile>${basedir}/target/docker-build/Dockerfile</dockerFile>
+                    <!--<assembly>-->
+                      <!--<targetDir>/</targetDir>-->
+                      <!--<exportTargetDir>false</exportTargetDir>-->
+                      <!--<inline xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2" xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">-->
+                        <!--<id>dukecon-pwa</id>-->
+                        <!--<files>-->
+                          <!--<file>-->
+                            <!--<source>dist</source>-->
+                            <!--<outputDirectory>usr/local/apache2/htdocs</outputDirectory>-->
+                            <!--<filtered>false</filtered>-->
+                          <!--</file>-->
+                        <!--</files>-->
+                       <!--</inline>-->
+                    <!--</assembly>-->
+                  </build>
+                </image>
+              </images>
             </configuration>
           </plugin>
         </plugins>
