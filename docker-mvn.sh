@@ -1,6 +1,9 @@
 #!/bin/bash
 
-exec docker run -it --rm \
+tty_option=""
+tty -s && tty_option="-t"
+
+exec docker run -i ${tty_option} --rm \
   -v "$HOME/.m2:/root/.m2" \
   -v "$PWD":/usr/src/mymaven \
   -w /usr/src/mymaven \
