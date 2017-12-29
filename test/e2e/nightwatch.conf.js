@@ -56,6 +56,8 @@ module.exports = {
     },
 
     firefox: {
+      silent: false,
+      retry_attempts: 1,
       desiredCapabilities: {
         browserName: 'firefox',
         javascriptEnabled: true,
