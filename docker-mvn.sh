@@ -11,5 +11,7 @@ exec docker run -i ${tty_option} --rm \
   -v "$PWD":/usr/src \
   -w /usr/src \
   -e MAVEN_CONFIG=$USER_HOME/.m2 \
+  --privileged \
+  --cap-add=SYS_ADMIN \
   dukecon/dukecon-maven:latest \
   /bin/sh -c "/usr/bin/xvfb-run -s \"-screen 0 2560x1440x8\" -a -e xvfb.err -- mvn $*"
