@@ -7,8 +7,6 @@ set -o pipefail
 tty_option=""
 tty -s && tty_option="-t"
 
-uid=`id -u`
-
 : ${USER_HOME:="/root"}
 
 exec docker run -i ${tty_option} --rm \
@@ -17,6 +15,5 @@ exec docker run -i ${tty_option} --rm \
   -v "$PWD":/usr/src \
   -w /usr/src \
   -e MAVEN_CONFIG=$USER_HOME/.m2 \
-  -u ${uid} \
   dukecon/dukecon-maven:latest \
   /bin/sh -c "/usr/bin/xvfb-run -s \"-screen 0 2560x1440x8\" -a -e xvfb.err -- mvn $*"
