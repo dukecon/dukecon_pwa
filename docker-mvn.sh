@@ -12,4 +12,4 @@ exec docker run -i ${tty_option} --rm \
   -w /usr/src \
   -e MAVEN_CONFIG=$USER_HOME/.m2 \
   dukecon/dukecon-maven:latest \
-  mvn "$@"
+  /bin/sh -c "/usr/bin/xvfb-run -s \"-screen 0 2560x1440x8\" -a -e xvfb.err -- mvn $*"
