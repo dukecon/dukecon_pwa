@@ -1,5 +1,9 @@
 #!/bin/bash
 
+set -eu
+
+set -o pipefail
+
 tty_option=""
 tty -s && tty_option="-t"
 
