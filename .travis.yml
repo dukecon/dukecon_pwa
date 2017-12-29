@@ -12,7 +12,9 @@ script:
   # show Java version (used by e2e testing)
   - java -version
   - npm run unit
-  - npm run e2e_headless -- --verbose
+  # https://stackoverflow.com/questions/41487659/nightwatch-selenium-socket-hang-up
+  # without xvfb-run chrome/seleniums driver hangs despite of the headless parameters
+  - xvfb-run npm run e2e_firefox -- --verbose
 after_failure:
   - cat /home/travis/build/dukecon/dukecon_pwa/selenium-debug.log
   - cat /home/travis/build/dukecon/dukecon_pwa/npm-debug.log
