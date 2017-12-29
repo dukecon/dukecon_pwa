@@ -31,7 +31,12 @@ module.exports = {
       desiredCapabilities: {
         browserName: 'chrome',
         javascriptEnabled: true,
-        acceptSslCerts: true
+        acceptSslCerts: true,
+        chromeOptions: {
+          args: [
+            '--disable-gpu --no-sandbox --window-size=1920,1080 --verbose'
+          ]
+        }
       }
     },
 

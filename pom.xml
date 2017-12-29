@@ -154,7 +154,7 @@
               <goal>npm</goal>
             </goals>
             <configuration>
-              <arguments>run e2e_headless</arguments>
+              <arguments>run e2e</arguments>
             </configuration>
           </execution>
         </executions>
