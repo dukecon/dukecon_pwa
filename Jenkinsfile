@@ -13,8 +13,10 @@ pipeline {
 
   stages {
     stage('Build') {
-      steps {
-        sh './docker-mvn.sh clean test'
+      withMvn {
+        steps {
+          sh 'mvn clean test'
+        }
       }
     }
   }
