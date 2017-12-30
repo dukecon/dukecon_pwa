@@ -14,7 +14,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh './docker-mvn.sh clean verify'
+        sh './docker-mvn.sh clean test'
       }
     }
   }
