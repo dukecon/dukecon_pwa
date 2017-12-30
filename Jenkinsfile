@@ -13,9 +13,9 @@ pipeline {
 
   stages {
     stage('Build') {
-      withMvn {
-        steps {
-          sh 'mvn clean test'
+       steps {
+         withMvn {
+           sh 'mvn clean test'
         }
       }
     }
