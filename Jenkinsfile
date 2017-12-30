@@ -19,6 +19,16 @@ pipeline {
         }
       }
     }
+    stage('Docker Build') {
+      when {
+        branch 'develop'
+      }
+      steps {
+        withMaven {
+          sh 'mvn  -Pdocker-build resources:copy-resources@copy-dockerfile resources:copy-resources@copy-dist docker:build'
+        }
+      }
+    }
   }
   post {
     failure {
