@@ -43,8 +43,20 @@ function initVue () {
   }
   vueInitialized = true
   Vue.use(VueRouter)
+
+  // for each page, store the scroll position
+  let positionStore = {}
+
   const router = new VueRouter({
     linkActiveClass: 'dark reverseBack active',
+    scrollBehavior (to, from, savedPosition) {
+      const oldPosition = positionStore[to.path]
+      if (!oldPosition) {
+        return {x: 0, y: 0}
+      } else {
+        return oldPosition
+      }
+    },
     routes: [
       {
         path: '/schedule',
@@ -94,9 +106,6 @@ function initVue () {
     i18n
   })
 
-  // for each page, store the scroll position
-  var positionStore = {}
-
   /* record the scrolling on current route (works better as back-navigation scrolls to different position,
   and this would otherwise be recorded by beforeEach() */
   window.onscroll = function () {
@@ -105,24 +114,6 @@ function initVue () {
       y: window.pageYOffset
     }
   }
-
-  // whenever the route changes, scroll to old position
-  router.beforeEach((to, from, next) => {
-    const oldPosition = positionStore[to.path]
-    // restore position after next screen rendering
-    app.$nextTick(() => {
-      if (!oldPosition || (oldPosition.y === 0 && oldPosition.x === 0)) {
-        window.scrollTo(0, 0)
-      } else {
-        // I found that rendering of the screen might take a little bit more time,
-        // therefore wait a bit if we don't scroll to the top
-        window.setTimeout(function () {
-          window.scrollTo(oldPosition.x, oldPosition.y)
-        }, 50)
-      }
-    })
-    next()
-  })
 }
 
 // keycloak will do URL redirects. This interferes with Vue Router
