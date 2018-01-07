@@ -13,9 +13,7 @@ script:
   - java -version
   - npm update
   - npm run unit
-  # https://stackoverflow.com/questions/41487659/nightwatch-selenium-socket-hang-up
-  # without xvfb-run chrome/seleniums driver hangs despite of the headless parameters
-  - xvfb-run npm run e2e_headless -- --verbose
+  - npm run e2e_headless -- --verbose
 after_failure:
   - cat /home/travis/build/dukecon/dukecon_pwa/selenium-debug.log
   - cat /home/travis/build/dukecon/dukecon_pwa/npm-debug.log
