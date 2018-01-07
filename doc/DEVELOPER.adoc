@@ -228,6 +228,8 @@ $t('imprint')
 
 == Integration of Vis in the timetable view
 
+=== How it works
+
 For the timetable view in _TimetablePage.vue_ the visualisation library http://visjs.org/docs/timeline[Vis Timetable] is used.
 This has no native Vue.js integration, therefore we take the following approach:
 
@@ -238,6 +240,14 @@ Each dummy event has the event ID as unique DOM ID.
 This then renders the content of the events and replaces the dummy content.
 
 . When the Timetable is reset, moved, zoomed other events are bound as they become visible.
+
+=== Integration in Vue, Webpack and Babel
+
+There was an issue that the distribution version of Vis already packages a Moment.js version.
+
+Therefore the needed Vis modules are imported directly, and transpiled using Babel with the Babel settings of Vis.
+See the _import_ in _TimetablePage.vue_ and the _babel-loader_ settings in _webpack.base.conf.js_ for details.
+A side effect is that the necessary Babel dependency for Vis (babel-preset-es2015) is included also in this project's development dependencies in the _package.json_ file.
 
 == Localization
 
