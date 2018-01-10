@@ -22,7 +22,7 @@
     </div>
 
     <div id="talks-grid" v-if="groupedTalks.length > 0">
-      <table v-for="group in groupedTalks" :key="group.slotDisplay">
+      <table v-for="group in groupedTalks" :key="group.slotKey">
         <tr>
           <td v-if="searchTerm.length < 3">
             <div class="time-cell title">{{group.slotDisplay}}</div>
@@ -106,7 +106,10 @@
           filteredTalks = Object.values(this.events)
             .filter(e => {
               let abstractText = e.abstractText || ''
-              let speakerInfos = e.speakerIds.map(id => this.speakers[id]).map(s => [s.name, s.company].join()).join()
+              let speakerInfos = e.speakerIds
+                .map(id => this.speakers[id])
+                .filter(s => s != null)
+                .map(s => [s.name, s.company].join()).join()
               return e.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
                 abstractText.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
                 speakerInfos.toLowerCase().includes(this.searchTerm.toLowerCase())
@@ -157,6 +160,8 @@
           .map((a) => {
             return {
               slot: a[0],
+              // the key must be unique, but slotDisplay is not as it only contains the time
+              slotKey: Moment(a[0]).locale(this.$i18n.locale).format('dd-MM HH:mm'),
               slotDisplay: Moment(a[0]).locale(this.$i18n.locale).format('HH:mm'),
               talks: a[1]
             }
