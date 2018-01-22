@@ -122,6 +122,14 @@ if (window.location.href.indexOf('?redirect_fragment') === -1) {
   initVue()
 }
 
+// show available storage space in log
+// https://developers.google.com/web/updates/2017/08/estimating-available-storage-space
+if ('storage' in navigator && 'estimate' in navigator.storage) {
+  navigator.storage.estimate().then(({usage, quota}) => {
+    console.log(`Using ${usage} out of ${quota} bytes.`)
+  })
+}
+
 DukeconKeycloak.init().success(function (authenticated) {
   // getting the favorites will trigger the initial as we can ensure only here that the user has been logged in
   Favorites.getFavorites()
