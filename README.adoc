@@ -8,7 +8,7 @@ There are different clients for users. This client is the HTML and JavaScript cl
 
 Build Status: image:https://travis-ci.org/dukecon/dukecon_pwa.svg?branch=develop[Build Status,link=https://travis-ci.org/dukecon/dukecon_pwa]
 
-The current development version can be found here: https://latest.dukecon.org/pwa/javaland/2017/[JavaLand 2017], https://latest.dukecon.org/pwa/javaland/2018/[JavaLand 2018], https://latest.dukecon.org/pwa/doag/2017/[DOAG 2017] and
+The current development version can be found here: https://latest.dukecon.org/javaland/2017/[JavaLand 2017], https://latest.dukecon.org/javaland/2018/[JavaLand 2018], https://latest.dukecon.org/doag/2017/[DOAG 2017] and
 
 == Overview
 
