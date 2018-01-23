@@ -25,7 +25,7 @@ pipeline {
       }
       steps {
         withMaven {
-          sh 'mvn  -Pdocker-build resources:copy-resources@copy-dockerfile resources:copy-resources@copy-dist docker:build'
+          sh 'mvn  -Pdocker-build resources:copy-resources@copy-dockerfile resources:copy-resources@copy-dist docker:build docker:push'
         }
       }
     }
