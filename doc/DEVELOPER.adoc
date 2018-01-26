@@ -1,4 +1,5 @@
 :toc:
+:toclevels: 3
 = Documentation for Developers
 
 == Getting started
@@ -34,6 +35,8 @@ In IntelliJ disable the option "Use safe write", otherwise the hot-reload functi
 
 === Developing the application
 
+==== Running the application in development mode
+
 Run once every time the dependencies change.
 Also you should update to the latest versions allowed by the package.json.
 While we are still in early development, we don't lock the package versions.
@@ -53,6 +56,10 @@ See _conf/index.js_ for details on how to configure this.
 ----
 npm run dev
 ----
+
+==== Changing Conference used in development mode
+
+You can edit in the file _/config/index.js_ the section _proxyTable_ to point to another conference in development mode.
 
 === Testing the application
 
