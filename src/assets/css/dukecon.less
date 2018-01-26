@@ -618,8 +618,11 @@ a .speakerinfo {
     width: 100%;
     ul {
       margin: 0;
-      list-style-type: "-";
+      list-style: none;
       padding-left: 0.5em;
+      li:before {
+        content: '-';
+      }
     }
 }
 #speakers .speakerinfo .talk-cell {
