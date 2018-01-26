@@ -37,7 +37,7 @@ const messages = Object.freeze({
     'timetable': 'Stundenplan',
     'favoriteAlertTitle': 'Favoriten',
     'favoriteAlertBody': 'Favoriten werden erst mit Eurem Konto synchronisiert wenn Ihr Euch einloggt bzw. registriert. <br><br>Clickt dazu auf das Schloss-Symbol oben.',
-    'document.slides': 'Presentation',
+    'document.slides': 'Präsentation',
     'document.manuscript': 'Manuskript',
     'document.other': 'Andere',
     'documentDownload': 'Unterlagen zum Herunterladen'
