@@ -26,9 +26,11 @@
 
           <template v-if="documents.length > 0">
             <div class="label" style="margin-top: 1em">{{ $t('documentDownload') }}</div>
-            <li v-for="entry in documents" :key="entry[0]">
-              <a :href="entry[1]" target="_blank">{{ $t('document.' + entry[0]) }}</a>
-            </li>
+            <ul>
+              <li v-for="entry in documents" :key="entry[0]">
+                <a :href="entry[1]" target="_blank">{{ $t('document.' + entry[0]) }}</a>
+              </li>
+            </ul>
           </template>
 
         </td>
