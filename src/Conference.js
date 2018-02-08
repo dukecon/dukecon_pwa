@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Vue from 'vue'
-import { groupBy } from 'lodash-es/groupBy'
+import groupBy from 'lodash-es/groupBy'
 import Favorites from './Favourites'
 
 const refreshIntervalFavoritesMs = 90 * 1000
