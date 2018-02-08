@@ -10,11 +10,11 @@ import ScheduledEventPage from '@/components/event/ScheduledEventPage'
 import SpeakerPage from '@/components/event/SpeakerPage'
 import SpeakersPage from '@/components/event/SpeakersPage'
 import FeedbackPage from '@/components/FeedbackPage'
-import TimetablePage from '@/components/timetable/TimetablePage.vue'
 import { i18n } from './Internationalization.js'
 import VueLazyload from 'vue-lazyload'
 import Eventbus from './Eventbus.js'
 import Favorites from './Favourites'
+const TimetablePage = () => import(/* webpackChunkName: "vis" */ '@/components/timetable/TimetablePage.vue')
 
 require('../node_modules/vis/dist/vis.css')
 require('./assets/css/pure-min.css')
