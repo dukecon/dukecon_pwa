@@ -17,7 +17,10 @@ describe('PleaseLogin.vue', () => {
   it('should render alert box on callback', done => {
     // given ...
     // ... a mocked Favorites
-    let registerPleaseLoginCallback = sandbox.stub(Favorites, 'registerPleaseLoginCallback')
+    let callbackFavourites = sandbox.stub(Favorites, 'getFavorites')
+    var favourites = {
+    }
+    callbackFavourites.returns(favourites)
     // ... and a Vue instance with the component
     Vue.use(Eventbus)
     const vm = new Vue({
@@ -30,9 +33,8 @@ describe('PleaseLogin.vue', () => {
     // ... alert box not visible
     expect(vm.$el.querySelector('#alert-window')).to.equal(null)
     // when ...
-    // ... callback called
-    expect(registerPleaseLoginCallback.called).to.equal(true)
-    registerPleaseLoginCallback.getCalls()[0].args[0]()
+    // ... favourites changed
+    Vue.set(favourites, '1', true)
     // ... wait for next rendering
     vm.$nextTick(() => {
       // then ...

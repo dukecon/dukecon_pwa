@@ -11,6 +11,7 @@
 <script>
   import Favourites from '../Favourites'
   import Conference from '../Conference'
+  import Dukecloak from '../DukeconKeycloak'
 
   function createCookie (name, value, days) {
     let expires
@@ -42,19 +43,19 @@
     data () {
       return {
         visible: false,
-        conference: Conference.getConference()
+        conference: Conference.getConference(),
+        favourites: Favourites.getFavorites()
       }
     },
-    mounted: function () {
-      Favourites.registerPleaseLoginCallback(() => {
+    watch: {
+      // when the favourites change and the use is not logged it, we will show a popup
+      favourites: function () {
         if (readCookie('dukecon.favouriteAlertSeen') !== '1' &&
-          this.conference.authEnabled === true) {
+          this.conference.authEnabled === true &&
+          !Dukecloak.getKeycloak().isLoggedIn) {
           this.visible = true
         }
-      })
-    },
-    destroyed: function () {
-      Favourites.registerPleaseLoginCallback(undefined)
+      }
     },
     methods: {
       clicked: function () {

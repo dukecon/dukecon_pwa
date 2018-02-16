@@ -131,8 +131,6 @@ function saveToSettings () {
   )
 }
 
-let pleaseLoginCallback
-
 export default class Favorites {
   static toggleFavorite (eventId) {
     let events = Conference.getAllEvents()
@@ -149,11 +147,6 @@ export default class Favorites {
         favoritesToRemove.add(eventId)
       }
     } else {
-      if (!Dukecloak.getKeycloak().isLoggedIn) {
-        if (pleaseLoginCallback) {
-          pleaseLoginCallback()
-        }
-      }
       events[eventId].numberOfFavorites++
       Vue.set(favorites, eventId, true)
       // remove it from the remove queue, or add it to the add queue
@@ -184,10 +177,6 @@ export default class Favorites {
         events[e].numberOfFavorites--
       }
     })
-  }
-
-  static registerPleaseLoginCallback (e) {
-    pleaseLoginCallback = e
   }
 
   static getFavorites () {
