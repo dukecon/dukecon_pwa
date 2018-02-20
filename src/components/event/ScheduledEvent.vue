@@ -46,6 +46,7 @@
         <speaker v-for="s in eventSpeaker" :speaker="s" :parentEventId="event.id" :key="s.id"></speaker>
       </div>
     </template>
+    <event-feedback :event-id="event.id"></event-feedback>
   </div>
 </template>
 
@@ -55,13 +56,15 @@
   import Twitter from './Twitter.vue'
   import Speaker from './Speaker.vue'
   import Favourite from './Favourite.vue'
+  import EventFeedback from './EventFeedback.vue'
 
   export default {
     components: {
       Favourite,
       Speaker,
       Twitter,
-      ScheduledEventIcons
+      ScheduledEventIcons,
+      EventFeedback
     },
     name: 'scheduledEvent',
     props: ['event'],
