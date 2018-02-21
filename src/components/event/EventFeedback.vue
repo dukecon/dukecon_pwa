@@ -1,41 +1,84 @@
 <template>
   <!-- TODO
-    - backend request
-    - check if logged in
-    - styling
+    - backend request (also check maxlength there!!)
     - feature flag?
+    - check time frame (after start and no more than x days after end)
   -->
-  <div>
-    <h2>How did you like this talk ({{eventId}})?</h2>
+  <div class="feedback-widget" v-if="isFeedbackEnabled()">
+    <div class="feedback-loginmessage alternate" v-if="loginMessage && !isLoggedIn() && isFeedbackWindow()">{{$t('feedback.loginMessage')}}</div>
 
-    <div class="feedback-buttons">
-      <input type="radio" :id="'feedback-good' + eventId" name="feedback_button" class="feedback-good" value="Good" v-model="feedbackRadio"><label :for="'feedback-good' + eventId">Good</label>
-      <input type="radio" :id="'feedback-okay' + eventId" name="feedback_button" class="feedback-okay" value="Okay"><label :for="'feedback-okay' + eventId">Okay</label>
-      <input type="radio" :id="'feedback-bad' + eventId" name="feedback_button" class="feedback-bad" value="Bad"><label :for="'feedback-bad' + eventId">Bad</label>
-    </div>
-    <div>
-      <textarea v-model="feedbackText" placeholder="Please explain your choice"></textarea>
-    </div>
-    <div>
-      <button @click="submitFeedback">Submit Feedback</button>
+    <div v-if="isLoggedIn() && isFeedbackWindow()">
+      <div :id="'feedbackpopupbutton' + eventId" class="feedbackpopupbutton">
+        <button class="darkBack reverse" @click="togglePopup">{{$t('feedback.popupbutton')}}</button>
+      </div>
+
+      <div :id="'feedbackpopup' + eventId" class="feedbackpopup" :class="popupHidden ? 'hidden' : ''" @click="togglePopup">
+        <div @click.stop="">
+          <h2 class="darkBack reverse">{{$t('feedback.header')}} ({{eventId}})</h2>
+
+          <div class="feedback-buttons">
+            <input type="radio" :id="'feedback-good' + eventId" name="feedback_button" class="feedback-good" value="Good" v-model="feedbackRadio"><label :for="'feedback-good' + eventId">{{$t('feedback.rating.good')}}</label>
+            <input type="radio" :id="'feedback-okay' + eventId" name="feedback_button" class="feedback-okay" value="Okay"><label :for="'feedback-okay' + eventId">{{$t('feedback.rating.okay')}}</label>
+            <input type="radio" :id="'feedback-bad' + eventId" name="feedback_button" class="feedback-bad" value="Bad"><label :for="'feedback-bad' + eventId">{{$t('feedback.rating.bad')}}</label>
+          </div>
+          <div>
+            <textarea :maxlength="feedbackTextMaxLength" v-model="feedbackText" :placeholder="$t('feedback.text')"></textarea>
+          </div>
+          <div>
+            <button class="darkBack reverse" @click="submitFeedback">{{$t('feedback.submit')}}</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style>
+  .feedback-widget {
+    margin-top: 20px;
+  }
+  .feedback-loginmessage {
+    font-size: smaller;
+    font-style: italic;
+  }
+  .hidden {
+    display: none;
+  }
+  .feedbackpopup {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+  .feedbackpopup > div {
+    background: white;
+    width: 400px;
+    margin-top: 20%;
+    display: inline-block;
+  }
+  .feedbackpopup > div > div {
+    padding: 5px 10px 10px 10px;
+  }
+  .feedbackpopup h2 {
+    margin-top: 0;
+    display: block;
+    padding: 5px 10px;
+  }
   .feedback-buttons input {
     display: none;
   }
   .feedback-buttons input + label {
+    border: 1px solid rgba(0, 0, 0, 0);
     font-weight: bold;
-    text-shadow: 1px 1px 1px black;
-    border-radius: 5px;
     display: inline-block;
     padding: 5px;
     margin-right: 5px;
   }
   .feedback-buttons input:checked + label {
-    background: lightgray;
+    border: 1px solid lightgray;
   }
   .feedback-good + label {
     color: green;
@@ -46,14 +89,29 @@
   .feedback-bad + label {
     color: red;
   }
+  textarea {
+    height: 5em;
+    width: 95%;
+    border-color: lightgray;
+  }
+
+  @media (max-width: 480px) {
+    .feedbackpopup > div {
+      width: 90%;
+    }
+  }
 </style>
 
 <script>
+  import Dukecloak from '../../DukeconKeycloak'
+
   export default {
     name: 'eventFeedback',
-    props: ['eventId'],
+    props: ['eventId', 'loginMessage'],
     data () {
       return {
+        feedbackTextMaxLength: 1024,
+        popupHidden: true,
         feedbackRadio: '',
         feedbackText: ''
       }
@@ -61,8 +119,23 @@
     computed: {
     },
     methods: {
+      isLoggedIn: function () {
+        return Dukecloak.getKeycloak().isLoggedIn
+      },
+      togglePopup: function () {
+        this.popupHidden = !this.popupHidden
+      },
+      isFeedbackWindow: function () {
+        // TODO, see top
+        return true
+      },
+      isFeedbackEnabled: function () {
+        // TODO, see top
+        return true
+      },
       submitFeedback: function () {
         alert('coming soon')
+        this.popupHidden = true
       }
     }
   }
