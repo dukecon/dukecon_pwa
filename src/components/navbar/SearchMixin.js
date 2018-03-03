@@ -11,6 +11,7 @@ export default {
     }
   },
   activated: function () {
+    this.eventbus.$emit('search.reset')
     this.eventbus.$emit('search.visible', true)
   },
   deactivated: function () {
