@@ -127,17 +127,6 @@
               <arguments>install</arguments>
             </configuration>
           </execution>
-          <!-- update pre-existing NPM package with latest version -->
-          <execution>
-            <id>npm update</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>npm</goal>
-            </goals>
-            <configuration>
-              <arguments>update</arguments>
-            </configuration>
-          </execution>
           <execution>
             <id>npm build</id>
             <phase>compile</phase>

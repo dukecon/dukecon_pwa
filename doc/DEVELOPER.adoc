@@ -37,14 +37,10 @@ In IntelliJ disable the option "Use safe write", otherwise the hot-reload functi
 
 ==== Running the application in development mode
 
-Run once every time the dependencies change.
-Also you should update to the latest versions allowed by the package.json.
-While we are still in early development, we don't lock the package versions.
-In a later phase, we plan to use shrinkwrap.
+A different developer might have updated referenced packages.
 
 ----
 npm install
-npm update
 ----
 
 To run using hot-reload development mode use the following command.
@@ -56,6 +52,24 @@ See _conf/index.js_ for details on how to configure this.
 ----
 npm run dev
 ----
+
+To update package to the next version, please run the following commands:
+
+----
+npm update
+----
+
+To lock the package versions to ensure that they are not incidentially updated by the automatic version resolution of NPM, please run the following command.
+This command will ensure that the _npm-shrinkwrap.json_ file is re-created.
+This contains the exact version number that are used in your build.
+In this project it contains a filtered version that excludes the absolute URLs.
+This way we avoid to include local mirrors of NPM, and always
+
+----
+shrinkwrap.bat
+----
+
+WARNING: You'll need to run _shrinkwrap.bat_ as after you update, add or change dependencies!
 
 ==== Changing Conference used in development mode
 
