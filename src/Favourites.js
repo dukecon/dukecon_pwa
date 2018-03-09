@@ -107,13 +107,17 @@ function syncWithServer () {
             }
           })
           .catch((e) => {
+            if (e.response.status === 401) {
+              // seems that our token has expired
+              Dukecloak.logout()
+            }
             syncIsRunning = false
             console.log('unable to load favorites', e)
           })
       })
       .error(function () {
         syncIsRunning = false
-        console.log('Error!')
+        console.log('Error updating Keycloak token!')
       })
   }
 }

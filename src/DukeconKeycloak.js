@@ -1,5 +1,6 @@
 import Keycloak from 'keycloak-js'
 import Settings from './Settings'
+import axios from 'axios/index'
 
 var base = ''
 
@@ -83,5 +84,21 @@ export default class DukeconKeycloak {
     clearTokens()
     keycloak.isLoggedIn = false
     keycloak.logout()
+  }
+
+  // call this method if you suspect a problem with the keycloak tokens.
+  // this method checks the network connection. If that works, network problems are ruled out
+  // and we forget about the current tokens
+  static handleErrorOnLogin () {
+    if (keycloak.isLoggedIn) {
+      axios.get(keycloak.authServerUrl + '/realms/' + keycloak.realm + '/.well-known/openid-configuration')
+        .then(function (response) {
+          // network connection is OK, therefore we should log out
+          // as we assume something is wrong/expired with the tokens we have
+          clearTokens()
+          keycloak.isLoggedIn = false
+          keycloak.logout()
+        })
+    }
   }
 }

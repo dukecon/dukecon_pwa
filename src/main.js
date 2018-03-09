@@ -135,6 +135,6 @@ DukeconKeycloak.init().success(function (authenticated) {
   Favorites.getFavorites()
   initVue()
 }).error(function () {
-  console.log('failed to initialize keycloak - might be in testing mode')
   initVue()
+  DukeconKeycloak.handleErrorOnLogin()
 })
