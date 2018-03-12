@@ -211,8 +211,8 @@
               group: event.locationId,
               tooltip: event.title,
               content: '<aside id="ev-' + event.id + '"></aside>',
-              start: event.start,
-              end: event.end
+              start: Moment(event.start),
+              end: Moment(event.end)
             })
           }
         })
