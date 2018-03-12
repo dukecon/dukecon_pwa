@@ -4,7 +4,13 @@ import groupBy from 'lodash-es/groupBy'
 import Favorites from './Favourites'
 
 const refreshIntervalFavoritesMs = 90 * 1000
-const refreshIntervalEventsMs = 30 * 60 * 1000
+const refreshIntervalEventsMs = 10 * 60 * 1000
+// for the conferences we use a version cached by the service worker.
+// We always get the "fastest" version, that is the version in the local
+// service worker cache. Any request will get the current version of the
+// cache and update the cache in the background.
+// We need a second request to get the most up-to-date version.
+const refreshToBustCache = 10 * 1000
 
 /* the following objects (events, conference) are the global data model for this application.
    They are read only for the users, but they will be updated asynchronously when the data is loaded, they might be
@@ -90,6 +96,7 @@ function getEvents () {
         favoritesUpdateIntervalHandle = window.setInterval(getFavoritesAndBookingsUpdates, refreshIntervalFavoritesMs)
       }
       if (!eventUpdateIntervalHandle) {
+        window.setTimeout(getEvents, refreshToBustCache)
         eventUpdateIntervalHandle = window.setInterval(getEvents, refreshIntervalEventsMs)
       }
       getFavoritesAndBookingsUpdates()
