@@ -135,7 +135,7 @@ If the application is online, a new version will be fetched from the network and
 
 Future versions might differentiate between URLs and choose _networkFirst_ to wait for a given time to get a fresh response.
 
-=== Configuring and testing teh service workers and PWA functionality
+=== Configuring and testing the service workers and PWA functionality
 
 See _webpack.prod.conf.js_ section _SWPrecacheWebpackPlugin_ on how to configure it.
 From a developer's point of view you should be able to develop the application in offline mode and it will 'just work' in offline mode.
