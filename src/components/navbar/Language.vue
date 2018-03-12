@@ -8,7 +8,7 @@
 <script language="">
   import Settings from '../../Settings'
 
-  const selectedLanguagKey = 'dukecon_language'
+  const selectedLanguageKey = 'dukecon_language'
 
   export default {
     name: 'language',
@@ -19,7 +19,7 @@
         } else {
           this.$i18n.locale = 'de'
         }
-        Settings.saveSetting(selectedLanguagKey, this.$i18n.locale)
+        Settings.saveSetting(selectedLanguageKey, this.$i18n.locale)
       }
     },
     computed: {
@@ -28,7 +28,7 @@
       }
     },
     created: function () {
-      this.$i18n.locale = Settings.getSetting(selectedLanguagKey, this.$i18n.locale)
+      this.$i18n.locale = Settings.getSetting(selectedLanguageKey, this.$i18n.locale)
     }
   }
 </script>
