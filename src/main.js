@@ -64,6 +64,11 @@ function initVue () {
         component: Schedule
       },
       {
+        path: '/schedule/:day',
+        name: 'scheduleWithDay',
+        component: Schedule
+      },
+      {
         path: '/timetable',
         name: 'timetable',
         component: TimetablePage

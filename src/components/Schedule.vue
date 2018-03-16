@@ -1,7 +1,7 @@
 <template>
   <div id="layout" class="content" :class="{active: menuVisible}">
     <filter-events @menuVisible="onMenuVisibleChange"></filter-events>
-    <talks-grid></talks-grid>
+    <talks-grid :day="day" @dayChanged="onDayChanged"></talks-grid>
   </div>
 </template>
 
@@ -20,9 +20,17 @@
         menuVisible: false
       }
     },
+    computed: {
+      day: function () {
+        return this.$route.params['day']
+      }
+    },
     methods: {
       onMenuVisibleChange (newValue) {
         this.menuVisible = newValue
+      },
+      onDayChanged (day) {
+        this.$router.push({name: 'scheduleWithDay', params: {day: day}})
       }
     }
   }

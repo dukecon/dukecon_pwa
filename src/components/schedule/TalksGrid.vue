@@ -60,22 +60,32 @@
     components: {Event},
     mixins: [SearchMixin],
     name: 'talks-grid',
+    props: {
+      day: String
+    },
     data () {
       return {
         eventsByDay: Conference.getEventsByDay(),
         events: Conference.getAllEvents(),
         speakers: Conference.getAllSpeakers(),
-        isoDate: null,
         filter: null,
         favourites: Favourites.getFavorites()
       }
     },
     computed: {
+      isoDate: function () {
+        if (this.day && this.eventsByDay[this.day]) {
+          // ensure that the day given i.e. as parameter really exists
+          return this.day
+        }
+        let dates = Object.keys(this.eventsByDay).sort()
+        if (dates.length > 0) {
+          return dates[0]
+        }
+        return null
+      },
       days: function () {
         let dates = Object.keys(this.eventsByDay).sort()
-        if (this.isoDate === null && dates.length > 0) {
-          this.isoDate = dates[0]
-        }
         return dates.map(e => {
           const m = Moment(e)
             .locale(this.$i18n.locale)
@@ -178,7 +188,7 @@
     },
     methods: {
       updateDay: function (day) {
-        this.isoDate = day.isoDate
+        this.$emit('dayChanged', day.isoDate)
       },
       resetFilters: function () {
         this.eventbus.$emit('filter.reset')
