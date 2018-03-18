@@ -56,6 +56,7 @@ npm run dev
 To run against a local server backend under http://localhost:8081 the proxy
 target url needs to be changed in config/index.js:
 
+[source,javascript]
 ----
     proxyTable: {
       '/rest': {
@@ -86,8 +87,13 @@ There is a fallback to the same static JSON file after a timeout when there
 is no internet connection available. See Conference.js, Images.js and
 DukeconKeycloak.js for further investigation (inside catch block).
 
+==== Changing Conference used in development mode
 
-To update package to the next version, please run the following commands:
+You can edit in the file _/config/index.js_ the section _proxyTable_ to point to another conference in development mode.
+
+==== Updating NPM package versions
+
+To update NPM packages to the next version, please run the following commands:
 
 ----
 npm update
@@ -105,9 +111,7 @@ shrinkwrap.bat
 
 WARNING: You'll need to run _shrinkwrap.bat_ as after you update, add or change dependencies!
 
-==== Changing Conference used in development mode
-
-You can edit in the file _/config/index.js_ the section _proxyTable_ to point to another conference in development mode.
+We don't use _package-lock.json_ as this might contain URLs to local NPM proxies and no (known) filtering or normalization is possible with this file.
 
 === Testing the application
 
