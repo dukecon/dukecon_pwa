@@ -44,7 +44,7 @@ npm install
 ----
 
 To run using hot-reload development mode use the following command.
-This will forward all requests to URLs below _/rest_ to _https://latest.dukecon.org/javaland/2018_.
+This will forward all requests to URLs below _/rest_ to _https://latest.dukecon.org/javaland/2018/rest_.
 It will also connect to the Dukecon's Keycloak instance.
 Therefore you'll need to be online when developing in this mode.
 See _conf/index.js_ for details on how to configure this.
@@ -52,6 +52,40 @@ See _conf/index.js_ for details on how to configure this.
 ----
 npm run dev
 ----
+
+To run against a local server backend under http://localhost:8081 the proxy
+target url needs to be changed in config/index.js:
+
+----
+    proxyTable: {
+      '/rest': {
+        target: 'http://localhost:8081',
+        changeOrigin: true,
+        ws: true
+      },
+      '/img/favicon.ico': {
+        target: 'http://localhost:8081',
+        changeOrigin: true,
+        ws: true
+      }
+    },
+----
+
+To use a static JSON file with conference data of 2017, just uncomment in
+Conference.js:
+
+----
+  // base = '/static/'
+----
+
+In this case rest/init.json leads to /static/rest/init.json, where the static file
+javaland2017.json (under /static/rest/conferences/) is linked to. Please ignore
+error messages of trying to read keycloak.json, etc.
+
+There is a fallback to the same static JSON file after a timeout when there
+is no internet connection available. See Conference.js, Images.js and
+DukeconKeycloak.js for further investigation (inside catch block).
+
 
 To update package to the next version, please run the following commands:
 

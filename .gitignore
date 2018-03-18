@@ -16,3 +16,4 @@ test/e2e/reports
 *.njsproj
 *.sln
 *.iml
+package-lock.json

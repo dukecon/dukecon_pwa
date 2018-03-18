@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <link v-if="conference.id" rel="stylesheet" type="text/css" :href="'rest/conferences/' + conference.id + '/styles.css'" />
+    <link v-if="conference.id" rel="stylesheet" type="text/css" :href="baseUrl + conference.id + '/styles.css'" />
     <div class="header has-search">
       <h1 id="headertitle" class="darkBack reverse">
         <homeicon></homeicon>
@@ -71,6 +71,7 @@
       return {
         mobileMenuOpen: false,
         conference: Conference.getConference(),
+        baseUrl: Conference.getBaseUrl(),
         events: Conference.getAllEvents()
       }
     },

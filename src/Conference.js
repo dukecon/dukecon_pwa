@@ -50,7 +50,7 @@ function getFavoritesAndBookingsUpdates () {
     return
   }
   talkUpdateIsRunning = true
-  axios.get(base + 'rest/eventsBooking/' + conference.id)
+  axios.get(base + 'rest/eventsBooking/' + getConferenceId())
     .then(function (response) {
       response.data.forEach(val => {
         if (events[val.eventId]) {
@@ -66,8 +66,17 @@ function getFavoritesAndBookingsUpdates () {
     })
 }
 
+/**
+ * Returns current conference id and concats suffix when in fallback mode
+ *
+ * @returns {string}
+ */
+function getConferenceId () {
+  return base.indexOf('static') === -1 ? conference.id : conference.id + '.json'
+}
+
 function getEvents () {
-  axios.get(base + 'rest/conferences/' + conference.id)
+  axios.get(base + 'rest/conferences/' + getConferenceId())
     .then(function (response) {
       response.data.events.forEach(v => {
         Vue.set(events, v.id, v)
@@ -223,6 +232,11 @@ export default class Conference {
   static getEventsByDay () {
     init()
     return eventsByDay
+  }
+
+  static getBaseUrl () {
+    init()
+    return base + 'rest/conferences/'
   }
 
   // use this for testing

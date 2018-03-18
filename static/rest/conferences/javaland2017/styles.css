@@ -1,0 +1,60 @@
+.dark {
+    color: #1aa3b1;
+    border-color: #1aa3b1;
+}
+.darkBack {
+    background-color: #1aa3b1;
+}
+.darkLink {
+    color: #1aa3b1;
+    border-color: #1aa3b1;
+}
+.darkLinkBack {
+    background-color: #1aa3b1;
+}
+.hover {
+    color: #00c3d7;
+}
+.hoverBack {
+    background-color: #00c3d7;
+}
+.hoverLink {
+    color: #00c3d7;
+}
+.hoverLinkBack {
+    background-color: #00c3d7;
+}
+.reverse {
+    color: #fff;
+}
+.reverseBack {
+    background-color: #fff;
+}
+.highlight {
+    color: #ddee55;
+}
+.highlightBack {
+    background-color: #ddee55;
+}
+.alternate {
+    color: #bf5a00;
+}
+.alternateBack {
+    background-color: #bf5a00;
+}
+a {
+    color: #1aa3b1;
+}
+a:hover {
+    color: #00c3d7;
+}
+h1 a:hover {
+    background-color: #00c3d7;
+}
+h1 a.active:hover {
+    background-color:#fff;
+    color: #1aa3b1;
+}
+button.highlightBack:hover {
+    background-color: #ddee55;
+}
