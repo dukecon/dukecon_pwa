@@ -11,7 +11,7 @@ module.exports = {
     browser
       .url(devServer)
       .waitForElementVisible('#talks-grid', 5000)
-      .assert.containsText('#talks-grid div.title a', 'Begrüßung')
+      .assert.containsText('#talks-grid div.title a', '100 % Code Coverage - TDD mit Java EE')
       .end()
   }
 }
