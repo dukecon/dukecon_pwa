@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="Object.keys(events).length > 0">
     <a href="#menu" id="menuLink" class="menu-link" @click.prevent="toggleMenu" :class="{active: menuVisible}">
       <!-- Hamburger icon -->
       <span class="stretch">&nbsp;
@@ -88,6 +88,7 @@
         })
       })
       return {
+        events: Conference.getAllEvents(),
         filtersActive: Settings.getSetting(filterActiveKey, true),
         onlyFavourites: Settings.getSetting(favsActive, false),
         languages: Conference.getAllLanguages(),
