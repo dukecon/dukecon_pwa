@@ -20,10 +20,10 @@
         <div id="mainmenu-button"><img @click="toggle" src="./assets/img/menu_24px.svg"></div>
       </h1>
     </div>
-    <div id="loading" class="alternate" v-if="conference.loadingFinish === false">
+    <div id="loading" class="alternate" v-if="conference.loadingFinished === false">
       &nbsp;
     </div>
-    <div id="nothingtoshow" class="alternate" v-if="Object.keys(events).length === 0 && conference.loadingFinish === true">
+    <div id="nothingtoshow" class="alternate" v-if="Object.keys(events).length === 0 && conference.loadingFinished === true">
       <span>{{$t('emptyConference')}}</span>
     </div>
 

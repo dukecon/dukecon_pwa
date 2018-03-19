@@ -109,7 +109,7 @@ function getEvents () {
         eventUpdateIntervalHandle = window.setInterval(getEvents, refreshIntervalEventsMs)
       }
       getFavoritesAndBookingsUpdates()
-      conference.loadingFinish = true
+      conference.loadingFinished = true
     })
     .catch(function (error) {
       // it seems that we are working in development mode but are offline
@@ -150,7 +150,7 @@ function reset () {
     homeTitle: null,
     authEnabled: false,
     name: null,
-    loadingFinish: false
+    loadingFinished: false
   }
 }
 

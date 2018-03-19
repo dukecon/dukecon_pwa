@@ -9,7 +9,7 @@
       {{ calculatedItems }}
       <!-- END OF HACK -->
 
-      <div id="talks-schedule">
+      <div id="talks-schedule" v-if="Object.keys(events).length > 0">
         <div class="timeline-menu">
           <input @click="zoom(-0.2)" type="button" id="zoomIn" value="+"/>
           <input @click="zoom(+0.2)" type="button" id="zoomOut" value="-"/>
