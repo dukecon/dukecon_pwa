@@ -31,12 +31,12 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/rest': {
-        target: 'https://latest.dukecon.org/javaland/2018',
+        target: 'http://localhost:8081',
         changeOrigin: true,
         ws: true
       },
       '/img/favicon.ico': {
-        target: 'https://latest.dukecon.org/javaland/2018',
+        target: 'http://localhost:8081',
         changeOrigin: true,
         ws: true
       }
