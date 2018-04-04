@@ -72,7 +72,7 @@ target url needs to be changed in config/index.js:
     },
 ----
 
-To use a static JSON file with conference data of 2017, just uncomment in
+To use a static JSON file with conference data of 2018, just uncomment in
 Conference.js:
 
 ----
@@ -80,7 +80,7 @@ Conference.js:
 ----
 
 In this case rest/init.json leads to /static/rest/init.json, where the static file
-javaland2017.json (under /static/rest/conferences/) is linked to. Please ignore
+javaland2018.json (under /static/rest/conferences/) is linked to. Please ignore
 error messages of trying to read keycloak.json, etc.
 
 There is a fallback to the same static JSON file after a timeout when there
