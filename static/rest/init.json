@@ -1,7 +1,7 @@
 {
-  "id": "javaland2017",
-  "name": "JavaLand 2017",
-  "year": "2017",
+  "id": "javaland2018",
+  "name": "JavaLand 2018",
+  "year": "2018",
   "url": "http://javaland.dukecon.org/2018",
   "homeUrl": "http://www.javaland.eu",
   "homeTitle": null,
@@ -17,7 +17,12 @@
     "de": "https://www.javaland.eu/de/datenschutz/",
     "en": "https://www.javaland.eu/en/privacy/"
   },
-  "startDate": "2017-03-28",
-  "endDate": "2017-03-30",
-  "authEnabled": true
+  "startDate": "2018-03-13",
+  "endDate": "2018-03-15",
+  "authEnabled": true,
+  "admin": "../rest/admin/javaland2018",
+  "forceUpdate": "../rest/conferences/update/javaland2018",
+  "conferences": "../rest/conferences/javaland2018",
+  "events": "../rest/eventsBooking/javaland2018",
+  "keycloak": "../rest/keycloak.json"
 }
