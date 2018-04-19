@@ -27,7 +27,7 @@
                    value="Bad" v-model="feedbackRadio"><label :for="'feedback-bad' + eventId">{{$t('feedback.rating.bad')}}</label>
           </div>
           <div>
-            <textarea :maxlength="feedbackTextMaxLength" v-model="feedbackText"
+            <textarea :maxlength="feedbackTextMaxLength" v-model="feedbackText" @keyup.enter="submitFeedback"
                       :placeholder="$t('feedback.text')"></textarea>
           </div>
           <div>
