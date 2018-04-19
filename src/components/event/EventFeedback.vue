@@ -77,6 +77,7 @@
 
   .feedbackpopup h2 {
     margin-top: 0;
+    margin-left: 0;
     display: block;
     padding: 5px 10px;
   }
@@ -107,6 +108,21 @@
 
   .feedback-bad + label {
     color: red;
+  }
+
+  .feedback-good:checked + label {
+    background-color: green;
+    color: white;
+  }
+
+  .feedback-okay:checked + label {
+    background-color: orange;
+    color: white;
+  }
+
+  .feedback-bad:checked + label {
+    background-color: red;
+    color: white;
   }
 
   textarea {
@@ -189,17 +205,17 @@
               config)
               .then((response) => {
                 self.popupHidden = true
-                console.log('Success!')
+                console.log('Feedback submitted!')
               })
               .catch((e) => {
                 self.popupHidden = true
-                console.log('Failure!', e)
+                console.log('Feedback Submission Failed!', e)
               })
           })
           .error(function () {
             console.log('Error refreshing token!')
+            self.popupHidden = true
           })
-        self.popupHidden = true
       }
     }
   }
