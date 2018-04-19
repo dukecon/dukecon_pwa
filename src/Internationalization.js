@@ -49,6 +49,7 @@ const messages = Object.freeze({
     'feedback.rating.bad': 'Schlecht',
     'feedback.text': 'Bitte erkläre deine Wahl',
     'feedback.submit': 'Abschicken',
+    'feedback.cancel': 'Abbrechen',
     'feedback.loginMessage': 'Bitte log dich ein, um Feedback zu geben.'
   },
   en: {
@@ -96,6 +97,7 @@ const messages = Object.freeze({
     'feedback.rating.bad': 'Bad',
     'feedback.text': 'Please explain your choice',
     'feedback.submit': 'Submit feedback',
+    'feedback.cancel': 'Cancel',
     'feedback.loginMessage': 'Log in to leave feedback'
   }
 })

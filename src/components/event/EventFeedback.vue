@@ -1,7 +1,6 @@
 <template>
   <!-- TODO
-    - backend request (also check maxlength there!!)
-    - feature flag?
+    - check maxlength for backend
     - check time frame (after start and no more than x days after end)
   -->
   <div class="feedback-widget" v-if="isFeedbackEnabled()">
@@ -17,7 +16,7 @@
       <div :id="'feedbackpopup' + eventId" class="feedbackpopup" :class="popupHidden ? 'hidden' : ''"
            @click="togglePopup">
         <div @click.stop="">
-          <h2 class="darkBack reverse">{{$t('feedback.header')}} ({{eventId}})</h2>
+          <h2 class="darkBack reverse">{{$t('feedback.header')}}</h2>
 
           <div class="feedback-buttons">
             <input type="radio" :id="'feedback-good' + eventId" name="feedback_button" class="feedback-good"
@@ -32,6 +31,7 @@
                       :placeholder="$t('feedback.text')"></textarea>
           </div>
           <div>
+            <button class="darkBack reverse" @click="cancel">{{$t('feedback.cancel')}}</button>
             <button class="darkBack reverse" @click="submitFeedback">{{$t('feedback.submit')}}</button>
           </div>
         </div>
@@ -135,7 +135,8 @@
         feedbackTextMaxLength: 1024,
         popupHidden: true,
         feedbackRadio: '',
-        feedbackText: ''
+        feedbackText: '',
+        conference: Conference.getConference()
       }
     },
     computed: {},
@@ -151,8 +152,10 @@
         return true
       },
       isFeedbackEnabled: function () {
-        // TODO, see top
-        return true
+        return this.conference.feedbackServer.active
+      },
+      cancel: function () {
+        this.togglePopup()
       },
       submitFeedback: function () {
         const self = this
@@ -181,7 +184,7 @@
             var config = {
               headers: {'Authorization': 'bearer ' + Dukecloak.getKeycloak().token}
             }
-            axios.put('rest/feedback/event/' + Conference.getConference().id + '/' + self.eventId,
+            axios.put('rest/feedback/event/' + self.conference.id + '/' + self.eventId,
               data,
               config)
               .then((response) => {
