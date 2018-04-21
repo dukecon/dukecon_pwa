@@ -62,6 +62,7 @@
     right: 0;
     background: rgba(0, 0, 0, 0.3);
     text-align: center;
+    z-index: 1;
   }
 
   .feedbackpopup > div {
