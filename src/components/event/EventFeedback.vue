@@ -168,7 +168,8 @@
         return true
       },
       isFeedbackEnabled: function () {
-        return this.conference.feedbackServer.active
+        // first check if 'feedbackServer' exists for backward compatibility
+        return this.conference.feedbackServer && this.conference.feedbackServer.active
       },
       cancel: function () {
         this.togglePopup()
