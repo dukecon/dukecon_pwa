@@ -8,27 +8,27 @@
 </template>
 
 <script language="">
-  import Conference from '../../Conference'
+import Conference from '../../Conference'
 
-  export default {
-    name: 'links',
-    data () {
-      return {
-        conference: Conference.getConference()
-      }
+export default {
+  name: 'links',
+  data () {
+    return {
+      conference: Conference.getConference()
+    }
+  },
+  computed: {
+    imprint: function () {
+      return this.conference.imprint[this.$i18n.locale]
     },
-    computed: {
-      imprint: function () {
-        return this.conference.imprint[this.$i18n.locale]
-      },
-      privacy: function () {
-        return this.conference.privacy[this.$i18n.locale]
-      },
-      termsOfUse: function () {
-        return this.conference.termsOfUse[this.$i18n.locale]
-      }
+    privacy: function () {
+      return this.conference.privacy[this.$i18n.locale]
+    },
+    termsOfUse: function () {
+      return this.conference.termsOfUse[this.$i18n.locale]
     }
   }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -3,9 +3,9 @@
 </template>
 
 <script language="">
-  export default {
-    name: 'timetable'
-  }
+export default {
+  name: 'timetable'
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -3,25 +3,25 @@
 </template>
 
 <script language="">
-  import Images from '../../Images'
+import Images from '../../Images'
 
-  export default {
-    name: 'homeicon',
-    data () {
-      return {
-        images: null,
-        conference: null
-      }
-    },
-    created () {
-      this.images = Images.getImages()
-    },
-    computed: {
-      imgdata: function () {
-        return this.images.conferenceImage
-      }
+export default {
+  name: 'homeicon',
+  data () {
+    return {
+      images: null,
+      conference: null
+    }
+  },
+  created () {
+    this.images = Images.getImages()
+  },
+  computed: {
+    imgdata: function () {
+      return this.images.conferenceImage
     }
   }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -27,9 +27,8 @@
       <span>{{$t('emptyConference')}}</span>
     </div>
 
-
     <!-- this keep-alive allows ultra-fast switching between views, especially the speakers page -->
-    <keep-alive>
+    <keep-alive exclude="timetable-page">
       <router-view></router-view>
     </keep-alive>
     <footer>
@@ -40,62 +39,62 @@
 </template>
 
 <script>
-  import Language from './components/navbar/Language.vue'
-  import Login from './components/navbar/Login.vue'
-  import Links from './components/footer/Links.vue'
-  import Homeicon from './components/navbar/Homeicon.vue'
-  import Talks from './components/navbar/Talks.vue'
-  import Speakers from './components/navbar/Speakers.vue'
-  import Feedback from './components/navbar/Feedback.vue'
-  import ConferenceLink from './components/navbar/Conference.vue'
-  import Backbutton from './components/navbar/Backbutton.vue'
-  import Search from './components/navbar/Search.vue'
-  import Conference from './Conference'
-  import Timetable from './components/navbar/Timetable.vue'
-  import PleaseLogin from './components/PleaseLogin.vue'
+import Language from './components/navbar/Language.vue'
+import Login from './components/navbar/Login.vue'
+import Links from './components/footer/Links.vue'
+import Homeicon from './components/navbar/Homeicon.vue'
+import Talks from './components/navbar/Talks.vue'
+import Speakers from './components/navbar/Speakers.vue'
+import Feedback from './components/navbar/Feedback.vue'
+import ConferenceLink from './components/navbar/Conference.vue'
+import Backbutton from './components/navbar/Backbutton.vue'
+import Search from './components/navbar/Search.vue'
+import Conference from './Conference'
+import Timetable from './components/navbar/Timetable.vue'
+import PleaseLogin from './components/PleaseLogin.vue'
 
-  export default {
-    components: {
-      PleaseLogin,
-      Timetable,
-      Backbutton,
-      Search,
-      ConferenceLink,
-      Feedback,
-      Speakers,
-      Talks,
-      Homeicon,
-      Login,
-      Language,
-      Links
-    },
-    name: 'app',
-    data () {
-      return {
-        mobileMenuOpen: false,
-        conference: Conference.getConference(),
-        baseUrl: Conference.getBaseUrl(),
-        events: Conference.getAllEvents()
-      }
-    },
-    created () {
-      // ensure the mobile menu is closed on every navigation
-      this.$router.beforeEach((to, from, next) => {
-        this.mobileMenuOpen = false
-        next()
-      })
-    },
-    methods: {
-      toggle: function () {
-        this.mobileMenuOpen = !this.mobileMenuOpen
-      }
-    },
-    watch: {
-      '$i18n.locale': function () {
-        this.mobileMenuOpen = false
-      }
+export default {
+  components: {
+    PleaseLogin,
+    Timetable,
+    Backbutton,
+    Search,
+    ConferenceLink,
+    Feedback,
+    Speakers,
+    Talks,
+    Homeicon,
+    Login,
+    Language,
+    Links
+  },
+  name: 'app',
+  data () {
+    return {
+      mobileMenuOpen: false,
+      conference: Conference.getConference(),
+      baseUrl: Conference.getBaseUrl(),
+      events: Conference.getAllEvents()
+    }
+  },
+  created () {
+    // ensure the mobile menu is closed on every navigation
+    this.$router.beforeEach((to, from, next) => {
+      this.mobileMenuOpen = false
+      next()
+    })
+  },
+  methods: {
+    toggle: function () {
+      this.mobileMenuOpen = !this.mobileMenuOpen
+    }
+  },
+  watch: {
+    '$i18n.locale': function () {
+      this.mobileMenuOpen = false
     }
   }
+}
 </script>
 
 <style>

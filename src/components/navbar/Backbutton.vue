@@ -5,9 +5,9 @@
 </template>
 
 <script language="">
-  export default {
-    name: 'backbutton'
-  }
+export default {
+  name: 'backbutton'
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
