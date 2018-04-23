@@ -24,6 +24,8 @@
 
           <div class="fully-booked" v-if="event.fullyBooked">{{ $t('fullyBooked') }}</div>
 
+          <event-feedback :event-id="event.id" login-message="true"></event-feedback>
+
           <template v-if="documents.length > 0">
             <div class="label" style="margin-top: 1em">{{ $t('documentDownload') }}</div>
             <ul>
@@ -55,13 +57,15 @@
   import Twitter from './Twitter.vue'
   import Speaker from './Speaker.vue'
   import Favourite from './Favourite.vue'
+  import EventFeedback from './EventFeedback.vue'
 
   export default {
     components: {
       Favourite,
       Speaker,
       Twitter,
-      ScheduledEventIcons
+      ScheduledEventIcons,
+      EventFeedback
     },
     name: 'scheduledEvent',
     props: ['event'],

@@ -135,3 +135,10 @@ Authentication can be done with a session (when called from a browser directly) 
 When you call the URL with the browser you'll be redirected to a login page.
 To update the preferences for a user we use POST to send a full set of preferences. +
 https://latest.dukecon.org/javaland/2018/rest/preferences
+
+rest/feedback/event/<conferenceId>/<eventId>::
+Save the feedback for a given conference and event using _PUT_
++
+----
+$ curl 'https://latest.dukecon.org/javaland/2018/rest/feedback/event/javaland2018/548938' -X PUT -H 'Authorization: bearer ey...Gw' --data-binary '{"comment":"test","rating":3}'
+----

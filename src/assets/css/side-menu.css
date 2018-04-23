@@ -6,14 +6,21 @@ body {
 Add transition to containers so they can push in and out.
 */
 #layout,
+#nav {
+  -webkit-transition: margin-left 0.2s ease-out;
+  -moz-transition: margin-left 0.2s ease-out;
+  -ms-transition: margin-left 0.2s ease-out;
+  -o-transition: margin-left 0.2s ease-out;
+  transition: margin-left 0.2s ease-out;
+}
+
 #menu,
-#nav,
-.menu-link {
-    -webkit-transition: margin-left 0.2s ease-out;
-    -moz-transition: margin-left 0.2s ease-out;
-    -ms-transition: margin-left 0.2s ease-out;
-    -o-transition: margin-left 0.2s ease-out;
-    transition: margin-left 0.2s ease-out;
+#menuLink {
+  -webkit-transition: left 0.2s ease-out;
+  -moz-transition: left 0.2s ease-out;
+  -ms-transition: left 0.2s ease-out;
+  -o-transition: left 0.2s ease-out;
+  transition: left 0.2s ease-out;
 }
 
 /*
@@ -135,7 +142,6 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     }
     #menu {
         left: -260px;
-        overflow-y: auto;
     }
 
     .menu-link {
@@ -151,9 +157,6 @@ Hides the menu at `48em`, but modify this based on your app's needs.
         left: 0;
     }
 
-    #layout.active {
-        padding-left: 260px; /* left col width "#menu" */
-    }
     #days_filter {
         margin-left: 34px;
     }

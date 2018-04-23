@@ -89,6 +89,11 @@
       toggle: function () {
         this.mobileMenuOpen = !this.mobileMenuOpen
       }
+    },
+    watch: {
+      '$i18n.locale': function () {
+        this.mobileMenuOpen = false
+      }
     }
   }
 </script>

@@ -136,7 +136,7 @@ button, .button {
         box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 0 6px rgba(0, 0, 0, 0.2) inset;
     }
     &:hover {
-        background-color:@offWhite;
+        opacity: 0.7;
     }
 }
 button {
@@ -475,15 +475,17 @@ div.time-cell {
 div.talk-widget  {
     border-bottom: none;
     display: inline-block;
-    width: 30%;
-    margin: 5px;
-    padding: 5px;
+    width: 33%;
+    margin: 0;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 div.talk-cell {
     background-color: @white;
     vertical-align:top;
     display: inline-block;
-    min-width:200px;
     width: 100%;
     line-height:1.1em;
     border-bottom: none;
@@ -961,7 +963,12 @@ a .speakerinfo {
 }
 /* Cut-off for menu  */
 @media (max-width: 1090px) {
-    .filter-box, .filter-settings {
+
+  div.talk-widget  {
+    width: 50%;
+  }
+
+  .filter-box, .filter-settings {
         .filter-values {
             input[type="checkbox"] + label {
                 font-size: 115%;

@@ -41,7 +41,16 @@ const messages = Object.freeze({
     'document.slides': 'Präsentation',
     'document.manuscript': 'Manuskript',
     'document.other': 'Andere',
-    'documentDownload': 'Unterlagen zum Herunterladen'
+    'documentDownload': 'Unterlagen zum Herunterladen',
+    'feedback.popupbutton': 'Feedback geben',
+    'feedback.header': 'Wie hat dir dieser Talk gefallen?',
+    'feedback.rating.good': 'Gut',
+    'feedback.rating.okay': 'Okay',
+    'feedback.rating.bad': 'Schlecht',
+    'feedback.text': 'Bitte erkläre deine Wahl',
+    'feedback.submit': 'Abschicken',
+    'feedback.cancel': 'Abbrechen',
+    'feedback.loginMessage': 'Bitte log dich ein, um Feedback zu geben.'
   },
   en: {
     'termsOfUse': 'Terms of use',
@@ -80,7 +89,16 @@ const messages = Object.freeze({
     'document.slides': 'Presentation',
     'document.manuscript': 'Manuscript',
     'document.other': 'Other',
-    'documentDownload': 'Documents to download'
+    'documentDownload': 'Documents to download',
+    'feedback.popupbutton': 'Give feedback',
+    'feedback.header': 'How did you like this talk?',
+    'feedback.rating.good': 'Good',
+    'feedback.rating.okay': 'Okay',
+    'feedback.rating.bad': 'Bad',
+    'feedback.text': 'Please explain your choice',
+    'feedback.submit': 'Submit feedback',
+    'feedback.cancel': 'Cancel',
+    'feedback.loginMessage': 'Log in to leave feedback'
   }
 })
 
