@@ -1,6 +1,9 @@
 <template>
   <div class="content-wrapper">
-    <scheduled-event :event="event" v-if="event"/>
+    <scheduled-event :event="event" v-if="event"></scheduled-event>
+    <div class="content" v-else>
+      <div>{{ $t('talk.notFound') }}</div>
+    </div>
   </div>
 </template>
 

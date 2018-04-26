@@ -2,6 +2,7 @@
   <div id="speakerpage" class="content-wrapper">
     <div class="content">
       <speaker :speaker="speaker" v-if="speaker"></speaker>
+      <div v-else>{{ $t('speaker.notFound') }}</div>
     </div>
   </div>
 </template>

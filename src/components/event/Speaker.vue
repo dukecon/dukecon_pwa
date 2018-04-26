@@ -4,7 +4,10 @@
       <div class="speaker-overview">
         <div class="flexbox">
           <div class="speaker-portrait"><img alt="" :src='speakerImageUrl'></div>
-          <div class="speaker-contact"><h2 class="darkLink">{{ speaker.name }}</h2>
+          <div class="speaker-contact">
+            <h2 class="darkLink">
+              <router-link :to="{ name: 'speakerPage', params: { speakerId: speaker.id }}" class="speaker-link">{{ speaker.name }}</router-link>
+            </h2>
             <div class="speaker-function">
               {{ speaker.function }} {{ speaker.company }}
             </div>
