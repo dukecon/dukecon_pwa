@@ -7,7 +7,7 @@
           <div class="title darkLink">
             <favourite :event="event" :mode="'small'"/>
             <a>{{event.title}}</a> <!-- the a is for preservation of the hover effect....  -->
-            <img v-if="mode === 'grid'" class="language-icon" :src="languageIcon">
+            <img v-if="mode === 'grid' && languages.length > 1" class="language-icon" :src="languageIcon">
           </div>
           <div class="fully-booked stamp" v-if="event.fullyBooked">{{ $t('fullyBooked') }}</div>
           <div class="speaker" v-for="s in eventSpeaker" :key="s.id">{{ s.name }}</div>

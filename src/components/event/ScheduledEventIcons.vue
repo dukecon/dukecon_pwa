@@ -21,7 +21,7 @@
       <img width="16" height="16" :src="trackIcon" alt="Stream" title="Stream"/>
       {{ track.names[$i18n.locale] }}
     </div>
-    <div class="room" v-if="mode !== 'grid'">
+    <div class="room" v-if="mode !== 'grid' && languages.length > 1">
       <span style="margin-left: -2px;" class="language-icon">&#128172;</span>
       {{ language.names[$i18n.locale] }}
       <template v-if="event.simultan">{{ $t('simultan') }}</template>

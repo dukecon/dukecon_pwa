@@ -31,7 +31,7 @@
           {{ publishFilterSettings }}
           <!-- END OF HACK -->
           <div v-for="filter in filters" v-bind:key="filter.filterKey">
-            <div :class="{ collapsed: filterStatus[filter.filterKey].open === false} ">
+            <div :class="{ collapsed: filterStatus[filter.filterKey].open === false} " v-if="filter.visible">
                         <span class="filter-category darkBack reverse" @click="toggleCategory(filter)">
                             <span>{{filter.title}}</span>
                             <img class="filter-button" src="../../assets/img/group_expanded_16.svg" alt="+ -"/>
@@ -172,6 +172,11 @@ export default {
         e.title = this.$t(e.filterKey)
         // count the set filters in the current group
         e.selectedFilterCount = Object.values(this.filterStatus[e.filterKey].values).filter(v => v === true).length
+        if (e.filterValues.length <= 1) {
+          e.visible = false
+        } else {
+          e.visible = true
+        }
       })
       return filters
     },
