@@ -139,7 +139,7 @@ export default class Favorites {
   static toggleFavorite (eventId) {
     let events = Conference.getAllEvents()
     if (favorites[eventId] === true) {
-      if (events[eventId].numberOfFavorites > 0) {
+      if (events[eventId].numberOfFavorites !== undefined && events[eventId].numberOfFavorites > 0) {
         // Paranoia: don't allow numberOfFavorites to be negative
         events[eventId].numberOfFavorites--
       }
@@ -151,7 +151,9 @@ export default class Favorites {
         favoritesToRemove.add(eventId)
       }
     } else {
-      events[eventId].numberOfFavorites++
+      if (events[eventId].numberOfFavorites !== undefined) {
+        events[eventId].numberOfFavorites++
+      }
       Vue.set(favorites, eventId, true)
       // remove it from the remove queue, or add it to the add queue
       if (favoritesToRemove.has(eventId)) {
@@ -171,12 +173,12 @@ export default class Favorites {
   static updateEventsWithLocalFavorites () {
     let events = Conference.getAllEvents()
     favoritesToAdd.forEach(e => {
-      if (events[e] !== undefined) {
+      if (events[e] !== undefined && events[e].numberOfFavorites !== undefined) {
         events[e].numberOfFavorites++
       }
     })
     favoritesToRemove.forEach(e => {
-      if (events[e] !== undefined && events[e].numberOfFavorites > 0) {
+      if (events[e] !== undefined && events[e].numberOfFavorites && events[e].numberOfFavorites > 0) {
         // Paranoia: don't allow numberOfFavorites to be negative
         events[e].numberOfFavorites--
       }
