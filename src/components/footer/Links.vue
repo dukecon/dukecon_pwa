@@ -19,13 +19,13 @@ export default {
   },
   computed: {
     imprint: function () {
-      return this.conference.imprint[this.$i18n.locale]
+      return this.conference.imprint ? this.conference.imprint[this.$i18n.locale] : null
     },
     privacy: function () {
-      return this.conference.privacy[this.$i18n.locale]
+      return this.conference.privacy ? this.conference.privacy[this.$i18n.locale] : null
     },
     termsOfUse: function () {
-      return this.conference.termsOfUse[this.$i18n.locale]
+      return this.conference.termsOfUse ? this.conference.termsOfUse[this.$i18n.locale] : null
     }
   }
 }
