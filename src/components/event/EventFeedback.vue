@@ -140,85 +140,85 @@
 </style>
 
 <script>
-  import Dukecloak from '../../DukeconKeycloak'
-  import axios from 'axios'
-  import Conference from '../../Conference'
+import Dukecloak from '../../DukeconKeycloak'
+import axios from 'axios'
+import Conference from '../../Conference'
 
-  export default {
-    name: 'eventFeedback',
-    props: ['eventId', 'loginMessage'],
-    data () {
-      return {
-        feedbackTextMaxLength: 1024,
-        popupHidden: true,
-        feedbackRadio: '',
-        feedbackText: '',
-        conference: Conference.getConference()
-      }
+export default {
+  name: 'eventFeedback',
+  props: ['eventId', 'loginMessage'],
+  data () {
+    return {
+      feedbackTextMaxLength: 1024,
+      popupHidden: true,
+      feedbackRadio: '',
+      feedbackText: '',
+      conference: Conference.getConference()
+    }
+  },
+  computed: {},
+  methods: {
+    isLoggedIn: function () {
+      return Dukecloak.getKeycloak().isLoggedIn
     },
-    computed: {},
-    methods: {
-      isLoggedIn: function () {
-        return Dukecloak.getKeycloak().isLoggedIn
-      },
-      togglePopup: function () {
-        this.popupHidden = !this.popupHidden
-      },
-      isFeedbackWindow: function () {
-        // TODO, see top
-        return true
-      },
-      isFeedbackEnabled: function () {
-        // first check if 'feedbackServer' exists for backward compatibility
-        return this.conference.feedbackServer && this.conference.feedbackServer.active
-      },
-      cancel: function () {
-        this.togglePopup()
-      },
-      submitFeedback: function () {
-        const self = this
-        // TODO: Backend currently accepts numeric values for feedbackRadio
-        // TODO: double final mapping on completion
-        const data = {}
-        data.comment = self.feedbackText
-        switch (self.feedbackRadio) {
-          case '':
-            break
-          case 'Good':
-            data.rating = 1
-            break
-          case 'Okay':
-            data.rating = 2
-            break
-          case 'Bad':
-            data.rating = 3
-            break
-          default:
-            console.log('unknown value for feedbackRadio: ' + self.feedbackRadio)
-            break
-        }
-        Dukecloak.getKeycloak().updateToken()
-          .success(function () {
-            var config = {
-              headers: {'Authorization': 'bearer ' + Dukecloak.getKeycloak().token}
-            }
-            axios.put('rest/feedback/event/' + self.conference.id + '/' + self.eventId,
-              data,
-              config)
-              .then((response) => {
-                self.popupHidden = true
-                console.log('Feedback submitted!')
-              })
-              .catch((e) => {
-                self.popupHidden = true
-                console.log('Feedback Submission Failed!', e)
-              })
-          })
-          .error(function () {
-            console.log('Error refreshing token!')
-            self.popupHidden = true
-          })
+    togglePopup: function () {
+      this.popupHidden = !this.popupHidden
+    },
+    isFeedbackWindow: function () {
+      // TODO, see top
+      return true
+    },
+    isFeedbackEnabled: function () {
+      // first check if 'feedbackServer' exists for backward compatibility
+      return this.conference.feedbackServer && this.conference.feedbackServer.active
+    },
+    cancel: function () {
+      this.togglePopup()
+    },
+    submitFeedback: function () {
+      const self = this
+      // TODO: Backend currently accepts numeric values for feedbackRadio
+      // TODO: double final mapping on completion
+      const data = {}
+      data.comment = self.feedbackText
+      switch (self.feedbackRadio) {
+        case '':
+          break
+        case 'Good':
+          data.rating = 1
+          break
+        case 'Okay':
+          data.rating = 2
+          break
+        case 'Bad':
+          data.rating = 3
+          break
+        default:
+          console.log('unknown value for feedbackRadio: ' + self.feedbackRadio)
+          break
       }
+      Dukecloak.getKeycloak().updateToken()
+        .success(function () {
+          var config = {
+            headers: {'Authorization': 'bearer ' + Dukecloak.getKeycloak().token}
+          }
+          axios.put('rest/feedback/event/' + self.conference.id + '/' + self.eventId,
+            data,
+            config)
+            .then((response) => {
+              self.popupHidden = true
+              console.log('Feedback submitted!')
+            })
+            .catch((e) => {
+              self.popupHidden = true
+              console.log('Feedback Submission Failed!', e)
+            })
+        })
+        .error(function () {
+          console.log('Error refreshing token!')
+          self.popupHidden = true
+        })
     }
   }
+}
 </script>

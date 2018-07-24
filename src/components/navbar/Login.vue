@@ -10,26 +10,26 @@
 </template>
 
 <script language="">
-  import DukeconKeycloak from '../../DukeconKeycloak'
-  import Conference from '../../Conference'
+import DukeconKeycloak from '../../DukeconKeycloak'
+import Conference from '../../Conference'
 
-  export default {
-    name: 'login',
-    data () {
-      return {
-        keycloak: DukeconKeycloak.getKeycloak(),
-        conference: Conference.getConference()
-      }
+export default {
+  name: 'login',
+  data () {
+    return {
+      keycloak: DukeconKeycloak.getKeycloak(),
+      conference: Conference.getConference()
+    }
+  },
+  methods: {
+    login: function () {
+      DukeconKeycloak.login()
     },
-    methods: {
-      login: function () {
-        DukeconKeycloak.login()
-      },
-      logout: function () {
-        DukeconKeycloak.logout()
-      }
+    logout: function () {
+      DukeconKeycloak.logout()
     }
   }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

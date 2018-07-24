@@ -6,34 +6,34 @@
 </template>
 
 <script>
-  import FilterEvents from './schedule/FilterEvents.vue'
-  import TalksGrid from './schedule/TalksGrid.vue'
+import FilterEvents from './schedule/FilterEvents.vue'
+import TalksGrid from './schedule/TalksGrid.vue'
 
-  export default {
-    components: {
-      TalksGrid,
-      FilterEvents
+export default {
+  components: {
+    TalksGrid,
+    FilterEvents
+  },
+  name: 'schedule',
+  data () {
+    return {
+      menuVisible: false
+    }
+  },
+  computed: {
+    day: function () {
+      return this.$route.params['day']
+    }
+  },
+  methods: {
+    onMenuVisibleChange (newValue) {
+      this.menuVisible = newValue
     },
-    name: 'schedule',
-    data () {
-      return {
-        menuVisible: false
-      }
-    },
-    computed: {
-      day: function () {
-        return this.$route.params['day']
-      }
-    },
-    methods: {
-      onMenuVisibleChange (newValue) {
-        this.menuVisible = newValue
-      },
-      onDayChanged (day) {
-        this.$router.push({name: 'scheduleWithDay', params: {day: day}})
-      }
+    onDayChanged (day) {
+      this.$router.push({name: 'scheduleWithDay', params: {day: day}})
     }
   }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

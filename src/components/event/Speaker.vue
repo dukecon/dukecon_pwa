@@ -4,7 +4,10 @@
       <div class="speaker-overview">
         <div class="flexbox">
           <div class="speaker-portrait"><img alt="" :src='speakerImageUrl'></div>
-          <div class="speaker-contact"><h2 class="darkLink">{{ speaker.name }}</h2>
+          <div class="speaker-contact">
+            <h2 class="darkLink">
+              <router-link :to="{ name: 'speakerPage', params: { speakerId: speaker.id }}" class="speaker-link">{{ speaker.name }}</router-link>
+            </h2>
             <div class="speaker-function">
               {{ speaker.function }} {{ speaker.company }}
             </div>
@@ -43,59 +46,59 @@
 </template>
 
 <script>
-  import Conference from '../../Conference'
-  import Event from './Event.vue'
+import Conference from '../../Conference'
+import Event from './Event.vue'
 
-  var base = ''
+var base = ''
 
-  // test if we are running in local served mode to test offline mode
-  if (window.location.href.indexOf('http://localhost:5000') !== -1) {
-    base = 'https://latest.dukecon.org/javaland/2018/'
-  }
+// test if we are running in local served mode to test offline mode
+if (window.location.href.indexOf('http://localhost:5000') !== -1) {
+  base = 'https://latest.dukecon.org/javaland/2018/'
+}
 
-  var toUrl = function (media, url) {
-    if (media === 'twitter') {
-      if (!url.indexOf('http') === 0) {
-        url = 'https://www.twitter.com/' + (url.indexOf('@') === 0 ? url.substr(1) : url)
-      }
+var toUrl = function (media, url) {
+  if (media === 'twitter') {
+    if (!url.indexOf('http') === 0) {
+      url = 'https://www.twitter.com/' + (url.indexOf('@') === 0 ? url.substr(1) : url)
     }
-    return url
   }
-  export default {
-    components: {Event},
-    name: 'speaker',
-    props: ['speaker', 'parentEventId'],
-    data () {
-      var s = this.speaker
-      var ms = ['facebook', 'googleplus', 'instagram', 'linkedin', 'pinterest', 'twitter', 'xing', 'youtube']
-        .filter(m => {
-          return s[m] !== undefined
-        }).map(m => {
-          return {
-            media: m,
-            url: toUrl(m, s[m]),
-            src: require('@/assets/img/social_' + m + '.svg')
-          }
-        })
-      return {
-        socialMedias: ms,
-        events: Conference.getAllEvents()
+  return url
+}
+export default {
+  components: {Event},
+  name: 'speaker',
+  props: ['speaker', 'parentEventId'],
+  data () {
+    var s = this.speaker
+    var ms = ['facebook', 'googleplus', 'instagram', 'linkedin', 'pinterest', 'twitter', 'xing', 'youtube']
+      .filter(m => {
+        return s[m] !== undefined
+      }).map(m => {
+        return {
+          media: m,
+          url: toUrl(m, s[m]),
+          src: require('@/assets/img/social_' + m + '.svg')
+        }
+      })
+    return {
+      socialMedias: ms,
+      events: Conference.getAllEvents()
+    }
+  },
+  computed: {
+    speakerImageUrl: function () {
+      if (this.speaker.photoId) {
+        return base + 'rest/speaker/images/' + this.speaker.photoId
+      } else {
+        return require('@/assets/img/UnknownUser.png')
       }
     },
-    computed: {
-      speakerImageUrl: function () {
-        if (this.speaker.photoId) {
-          return base + 'rest/speaker/images/' + this.speaker.photoId
-        } else {
-          return require('@/assets/img/UnknownUser.png')
-        }
-      },
-      speakerEvents: function () {
-        return this.speaker.eventIds
-          .filter(e => { return e !== this.parentEventId })
-          .map(e => this.events[e])
-          .filter(e => { return e !== undefined })
-      }
+    speakerEvents: function () {
+      return this.speaker.eventIds
+        .filter(e => { return e !== this.parentEventId })
+        .map(e => this.events[e])
+        .filter(e => { return e !== undefined })
     }
   }
+}
 </script>

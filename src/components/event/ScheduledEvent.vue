@@ -52,43 +52,43 @@
 </template>
 
 <script>
-  import Conference from '../../Conference'
-  import ScheduledEventIcons from './ScheduledEventIcons.vue'
-  import Twitter from './Twitter.vue'
-  import Speaker from './Speaker.vue'
-  import Favourite from './Favourite.vue'
-  import EventFeedback from './EventFeedback.vue'
+import Conference from '../../Conference'
+import ScheduledEventIcons from './ScheduledEventIcons.vue'
+import Twitter from './Twitter.vue'
+import Speaker from './Speaker.vue'
+import Favourite from './Favourite.vue'
+import EventFeedback from './EventFeedback.vue'
 
-  export default {
-    components: {
-      Favourite,
-      Speaker,
-      Twitter,
-      ScheduledEventIcons,
-      EventFeedback
-    },
-    name: 'scheduledEvent',
-    props: ['event'],
-    data () {
-      return {
-        speakers: Conference.getAllSpeakers()
+export default {
+  components: {
+    Favourite,
+    Speaker,
+    Twitter,
+    ScheduledEventIcons,
+    EventFeedback
+  },
+  name: 'scheduledEvent',
+  props: ['event'],
+  data () {
+    return {
+      speakers: Conference.getAllSpeakers()
+    }
+  },
+  computed: {
+    abstractTextHtml: function () {
+      if (!this.event.abstractText) {
+        return ''
       }
+      return this.event.abstractText.split('\n').join('<br />')
     },
-    computed: {
-      abstractTextHtml: function () {
-        if (!this.event.abstractText) {
-          return ''
-        }
-        return this.event.abstractText.split('\n').join('<br />')
-      },
-      eventSpeaker: function () {
-        return this.event.speakerIds
-          .map(id => this.speakers[id])
-          .filter(s => s !== undefined)
-      },
-      documents: function () {
-        return Object.entries(this.event.documents).filter(a => a[1] !== null)
-      }
+    eventSpeaker: function () {
+      return this.event.speakerIds
+        .map(id => this.speakers[id])
+        .filter(s => s !== undefined)
+    },
+    documents: function () {
+      return Object.entries(this.event.documents).filter(a => a[1] !== null)
     }
   }
+}
 </script>

@@ -3,9 +3,9 @@
 </template>
 
 <script language="">
-  export default {
-    name: 'speakers'
-  }
+export default {
+  name: 'speakers'
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

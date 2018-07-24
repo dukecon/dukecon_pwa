@@ -22,25 +22,25 @@
 </template>
 
 <script>
-  import Favourites from '../../Favourites'
+import Favourites from '../../Favourites'
 
-  export default {
-    name: 'favourite',
-    props: ['event', 'mode'],
-    data () {
-      return {
-        favourites: Favourites.getFavorites()
-      }
-    },
-    methods: {
-      toggleFavourite: function () {
-        Favourites.toggleFavorite(this.event.id)
-      }
-    },
-    computed: {
-      favourite: function () {
-        return this.favourites[this.event.id] === true
-      }
+export default {
+  name: 'favourite',
+  props: ['event', 'mode'],
+  data () {
+    return {
+      favourites: Favourites.getFavorites()
+    }
+  },
+  methods: {
+    toggleFavourite: function () {
+      Favourites.toggleFavorite(this.event.id)
+    }
+  },
+  computed: {
+    favourite: function () {
+      return this.favourites[this.event.id] === true
     }
   }
+}
 </script>

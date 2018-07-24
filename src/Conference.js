@@ -54,7 +54,11 @@ function getFavoritesAndBookingsUpdates () {
     .then(function (response) {
       response.data.forEach(val => {
         if (events[val.eventId]) {
-          events[val.eventId].numberOfFavorites = val.numberOfFavorites
+          // we'll accept number of favorites from the backend only if authentication is enabled
+          // or if it was present before
+          if (conference.authEnabled || events[val.eventId].numberOfFavorites) {
+            events[val.eventId].numberOfFavorites = val.numberOfFavorites
+          }
           events[val.eventId].fullyBooked = val.fullyBooked
         }
       })
