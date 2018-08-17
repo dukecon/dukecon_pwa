@@ -139,7 +139,7 @@ export default class Favorites {
   static toggleFavorite (eventId) {
     let events = Conference.getAllEvents()
     if (favorites[eventId] === true) {
-      if (events[eventId].numberOfFavorites !== undefined && events[eventId].numberOfFavorites > 0) {
+      if (Dukecloak.getKeycloak().isLoggedIn && events[eventId].numberOfFavorites !== undefined && events[eventId].numberOfFavorites > 0) {
         // Paranoia: don't allow numberOfFavorites to be negative
         events[eventId].numberOfFavorites--
       }
@@ -151,7 +151,7 @@ export default class Favorites {
         favoritesToRemove.add(eventId)
       }
     } else {
-      if (events[eventId].numberOfFavorites !== undefined) {
+      if (Dukecloak.getKeycloak().isLoggedIn && events[eventId].numberOfFavorites !== undefined) {
         events[eventId].numberOfFavorites++
       }
       Vue.set(favorites, eventId, true)
