@@ -58,7 +58,7 @@ if (window.location.href.indexOf('http://localhost:5000') !== -1) {
 
 var toUrl = function (media, url) {
   if (media === 'twitter') {
-    if (!url.indexOf('http') === 0) {
+    if (url.indexOf('http') !== 0) {
       url = 'https://www.twitter.com/' + (url.indexOf('@') === 0 ? url.substr(1) : url)
     }
   }
