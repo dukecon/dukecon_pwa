@@ -173,12 +173,12 @@ export default class Favorites {
   static updateEventsWithLocalFavorites () {
     let events = Conference.getAllEvents()
     favoritesToAdd.forEach(e => {
-      if (events[e] !== undefined && events[e].numberOfFavorites !== undefined) {
+      if (Dukecloak.getKeycloak().isLoggedIn && events[e] !== undefined && events[e].numberOfFavorites !== undefined) {
         events[e].numberOfFavorites++
       }
     })
     favoritesToRemove.forEach(e => {
-      if (events[e] !== undefined && events[e].numberOfFavorites && events[e].numberOfFavorites > 0) {
+      if (Dukecloak.getKeycloak().isLoggedIn && events[e] !== undefined && events[e].numberOfFavorites && events[e].numberOfFavorites > 0) {
         // Paranoia: don't allow numberOfFavorites to be negative
         events[e].numberOfFavorites--
       }
