@@ -8,6 +8,7 @@
 <script>
 import FilterEvents from './schedule/FilterEvents.vue'
 import TalksGrid from './schedule/TalksGrid.vue'
+import Settings from '../Settings'
 
 export default {
   components: {
@@ -22,7 +23,7 @@ export default {
   },
   computed: {
     day: function () {
-      return this.$route.params['day']
+      return Settings.getSetting('scheduleWithDay', this.$route.params['day'])
     }
   },
   methods: {
@@ -31,6 +32,7 @@ export default {
     },
     onDayChanged (day) {
       this.$router.push({name: 'scheduleWithDay', params: {day: day}})
+      Settings.saveSetting('scheduleWithDay', day)
     }
   }
 }
