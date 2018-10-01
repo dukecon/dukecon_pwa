@@ -28,7 +28,7 @@ describe('Images.js', () => {
         // then ...
         // ... image data is filled
         var image = require('@/assets/img/logo_dukecon.png')
-        var favicon = require('@/assets/img/favicon_dukecon.png')
+        var favicon = require('@/assets/img/favicon.ico')
         expect(images.conferenceImage).to.include(image)
         expect(images.conferenceFavIcon).to.include(favicon)
         expect(images.defaultImage).to.include('data:image/gif;base64,R0lGOD')
