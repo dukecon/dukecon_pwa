@@ -7,14 +7,8 @@ import Vue from 'vue'
 
 const defaultImage = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' // 1px transparent
 
-/* pre-initialize properties with an empty value to ease use in other components.
-Values will be updated once init.js has been loaded. */
-const images = {
-  conferenceImage: require('@/assets/img/logo_dukecon.png'),
-  conferenceFavIcon: require('@/assets/img/favicon_dukecon.png'),
-  defaultImage: defaultImage,
-  streamImages: {}
-}
+let images
+let initialized
 
 let base = ''
 
@@ -23,7 +17,20 @@ if (window.location.href.indexOf('http://localhost:5000') !== -1) {
   base = 'https://latest.dukecon.org/javaland/2018/'
 }
 
-let initialized = false
+/* use an explicit reset to be able to test this.
+pre-initialize properties with an empty value to ease use in other components.
+Values will be updated once init.js has been loaded. */
+function reset () {
+  images = {
+    conferenceImage: require('@/assets/img/logo_dukecon.png'),
+    conferenceFavIcon: require('@/assets/img/favicon_dukecon.png'),
+    defaultImage: defaultImage,
+    streamImages: {}
+  }
+  initialized = false
+}
+
+reset()
 
 /**
  * Support lazy initialization of content to facilitate testing.
@@ -57,5 +64,8 @@ export default class Conference {
   static getImages () {
     init()
     return images
+  }
+  static reset () {
+    reset()
   }
 }

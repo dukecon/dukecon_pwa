@@ -4,6 +4,7 @@ import Images from '../../../src/Images'
 describe('Images.js', () => {
   beforeEach(function () {
     moxios.install()
+    Images.reset()
   })
 
   afterEach(function () {
@@ -26,8 +27,10 @@ describe('Images.js', () => {
       }).then(function () {
         // then ...
         // ... image data is filled
-        expect(images.conferenceImage).to.include('/static/img/logo_dukecon.')
-        expect(images.conferenceFavIcon).to.include('/static/img/favicon_dukecon.')
+        var image = require('@/assets/img/logo_dukecon.png')
+        var favicon = require('@/assets/img/favicon_dukecon.png')
+        expect(images.conferenceImage).to.include(image)
+        expect(images.conferenceFavIcon).to.include(favicon)
         expect(images.defaultImage).to.include('data:image/gif;base64,R0lGOD')
         done()
       })
