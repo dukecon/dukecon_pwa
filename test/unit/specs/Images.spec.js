@@ -14,7 +14,7 @@ describe('Images.js', () => {
     // given ....
     // ... an empty conference image
     const images = Images.getImages()
-    expect(images.conferenceImage).to.equal(images.defaultImage)
+    expect(images.defaultImage).to.include('data:image/gif;base64,R0lGOD')
 
     // when ...
     // ... initialized

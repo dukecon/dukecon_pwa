@@ -20,11 +20,14 @@
         <div id="mainmenu-button"><img @click="toggle" src="./assets/img/menu_24px.svg"></div>
       </h1>
     </div>
-    <div id="loading" class="alternate" v-if="conference.loadingFinished === false">
+    <div id="loading" class="alternate" v-if="conference.loadingFinished === false && conference.loadingFailed === false">
       &nbsp;
     </div>
     <div id="nothingtoshow" class="alternate" v-if="Object.keys(events).length === 0 && conference.loadingFinished === true">
       <span>{{$t('emptyConference')}}</span>
+    </div>
+    <div id="nothingtoshow" class="alternate" v-if="conference.loadingFailed === true">
+      <span>{{$t('notExistingConference')}}</span>
     </div>
 
     <!-- this keep-alive allows ultra-fast switching between views, especially the speakers page -->

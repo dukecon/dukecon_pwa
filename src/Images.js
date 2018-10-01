@@ -10,8 +10,8 @@ const defaultImage = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAA
 /* pre-initialize properties with an empty value to ease use in other components.
 Values will be updated once init.js has been loaded. */
 const images = {
-  conferenceImage: defaultImage,
-  conferenceFavIcon: defaultImage,
+  conferenceImage: require('@/assets/img/logo_dukecon.png'),
+  conferenceFavIcon: require('@/assets/img/favicon_dukecon.png'),
   defaultImage: defaultImage,
   streamImages: {}
 }

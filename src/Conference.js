@@ -154,7 +154,8 @@ function reset () {
     homeTitle: null,
     authEnabled: false,
     name: null,
-    loadingFinished: false
+    loadingFinished: false,
+    loadingFailed: false
   }
 }
 
@@ -196,6 +197,7 @@ const init = function () {
         init()
       }
       console.log(error)
+      conference.loadingFailed = true
     })
 }
 
