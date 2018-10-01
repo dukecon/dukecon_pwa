@@ -22,8 +22,8 @@ pre-initialize properties with an empty value to ease use in other components.
 Values will be updated once init.js has been loaded. */
 function reset () {
   images = {
-    conferenceImage: require('@/assets/img/logo_dukecon.png'),
-    conferenceFavIcon: require('@/assets/img/favicon_dukecon.png'),
+    conferenceImage: require('./assets/img/logo_dukecon.png'),
+    conferenceFavIcon: require('./assets/img/favicon.ico'),
     defaultImage: defaultImage,
     streamImages: {}
   }
