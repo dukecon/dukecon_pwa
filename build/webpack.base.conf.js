@@ -59,9 +59,6 @@ module.exports = {
         options: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]'),
-          // fixing https://github.com/vuejs-templates/webpack/issues/208
-          // without this change the ajax gif (that is extracted as it is bigger than than 10kb) will be fetched from a wrong path
-          publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath + '../../' : config.dev.assetsPublicPath
         }
       },
       {

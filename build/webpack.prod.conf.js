@@ -48,7 +48,9 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[name].[contenthash].css')
+      // fixing https://github.com/vuejs-templates/webpack/issues/208
+      // without this change the ajax gif (that is extracted as it is bigger than than 10kb) will be fetched from a wrong path
+      filename: utils.assetsPath('../[name].[contenthash].css')
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
