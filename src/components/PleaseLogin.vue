@@ -1,5 +1,5 @@
 <template>
-  <div id="alert-window" class="dark" v-if="visible">
+  <div class="alert-window dark" v-if="visible">
     <div class="alert-title darkBack reverse">{{ $t('favoriteAlertTitle') }}</div>
     <div class="alert-body" v-html="$t('favoriteAlertBody')"></div>
     <div class="alert-button">
