@@ -6,6 +6,13 @@
     </a>
     <span class="username" v-if='keycloak.isLoggedIn'
           :title="keycloak.name + ' (' + keycloak.userName + ')'">{{$t('loggedIn')}}<br/></span>
+    <div class="alert-window dark" v-if="alertVisible">
+      <div class="alert-title darkBack reverse">{{ $t('loginAlertTitle') }}</div>
+      <div class="alert-body" v-html="$t('loginAlertBody')"></div>
+      <div class="alert-button">
+        <button @click="alertClicked">OK</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -18,15 +25,23 @@ export default {
   data () {
     return {
       keycloak: DukeconKeycloak.getKeycloak(),
-      conference: Conference.getConference()
+      conference: Conference.getConference(),
+      alertVisible: false
     }
   },
   methods: {
     login: function () {
-      DukeconKeycloak.login()
+      if (navigator && navigator.onLine === false) {
+        this.alertVisible = true
+      } else {
+        DukeconKeycloak.login()
+      }
     },
     logout: function () {
       DukeconKeycloak.logout()
+    },
+    alertClicked: function () {
+      this.alertVisible = false
     }
   }
 }
