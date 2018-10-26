@@ -19,7 +19,7 @@
               </tr>
               <tr v-if="speaker.website">
                 <th>Web:</th>
-                <td><a target="_blank" :href="speaker.website">{{speaker.website}}</a></td>
+                <td><a target="_blank" :href="speakerWeblink">{{speaker.website}}</a></td>
               </tr>
               <tr v-if="speaker.blog">
                 <th>Blog:</th>
@@ -57,9 +57,12 @@ if (window.location.href.indexOf('http://localhost:5000') !== -1) {
 }
 
 var toUrl = function (media, url) {
-  if (media === 'twitter') {
-    if (url.indexOf('http') !== 0) {
+  if (url.indexOf('http://') !== 0 && url.indexOf('https://') !== 0) {
+    console.log('not a good url')
+    if (media === 'twitter') {
       url = 'https://www.twitter.com/' + (url.indexOf('@') === 0 ? url.substr(1) : url)
+    } else {
+      url = 'http://' + url
     }
   }
   return url
@@ -74,6 +77,7 @@ export default {
       .filter(m => {
         return s[m] !== undefined
       }).map(m => {
+        console.log('das filter')
         return {
           media: m,
           url: toUrl(m, s[m]),
@@ -86,6 +90,10 @@ export default {
     }
   },
   computed: {
+    speakerWeblink: function () {
+      console.log(this.speaker.website)
+      return toUrl('web', this.speaker.website)
+    },
     speakerImageUrl: function () {
       if (this.speaker.photoId) {
         return base + 'rest/speaker/images/' + this.speaker.photoId
