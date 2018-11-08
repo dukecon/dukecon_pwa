@@ -91,6 +91,11 @@ DukeconKeycloak.js for further investigation (inside catch block).
 
 You can edit in the file _/config/index.js_ the section _proxyTable_ to point to another conference in development mode.
 
+==== No Offline Functionality in development mode
+
+You need to build and run the application in a server instead using development mode to test offline functionality.
+See <<testing_offline_functionality>>.
+
 ==== Updating NPM package versions
 
 To update NPM packages to the next version, please run the following commands:
@@ -173,6 +178,7 @@ If the application is online, a new version will be fetched from the network and
 
 Future versions might differentiate between URLs and choose _networkFirst_ to wait for a given time to get a fresh response.
 
+[[testing_offline_functionality]]
 === Configuring and testing the service workers and PWA functionality
 
 See _webpack.prod.conf.js_ section _SWPrecacheWebpackPlugin_ on how to configure it.
@@ -196,6 +202,18 @@ Run after every change of the source
 npm run build
 serve dist
 ----
+
+A http server is started and serves the distributed build under `http://localhost:5000`.
+If the application is running under port 5000 the backend will be called from `https://latest.dukecon.org/javaland/2018/`.
+Currently this hard coded in:
+
+* Images.js
+* DukeconKeycloak.js
+* Conferences.js
+* SpeakersPage.vue
+* Speaker.vue
+
+*TODO*: externalize backend url for local testing of offline functionality.
 
 == Authentication
 
