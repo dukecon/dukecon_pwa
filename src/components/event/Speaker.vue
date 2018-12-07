@@ -77,7 +77,6 @@ export default {
       .filter(m => {
         return s[m] !== undefined
       }).map(m => {
-        console.log('das filter')
         return {
           media: m,
           url: toUrl(m, s[m]),

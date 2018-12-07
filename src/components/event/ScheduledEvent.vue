@@ -24,7 +24,7 @@
 
           <div class="fully-booked" v-if="event.fullyBooked">{{ $t('fullyBooked') }}</div>
 
-          <event-feedback :event-id="event.id" login-message="true"></event-feedback>
+          <event-feedback :event-id="event.id" :event-start="event.start" :event-end="event.end" login-message="true"></event-feedback>
 
           <template v-if="documents.length > 0">
             <div class="label" style="margin-top: 1em">{{ $t('documentDownload') }}</div>

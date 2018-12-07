@@ -1,7 +1,6 @@
 <template>
   <!-- TODO
     - check maxlength for backend
-    - check time frame (after start and no more than x days after end)
   -->
   <div class="feedback-widget" v-if="isFeedbackEnabled()">
     <div class="feedback-loginmessage alternate" v-if="loginMessage && !isLoggedIn() && isFeedbackWindow()">
@@ -142,11 +141,12 @@
 <script>
 import Dukecloak from '../../DukeconKeycloak'
 import axios from 'axios'
+import moment from 'moment'
 import Conference from '../../Conference'
 
 export default {
   name: 'eventFeedback',
-  props: ['eventId', 'loginMessage'],
+  props: ['eventId', 'loginMessage', 'eventStart', 'eventEnd'],
   data () {
     return {
       feedbackTextMaxLength: 1024,
@@ -165,8 +165,17 @@ export default {
       this.popupHidden = !this.popupHidden
     },
     isFeedbackWindow: function () {
-      // TODO, see top
-      return true
+      if (Dukecloak.getKeycloak().isLoggedIn && Dukecloak.getKeycloak().tokenParsed.realm_access.roles.indexOf('admin') > -1) {
+        // we always allow Admin accounts to give feedback
+        console.log('ADMIN user, disregarding time contraint for feedback')
+        return true
+      }
+
+      const deltaSeconds = this.conference.feedbackServer ? (this.conference.feedbackServer.timeSlotVisible || 0) : 0
+      const currentTime = moment()
+      const feedbackStart = moment(this.eventStart)
+      const feedbackEnd = moment(this.eventEnd).add(deltaSeconds, 'seconds')
+      return (currentTime.isBefore(feedbackEnd) && currentTime.isAfter(feedbackStart))
     },
     isFeedbackEnabled: function () {
       // first check if 'feedbackServer' exists for backward compatibility
