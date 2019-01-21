@@ -1,0 +1,30 @@
+apiVersion: skaffold/v1beta2
+kind: Config
+build:
+  artifacts:
+  - image: changeme
+    context: .
+    docker: {}
+  tagPolicy:
+    envTemplate:
+      template: '{{.DOCKER_REGISTRY}}/dukecon-jx/dukecon-pwa:{{.VERSION}}'
+  local: {}
+deploy:
+  kubectl: {}
+profiles:
+- name: dev
+  build:
+    artifacts:
+    - docker: {}
+    tagPolicy:
+      envTemplate:
+        template: '{{.DOCKER_REGISTRY}}/dukecon-jx/dukecon-pwa:{{.DIGEST_HEX}}'
+    local: {}
+  deploy:
+    helm:
+      releases:
+      - name: dukecon-pwa
+        chartPath: charts/dukecon-pwa
+        setValueTemplates:
+          image.repository: '{{.DOCKER_REGISTRY}}/dukecon-jx/dukecon-pwa'
+          image.tag: '{{.DIGEST_HEX}}'
