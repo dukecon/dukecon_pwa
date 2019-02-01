@@ -58,7 +58,6 @@ if (window.location.href.indexOf('http://localhost:5000') !== -1) {
 
 var toUrl = function (media, url) {
   if (url.indexOf('http://') !== 0 && url.indexOf('https://') !== 0) {
-    console.log('not a good url')
     if (media === 'twitter') {
       url = 'https://www.twitter.com/' + (url.indexOf('@') === 0 ? url.substr(1) : url)
     } else {
@@ -90,7 +89,6 @@ export default {
   },
   computed: {
     speakerWeblink: function () {
-      console.log(this.speaker.website)
       return toUrl('web', this.speaker.website)
     },
     speakerImageUrl: function () {

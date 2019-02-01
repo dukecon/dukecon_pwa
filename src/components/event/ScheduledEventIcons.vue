@@ -2,7 +2,7 @@
   <div>
     <div :class="timeClass">
       <img width="16" height="16" src="../../assets/img/Clock.png" alt="Startzeit" title="Startzeit"/>
-      {{ startDayTime }} <template v-if="durationInMinutes !== undefined">({{ durationInMinutes }} min)</template>
+      {{ startDayTime }} -  {{endTime}}
     </div>
     <div class="room">
       <img width="16" height="16" src="../../assets/img/Home.png" alt="Raum" title="Raum"/>
@@ -61,20 +61,21 @@ export default {
     }
   },
   computed: {
-    durationInMinutes: function () {
-      if (!this.event.start || !this.event.end) {
-        return undefined
-      }
-      const dateStart = new Date(this.event.start)
-      const dateEnd = new Date(this.event.end)
-      const millis = dateEnd - dateStart
-      return millis / 1000 / 60
-    },
     startDayTime: function () {
       return Moment(this.event.start).locale(this.$i18n.locale).format('dddd, Do MMM, HH:mm')
     },
+    endTime: function () {
+      return Moment(this.event.end).locale(this.$i18n.locale).format('HH:mm')
+    },
     timeClass: function () {
-      return getTimeCategory(this.durationInMinutes) === 'regular' ? 'time' : 'time-extra alternate'
+      switch (getTimeCategory(this.event.durationInMinutes)) {
+        case 'long':
+          return 'time-extra alternate'
+        case 'short':
+          return 'time-extra dark'
+        default:
+          return 'time'
+      }
     },
     location: function () {
       return this.locations[this.event.locationId]

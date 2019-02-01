@@ -28,7 +28,7 @@
             <div class="time-cell title">{{group.slotDisplay}}</div>
           </td>
           <td>
-            <event :event="talk" :mode="'grid'" v-for="talk in group.talks" :key="talk.id"></event>
+            <event :event="talk" :mode="'grid'" v-for="talk in group.talks" :key="talk.htmlId"></event>
             <a class="uparrow clickable" :title="$t('uparrow')" @click="goUp">&uArr;</a>
           </td>
         </tr>

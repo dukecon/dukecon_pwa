@@ -2,6 +2,7 @@ import axios from 'axios'
 import Vue from 'vue'
 import groupBy from 'lodash-es/groupBy'
 import Favorites from './Favourites'
+import moment from 'moment'
 
 const refreshIntervalFavoritesMs = 90 * 1000
 const refreshIntervalEventsMs = 10 * 60 * 1000
@@ -28,6 +29,8 @@ let languages
 let audiences
 
 let tracks
+
+let timeslotsByDay
 
 let conference
 
@@ -79,11 +82,58 @@ function getConferenceId () {
   return base.indexOf('static') === -1 ? conference.id : conference.id + '.json'
 }
 
+function durationInMinutes (event) {
+  if (!event.start || !event.end) {
+    return undefined
+  }
+  const dateStart = new Date(event.start)
+  const dateEnd = new Date(event.end)
+  const millis = dateEnd - dateStart
+  return millis / 1000 / 60
+}
+
+function enrichEventData (event) {
+  // in case event spans several time slots
+  event.startOfSlice = event.start
+  event.endOfSlice = event.end
+  // id used in HTML to keep it unique
+  event.htmlId = event.id
+  event.durationInMinutes = durationInMinutes(event)
+}
+
+function spliceEvents (events) {
+  let splicedEvents = events
+  events.forEach(e => {
+    if (e.durationInMinutes > 60) {
+      console.log('found one')
+    }
+  })
+  return splicedEvents
+}
+
+function calculateTimeslots (events) {
+  const allTimeSlots = events.map(item => {
+    return {time: moment(item.start).format('HH:mm'), day: moment(item.start).format('YYYY-MM-DD')}
+  })
+    .filter((value, index, self) => self.indexOf(value) === index)
+  const grouped = groupBy(allTimeSlots, slot => slot.day)
+  console.log(grouped)
+  return allTimeSlots
+}
+
 function getEvents () {
   axios.get(base + 'rest/conferences/' + getConferenceId())
     .then(function (response) {
       response.data.events.forEach(v => {
-        Vue.set(events, v.id, v)
+        enrichEventData(v)
+      })
+      const timeslots = calculateTimeslots(response.data.events)
+      timeslots.forEach(s => {
+        Vue.set(timeslotsByDay, s.date, s.slots)
+      })
+      const splicedEvents = spliceEvents(response.data.events)
+      splicedEvents.forEach(v => {
+        Vue.set(events, v.htmlId, v)
       })
       response.data.speakers.forEach(v => {
         Vue.set(speakers, v.id, Object.freeze(v))
@@ -100,7 +150,7 @@ function getEvents () {
       response.data.metaData.tracks.forEach(v => {
         Vue.set(tracks, v.id, Object.freeze(v))
       })
-      let days = groupBy(events, function (event) { return event.start ? event.start.substr(0, 10) : null })
+      const days = groupBy(events, function (event) { return event.startOfSlice ? event.startOfSlice.substr(0, 10) : null })
       Object.entries(days).forEach(e => {
         Vue.set(eventsByDay, e[0], e[1])
       })
@@ -143,6 +193,8 @@ function reset () {
   audiences = {}
 
   tracks = {}
+
+  timeslotsByDay = {}
 
   /* pre-initialize properties with an empty value to ease use in other components.
   Values will be updated once init.js has been loaded. */
@@ -240,6 +292,11 @@ export default class Conference {
   static getEventsByDay () {
     init()
     return eventsByDay
+  }
+
+  static getTimeslotsByDay () {
+    init()
+    return timeslotsByDay
   }
 
   static getBaseUrl () {
