@@ -2,7 +2,7 @@
   <div>
     <div :class="timeClass">
       <img width="16" height="16" src="../../assets/img/Clock.png" alt="Startzeit" title="Startzeit"/>
-      {{ startDayTime }} -  {{endTime}}
+      {{ startDayTime }} - {{endTime}}
     </div>
     <div class="room">
       <img width="16" height="16" src="../../assets/img/Home.png" alt="Raum" title="Raum"/>

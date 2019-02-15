@@ -87,7 +87,7 @@ describe('ScheduledEvent.vue', () => {
     expect(vm.$el.querySelector('.speaker-contact h2').textContent)
       .to.equal('Bert Ertman')
     expect(vm.$el.querySelector('.time').textContent)
-      .to.contain('Dienstag, 28. März, 14:00 (40 min)')
+      .to.contain('Dienstag, 28. März, 14:00 - 14:40')
     expect(vm.$el.querySelector('.as-favorite > span').textContent)
       .to.equal('Als Favorit speichern')
   })

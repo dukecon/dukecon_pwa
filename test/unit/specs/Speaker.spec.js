@@ -73,6 +73,6 @@ describe('Speaker.vue', () => {
     expect(vm.$el.querySelector('.title.darkLink > a').textContent)
       .to.equal('Fallacies of Distributed Computing: What If Networks Fail?')
     expect(vm.$el.querySelector('.time').textContent)
-      .to.contain('Dienstag, 28. März, 14:00 (40 min)')
+      .to.contain('Dienstag, 28. März, 14:00 - 14:40')
   })
 })
