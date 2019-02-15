@@ -72,7 +72,7 @@ export default {
         case 'long':
           return 'time-extra alternate'
         case 'short':
-          return 'time-extra dark'
+          return 'time'
         default:
           return 'time'
       }

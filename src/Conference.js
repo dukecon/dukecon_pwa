@@ -30,8 +30,6 @@ let audiences
 
 let tracks
 
-let timeslotsByDay
-
 let conference
 
 let base = ''
@@ -95,30 +93,48 @@ function durationInMinutes (event) {
 function enrichEventData (event) {
   // in case event spans several time slots
   event.startOfSlice = event.start
-  event.endOfSlice = event.end
   // id used in HTML to keep it unique
   event.htmlId = event.id
   event.durationInMinutes = durationInMinutes(event)
 }
 
-function spliceEvents (events) {
-  let splicedEvents = events
-  events.forEach(e => {
-    if (e.durationInMinutes > 60) {
-      console.log('found one')
+function getDateOnly (dateString) {
+  return moment(dateString).format('YYYY-MM-DD')
+}
+
+function splitSingleEvent (event, timeSlotsOnSameDay) {
+  let split = []
+  split.push(event)
+  if (event.durationInMinutes > 60) {
+    for (let timeslot of timeSlotsOnSameDay) {
+      if (moment(timeslot.time).isAfter(moment(event.start)) && moment(timeslot.time).isBefore(event.end)) {
+        let eventSlice = JSON.parse(JSON.stringify(event))
+        eventSlice.startOfSlice = timeslot.time
+        eventSlice.htmlId = eventSlice.id + '_' + timeslot.timeslot
+        split.push(eventSlice)
+      }
     }
+  }
+  return split
+}
+
+function splitLongEvents (events, timeslots) {
+  let splitEvents = []
+  events.forEach(e => {
+    const timeSlotsOnSameDay = timeslots[getDateOnly(e.start)]
+    splitEvents.push(...splitSingleEvent(e, timeSlotsOnSameDay))
   })
-  return splicedEvents
+  return splitEvents.sort((eventA, eventB) => {
+    return eventA.startOfSlice - eventB.startOfSlice
+  })
 }
 
 function calculateTimeslots (events) {
   const allTimeSlots = events.map(item => {
-    return {time: moment(item.start).format('HH:mm'), day: moment(item.start).format('YYYY-MM-DD')}
+    return {timeslot: moment(item.start).format('HH:mm'), time: item.start, day: getDateOnly(item.start)}
   })
     .filter((value, index, self) => self.indexOf(value) === index)
-  const grouped = groupBy(allTimeSlots, slot => slot.day)
-  console.log(grouped)
-  return allTimeSlots
+  return groupBy(allTimeSlots, slot => slot.day)
 }
 
 function getEvents () {
@@ -128,11 +144,8 @@ function getEvents () {
         enrichEventData(v)
       })
       const timeslots = calculateTimeslots(response.data.events)
-      timeslots.forEach(s => {
-        Vue.set(timeslotsByDay, s.date, s.slots)
-      })
-      const splicedEvents = spliceEvents(response.data.events)
-      splicedEvents.forEach(v => {
+      const splitEvents = splitLongEvents(response.data.events, timeslots)
+      splitEvents.forEach(v => {
         Vue.set(events, v.htmlId, v)
       })
       response.data.speakers.forEach(v => {
@@ -150,10 +163,12 @@ function getEvents () {
       response.data.metaData.tracks.forEach(v => {
         Vue.set(tracks, v.id, Object.freeze(v))
       })
+      console.log('events after: ', events)
       const days = groupBy(events, function (event) { return event.startOfSlice ? event.startOfSlice.substr(0, 10) : null })
       Object.entries(days).forEach(e => {
         Vue.set(eventsByDay, e[0], e[1])
       })
+      console.log('By Day: ', eventsByDay)
       Favorites.updateEventsWithLocalFavorites()
       if (!favoritesUpdateIntervalHandle) {
         favoritesUpdateIntervalHandle = window.setInterval(getFavoritesAndBookingsUpdates, refreshIntervalFavoritesMs)
@@ -193,8 +208,6 @@ function reset () {
   audiences = {}
 
   tracks = {}
-
-  timeslotsByDay = {}
 
   /* pre-initialize properties with an empty value to ease use in other components.
   Values will be updated once init.js has been loaded. */
@@ -292,11 +305,6 @@ export default class Conference {
   static getEventsByDay () {
     init()
     return eventsByDay
-  }
-
-  static getTimeslotsByDay () {
-    init()
-    return timeslotsByDay
   }
 
   static getBaseUrl () {

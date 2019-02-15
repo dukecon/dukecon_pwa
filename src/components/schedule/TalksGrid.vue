@@ -160,11 +160,11 @@ export default {
       }
       filteredTalks
         .forEach(e => {
-          const c = groupedTalks[e.start]
+          const c = groupedTalks[e.startOfSlice]
           if (c === undefined) {
-            groupedTalks[e.start] = []
+            groupedTalks[e.startOfSlice] = []
           }
-          groupedTalks[e.start].push(e)
+          groupedTalks[e.startOfSlice].push(e)
         })
       return Object.entries(groupedTalks)
         .map((a) => {
