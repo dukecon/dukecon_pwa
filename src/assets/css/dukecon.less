@@ -66,7 +66,6 @@ table, th, td {
       }
       div.talk-widget, .talk-cell {
         width: 90%;
-        display: block;
       }
       .uparrow {
         display: none;
@@ -407,10 +406,6 @@ h2 {
     margin-bottom: 2px;
 }
 
-.talk-info {
-    background: @white;
-}
-
 #content {
     margin-left: 5px;
     min-width: 250px;
@@ -485,11 +480,21 @@ div.talk-widget  {
 div.talk-cell {
     background-color: @white;
     vertical-align:top;
-    display: inline-block;
+    display: flex;
+    justify-content: stretch;
     width: 100%;
     line-height:1.1em;
     border-bottom: none;
+    &.long {
+      background: #fddddd;
+    }
+    .fav-container {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
     a {
+      width: 100%;
+      flex-grow: 0;
       .speaker, .time, .room, .track {
         color: #888;
       }
@@ -528,18 +533,13 @@ div.title {
         div.title {
             overflow: hidden;
             width: 100%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
             margin-left: 24px;
             .language-icon {
                 position: absolute;
                 left: 0;
                 top: 1px;
-            }
-            a {
-                overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                display: inline-block;
-                width: 85%;
             }
         }
     }
@@ -640,7 +640,6 @@ a .speakerinfo {
 #speakers .speakertalks {
     div.talk-widget, .talk-cell {
         width: 90%;
-        display: block;
     }
 }
 #speakers .speakerdetails {
@@ -752,7 +751,6 @@ a .speakerinfo {
             display: block;
             .talk-cell {
                 width: 100%;
-                display: block;
             }
         }
     }
@@ -874,11 +872,10 @@ a .speakerinfo {
     margin-right: 2px;
     vertical-align: middle;
 }
-.fav-smallscreen {
-    display: none;
-}
-.fav-largescreen {
-    display: inline;
+.fav-container {
+  display: inline-block;
+  height:3em;
+  width: 40px;
 }
 
 /* IMPRINT */
@@ -1120,15 +1117,6 @@ a .speakerinfo {
     .uparrow {
         left: -37px;
     }
-    .fav-smallscreen {
-        display: inline-block;
-        height:3em;
-        width: 10%;
-        float: left;
-    }
-    .fav-largescreen {
-        display: none;
-    }
     .talk-info {
         display:inline-block;
         width: 90%;
@@ -1155,7 +1143,6 @@ a .speakerinfo {
     div.talk-cell div.title {
         position: relative;
         display: block;
-        width: 100%;
         .language-icon {
             position: absolute;
             right: 0;

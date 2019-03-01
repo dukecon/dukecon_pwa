@@ -1,12 +1,10 @@
 <template>
-  <img v-if="favourite === false && mode==='small'" style="cursor:pointer; margin-right: 2px;" @click.prevent="toggleFavourite" class="fav-largescreen" title="Add to Favourites" src="../../assets/img/StarLine.png"/>
-  <img v-else-if="mode==='small'" style="cursor:pointer; margin-right: 2px;" @click.prevent="toggleFavourite" class="fav-largescreen" title="Remove from Favourites" src="../../assets/img/StarFilled.png"/>
-  <div class="fav-smallscreen" v-else-if="mode==='mobile'" @click.prevent="toggleFavourite">
+  <div class="fav-container" v-if="mode==='standard'" @click.prevent="toggleFavourite">
     <template v-if="favourite === false">
-        <img style="cursor:pointer; margin-right: 2px;" title="Add to Favourites" src="../../assets/img/StarLine.png"/>
+        <img style="cursor:pointer" title="Add to Favourites" src="../../assets/img/StarLine.png"/>
     </template>
     <template v-else>
-      <img style="cursor:pointer; margin-right: 2px;" title="Remove from Favourites" src="../../assets/img/StarFilled.png"/>
+      <img style="cursor:pointer" title="Remove from Favourites" src="../../assets/img/StarFilled.png"/>
     </template>
   </div>
   <div v-else class="as-favorite alternate" @click.prevent="toggleFavourite">

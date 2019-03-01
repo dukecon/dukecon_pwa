@@ -96,6 +96,7 @@ function enrichEventData (event) {
   // id used in HTML to keep it unique
   event.htmlId = event.id
   event.durationInMinutes = durationInMinutes(event)
+  event.showInTimetable = true
 }
 
 function getDateOnly (dateString) {
@@ -111,6 +112,7 @@ function splitSingleEvent (event, timeSlotsOnSameDay) {
         let eventSlice = JSON.parse(JSON.stringify(event))
         eventSlice.startOfSlice = timeslot.time
         eventSlice.htmlId = eventSlice.id + '_' + timeslot.timeslot
+        eventSlice.showInTimetable = false
         split.push(eventSlice)
       }
     }
@@ -163,12 +165,10 @@ function getEvents () {
       response.data.metaData.tracks.forEach(v => {
         Vue.set(tracks, v.id, Object.freeze(v))
       })
-      console.log('events after: ', events)
       const days = groupBy(events, function (event) { return event.startOfSlice ? event.startOfSlice.substr(0, 10) : null })
       Object.entries(days).forEach(e => {
         Vue.set(eventsByDay, e[0], e[1])
       })
-      console.log('By Day: ', eventsByDay)
       Favorites.updateEventsWithLocalFavorites()
       if (!favoritesUpdateIntervalHandle) {
         favoritesUpdateIntervalHandle = window.setInterval(getFavoritesAndBookingsUpdates, refreshIntervalFavoritesMs)

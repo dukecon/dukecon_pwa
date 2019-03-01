@@ -1,11 +1,10 @@
 <template>
   <div class="talk-widget">
-    <div :class="timeClass">
-      <favourite :event="event" :mode="'mobile'"/>
+    <div class="talk-cell" :class="timeClass">
+      <favourite :event="event" :mode="'standard'"/>
       <router-link :to="{ name: 'scheduledEventPage', params: { eventId: event.id }}" style="padding: 0">
         <div class="talk-info">
           <div class="title darkLink">
-            <favourite :event="event" :mode="'small'"/>
             <a>{{event.title}}</a> <!-- the a is for preservation of the hover effect....  -->
             <img v-if="mode === 'grid' && Object.keys(languages).length > 1" class="language-icon" :src="languageIcon">
           </div>
@@ -59,10 +58,7 @@ export default {
       return require('@/assets/img/' + prefix + this.languages[this.event.languageId].code + '.png')
     },
     timeClass: function () {
-      var dateStart = new Date(this.event.start)
-      var dateEnd = new Date(this.event.end)
-      var millis = dateEnd - dateStart
-      return 'talk-cell ' + getTimeCategory(millis / 1000 / 60)
+      return getTimeCategory(this.event.durationInMinutes)
     }
   }
 }

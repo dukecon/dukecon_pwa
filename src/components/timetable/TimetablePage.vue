@@ -212,7 +212,7 @@ export default {
     generateTableItems: function () {
       let tableItems = []
       Object.values(this.events).forEach(event => {
-        if (event !== undefined) {
+        if (event !== undefined && event.showInTimetable) {
           tableItems.push({
             id: event.id,
             group: event.locationId,
