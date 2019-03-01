@@ -202,12 +202,15 @@ const data = {
   'events': [
     {
       'id': '529268',
+      'htmlId': '529268',
       'trackId': '1',
       'audienceId': '1',
       'typeId': '1',
       'locationId': '12',
+      'startOfSlice': '2017-03-28T14:00:00',
       'start': '2017-03-28T14:00:00',
       'end': '2017-03-28T14:40:00',
+      'showInTimetable': true,
       'title': 'Fallacies of Distributed Computing: What If Networks Fail?',
       'speakerIds': [
         '364675',
@@ -234,6 +237,7 @@ const data = {
       'locationId': '19',
       'start': '2017-03-28T12:00:00',
       'end': '2017-03-28T12:40:00',
+      'showInTimetable': true,
       'title': 'Microservice-Anwendungen mit Docker',
       'speakerIds': [
         '364068'
@@ -259,6 +263,7 @@ const data = {
       'locationId': '15',
       'start': '2017-03-29T12:00:00',
       'end': '2017-03-29T12:40:00',
+      'showInTimetable': true,
       'title': 'Everything as code',
       'speakerIds': [
         '374893'
