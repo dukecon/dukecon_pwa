@@ -93,6 +93,7 @@ function durationInMinutes (event) {
 function enrichEventData (event) {
   // in case event spans several time slots
   event.startOfSlice = event.start
+  event.endOfSlice = null
   // id used in HTML to keep it unique
   event.htmlId = event.id
   event.durationInMinutes = durationInMinutes(event)
@@ -107,10 +108,15 @@ function splitSingleEvent (event, timeSlotsOnSameDay) {
   let split = []
   split.push(event)
   if (event.durationInMinutes > 60) {
-    for (let timeslot of timeSlotsOnSameDay) {
+    for (let t in timeSlotsOnSameDay) {
+      const timeslot = timeSlotsOnSameDay[t]
+      const timeSlotNext = timeSlotsOnSameDay[parseInt(t) + 1]
       if (moment(timeslot.time).isAfter(moment(event.start)) && moment(timeslot.time).isBefore(event.end)) {
         let eventSlice = JSON.parse(JSON.stringify(event))
         eventSlice.startOfSlice = timeslot.time
+        if (timeSlotNext) {
+          eventSlice.endOfSlice = timeSlotNext.time
+        }
         eventSlice.htmlId = eventSlice.id + '_' + timeslot.timeslot
         eventSlice.showInTimetable = false
         split.push(eventSlice)
@@ -132,10 +138,11 @@ function splitLongEvents (events, timeslots) {
 }
 
 function calculateTimeslots (events) {
-  const allTimeSlots = events.map(item => {
-    return {timeslot: moment(item.start).format('HH:mm'), time: item.start, day: getDateOnly(item.start)}
+  const groupedTimes = Object.keys(groupBy(events, event => event.start))
+  const allTimeSlots = groupedTimes.map(item => {
+    return {timeslot: moment(item).format('HH:mm'), time: item, day: getDateOnly(item)}
   })
-    .filter((value, index, self) => self.indexOf(value) === index)
+    .sort((a, b) => { return (a.timeslot < b.timeslot ? -1 : 1) })
   return groupBy(allTimeSlots, slot => slot.day)
 }
 

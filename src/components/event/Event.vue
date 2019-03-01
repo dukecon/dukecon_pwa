@@ -2,6 +2,7 @@
   <div class="talk-widget">
     <div class="talk-cell" :class="timeClass">
       <favourite :event="event" :mode="'standard'"/>
+      <long-talk-marker :event="event" threshold-in-minutes="60"/>
       <router-link :to="{ name: 'scheduledEventPage', params: { eventId: event.id }}" style="padding: 0">
         <div class="talk-info">
           <div class="title darkLink">
@@ -22,6 +23,7 @@
 import ScheduledEventIcons from './ScheduledEventIcons.vue'
 import Conference from '../../Conference'
 import Favourite from './Favourite.vue'
+import LongTalkMarker from './LongTalkMarker'
 
 function getTimeCategory (duration) {
   if (typeof duration === 'undefined' || (duration > 30 && duration <= 60)) {
@@ -36,7 +38,8 @@ function getTimeCategory (duration) {
 export default {
   components: {
     Favourite,
-    ScheduledEventIcons
+    ScheduledEventIcons,
+    LongTalkMarker
   },
   props: ['event', 'mode'],
   name: 'event',

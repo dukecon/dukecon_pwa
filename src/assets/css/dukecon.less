@@ -469,6 +469,7 @@ div.time-cell {
 }
 div.talk-widget  {
     border-bottom: none;
+    position: relative;
     display: inline-block;
     width: 33%;
     margin: 0;
@@ -486,7 +487,6 @@ div.talk-cell {
     line-height:1.1em;
     border-bottom: none;
     &.long {
-      background: #fddddd;
     }
     .fav-container {
       flex-grow: 0;
@@ -1145,8 +1145,8 @@ a .speakerinfo {
         display: block;
         .language-icon {
             position: absolute;
-            right: 0;
-            top: 55px;
+            right: -35px;
+            top: 5px;
             &.no-speaker {
                 top: 40px;
             }
