@@ -1,9 +1,9 @@
 <template>
-  <div class="marker-box alternate" v-if="event.durationInMinutes > thresholdInMinutes">
-    <div class="starts-before alternateBack" :style="visibilityStart">
-      <div class="arrow-up">&nbsp;</div>
+  <div class="marker-box" v-if="event.durationInMinutes > thresholdInMinutes">
+    <div class="starts-before" :style="visibilityStart">
+      <div class="arrow-up darkBack">&nbsp;</div>
     </div>
-    <div class="is-long alternateBack reverse" :class="gradientClass">
+    <div class="is-long darkBack reverse" :class="gradientClass">
       <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
            width="12px" height="12px" viewBox="0 0 56.69 56.69" enable-background="new 0 0 56.69 56.69" xml:space="preserve">
         <path opacity="0.3" d="M28.343,0C12.688,0-0.003,12.691-0.003,28.346c0,15.656,12.691,28.347,28.347,28.347
@@ -22,8 +22,8 @@
                 <line fill="none" stroke="#777777" stroke-width="1.5" stroke-linecap="round" stroke-miterlimit="10" x1="3.756" y1="28.276" x2="6.59" y2="28.276"/>
       </svg>
     </div>
-    <div class="ends-after alternateBack" :style="visibilityEnd">
-      <div class="arrow-down">&nbsp;</div>
+    <div class="ends-after" :style="visibilityEnd">
+      <div class="arrow-down darkBack">&nbsp;</div>
     </div>
   </div>
 </template>
@@ -69,7 +69,7 @@ export default {
     display: none;
   }
   .long .marker-box {
-    left: 10px;
+    left: 11px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -93,12 +93,16 @@ export default {
     .ends-after, .starts-before {
       flex-grow: 1;
       .arrow-down {
+        border-bottom-left-radius: 50px;
+        border-bottom-right-radius: 50px;
         height: 100%;
         background: -ms-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)); /* IE10+ */
         background-image: linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
         background-repeat: repeat-x;
       }
       .arrow-up {
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
         height: 100%;
         background: -ms-linear-gradient(top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)); /* IE10+ */
         background-image: linear-gradient(top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
