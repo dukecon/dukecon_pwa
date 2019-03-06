@@ -96,7 +96,7 @@ export default {
         border-bottom-left-radius: 50px;
         border-bottom-right-radius: 50px;
         height: 100%;
-        background: -ms-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)); /* IE10+ */
+        /* background: -ms-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)); !* IE10+ *!*/
         background-image: linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
         background-repeat: repeat-x;
       }
@@ -104,7 +104,7 @@ export default {
         border-top-left-radius: 50px;
         border-top-right-radius: 50px;
         height: 100%;
-        background: -ms-linear-gradient(top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)); /* IE10+ */
+        /* background: -ms-linear-gradient(top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)); !* IE10+ *!*/
         background-image: linear-gradient(top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
         background-repeat: repeat-x;
       }
