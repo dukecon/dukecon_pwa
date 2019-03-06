@@ -5,7 +5,7 @@
     </div>
     <div class="is-long alternateBack reverse" :class="gradientClass">
       <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-           width="16px" height="16px" viewBox="0 0 56.69 56.69" enable-background="new 0 0 56.69 56.69" xml:space="preserve">
+           width="12px" height="12px" viewBox="0 0 56.69 56.69" enable-background="new 0 0 56.69 56.69" xml:space="preserve">
         <path opacity="0.3" d="M28.343,0C12.688,0-0.003,12.691-0.003,28.346c0,15.656,12.691,28.347,28.347,28.347
           c15.655,0,28.346-12.691,28.346-28.347C56.689,12.691,43.998,0,28.343,0L28.343,0z"/>
                 <path d="M28.344,5C41.217,5,51.69,15.473,51.69,28.346c0,12.874-10.474,23.347-23.347,23.347
@@ -69,7 +69,7 @@ export default {
     display: none;
   }
   .long .marker-box {
-    left: 8px;
+    left: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -78,15 +78,16 @@ export default {
     top: 35px;
     bottom: 10px;
     .is-long {
-      padding: 2px;
+      padding: 1px;
+      height: 13px;
       flex-grow: 0;
       &.talk-starts {
-        background-image: linear-gradient(top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0));
-        background-repeat: repeat-x;
+        border-top-left-radius: 100%;
+        border-top-right-radius: 100%;
       }
       &.talk-ends {
-        background-image: linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 1));
-        background-repeat: repeat-x;
+        border-bottom-left-radius: 100%;
+        border-bottom-right-radius: 100%;
       }
     }
     .ends-after, .starts-before {
