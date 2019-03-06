@@ -55,6 +55,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({
+      cssProcessor: require('cssnano'),
       cssProcessorOptions: {
         safe: true
       }
