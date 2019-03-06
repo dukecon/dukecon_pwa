@@ -63,8 +63,8 @@ export default {
       return Object.entries(this.speakers).map(e => e[1])
         .filter(s => this.search(s))
         .sort((a, b) => {
-          const l1 = a.lastname.toUpperCase()
-          const l2 = b.lastname.toUpperCase()
+          const l1 = (a.lastname || '').toUpperCase()
+          const l2 = (b.lastname || '').toUpperCase()
           if (l1 === l2) {
             return 0
           } else if (l1 < l2) {
