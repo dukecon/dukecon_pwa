@@ -1,6 +1,7 @@
 /* colors only; retrieve from backend later!*/
 .dark {
     color: #888;
+    fill: #888;
     border-color: #888;
 }
 .darkBack {
@@ -8,36 +9,43 @@
 }
 .darkLink {
     color: #666;
+    fill: #666;
 }
 .darkLinkBack {
     background-color: #888;
 }
 .hover {
     color: #aaa;
+    fill: #aaa;
 }
 .hoverBack {
     color: #aaa;
+    fill: #aaa;
 }
 .reverse {
     color: #fff;
+    fill: #fff;
 }
 .reverseBack {
     background-color: #fff;
 }
 .highlight {
     color: #fff;
+    fill: #fff;
 }
 .highlightBack {
     background-color: #fff;
 }
 .alternate {
     color: #bf5a00;
+    fill: #bf5a00;
 }
 .alternateBack {
     background-color: #bf5a00;
 }
 a {
     color: #888;
+    fill: #888;
 }
 a:hover {
     color: #aaa;
@@ -50,6 +58,7 @@ h1 a:hover {
 h1 a.active:hover {
     background-color: #fff;
     color: #aaa;
+    fill: #aaa;
 }
 button.highlightBack:hover {
     background-color: #aaa;
