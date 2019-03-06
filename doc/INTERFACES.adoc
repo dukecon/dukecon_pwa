@@ -15,32 +15,32 @@ For your convenience a link to the latest build of this software is stated here.
 / (Start Page)::
 The standard page a user should navigate to.
 This usually show currently an overview of talks and a filter and a search field +
-https://latest.dukecon.org/javaland/2018/
+https://latest.dukecon.org/javaland/2019/
 
 /#/schedule (Schedule)::
 Overview of talks and a filter and a search field +
-https://latest.dukecon.org/javaland/2018/#/schedule
+https://latest.dukecon.org/javaland/2019/#/schedule
 
 /#/schedule/<date> (Schedule with pre-selected date)::
 Overview of talks and a filter and a search field, with a pre-selected day +
-https://latest.dukecon.org/javaland/2018/#/schedule/2018-03-14
+https://latest.dukecon.org/javaland/2019/#/schedule/2018-03-14
 
 /#/timetable (Timetable)::
 This show a timetable. It is scrollable horizontally and zoomable.
 Currently there are no filters and there is no search field, but this may change over time.
-https://latest.dukecon.org/javaland/2018/#/timetable
+https://latest.dukecon.org/javaland/2019/#/timetable
 
 /#/speakers (Speakers)::
 This is an alphabetical list of all speakers and their talks.
-https://latest.dukecon.org/javaland/2018/#/speakers
+https://latest.dukecon.org/javaland/2019/#/speakers
 
 /#/speaker/<speakerId> (single Speaker)::
 Link to a specific speaker. +
-https://latest.dukecon.org/javaland/2018/#/speaker/378511
+https://latest.dukecon.org/javaland/2019/#/speaker/378511
 
 /#/scheduledEvent/<eventId> (single Event or Talk)::
 Link to a specific talk. +
-https://latest.dukecon.org/javaland/2018/#/scheduledEvent/548978
+https://latest.dukecon.org/javaland/2019/#/scheduledEvent/548978
 
 /#/...?search=<term> (search term as query parameter)::
 Hand over a search term as a query parameter.
@@ -48,7 +48,7 @@ Special characters need to be URL encoded.
 German Umlauts need to be encoded as two bytes.
 You can use the following online tool to encode strings: https://meyerweb.com/eric/tools/dencoder/ +
 You can hand over a search term with any URL, but search will only filter the events if the page is search enabled. +
-https://latest.dukecon.org/javaland/2018/#/?search=L%C3%B6sung
+https://latest.dukecon.org/javaland/2019/#/?search=L%C3%B6sung
 
 === Interfaces for operations
 
@@ -56,7 +56,7 @@ The following URLs are helpful for administrating stuff:
 
 /COMMITHASH::
 Commit hash this was built on +
-https://latest.dukecon.org/javaland/2018/COMMITHASH
+https://latest.dukecon.org/javaland/2019/COMMITHASH
 
 There are also BRANCH and VERSION but they currently don't provide additional information as the central build checks out a specific commit ID and then builds it.
 
@@ -70,28 +70,28 @@ For your convenience a link to the latest build of this software is stated here.
 
 /feedback.html::
 Links to feedback +
-https://latest.dukecon.org/javaland/2018/feedback.html
+https://latest.dukecon.org/javaland/2019/feedback.html
 
 /schedule.html::
 Links to schedule +
-https://latest.dukecon.org/javaland/2018/schedule.html
+https://latest.dukecon.org/javaland/2019/schedule.html
 
 /speakers.html::
 Links to all speakers +
-https://latest.dukecon.org/javaland/2018/speakers.html
+https://latest.dukecon.org/javaland/2019/speakers.html
 
 /talk.html#talk?talkId=<talkId>::
 Links to a specific talk +
-https://latest.dukecon.org/javaland/2018/talk.html#talk?talkId=548978
+https://latest.dukecon.org/javaland/2019/talk.html#talk?talkId=548978
 
 /speaker.html#speaker?speakerId=<speakerId>::
 Links to a specific speaker +
-https://latest.dukecon.org/javaland/2018/speaker.html#speaker?speakerId=378511
+https://latest.dukecon.org/javaland/2019/speaker.html#speaker?speakerId=378511
 
 /...?search=<term>::
 Hand over a search term as a query parameter.
 Note that the new API always starts with a _/#/_ before the search term. +
-https://latest.dukecon.org/javaland/2018/?search=L%C3%B6sung
+https://latest.dukecon.org/javaland/2019/?search=L%C3%B6sung
 
 == Consumed Interfaces
 
@@ -102,31 +102,31 @@ For your convenience a link to the latest build of this software is stated here.
 
 rest/init.json::
 Base conference information, provides i.e. the conferenceId for the following calls. +
-https://latest.dukecon.org/javaland/2018/rest/init.json
+https://latest.dukecon.org/javaland/2019/rest/init.json
 
 rest/conferences/<conferenceId>/styles.css::
 Styles for a specific conference
-https://latest.dukecon.org/javaland/2018/rest/conferences/javaland2018/styles.css
+https://latest.dukecon.org/javaland/2019/rest/conferences/javaland2018/styles.css
 
 rest/conferences/<conferenceId>::
 All events, speakers and metadata (rooms, tracks) +
-https://latest.dukecon.org/javaland/2018/rest/conferences/javaland2018
+https://latest.dukecon.org/javaland/2019/rest/conferences/javaland2018
 
 rest/image-resources.json::
 Icons for the conference, i.e. for each track +
-https://latest.dukecon.org/javaland/2018/rest/image-resources.json
+https://latest.dukecon.org/javaland/2019/rest/image-resources.json
 
 rest/speaker/images/<photoId>::
 Photo of a specific speaker. +
-https://latest.dukecon.org/javaland/2018/rest/speaker/images/54b7e39e34aabbdf3c6a6e10e24c7821
+https://latest.dukecon.org/javaland/2019/rest/speaker/images/54b7e39e34aabbdf3c6a6e10e24c7821
 
 rest/eventsBooking/<conferenceId>::
 Current number of favorites and fully booked settings. +
-https://latest.dukecon.org/javaland/2018/rest/eventsBooking/javaland2018
+https://latest.dukecon.org/javaland/2019/rest/eventsBooking/javaland2018
 
 img/favicon.ico::
 Fav-Icon of the conference for the browser tab and also for bookmarks.
-https://latest.dukecon.org/javaland/2018/img/favicon.ico
+https://latest.dukecon.org/javaland/2019/img/favicon.ico
 
 rest/preferences::
 Get preferences (favorites) of current user.
@@ -134,11 +134,11 @@ Requires login.
 Authentication can be done with a session (when called from a browser directly) or via access token (when used via AJAX from the app).
 When you call the URL with the browser you'll be redirected to a login page.
 To update the preferences for a user we use POST to send a full set of preferences. +
-https://latest.dukecon.org/javaland/2018/rest/preferences
+https://latest.dukecon.org/javaland/2019/rest/preferences
 
 rest/feedback/event/<conferenceId>/<eventId>::
 Save the feedback for a given conference and event using _PUT_
 +
 ----
-$ curl 'https://latest.dukecon.org/javaland/2018/rest/feedback/event/javaland2018/548938' -X PUT -H 'Authorization: bearer ey...Gw' --data-binary '{"comment":"test","rating":3}'
+$ curl 'https://latest.dukecon.org/javaland/2019/rest/feedback/event/javaland2018/548938' -X PUT -H 'Authorization: bearer ey...Gw' --data-binary '{"comment":"test","rating":3}'
 ----

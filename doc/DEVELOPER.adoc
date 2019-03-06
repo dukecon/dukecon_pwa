@@ -44,7 +44,7 @@ npm install
 ----
 
 To run using hot-reload development mode use the following command.
-This will forward all requests to URLs below _/rest_ to _https://latest.dukecon.org/javaland/2018/rest_.
+This will forward all requests to URLs below _/rest_ to _https://latest.dukecon.org/javaland/2019/rest_.
 It will also connect to the Dukecon's Keycloak instance.
 Therefore you'll need to be online when developing in this mode.
 See _conf/index.js_ for details on how to configure this.
@@ -136,7 +136,7 @@ NOTE: It might happen that PhantomJS terminates due to inactivity.
 In this case open up the URL in Chrome: http://localhost:9876/
 
 To run the integration tests you need a local Chrome browser installed.
-You'll also need a connection to the internet as this will start the frontend in development mode that will proxy all _/rest_ resources to _https://latest.dukecon.org/javaland/2018_.
+You'll also need a connection to the internet as this will start the frontend in development mode that will proxy all _/rest_ resources to _https://latest.dukecon.org/javaland/2019_.
 It will also connect to the Dukecon's Keycloak instance.
 Use the following command to run them:
 
@@ -204,7 +204,7 @@ serve dist
 ----
 
 A http server is started and serves the distributed build under `http://localhost:5000`.
-If the application is running under port 5000 the backend will be called from `https://latest.dukecon.org/javaland/2018/`.
+If the application is running under port 5000 the backend will be called from `https://latest.dukecon.org/javaland/2019/`.
 Currently this hard coded in:
 
 * Images.js
