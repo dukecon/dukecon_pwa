@@ -81,8 +81,10 @@ export default {
   .marker-box {
     display: none;
   }
-  .speaker-talks .long .marker-box {
-    display: none;
+  .speakertalks, .speaker-talks {
+    .long .marker-box {
+      display: none;
+    }
   }
   .long .marker-box {
     left: 11px;
