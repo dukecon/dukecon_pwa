@@ -1,8 +1,8 @@
 <template>
   <div class="marker-box" v-if="event.durationInMinutes > thresholdInMinutes">
     <div class="starts-before" :style="visibilityStart">
-      <div class="arrow-up darkBack">
-        <svg width="10px" height="30px" viewBox="0 0 10 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <div class="arrow-up alternateBack">
+        <svg viewBox="0 0 10 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <title>3-Pfeile-Aufwärts Transparent</title>
           <desc>Created with Sketch.</desc>
           <g id="3-Pfeile-Aufwärts-Transparent" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -10,7 +10,7 @@
           </g>
         </svg>      </div>
     </div>
-    <div class="is-long darkLink" :class="gradientClass">
+    <div class="is-long alternate" :class="gradientClass">
       <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
            width="12px" height="13px" viewBox="0 0 56.69 56.69" enable-background="new 0 0 56.69 56.69" xml:space="preserve">
         <path opacity="0.3" d="M28.343,0C12.688,0-0.003,12.691-0.003,28.346c0,15.656,12.691,28.347,28.347,28.347
@@ -30,8 +30,8 @@
       </svg>
     </div>
     <div class="ends-after" :style="visibilityEnd">
-      <div class="arrow-down darkBack">
-        <svg width="10px" height="30px" viewBox="0 0 10 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <div class="arrow-down alternateBack">
+        <svg viewBox="0 0 10 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
           <title>3-Pfeile-Abwärts Transparent</title>
           <desc>Created with Sketch.</desc>
@@ -106,6 +106,10 @@ export default {
     }
     .ends-after, .starts-before {
       flex-grow: 1;
+      svg {
+        width: 10px;
+        height: 30px;
+      }
       .arrow-down {
         margin: 2px 5px 4px 4px;
         height: 30px;
@@ -122,6 +126,24 @@ export default {
       }
     }
   }
-</style>
-<style lang="css" scoped>
+  @media (max-width: 786px) {
+    .long .marker-box {
+      top: 26px;
+      left: 9px;
+      .ends-after, .starts-before {
+        svg {
+          width: 8px;
+          height: 24px;
+        }
+        .arrow-down {
+          margin: 2px 6px 4px 5px;
+          height: 22px;
+        }
+        .arrow-up {
+          margin: 4px 6px 2px 5px;
+          height: 24px;
+        }
+      }
+    }
+  }
 </style>
