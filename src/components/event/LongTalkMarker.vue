@@ -1,11 +1,18 @@
 <template>
   <div class="marker-box" v-if="event.durationInMinutes > thresholdInMinutes">
     <div class="starts-before" :style="visibilityStart">
-      <div class="arrow-up darkBack">&nbsp;</div>
+      <div class="arrow-up darkBack">
+        <svg width="10px" height="30px" viewBox="0 0 10 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <title>3-Pfeile-Aufwärts Transparent</title>
+          <desc>Created with Sketch.</desc>
+          <g id="3-Pfeile-Aufwärts-Transparent" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <path d="M10,30 L5,20 L0,30 L0,0 L10,0 L10,30 Z M5,9 L1,17 L9,17 L5,9 Z M5,0 L2,6 L8,6 L5,0 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+          </g>
+        </svg>      </div>
     </div>
-    <div class="is-long darkBack reverse" :class="gradientClass">
+    <div class="is-long darkLink" :class="gradientClass">
       <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-           width="12px" height="12px" viewBox="0 0 56.69 56.69" enable-background="new 0 0 56.69 56.69" xml:space="preserve">
+           width="12px" height="13px" viewBox="0 0 56.69 56.69" enable-background="new 0 0 56.69 56.69" xml:space="preserve">
         <path opacity="0.3" d="M28.343,0C12.688,0-0.003,12.691-0.003,28.346c0,15.656,12.691,28.347,28.347,28.347
           c15.655,0,28.346-12.691,28.346-28.347C56.689,12.691,43.998,0,28.343,0L28.343,0z"/>
                 <path d="M28.344,5C41.217,5,51.69,15.473,51.69,28.346c0,12.874-10.474,23.347-23.347,23.347
@@ -23,7 +30,16 @@
       </svg>
     </div>
     <div class="ends-after" :style="visibilityEnd">
-      <div class="arrow-down darkBack">&nbsp;</div>
+      <div class="arrow-down darkBack">
+        <svg width="10px" height="30px" viewBox="0 0 10 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+          <title>3-Pfeile-Abwärts Transparent</title>
+          <desc>Created with Sketch.</desc>
+          <g id="3-Pfeile-Abwärts-Transparent" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <path d="M1.77635684e-15,-3.55271368e-15 L5,10 L10,-1.77635684e-15 L10,30 L0,30 L0,-1.77635684e-15 Z M5,21 L9,13 L1,13 L5,21 Z M5,30 L8,24 L2,24 L5,30 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+          </g>
+        </svg>
+      </div>
     </div>
   </div>
 </template>
@@ -78,38 +94,34 @@ export default {
     top: 35px;
     bottom: 10px;
     .is-long {
-      padding: 1px;
-      height: 13px;
+      padding: 3px;
+      height: 12px;
+      width: 13px;
       flex-grow: 0;
+      border-radius: 100%;
       &.talk-starts {
-        border-top-left-radius: 100%;
-        border-top-right-radius: 100%;
       }
       &.talk-ends {
-        border-bottom-left-radius: 100%;
-        border-bottom-right-radius: 100%;
       }
     }
     .ends-after, .starts-before {
       flex-grow: 1;
+      .arrow-down {
+        margin: 2px 5px 4px 4px;
+        height: 30px;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 1)));
+        background-image: linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+        background-repeat: repeat-x;
+      }
+      .arrow-up {
+        margin: 4px 5px 2px 4px;
+        height: 30px;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 1)), to(rgba(255, 255, 255, 0)));
+        background-image: linear-gradient(top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+        background-repeat: repeat-x;
+      }
     }
   }
 </style>
 <style lang="css" scoped>
-  .arrow-down {
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    height: 100%;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 1)));
-    background-image: linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
-    background-repeat: repeat-x;
-  }
-  .arrow-up {
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-    height: 100%;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 1)), to(rgba(255, 255, 255, 0)));
-    background-image: linear-gradient(top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-    background-repeat: repeat-x;
-  }
 </style>
