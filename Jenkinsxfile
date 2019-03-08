@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label "jenkins-maven"
+    label "jenkins-maven-nodejs"
   }
   environment {
     ORG = 'dukecon-jx'
@@ -36,7 +36,7 @@ pipeline {
         branch 'develop'
       }
       steps {
-        container('maven') {
+        container('mavennodejs') {
 
           // ensure we're not on a detached head
           sh "git checkout develop"
