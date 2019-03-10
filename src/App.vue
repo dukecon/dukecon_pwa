@@ -76,8 +76,12 @@ export default {
     return {
       mobileMenuOpen: false,
       conference: Conference.getConference(),
-      baseUrl: Conference.getBaseUrl(),
       events: Conference.getAllEvents()
+    }
+  },
+  computed: {
+    baseUrl: function () {
+      return Conference.getBaseUrl()
     }
   },
   created () {

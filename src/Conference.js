@@ -249,6 +249,7 @@ const init = function () {
   initialized = true
   axios.get(base + 'rest/init.json')
     .then(function (response) {
+      conference.loadingFailed = false
       for (const key in response.data) {
         if (response.data.hasOwnProperty(key)) {
           Vue.set(conference, key, response.data[key])

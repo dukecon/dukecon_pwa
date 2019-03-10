@@ -1,8 +1,8 @@
 {
-  "id": "javaland2018",
-  "name": "JavaLand 2018",
-  "year": "2018",
-  "url": "http://javaland.dukecon.org/2018",
+  "id": "javaland2019",
+  "name": "JavaLand 2019",
+  "year": "2019",
+  "url": "http://javaland.dukecon.org/2019",
   "homeUrl": "http://www.javaland.eu",
   "homeTitle": null,
   "imprint": {
@@ -17,12 +17,16 @@
     "de": "https://www.javaland.eu/de/datenschutz/",
     "en": "https://www.javaland.eu/en/privacy/"
   },
-  "startDate": "2018-03-13",
-  "endDate": "2018-03-15",
+  "startDate": "2019-03-19",
+  "endDate": "2019-03-21",
   "authEnabled": true,
-  "admin": "../rest/admin/javaland2018",
-  "forceUpdate": "../rest/conferences/update/javaland2018",
-  "conferences": "../rest/conferences/javaland2018",
-  "events": "../rest/eventsBooking/javaland2018",
-  "keycloak": "../rest/keycloak.json"
+  "admin": "../rest/admin/javaland2019",
+  "forceUpdate": "../rest/conferences/update/javaland2019",
+  "conferences": "../rest/conferences/javaland2019",
+  "events": "../rest/eventsBooking/javaland2019",
+  "keycloak": "../rest/keycloak.json",
+  "feedbackServer": {
+    "active": true,
+    "timeSlotVisible": 10080
+  }
 }
