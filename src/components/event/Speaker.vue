@@ -17,7 +17,7 @@
                 <th>E-Mail:</th>
                 <td><a :href='"mailto:" + speaker.email'>{{ speaker.email }}</a></td>
               </tr>
-              <tr v-if="speaker.website">
+              <tr v-if="speaker.website && speaker.website !== 'http://'">
                 <th>Web:</th>
                 <td><a target="_blank" :href="speakerWeblink">{{speaker.website}}</a></td>
               </tr>
@@ -59,7 +59,7 @@ if (window.location.href.indexOf('http://localhost:5000') !== -1) {
 var toUrl = function (media, url) {
   if (url.indexOf('http://') !== 0 && url.indexOf('https://') !== 0) {
     if (media === 'twitter') {
-      url = 'https://www.twitter.com/' + (url.indexOf('@') === 0 ? url.substr(1) : url)
+      url = 'https://twitter.com/' + (url.indexOf('@') === 0 ? url.substr(1) : url)
     } else {
       url = 'http://' + url
     }
@@ -74,7 +74,7 @@ export default {
     var s = this.speaker
     var ms = ['facebook', 'googleplus', 'instagram', 'linkedin', 'pinterest', 'twitter', 'xing', 'youtube']
       .filter(m => {
-        return s[m] !== undefined
+        return s[m] !== undefined && s[m] !== 'http://'
       }).map(m => {
         return {
           media: m,
