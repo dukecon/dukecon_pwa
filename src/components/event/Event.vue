@@ -1,8 +1,10 @@
 <template>
   <div class="talk-widget">
     <div class="talk-cell" :class="timeClass">
-      <favourite :event="event" :mode="'standard'"/>
-      <long-talk-marker :event="event" threshold-in-minutes="60"/>
+      <div class="left-column">
+        <favourite :event="event" :mode="'standard'"/>
+        <long-talk-marker :event="event" threshold-in-minutes="60"/>
+      </div>
       <router-link :to="{ name: 'scheduledEventPage', params: { eventId: event.id }}" style="padding: 0">
         <div class="talk-info">
           <div class="title darkLink">

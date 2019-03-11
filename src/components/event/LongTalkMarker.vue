@@ -87,14 +87,10 @@ export default {
     }
   }
   .long .marker-box {
-    left: 11px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
-    position: absolute;
-    top: 35px;
-    bottom: 10px;
     .is-long {
       padding: 3px;
       height: 12px;
@@ -115,6 +111,7 @@ export default {
       .arrow-down {
         margin: 2px 5px 4px 4px;
         height: 30px;
+        width: 10px;
         background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 1)));
         background-image: linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
         background-repeat: repeat-x;
@@ -122,6 +119,7 @@ export default {
       .arrow-up {
         margin: 4px 5px 2px 4px;
         height: 30px;
+        width: 10px;
         background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 1)), to(rgba(255, 255, 255, 0)));
         background-image: linear-gradient(top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
         background-repeat: repeat-x;
@@ -130,18 +128,18 @@ export default {
   }
   @media (max-width: 786px) {
     .long .marker-box {
-      top: 26px;
-      left: 9px;
       .ends-after, .starts-before {
         svg {
           width: 8px;
           height: 24px;
         }
         .arrow-down {
+          width: 8px;
           margin: 2px 6px 4px 5px;
           height: 22px;
         }
         .arrow-up {
+          width: 8px;
           margin: 4px 6px 2px 5px;
           height: 24px;
         }
