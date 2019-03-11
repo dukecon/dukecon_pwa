@@ -33,7 +33,7 @@ pipeline {
     }
     stage('Build and Test') {
       when {
-        expression { BRANCH_NAME ==~ /^(feature|fix|develop)/ }
+        expression { BRANCH_NAME ==~ /(feature|fix|develop)/ }
       }
       steps {
         container('mavennodejs') {
