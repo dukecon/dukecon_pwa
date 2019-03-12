@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "keycloak-js": "^3.2.1",
+    "keycloak-js": "^4.8.3",
     "lodash-es": "^4.17.10",
     "moment": "^2.22.1",
     "vis": "^4.21.0",
