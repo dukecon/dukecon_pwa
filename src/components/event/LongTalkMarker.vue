@@ -3,12 +3,13 @@
     <div class="starts-before" :style="visibilityStart">
       <div class="arrow-up alternateBack">
         <svg viewBox="0 0 10 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <title>3-Pfeile-Aufwärts Transparent</title>
+          <title>{{ $t('talk.longduration') }}</title>
           <desc>Created with Sketch.</desc>
           <g id="3-Pfeile-Aufwärts-Transparent" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <path d="M10,30 L5,20 L0,30 L0,0 L10,0 L10,30 Z M5,9 L1,17 L9,17 L5,9 Z M5,0 L2,6 L8,6 L5,0 Z" id="Combined-Shape" fill="#FFFFFF"></path>
           </g>
-        </svg>      </div>
+        </svg>
+      </div>
     </div>
     <div class="is-long alternate" :class="gradientClass">
       <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -33,7 +34,7 @@
       <div class="arrow-down alternateBack">
         <svg viewBox="0 0 10 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
-          <title>3-Pfeile-Abwärts Transparent</title>
+          <title>{{ $t('talk.longduration') }}</title>
           <desc>Created with Sketch.</desc>
           <g id="3-Pfeile-Abwärts-Transparent" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <path d="M1.77635684e-15,-3.55271368e-15 L5,10 L10,-1.77635684e-15 L10,30 L0,30 L0,-1.77635684e-15 Z M5,21 L9,13 L1,13 L5,21 Z M5,30 L8,24 L2,24 L5,30 Z" id="Combined-Shape" fill="#FFFFFF"></path>
