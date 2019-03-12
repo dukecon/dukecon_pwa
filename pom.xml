@@ -21,8 +21,8 @@
     <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
     <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
     <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-    <node.version>v8.9.3</node.version>
-    <npm.version>5.6.0</npm.version>
+    <node.version>v10.15.3</node.version>
+    <npm.version>6.4.1</npm.version>
 
     <!-- IntelliJ generates new version properties here - move them above every now and then -->
   </properties>

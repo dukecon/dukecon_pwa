@@ -9,7 +9,8 @@
 To get started in the project install the following Tools:
 
 Node and NPM::
-Download from https://nodejs.org/en/, choose the LTS version
+Download from https://nodejs.org/en/, choose the LTS version.
+At the time this is written Node 10.x is LTS.
 
 IntelliJ from JetBrains::
 The "ultimate edition" will allow also JavaScript development.
