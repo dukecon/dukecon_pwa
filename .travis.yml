@@ -7,7 +7,7 @@ addons:
     packages:
       - oracle-java8-set-default
 node_js:
-  - "6"
+  - "10"
 script:
   # show Java version (used by e2e testing)
   - java -version
