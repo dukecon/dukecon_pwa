@@ -38,6 +38,7 @@
       <links></links>
     </footer>
     <please-login></please-login>
+    <error-message :message="errorMessage" show-for-secs="5"></error-message>
   </div>
 </template>
 
@@ -55,6 +56,8 @@ import Search from './components/navbar/Search.vue'
 import Conference from './Conference'
 import Timetable from './components/navbar/Timetable.vue'
 import PleaseLogin from './components/PleaseLogin.vue'
+import ErrorMessage from './components/ErrorMessage.vue'
+import errorState from './ErrorState.js'
 
 export default {
   components: {
@@ -69,14 +72,16 @@ export default {
     Homeicon,
     Login,
     Language,
-    Links
+    Links,
+    ErrorMessage
   },
   name: 'app',
   data () {
     return {
       mobileMenuOpen: false,
       conference: Conference.getConference(),
-      events: Conference.getAllEvents()
+      events: Conference.getAllEvents(),
+      errorMessage: errorState.errorMessage
     }
   },
   computed: {
