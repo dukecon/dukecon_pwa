@@ -2,6 +2,7 @@ import axios from 'axios'
 import Vue from 'vue'
 import groupBy from 'lodash-es/groupBy'
 import Favorites from './Favourites'
+import Status from './components/Status.js'
 import moment from 'moment'
 
 const refreshIntervalFavoritesMs = 90 * 1000
@@ -250,6 +251,9 @@ const init = function () {
   axios.get(base + 'rest/init.json')
     .then(function (response) {
       conference.loadingFailed = false
+      Status.message = 'initialized'
+      Status.error = false
+
       for (const key in response.data) {
         if (response.data.hasOwnProperty(key)) {
           Vue.set(conference, key, response.data[key])
@@ -270,6 +274,8 @@ const init = function () {
         init()
       }
       console.log(error)
+      Status.message = 'couldn\'t initialize'
+      Status.error = true
       conference.loadingFailed = true
     })
 }

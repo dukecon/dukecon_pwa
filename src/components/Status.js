@@ -1,4 +1,4 @@
 export default {
-  message: '',
+  message: ' ',
   error: false
 }

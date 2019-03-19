@@ -38,7 +38,7 @@
       <links></links>
     </footer>
     <please-login></please-login>
-    <error-message :message="statusMessage" :is-error="isError" show-for-secs="5"></error-message>
+    <message-banner show-for-secs="5"></message-banner>
   </div>
 </template>
 
@@ -56,8 +56,7 @@ import Search from './components/navbar/Search.vue'
 import Conference from './Conference'
 import Timetable from './components/navbar/Timetable.vue'
 import PleaseLogin from './components/PleaseLogin.vue'
-import ErrorMessage from './components/MessageBanner.vue'
-import StatusMessage from './Status.js'
+import MessageBanner from './components/MessageBanner.vue'
 
 export default {
   components: {
@@ -73,16 +72,14 @@ export default {
     Login,
     Language,
     Links,
-    ErrorMessage
+    MessageBanner
   },
   name: 'app',
   data () {
     return {
       mobileMenuOpen: false,
       conference: Conference.getConference(),
-      events: Conference.getAllEvents(),
-      statusMessage: StatusMessage.message,
-      isError: StatusMessage.error
+      events: Conference.getAllEvents()
     }
   },
   computed: {

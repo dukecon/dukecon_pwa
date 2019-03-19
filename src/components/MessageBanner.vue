@@ -1,21 +1,28 @@
 <template>
-  <div class="status-area" :class="errorClass + cssClass">{{message}}</div>
+  <div class="status-area" :class="errorClass + cssClass">{{status.message}}</div>
 </template>
 <script>
+import Status from './Status.js'
+
 export default {
   name: 'MessageBanner',
-  props: ['message', 'showForSecs', 'isError'],
+  props: ['showForSecs'],
   data () {
     return {
-      errorClass: this.isError ? 'error ' : '',
+      status: Status,
       cssClass: 'nothere'
     }
   },
   mounted () {
     this.setHide()
   },
+  computed: {
+    errorClass () {
+      return this.status.isError ? 'error ' : ''
+    }
+  },
   watch: {
-    message () {
+    status () {
       console.log('trigger')
       this.setHide()
     }
@@ -23,12 +30,12 @@ export default {
   methods: {
     clearMessage () {
       setTimeout(() => {
-        this.message = ''
-        this.isError = false
+        this.status.message = ''
+        this.status.isError = false
       }, 500)
     },
     setHide () {
-      if (this.message && this.message.length > 0) {
+      if (this.status.message && this.status.message.length > 0) {
         this.cssClass = 'here'
         setTimeout(() => {
           this.cssClass = 'nothere'
