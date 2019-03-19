@@ -8,7 +8,7 @@ export default {
   data () {
     return {
       errorClass: this.isError ? 'error ' : '',
-      cssClass: 'here'
+      cssClass: 'nothere'
     }
   },
   mounted () {
