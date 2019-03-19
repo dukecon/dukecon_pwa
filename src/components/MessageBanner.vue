@@ -1,13 +1,14 @@
 <template>
-  <div class="error-area" :class="cssClass">{{message}}</div>
+  <div class="status-area" :class="errorClass + cssClass">{{message}}</div>
 </template>
 <script>
 export default {
-  name: 'ErrorMessage',
-  props: ['message', 'showForSecs'],
+  name: 'MessageBanner',
+  props: ['message', 'showForSecs', 'isError'],
   data () {
     return {
-      cssClass: 'nothere'
+      errorClass: this.isError ? 'error ' : '',
+      cssClass: 'here'
     }
   },
   mounted () {
@@ -23,6 +24,7 @@ export default {
     clearMessage () {
       setTimeout(() => {
         this.message = ''
+        this.isError = false
       }, 500)
     },
     setHide () {
@@ -38,10 +40,10 @@ export default {
 }
 </script>
 <style scoped lang="less">
-  .error-area {
+  .status-area {
+    background: #ddffdd;
+    color: #00d900;
     position: fixed;
-    background: #ffdddd;
-    color: #d90000;
     font-weight: bold;
     padding: 10px;
     text-align: center;
@@ -49,6 +51,10 @@ export default {
     right: 20px;
     bottom: 50px;
     transition: bottom ease-in 0.5s;
+    &.error {
+      background: #ffdddd;
+      color: #d90000;
+    }
     &.here {
       bottom: 50px;
     }
