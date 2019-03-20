@@ -2,12 +2,12 @@
   <!-- TODO
     - check maxlength for backend
   -->
-  <div class="feedback-widget" v-if="isFeedbackEnabled()">
-    <div class="feedback-loginmessage alternate" v-if="!isLoggedIn() && isFeedbackWindow()">
+  <div class="feedback-widget" v-if="feedbackPossible">
+    <div class="feedback-loginmessage alternate" v-if="shouldLogin">
       {{$t('feedback.loginMessage')}}
     </div>
 
-    <div v-if="isLoggedIn() && isFeedbackWindow()">
+    <div v-else>
       <div :id="'feedbackpopupbutton' + eventId" class="feedbackpopupbutton">
         <button class="darkBack reverse" @click="togglePopup">{{$t('feedback.popupbutton')}}</button>
       </div>
@@ -153,33 +153,33 @@ export default {
       popupHidden: true,
       feedbackRadio: '',
       feedbackText: '',
-      conference: Conference.getConference()
+      conference: Conference.getConference(),
+      currentTime: moment()
     }
   },
-  computed: {},
-  methods: {
-    isLoggedIn: function () {
-      return Dukecloak.getKeycloak().isLoggedIn
-    },
-    togglePopup: function () {
-      this.popupHidden = !this.popupHidden
-    },
-    isFeedbackWindow: function () {
+  computed: {
+    feedbackPossible: function () {
+      // first check if 'feedbackServer' exists for backward compatibility
+      if (!this.conference.feedbackServer || !this.conference.feedbackServer.active) {
+        return false
+      }
       if (Dukecloak.getKeycloak().isLoggedIn && Dukecloak.getKeycloak().tokenParsed.realm_access.roles.indexOf('admin') > -1) {
         // we always allow Admin accounts to give feedback
-        console.log('ADMIN user, disregarding time contraint for feedback')
+        console.log('ADMIN user, disregarding time constraint for feedback')
         return true
       }
-
       const deltaSeconds = this.conference.feedbackServer ? (this.conference.feedbackServer.timeSlotVisible || 0) : 0
-      const currentTime = moment()
       const feedbackStart = moment(this.eventStart)
       const feedbackEnd = moment(this.eventEnd).add(deltaSeconds, 'seconds')
-      return (currentTime.isBefore(feedbackEnd) && currentTime.isAfter(feedbackStart))
+      return (this.currentTime.isBefore(feedbackEnd) && this.currentTime.isAfter(feedbackStart))
     },
-    isFeedbackEnabled: function () {
-      // first check if 'feedbackServer' exists for backward compatibility
-      return this.conference.feedbackServer && this.conference.feedbackServer.active
+    shouldLogin: function () {
+      return !Dukecloak.getKeycloak().isLoggedIn
+    }
+  },
+  methods: {
+    togglePopup: function () {
+      this.popupHidden = !this.popupHidden
     },
     cancel: function () {
       this.togglePopup()
