@@ -122,7 +122,7 @@ function initVue () {
 }
 
 // keycloak will do URL redirects. This interferes with Vue Router
-if (window.location.href.indexOf('?redirect_fragment') === -1) {
+if (window.location.href.indexOf('&state=') === -1) {
   // this is no redirect, so it is save to initialize Vue now
   initVue()
 }
