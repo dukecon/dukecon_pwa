@@ -3,7 +3,7 @@
     - check maxlength for backend
   -->
   <div class="feedback-widget" v-if="isFeedbackEnabled()">
-    <div class="feedback-loginmessage alternate" v-if="loginMessage && !isLoggedIn() && isFeedbackWindow()">
+    <div class="feedback-loginmessage alternate" v-if="!isLoggedIn() && isFeedbackWindow()">
       {{$t('feedback.loginMessage')}}
     </div>
 
@@ -146,7 +146,7 @@ import Conference from '../../Conference'
 
 export default {
   name: 'eventFeedback',
-  props: ['eventId', 'loginMessage', 'eventStart', 'eventEnd'],
+  props: ['eventId', 'eventStart', 'eventEnd'],
   data () {
     return {
       feedbackTextMaxLength: 1024,
