@@ -168,9 +168,15 @@ export default {
         console.log('ADMIN user, disregarding time constraint for feedback')
         return true
       }
-      const deltaSeconds = this.conference.feedbackServer ? (this.conference.feedbackServer.timeSlotVisible || 0) : 0
+      const deltaMinutes = this.conference.feedbackServer ? (this.conference.feedbackServer.timeSlotVisible || 0) : 0
+
+      if (deltaMinutes === -1) {
+        // -1 means at any time (testing only)
+        return true
+      }
+
       const feedbackStart = moment(this.eventStart)
-      const feedbackEnd = moment(this.eventEnd).add(deltaSeconds, 'seconds')
+      const feedbackEnd = moment(this.eventEnd).add(deltaMinutes, 'minutes')
       return (this.currentTime.isBefore(feedbackEnd) && this.currentTime.isAfter(feedbackStart))
     },
     shouldLogin: function () {
