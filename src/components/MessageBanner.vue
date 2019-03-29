@@ -13,25 +13,26 @@ export default {
       cssClass: 'nothere'
     }
   },
-  mounted () {
-    this.setHide()
-  },
   computed: {
     errorClass () {
-      return this.status.isError ? 'error ' : ''
+      return this.status.error ? 'error ' : ''
     }
   },
   watch: {
-    status () {
-      console.log('trigger')
-      this.setHide()
+    status: {
+      handler () {
+        console.log('trigger')
+        this.setHide()
+      },
+      immediate: true,
+      deep: true
     }
   },
   methods: {
     clearMessage () {
       setTimeout(() => {
         this.status.message = ''
-        this.status.isError = false
+        this.status.error = false
       }, 500)
     },
     setHide () {
