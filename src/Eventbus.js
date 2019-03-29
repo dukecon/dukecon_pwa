@@ -9,9 +9,9 @@ export default class Eventbus {
   static install (vue) {
     if (!installed) {
       vue.mixin({
-        data: function () {
-          return {
-            eventbus: eventbus
+        computed: {
+          eventbus () {
+            return eventbus
           }
         }
       })
