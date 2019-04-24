@@ -1,0 +1,69 @@
+.dark {
+  color: #057aab;
+  fill: #057aab;
+  border-color: #057aab;
+}
+.darkBack {
+  background-color: #057aab;
+}
+.darkLink {
+  color: #057aab;
+  fill: #057aab;
+  border-color: #057aab;
+}
+.darkLinkBack {
+  background-color: #057aab;
+}
+.hover {
+  color:#005379;
+  fill:#005379;
+}
+.hoverBack {
+  background-color:#005379;
+}
+.hoverLink {
+  color:#005379;
+  fill:#005379;
+}
+.hoverLinkBack {
+  background-color:#005379;
+}
+.reverse {
+  color: #fff;
+  fill: #fff;
+}
+.reverseBack {
+  background-color: #fff;
+}
+.highlight {
+  color: #ffc440;
+  fill: #ffc440;
+}
+.highlightBack {
+  background-color: #ffc440;
+}
+.alternate {
+  color: #e37331;
+  fill: #e37331;
+}
+.alternateBack {
+  background-color: #e37331;
+}
+a {
+  color: #057aab;
+  fill: #057aab;
+}
+a:hover {
+  color:#005379;
+}
+h1 a:hover {
+  background-color:#005379;
+}
+h1 a.active:hover {
+  background-color:#fff;
+  color: #057aab;
+  fill: #057aab;
+}
+button.highlightBack:hover {
+  background-color: #ffc440;
+}

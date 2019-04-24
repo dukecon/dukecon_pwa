@@ -1,0 +1,166 @@
+{
+  "id": "idm-2919",
+  "name": "TOPdesk IDM 2019",
+  "url": "",
+  "homeUrl": "http://www.javaland.eu",
+  "metaData": {
+    "id": "idm2019",
+    "audiences": [
+    ],
+    "languages": [
+    ],
+    "defaultLanguage": {
+      "id": "2",
+      "code": "en",
+      "order": 2,
+      "names": {
+        "de": "Englisch",
+        "en": "English"
+      },
+      "icon": "language_en.png"
+    },
+    "tracks": [
+      {
+        "id": "1",
+        "order": 1,
+        "names": {
+          "de": "Core Java & JVM Sprachen",
+          "en": "Core Java & JVM Languages"
+        },
+        "icon": "track_1.png"
+      },
+      {
+        "id": "2",
+        "order": 1,
+        "names": {
+          "de": "Methodology & Culture und Qualität",
+          "en": "Methodology & Culture and Quality"
+        },
+        "icon": "track_1.png"
+      }
+    ],
+    "locations": [
+      {
+        "id": "1",
+        "order": 1,
+        "names": {
+          "de": "Room 1",
+          "en": "Room 1"
+        },
+        "icon": "location_1.png",
+        "capacity": 1200
+      },
+      {
+        "id": "2",
+        "order": 1,
+        "names": {
+          "de": "Room 2",
+          "en": "Room 2"
+        },
+        "icon": "location_2.png",
+        "capacity": 0
+      }
+    ],
+    "defaultIcon": "Unknown.png"
+  },
+  "events": [
+    {
+      "id": "10",
+      "start": "2019-05-16T12:00:00",
+      "end": "2019-05-16T13:00:00",
+      "title": "Event 1",
+      "abstractText": "Any abstract text will do",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": true,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "de": [
+          "Java Standard Edition (Java SE)",
+          "Java 9"
+        ],
+        "en": [
+          "Java Standard Edition (Java SE)",
+          "Java 9"
+        ]
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "1",
+      "audienceId": "1",
+      "typeId": "1",
+      "locationId": "1",
+      "speakerIds": [
+        "1",
+        "2"
+      ],
+      "languageId": "2"
+    },
+    {
+      "id": "11",
+      "start": "2019-05-16T13:00:00",
+      "end": "2019-05-16T14:00:00",
+      "title": "Event 2",
+      "abstractText": "Any abstract text will do",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "de": [],
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "2",
+      "audienceId": "1",
+      "locationId": "2",
+      "speakerIds": [
+        "1"
+      ],
+      "languageId": "2"
+    }
+  ],
+  "speakers": [
+    {
+      "id": "1",
+      "name": "Speaker One",
+      "firstname": "Speaker",
+      "lastname": "One",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "bio": "Some bio, or not",
+      "photoId": "",
+      "eventIds": [
+        "10"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Speaker Two",
+      "firstname": "Speaker",
+      "lastname": "Two",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "More bio text",
+      "photoId": "",
+      "eventIds": [
+        "10",
+        "11"
+      ]
+    }
+  ]
+}
