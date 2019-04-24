@@ -1,8 +1,7 @@
 {
   "id": "idm-2919",
   "name": "TOPdesk IDM 2019",
-  "url": "",
-  "homeUrl": "http://www.javaland.eu",
+  "url": "http://idm.dukecon.org/2019",
   "metaData": {
     "id": "idm2019",
     "audiences": [
@@ -24,7 +23,6 @@
         "id": "1",
         "order": 1,
         "names": {
-          "de": "Core Java & JVM Sprachen",
           "en": "Core Java & JVM Languages"
         },
         "icon": "track_1.png"
@@ -33,7 +31,6 @@
         "id": "2",
         "order": 1,
         "names": {
-          "de": "Methodology & Culture und Qualität",
           "en": "Methodology & Culture and Quality"
         },
         "icon": "track_1.png"

@@ -67,3 +67,8 @@ h1 a.active:hover {
 button.highlightBack:hover {
   background-color: #ffc440;
 }
+
+h1 a#logo {
+  padding: 0 0 0 5px;
+  background: rgba(0,0,0,0);
+}
