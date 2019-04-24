@@ -7,11 +7,21 @@
     "audiences": [
     ],
     "languages": [
+      {
+        "id": "1",
+        "code": "en",
+        "order": 1,
+        "names": {
+          "de": "Englisch",
+          "en": "English"
+        },
+        "icon": "language_en.png"
+      }
     ],
     "defaultLanguage": {
-      "id": "2",
+      "id": "1",
       "code": "en",
-      "order": 2,
+      "order": 1,
       "names": {
         "de": "Englisch",
         "en": "English"
