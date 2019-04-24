@@ -33,7 +33,7 @@ export default {
       return require('@/assets/img/' + this.$i18n.locale + '.png')
     },
     languageSwitchVisible: function () {
-      if (Object.keys(this.languages).length === 1) {
+      if (Object.keys(this.languages).length <= 1) {
         return false
       }
       return true
@@ -55,6 +55,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped language="less">
 
 </style>

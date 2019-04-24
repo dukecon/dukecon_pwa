@@ -1,5 +1,5 @@
 <template>
-  <a target="_blank" class="mainmenu darkBack" :href="conference.homeUrl">{{ conference.homeTitle }}</a>
+  <a v-if="conference.homeUrl" target="_blank" class="mainmenu darkBack" :href="conference.homeUrl">{{ conference.homeTitle }}</a>
 </template>
 
 <script language="">
