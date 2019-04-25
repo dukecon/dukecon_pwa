@@ -33,17 +33,49 @@
         "id": "1",
         "order": 1,
         "names": {
-          "en": "Core Java & JVM Languages"
+          "en": "Green"
         },
         "icon": "track_1.png"
       },
       {
         "id": "2",
-        "order": 1,
+        "order": 2,
         "names": {
-          "en": "Methodology & Culture and Quality"
+          "en": "Blue"
         },
-        "icon": "track_1.png"
+        "icon": "track_2.png"
+      },
+      {
+        "id": "3",
+        "order": 3,
+        "names": {
+          "en": "Orange"
+        },
+        "icon": "track_3.png"
+      },
+      {
+        "id": "4",
+        "order": 4,
+        "names": {
+          "en": "Dark Orange"
+        },
+        "icon": "track_4.png"
+      },
+      {
+        "id": "5",
+        "order": 5,
+        "names": {
+          "en": "Yellow"
+        },
+        "icon": "track_5.png"
+      },
+      {
+        "id": "6",
+        "order": 6,
+        "names": {
+          "en": "Leisure Time"
+        },
+        "icon": "track_6.png"
       }
     ],
     "locations": [
@@ -51,21 +83,64 @@
         "id": "1",
         "order": 1,
         "names": {
-          "de": "Room 1",
-          "en": "Room 1"
+          "en": "Plenary Room"
         },
         "icon": "location_1.png",
-        "capacity": 1200
+        "capacity": 200
       },
       {
         "id": "2",
-        "order": 1,
+        "order": 2,
         "names": {
-          "de": "Room 2",
-          "en": "Room 2"
+          "en": "Bibliotheque"
         },
         "icon": "location_2.png",
-        "capacity": 0
+        "capacity": 200
+      },
+      {
+        "id": "3",
+        "order": 3,
+        "names": {
+          "en": "Het Binnenhof"
+        },
+        "icon": "location_3.png",
+        "capacity": 200
+      },
+      {
+        "id": "4",
+        "order": 4,
+        "names": {
+          "en": "Paris"
+        },
+        "icon": "location_4.png",
+        "capacity": 200
+      },
+      {
+        "id": "5",
+        "order": 5,
+        "names": {
+          "en": "Brussel"
+        },
+        "icon": "location_5.png",
+        "capacity": 200
+      },
+      {
+        "id": "6",
+        "order": 6,
+        "names": {
+          "en": "Berlijn"
+        },
+        "icon": "location_6.png",
+        "capacity": 200
+      },
+      {
+        "id": "7",
+        "order": 7,
+        "names": {
+          "en": "Hotel Grounds"
+        },
+        "icon": "location_7.png",
+        "capacity": 1000
       }
     ],
     "defaultIcon": "Unknown.png"
@@ -73,24 +148,17 @@
   "events": [
     {
       "id": "10",
-      "start": "2019-05-16T12:00:00",
-      "end": "2019-05-16T13:00:00",
-      "title": "Event 1",
-      "abstractText": "Any abstract text will do",
+      "start": "2019-05-14T10:30:00",
+      "end": "2019-05-14T11:00:00",
+      "title": "Kickoff Speech",
+      "abstractText": "",
       "demo": true,
       "simultan": false,
       "veryPopular": true,
       "fullyBooked": false,
       "numberOfFavorites": 0,
       "keywords": {
-        "de": [
-          "Java Standard Edition (Java SE)",
-          "Java 9"
-        ],
-        "en": [
-          "Java Standard Edition (Java SE)",
-          "Java 9"
-        ]
+        "en": []
       },
       "documents": {
         "slides": null,
@@ -105,21 +173,20 @@
         "1",
         "2"
       ],
-      "languageId": "2"
+      "languageId": "1"
     },
     {
       "id": "11",
-      "start": "2019-05-16T13:00:00",
-      "end": "2019-05-16T14:00:00",
-      "title": "Event 2",
-      "abstractText": "Any abstract text will do",
+      "start": "2019-05-14T11:00:00",
+      "end": "2019-05-14T12:30:00",
+      "title": "Goals of the company and how to achieve them",
+      "abstractText": "",
       "demo": true,
       "simultan": false,
       "veryPopular": false,
       "fullyBooked": false,
       "numberOfFavorites": 0,
       "keywords": {
-        "de": [],
         "en": []
       },
       "documents": {
@@ -129,23 +196,48 @@
       },
       "trackId": "2",
       "audienceId": "1",
-      "locationId": "2",
+      "locationId": "1",
       "speakerIds": [
         "1"
       ],
-      "languageId": "2"
+      "languageId": "1"
+    },
+    {
+      "id": "12",
+      "start": "2019-05-14T12:30:00",
+      "end": "2019-05-14T13:30:00",
+      "title": "Lunch break",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "2",
+      "audienceId": "1",
+      "locationId": "7",
+      "speakerIds": [],
+      "languageId": "1"
     }
   ],
   "speakers": [
     {
       "id": "1",
-      "name": "Speaker One",
-      "firstname": "Speaker",
-      "lastname": "One",
+      "name": "SanderJ",
+      "firstname": "Sander",
+      "lastname": "Jansz",
       "company": "TOPdesk",
       "website": "",
       "twitter": "",
-      "bio": "Some bio, or not",
+      "bio": "",
       "photoId": "",
       "eventIds": [
         "10"
@@ -153,19 +245,35 @@
     },
     {
       "id": "2",
-      "name": "Speaker Two",
-      "firstname": "Speaker",
-      "lastname": "Two",
+      "name": "BartB",
+      "firstname": "Bart",
+      "lastname": "Buil",
       "company": "TOPdesk",
       "website": "",
       "twitter": "",
       "facebook": "",
       "xing": "",
       "linkedin": "",
-      "bio": "More bio text",
+      "bio": "",
       "photoId": "",
       "eventIds": [
-        "10",
+        "10"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "DeniseH",
+      "firstname": "Denise",
+      "lastname": "van der Helm",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
         "11"
       ]
     }
