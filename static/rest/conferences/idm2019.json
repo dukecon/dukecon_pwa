@@ -147,6 +147,32 @@
   },
   "events": [
     {
+      "id": "00",
+      "start": "2019-05-14T10:00:00",
+      "end": "2019-05-14T10:30:00",
+      "title": "Coffee and get together",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": true,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "6",
+      "audienceId": "1",
+      "typeId": "1",
+      "locationId": "7",
+      "speakerIds": [],
+      "languageId": "1"
+    },
+    {
       "id": "10",
       "start": "2019-05-14T10:30:00",
       "end": "2019-05-14T11:00:00",
@@ -198,7 +224,7 @@
       "audienceId": "1",
       "locationId": "1",
       "speakerIds": [
-        "1"
+        "3"
       ],
       "languageId": "1"
     },
@@ -281,7 +307,7 @@
       "id": "15",
       "start": "2019-05-14T15:00:00",
       "end": "2019-05-14T16:30:00",
-      "title": "Structure and their effect on goals",
+      "title": "How do our department structures help reaching our goals",
       "abstractText": "",
       "demo": true,
       "simultan": false,
@@ -321,7 +347,7 @@
         "manuscript": null,
         "other": null
       },
-      "trackId": "4",
+      "trackId": "3",
       "audienceId": "1",
       "locationId": "4",
       "speakerIds": [ "7" ],
@@ -331,7 +357,7 @@
       "id": "17",
       "start": "2019-05-14T17:00:00",
       "end": "2019-05-14T18:15:00",
-      "title": "Adding Value",
+      "title": "Adding Value - Re-Evaluated",
       "abstractText": "",
       "demo": true,
       "simultan": false,
@@ -371,7 +397,7 @@
         "manuscript": null,
         "other": null
       },
-      "trackId": "4",
+      "trackId": "3",
       "audienceId": "1",
       "locationId": "4",
       "speakerIds": [ "9" ],
@@ -381,7 +407,7 @@
       "id": "19",
       "start": "2019-05-14T17:00:00",
       "end": "2019-05-14T17:45:00",
-      "title": "Red Bull in your DANN",
+      "title": "What's your source of inspiration?",
       "abstractText": "",
       "demo": true,
       "simultan": false,
@@ -396,7 +422,7 @@
         "manuscript": null,
         "other": null
       },
-      "trackId": "4",
+      "trackId": "3",
       "audienceId": "1",
       "locationId": "5",
       "speakerIds": [ "10" ],
