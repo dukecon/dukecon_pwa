@@ -23,10 +23,10 @@
     <div id="loading" class="alternate" v-if="conference.loadingFinished === false && conference.loadingFailed === false">
       &nbsp;
     </div>
-    <div id="nothingtoshow" class="alternate" v-if="Object.keys(events).length === 0 && conference.loadingFinished === true">
+    <div class="nothingtoshow alternate" v-if="Object.keys(events).length === 0 && conference.loadingFinished === true">
       <span>{{$t('emptyConference')}}</span>
     </div>
-    <div id="nothingtoshow" class="alternate" v-if="conference.loadingFailed === true">
+    <div class="nothingtoshow alternate" v-if="conference.loadingFailed === true">
       <span>{{$t('notExistingConference')}}</span>
     </div>
 
@@ -38,7 +38,7 @@
       <links></links>
     </footer>
     <please-login></please-login>
-    <message-banner show-for-secs="5"></message-banner>
+    <message-banner show-for-secs="3"></message-banner>
   </div>
 </template>
 
@@ -102,6 +102,16 @@ export default {
   watch: {
     '$i18n.locale': function () {
       this.mobileMenuOpen = false
+    },
+    conference: {
+      handler () {
+        if (this.conference.loadingFailed) {
+          console.log('loading failed')
+          this.eventbus.$emit('message.popup', { message: 'Could not initialize', error: true })
+        }
+      },
+      immediate: true,
+      deep: true
     }
   }
 }

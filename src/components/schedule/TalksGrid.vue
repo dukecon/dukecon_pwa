@@ -14,7 +14,7 @@
       </div>
     </div>
     <!-- the condition "Object.keys(eventsByDay).length > 0" prevents the message to be shown when no events have been loaded yet -->
-    <div id="nothingtoshow" class="alternate" v-if="groupedTalks.length === 0 && Object.keys(eventsByDay).length > 0">
+    <div class="nothingtoshow alternate" v-if="groupedTalks.length === 0 && Object.keys(eventsByDay).length > 0">
       <span>{{$t('notalksfound')}}</span>
       <a class="clickable" @click='deactivateFilters'>{{$t('deactivate')}}</a> <span>{{$t('or')}}</span>
       <a class="clickable" @click='resetFilters'>{{$t('reset')}}</a><span>!</span><br>
