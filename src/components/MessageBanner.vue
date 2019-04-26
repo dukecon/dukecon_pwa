@@ -2,16 +2,22 @@
   <div class="status-area" :class="errorClass + cssClass">{{status.message}}</div>
 </template>
 <script>
-import Status from './Status.js'
 
 export default {
   name: 'MessageBanner',
   props: ['showForSecs'],
   data () {
     return {
-      status: Status,
+      messages: [],
+      status: {
+        message: '',
+        error: false
+      },
       cssClass: 'nothere'
     }
+  },
+  created () {
+    this.eventbus.$on('message.popup', this.addMessage)
   },
   computed: {
     errorClass () {
@@ -34,6 +40,11 @@ export default {
         this.status.message = ''
         this.status.error = false
       }, 500)
+    },
+    addMessage (msgObject) {
+      this.messages.push(msgObject)
+      this.status.message = msgObject.message
+      this.status.error = msgObject.error
     },
     setHide () {
       if (this.status.message && this.status.message.length > 0) {
