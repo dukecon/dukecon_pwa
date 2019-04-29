@@ -33,7 +33,7 @@
         "id": "1",
         "order": 1,
         "names": {
-          "en": "Green"
+          "en": "Green - Inspirational"
         },
         "icon": "track_1.png"
       },
@@ -41,7 +41,7 @@
         "id": "2",
         "order": 2,
         "names": {
-          "en": "Blue"
+          "en": "Blue - Company & Goals"
         },
         "icon": "track_2.png"
       },
@@ -49,7 +49,7 @@
         "id": "3",
         "order": 3,
         "names": {
-          "en": "Orange"
+          "en": "Orange - Technology"
         },
         "icon": "track_3.png"
       },
@@ -57,7 +57,7 @@
         "id": "4",
         "order": 4,
         "names": {
-          "en": "Dark Orange"
+          "en": "Dark Orange - Customers & Users"
         },
         "icon": "track_4.png"
       },
@@ -65,7 +65,7 @@
         "id": "5",
         "order": 5,
         "names": {
-          "en": "Yellow"
+          "en": "Yellow - Future"
         },
         "icon": "track_5.png"
       },
@@ -76,6 +76,14 @@
           "en": "Leisure Time"
         },
         "icon": "track_6.png"
+      },
+      {
+        "id": "7",
+        "order": 7,
+        "names": {
+          "en": "Dark Blue - Collaboration"
+        },
+        "icon": "track_7.png"
       }
     ],
     "locations": [
@@ -196,6 +204,7 @@
       "typeId": "1",
       "locationId": "1",
       "speakerIds": [
+        "0",
         "1",
         "2"
       ],
@@ -480,6 +489,20 @@
     }
   ],
   "speakers": [
+    {
+      "id": "0",
+      "name": "WolterS",
+      "firstname": "Wolter",
+      "lastname": "Smit",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
+        "10"
+      ]
+    },
     {
       "id": "1",
       "name": "SanderJ",

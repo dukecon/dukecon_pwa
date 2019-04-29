@@ -1,0 +1,18 @@
+LOCATIONS
+1: Plenary Room
+2: Bibliotheque
+3: Het Binnenhof
+4: Paris
+5: Brussel
+6: Berlijn
+7: Hotel Grounds
+
+TRACKS
+1: Green - Inspirational
+2: (light) Blue - Company & Goals
+3: Orange - Technology
+4: Dark Orange - Customers & Users
+5: Yellow - Future
+6: Leisure Time
+7: Dark Blue - Collaboration
+8: Dark Green - ?????
