@@ -1,9 +1,9 @@
 {
-  "id": "idm-2919",
-  "name": "TOPdesk IDM 2019",
-  "url": "http://idm.dukecon.org/2019",
+  "id": "topdesk2019",
+  "name": "IDM 2019",
+  "url": "http://topdesk.dukecon.org/2019",
   "metaData": {
-    "id": "idm2019",
+    "id": "topdesk2019",
     "audiences": [
     ],
     "languages": [
@@ -84,6 +84,14 @@
           "en": "Dark Blue - Collaboration"
         },
         "icon": "track_7.png"
+      },
+      {
+        "id": "8",
+        "order": 8,
+        "names": {
+          "en": "Dark Green - Extracurricular"
+        },
+        "icon": "track_8.png"
       }
     ],
     "locations": [

@@ -1,8 +1,8 @@
 {
-  "id": "idm2019",
-  "name": "TOPdesk IDM 2019",
+  "id": "topdesk2019",
+  "name": "IDM 2019",
   "year": "2019",
-  "url": "http://idm.dukecon.org/2019",
+  "url": "http://topdesk.dukecon.org/2019",
   "homeUrl": "",
   "homeTitle": null,
   "imprint": {
@@ -22,8 +22,8 @@
   "authEnabled": false,
   "admin": "",
   "forceUpdate": "",
-  "conferences": "../rest/conferences/idm2019",
-  "events": "../rest/eventsBooking/idm2019",
+  "conferences": "../rest/conferences/topdesk2019",
+  "events": "../rest/eventsBooking/topdesk2019",
   "keycloak": "../rest/keycloak.json",
   "feedbackServer": {
     "active": false,
