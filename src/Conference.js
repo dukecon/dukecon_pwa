@@ -225,6 +225,7 @@ function reset () {
     homeUrl: null,
     homeTitle: null,
     authEnabled: false,
+    noAuthEnableIdParam: false,
     name: null,
     loadingFinished: false,
     loadingFailed: false
