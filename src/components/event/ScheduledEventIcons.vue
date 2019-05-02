@@ -94,7 +94,6 @@ export default {
       return Moment(this.event.end).locale(this.$i18n.locale).format('HH:mm')
     },
     timeClass: function () {
-      console.log(this.longTalkThresholdMinutes)
       switch (getTimeCategory(this.event.durationInMinutes, this.longTalkThresholdMinutes)) {
         case 'long':
           return 'time-extra alternate'
