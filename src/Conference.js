@@ -106,8 +106,9 @@ function getDateOnly (dateString) {
 
 function splitSingleEvent (event, timeSlotsOnSameDay) {
   let split = []
+  const thresholdInMinutes = conference.longTalkThresholdMinutes || 60
   split.push(event)
-  if (event.durationInMinutes > 60) {
+  if (event.durationInMinutes > thresholdInMinutes) {
     for (let t in timeSlotsOnSameDay) {
       const timeslot = timeSlotsOnSameDay[t]
       const timeSlotNext = timeSlotsOnSameDay[parseInt(t) + 1]
@@ -226,6 +227,7 @@ function reset () {
     homeTitle: null,
     authEnabled: false,
     noAuthEnableIdParam: false,
+    longTalkThresholdMinutes: 60,
     name: null,
     loadingFinished: false,
     loadingFailed: false

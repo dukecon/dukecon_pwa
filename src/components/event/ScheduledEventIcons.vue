@@ -63,8 +63,8 @@ import Moment from 'moment'
 
 const unknownImage = require('@/assets/img/Unknown.png')
 
-function getTimeCategory (duration) {
-  if (typeof duration === 'undefined' || (duration > 30 && duration <= 60)) {
+function getTimeCategory (duration, threshold) {
+  if (typeof duration === 'undefined' || (duration > 30 && duration <= threshold)) {
     return 'regular'
   }
   if (duration <= 30) {
@@ -82,7 +82,8 @@ export default {
       languages: Conference.getAllLanguages(),
       tracks: Conference.getAllTracks(),
       images: Images.getImages(),
-      favourites: Favourites.getFavorites()
+      favourites: Favourites.getFavorites(),
+      longTalkThresholdMinutes: Conference.getConference().longTalkThresholdMinutes
     }
   },
   computed: {
@@ -93,7 +94,7 @@ export default {
       return Moment(this.event.end).locale(this.$i18n.locale).format('HH:mm')
     },
     timeClass: function () {
-      switch (getTimeCategory(this.event.durationInMinutes)) {
+      switch (getTimeCategory(this.event.durationInMinutes, this.longTalkThresholdMinutes)) {
         case 'long':
           return 'time-extra alternate'
         case 'short':

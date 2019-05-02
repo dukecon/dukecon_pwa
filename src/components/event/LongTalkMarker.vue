@@ -1,5 +1,5 @@
 <template>
-  <div class="marker-box" v-if="event.durationInMinutes > thresholdInMinutes">
+  <div class="marker-box" v-if="event.durationInMinutes > longTalkThresholdMinutes">
     <div class="starts-before" :style="visibilityStart">
       <div class="arrow-up alternateBack">
         <svg viewBox="0 0 10 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -48,7 +48,7 @@
 export default {
   components: {
   },
-  props: ['event', 'thresholdInMinutes'],
+  props: ['event', 'longTalkThresholdMinutes'],
   name: 'long-talk-marker',
   computed: {
     visibilityStart () {
