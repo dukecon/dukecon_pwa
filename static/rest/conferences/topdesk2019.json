@@ -273,7 +273,7 @@
     {
       "id": "13",
       "start": "2019-05-14T13:30:00",
-      "end": "2019-05-14T14:45:00",
+      "end": "2019-05-14T15:00:00",
       "title": "Alignment Between Departments",
       "abstractText": "",
       "demo": true,
@@ -297,7 +297,7 @@
     },
     {
       "id": "14",
-      "start": "2019-05-14T14:45:00",
+      "start": "2019-05-14T15:00:00",
       "end": "2019-05-14T15:45:00",
       "title": "Moving from Developer to PM and Back again",
       "abstractText": "",
@@ -322,8 +322,8 @@
     },
     {
       "id": "15",
-      "start": "2019-05-14T15:00:00",
-      "end": "2019-05-14T16:30:00",
+      "start": "2019-05-14T15:15:00",
+      "end": "2019-05-14T16:45:00",
       "title": "How do our department structures help reaching our goals",
       "abstractText": "",
       "demo": true,
@@ -374,7 +374,7 @@
       "id": "17",
       "start": "2019-05-14T17:00:00",
       "end": "2019-05-14T18:15:00",
-      "title": "Adding Value - Re-Evaluated",
+      "title": "Can developers have more influence on development choices by using data?",
       "abstractText": "",
       "demo": true,
       "simultan": false,
@@ -494,6 +494,249 @@
       "locationId": "7",
       "speakerIds": [],
       "languageId": "1"
+    },
+    {
+      "id": "22",
+      "start": "2019-05-14T15:15:00",
+      "end": "2019-05-14T16:45:00",
+      "title": "Performance Discussion",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "3",
+      "audienceId": "1",
+      "locationId": "5",
+      "speakerIds": [
+        "11"
+      ],
+      "languageId": "1"
+    },
+    {
+      "id": "23",
+      "start": "2019-05-15T09:30:00",
+      "end": "2019-05-15T11:00:00",
+      "title": "Anything you ever wanted to know about aspects of the architecture but never dared asking about",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "3",
+      "audienceId": "1",
+      "locationId": "1",
+      "speakerIds": [
+        "12"
+      ],
+      "languageId": "1"
+    },
+    {
+      "id": "24",
+      "start": "2019-05-15T11:15:00",
+      "end": "2019-05-15T12:30:00",
+      "title": "Service Infrastructure and its Concerns",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "3",
+      "audienceId": "1",
+      "locationId": "2",
+      "speakerIds": [
+        "13", "14"
+      ],
+      "languageId": "1"
+    },
+    {
+      "id": "25",
+      "start": "2019-05-15T11:00:00",
+      "end": "2019-05-15T12:30:00",
+      "title": "User Research at TOPdesk",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "4",
+      "audienceId": "1",
+      "locationId": "3",
+      "speakerIds": [
+        "15"
+      ],
+      "languageId": "1"
+    },
+    {
+      "id": "26",
+      "start": "2019-05-15T09:30:00",
+      "end": "2019-05-15T11:00:00",
+      "title": "Guilds Poster Session",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "7",
+      "audienceId": "1",
+      "locationId": "4",
+      "speakerIds": [
+        "16"
+      ],
+      "languageId": "1"
+    },
+    {
+      "id": "27",
+      "start": "2019-05-15T11:00:00",
+      "end": "2019-05-15T12:30:00",
+      "title": "Guilds & how they should work",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "7",
+      "audienceId": "1",
+      "locationId": "4",
+      "speakerIds": [
+        "17"
+      ],
+      "languageId": "1"
+    },
+    {
+      "id": "28",
+      "start": "2019-05-15T09:30:00",
+      "end": "2019-05-15T10:30:00",
+      "title": "The Security TOP 5",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "3",
+      "audienceId": "1",
+      "locationId": "5",
+      "speakerIds": [
+        "18"
+      ],
+      "languageId": "1"
+    },
+    {
+      "id": "29",
+      "start": "2019-05-15T09:30:00",
+      "end": "2019-05-15T10:45:00",
+      "title": "Webcomponents: what should we build with them?",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "3",
+      "audienceId": "1",
+      "locationId": "6",
+      "speakerIds": [
+        "19"
+      ],
+      "languageId": "1"
+    },
+    {
+      "id": "30",
+      "start": "2019-05-15T11:00:00",
+      "end": "2019-05-15T12:30:00",
+      "title": "AI at TOPdesk - What does the future bring?",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "3",
+      "audienceId": "1",
+      "locationId": "6",
+      "speakerIds": [
+        "20"
+      ],
+      "languageId": "1"
     }
   ],
   "speakers": [
@@ -612,9 +855,9 @@
     },
     {
       "id": "7",
-      "name": "Martijn",
+      "name": "MartijnI",
       "firstname": "Martijn",
-      "lastname": "",
+      "lastname": "van Iersel",
       "company": "TOPdesk",
       "website": "",
       "twitter": "",
@@ -624,7 +867,7 @@
       "bio": "",
       "photoId": "",
       "eventIds": [
-        "15"
+        "16"
       ]
     },
     {
@@ -641,7 +884,7 @@
       "bio": "",
       "photoId": "",
       "eventIds": [
-        "15"
+        "17"
       ]
     },
     {
@@ -658,12 +901,12 @@
       "bio": "",
       "photoId": "",
       "eventIds": [
-        "15"
+        "18"
       ]
     },
     {
       "id": "10",
-      "name": "Freek",
+      "name": "FreekB",
       "firstname": "Freek",
       "lastname": "de Bruijn",
       "company": "TOPdesk",
@@ -675,7 +918,177 @@
       "bio": "",
       "photoId": "",
       "eventIds": [
-        "15"
+        "19"
+      ]
+    },
+    {
+      "id": "11",
+      "name": "CorinaS",
+      "firstname": "Corina",
+      "lastname": "Stratan",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
+        "22"
+      ]
+    },
+    {
+      "id": "12",
+      "name": "MichelF",
+      "firstname": "Michel",
+      "lastname": "Fleur",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
+        "23"
+      ]
+    },
+    {
+      "id": "13",
+      "name": "JanH",
+      "firstname": "",
+      "lastname": "",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
+        "24"
+      ]
+    },
+    {
+      "id": "14",
+      "name": "CoS",
+      "firstname": "",
+      "lastname": "",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
+        "24"
+      ]
+    },
+    {
+      "id": "15",
+      "name": "SarahS",
+      "firstname": "",
+      "lastname": "",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
+        "25"
+      ]
+    },
+    {
+      "id": "16",
+      "name": "JorisS",
+      "firstname": "",
+      "lastname": "",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
+        "26"
+      ]
+    },
+    {
+      "id": "17",
+      "name": "JanaE",
+      "firstname": "",
+      "lastname": "",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
+        "27"
+      ]
+    },
+    {
+      "id": "18",
+      "name": "MartijnL",
+      "firstname": "",
+      "lastname": "",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
+        "28"
+      ]
+    },
+    {
+      "id": "19",
+      "name": "KrisztianH",
+      "firstname": "",
+      "lastname": "",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
+        "29"
+      ]
+    },
+    {
+      "id": "20",
+      "name": "SylvieB",
+      "firstname": "",
+      "lastname": "",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
+        "30"
       ]
     }
   ]
