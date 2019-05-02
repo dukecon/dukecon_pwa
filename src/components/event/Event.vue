@@ -3,7 +3,7 @@
     <div class="talk-cell" :class="timeClass">
       <div class="left-column">
         <favourite :event="event" :mode="'standard'"/>
-        <long-talk-marker :event="event" threshold-in-minutes="60"/>
+        <long-talk-marker :event="event" long-talk-threshold-in-minutes="longTalkThresholdMinutes"/>
       </div>
       <router-link :to="{ name: 'scheduledEventPage', params: { eventId: event.id }}" style="padding: 0">
         <div class="talk-info">
@@ -29,8 +29,8 @@ import Conference from '../../Conference'
 import Favourite from './Favourite.vue'
 import LongTalkMarker from './LongTalkMarker'
 
-function getTimeCategory (duration) {
-  if (typeof duration === 'undefined' || (duration > 30 && duration <= 60)) {
+function getTimeCategory (duration, threshold) {
+  if (typeof duration === 'undefined' || (duration > 30 && duration <= threshold)) {
     return 'regular'
   }
   if (duration <= 30) {
@@ -50,7 +50,8 @@ export default {
   data () {
     return {
       speakers: Conference.getAllSpeakers(),
-      languages: Conference.getAllLanguages()
+      languages: Conference.getAllLanguages(),
+      longTalkThresholdMinutes: Conference.getConference().longTalkThresholdMinutes
     }
   },
   computed: {
@@ -65,7 +66,7 @@ export default {
       return require('@/assets/img/' + prefix + this.languages[this.event.languageId].code + '.png')
     },
     timeClass: function () {
-      return getTimeCategory(this.event.durationInMinutes)
+      return getTimeCategory(this.event.durationInMinutes, this.longTalkThresholdMinutes)
     }
   }
 }
