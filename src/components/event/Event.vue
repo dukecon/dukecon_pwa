@@ -3,7 +3,7 @@
     <div class="talk-cell" :class="timeClass">
       <div class="left-column">
         <favourite :event="event" :mode="'standard'"/>
-        <long-talk-marker :event="event" long-talk-threshold-in-minutes="longTalkThresholdMinutes"/>
+        <long-talk-marker :event="event" :long-talk-threshold-in-minutes="longTalkThresholdMinutes"/>
       </div>
       <router-link :to="{ name: 'scheduledEventPage', params: { eventId: event.id }}" style="padding: 0">
         <div class="talk-info">
