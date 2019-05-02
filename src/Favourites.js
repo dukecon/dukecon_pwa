@@ -51,74 +51,97 @@ function initialLoadFromServer () {
  */
 let syncIsRunning = false
 
+function ensureUniqueId () {
+  let id = Settings.getSetting('preferencesIdParam')
+  if (!id) {
+    id = 'foo' // TODO
+    Settings.saveSetting('preferencesIdParam', id)
+  }
+  return id
+}
+
 function syncWithServer () {
-  if (Dukecloak.getKeycloak().isLoggedIn) {
+  const noAuthEnableIdParam = Conference.getConference().noAuthEnableIdParam && !Dukecloak.getKeycloak().isLoggedIn
+  if (Dukecloak.getKeycloak().isLoggedIn || noAuthEnableIdParam) {
     if (syncIsRunning) {
       // avoid having two syncs running at the same time
       return
     }
-    syncIsRunning = true
-    Dukecloak.getKeycloak().updateToken()
-      .success(function () {
-        var config = {
-          headers: {'Authorization': 'bearer ' + Dukecloak.getKeycloak().token}
-        }
-        axios.get('rest/preferences',
-          config)
-          .then((response) => {
-            // clear favorites if there is a state on the server (not for initial logins)
-            if (response.data.length > 0) {
-              Object.keys(favorites).filter(e => e !== undefined)
-                .forEach(e => Vue.delete(favorites, e))
-            }
-            // add all favorites from server to favorites
-            response.data.filter(e => e !== 'undefined').forEach(e => Vue.set(favorites, e.eventId, true))
-            // remove again all favorites that are pending removal
-            favoritesToRemove.forEach(e => Vue.delete(favorites, e))
-            // add again all favorites that are pending addition
-            favoritesToAdd.forEach(e => Vue.set(favorites, e, true))
-            // => now the favorites contain the state from the server merged with pending additions and removals
-            console.log('favorites loaded from server')
-            saveToSettings()
-            if (favoritesToRemove.size > 0 || favoritesToAdd.size > 0) {
-              // there are pending changes.
-              // let's memorize the additions and removals now before making the next request
-              let favoritesToAddInThisRequest = Array.from(favoritesToAdd.keys())
-              let favoritesToRemoveInThisRequest = Array.from(favoritesToRemove.keys())
-              let newServerState = Object.keys(favorites)
-                .filter(e => e !== undefined && e !== 'undefined')
-                .map(e => { return {'eventId': e, 'version': '1'} })
-              axios.post('rest/preferences',
-                newServerState,
-                config)
-                .then(() => {
-                  favoritesToAddInThisRequest.forEach(e => { favoritesToAdd.delete(e) })
-                  favoritesToRemoveInThisRequest.forEach(e => { favoritesToRemove.delete(e) })
-                  syncIsRunning = false
-                  console.log('favorites saved to server')
-                  saveToSettings()
-                })
-                .catch((e) => {
-                  syncIsRunning = false
-                  console.log('unable to save favorites', e)
-                })
-            } else {
-              syncIsRunning = false
-            }
-          })
-          .catch((e) => {
-            if (e.response.status === 401) {
-              // seems that our token has expired
-              Dukecloak.logout()
-            }
+
+    let performSync = function () {
+      let config = {
+      }
+      let preferencesUrl = 'rest/preferences'
+      if (noAuthEnableIdParam) {
+        console.log('Alternate call to preferences: using UNID: ', ensureUniqueId())
+        preferencesUrl += '/' + ensureUniqueId()
+      } else {
+        config.headers = {'Authorization': 'bearer ' + Dukecloak.getKeycloak().token}
+      }
+      axios.get(preferencesUrl,
+        config)
+        .then((response) => {
+          // clear favorites if there is a state on the server (not for initial logins)
+          if (response.data.length > 0) {
+            Object.keys(favorites).filter(e => e !== undefined)
+              .forEach(e => Vue.delete(favorites, e))
+          }
+          // add all favorites from server to favorites
+          response.data.filter(e => e !== 'undefined').forEach(e => Vue.set(favorites, e.eventId, true))
+          // remove again all favorites that are pending removal
+          favoritesToRemove.forEach(e => Vue.delete(favorites, e))
+          // add again all favorites that are pending addition
+          favoritesToAdd.forEach(e => Vue.set(favorites, e, true))
+          // => now the favorites contain the state from the server merged with pending additions and removals
+          console.log('favorites loaded from server')
+          saveToSettings()
+          if (favoritesToRemove.size > 0 || favoritesToAdd.size > 0) {
+            // there are pending changes.
+            // let's memorize the additions and removals now before making the next request
+            let favoritesToAddInThisRequest = Array.from(favoritesToAdd.keys())
+            let favoritesToRemoveInThisRequest = Array.from(favoritesToRemove.keys())
+            let newServerState = Object.keys(favorites)
+              .filter(e => e !== undefined && e !== 'undefined')
+              .map(e => { return {'eventId': e, 'version': '1'} })
+            axios.post(preferencesUrl,
+              newServerState,
+              config)
+              .then(() => {
+                favoritesToAddInThisRequest.forEach(e => { favoritesToAdd.delete(e) })
+                favoritesToRemoveInThisRequest.forEach(e => { favoritesToRemove.delete(e) })
+                syncIsRunning = false
+                console.log('favorites saved to server')
+                saveToSettings()
+              })
+              .catch((e) => {
+                syncIsRunning = false
+                console.log('unable to save favorites', e)
+              })
+          } else {
             syncIsRunning = false
-            console.log('unable to load favorites', e)
-          })
-      })
-      .error(function () {
-        syncIsRunning = false
-        console.log('Error updating Keycloak token!')
-      })
+          }
+        })
+        .catch((e) => {
+          if (e.response.status === 401) {
+            // seems that our token has expired
+            Dukecloak.logout()
+          }
+          syncIsRunning = false
+          console.log('unable to load favorites', e)
+        })
+    }
+
+    syncIsRunning = true
+    if (Dukecloak.getKeycloak().isLoggedIn) {
+      Dukecloak.getKeycloak().updateToken()
+        .success(performSync)
+        .error(function () {
+          syncIsRunning = false
+          console.log('Error updating Keycloak token!')
+        })
+    } else {
+      performSync()
+    }
   }
 }
 

@@ -223,13 +223,16 @@ export default {
             .then((response) => {
               self.popupHidden = true
               console.log('Feedback submitted!')
+              self.eventbus.$emit('message.popup', { message: 'Feedback submitted!', error: false })
             })
             .catch((e) => {
               self.popupHidden = true
               console.log('Feedback Submission Failed!', e)
+              self.eventbus.$emit('message.popup', { message: 'Feedback Submission Failed!', error: true })
             })
         })
         .error(function () {
+          self.eventbus.$emit('message.popup', { message: 'An error occurred!', error: true })
           console.log('Error refreshing token!')
           self.popupHidden = true
         })

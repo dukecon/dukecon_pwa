@@ -20,6 +20,7 @@
   "startDate": "2019-05-14",
   "endDate": "2019-05-16",
   "authEnabled": false,
+  "noAuthEnableIdParam": false,
   "admin": "",
   "forceUpdate": "",
   "conferences": "../rest/conferences/topdesk2019",

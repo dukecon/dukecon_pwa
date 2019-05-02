@@ -30,7 +30,7 @@ export default {
         console.log('trigger')
         this.setHide()
       },
-      immediate: true,
+      immediate: false,
       deep: true
     }
   },
@@ -39,12 +39,20 @@ export default {
       setTimeout(() => {
         this.status.message = ''
         this.status.error = false
+        if (this.messages.length > 0) {
+          let message = this.messages.shift()
+          this.status.error = message.error
+          this.status.message = message.message
+        }
       }, 500)
     },
     addMessage (msgObject) {
-      this.messages.push(msgObject)
-      this.status.message = msgObject.message
-      this.status.error = msgObject.error
+      if (this.status.message !== '') {
+        this.messages.push(msgObject)
+      } else {
+        this.status.message = msgObject.message
+        this.status.error = msgObject.error
+      }
     },
     setHide () {
       if (this.status.message && this.status.message.length > 0) {
