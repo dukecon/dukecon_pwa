@@ -1183,6 +1183,106 @@
         "18"
       ],
       "languageId": "1"
+    },
+    {
+      "id": "47",
+      "start": "2019-05-16T09:30:00",
+      "end": "2019-05-16T12:15:00",
+      "title": "Open Sessions",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "8",
+      "audienceId": "1",
+      "locationId": "1",
+      "speakerIds": [],
+      "languageId": "1"
+    },
+    {
+      "id": "48",
+      "start": "2019-05-16T09:30:00",
+      "end": "2019-05-16T10:45:00",
+      "title": "Service Posters Session",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "7",
+      "audienceId": "1",
+      "locationId": "2",
+      "speakerIds": [],
+      "languageId": "1"
+    },
+    {
+      "id": "49",
+      "start": "2019-05-16T09:30:00",
+      "end": "2019-05-16T10:45:00",
+      "title": "Follow up sessions slot 1",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "8",
+      "audienceId": "1",
+      "locationId": "7",
+      "speakerIds": [],
+      "languageId": "1"
+    },
+    {
+      "id": "50",
+      "start": "2019-05-16T11:00:00",
+      "end": "2019-05-16T12:15:00",
+      "title": "Follow up sessions slot 2",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "8",
+      "audienceId": "1",
+      "locationId": "7",
+      "speakerIds": [],
+      "languageId": "1"
     }
   ],
   "speakers": [
