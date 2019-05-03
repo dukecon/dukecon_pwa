@@ -6,6 +6,7 @@ LOCATIONS
 5: Brussel
 6: Berlijn
 7: Hotel Grounds
+8: Coffee Area
 
 TRACKS
 1: Green - Inspirational
