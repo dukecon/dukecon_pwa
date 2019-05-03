@@ -3,6 +3,7 @@
     <a class="imprint" v-if='imprint' target="_blank" :href="imprint">{{ $t('imprint') }}</a>
     <a v-if='privacy' target="_blank" :href="privacy">{{ $t('privacy') }}</a>
     <a v-if='termsOfUse' target="_blank" :href="termsOfUse">{{ $t('termsOfUse') }}</a>
+    <a v-for='footerLink in conference.footerLinks' target="_blank" :key="footerLink.title" :href="footerLink.url">{{ footerLink.title }}</a>
     <span id="poweredByDukecon">powered by<a href="http://www.dukecon.org" target="_blank">DukeCon</a></span>
   </div>
 </template>
