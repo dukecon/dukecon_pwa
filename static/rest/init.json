@@ -17,6 +17,16 @@
     "de": "",
     "en": ""
   },
+  "footerLinks" : [
+    {
+      "title": "Floor Plan 1",
+      "url" : "http://dav.verrath.de/Shared/idm/BBBeganeGrond-narenovatie.pdf"
+    },
+    {
+      "title": "Floor Plan 2",
+      "url" : "http://dav.verrath.de/Shared/idm/BBSouterrain.pdf"
+    }
+  ],
   "startDate": "2019-05-14",
   "endDate": "2019-05-16",
   "longTalkThresholdMinutes": 180,
