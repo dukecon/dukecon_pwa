@@ -33,7 +33,7 @@
         "id": "1",
         "order": 1,
         "names": {
-          "en": "Green - Inspirational"
+          "en": "Inspirational"
         },
         "icon": "track_1.png"
       },
@@ -41,7 +41,7 @@
         "id": "2",
         "order": 2,
         "names": {
-          "en": "Blue - Company & Goals"
+          "en": "Company & Goals"
         },
         "icon": "track_2.png"
       },
@@ -49,7 +49,7 @@
         "id": "3",
         "order": 3,
         "names": {
-          "en": "Orange - Technology"
+          "en": "Technology"
         },
         "icon": "track_3.png"
       },
@@ -57,7 +57,7 @@
         "id": "4",
         "order": 4,
         "names": {
-          "en": "Dark Orange - Customers & Users"
+          "en": "Customers & Users"
         },
         "icon": "track_4.png"
       },
@@ -65,7 +65,7 @@
         "id": "5",
         "order": 5,
         "names": {
-          "en": "Yellow - Future"
+          "en": "Future"
         },
         "icon": "track_5.png"
       },
@@ -81,7 +81,7 @@
         "id": "7",
         "order": 7,
         "names": {
-          "en": "Dark Blue - Collaboration"
+          "en": "Collaboration"
         },
         "icon": "track_7.png"
       },
@@ -89,7 +89,7 @@
         "id": "8",
         "order": 8,
         "names": {
-          "en": "Dark Green - Extracurricular"
+          "en": "Extracurricular"
         },
         "icon": "track_8.png"
       }
