@@ -83,7 +83,7 @@ export default {
       tracks: Conference.getAllTracks(),
       images: Images.getImages(),
       favourites: Favourites.getFavorites(),
-      longTalkThresholdMinutes: Conference.getConference().longTalkThresholdMinutes
+      longTalkThresholdMinutes: Conference.getConference().longTalkThresholdMinutes || 60
     }
   },
   computed: {
