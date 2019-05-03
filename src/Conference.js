@@ -223,6 +223,7 @@ function reset () {
     imprint: {},
     privacy: {},
     termsOfUse: {},
+    footerLinks: [],
     homeUrl: null,
     homeTitle: null,
     authEnabled: false,
