@@ -102,7 +102,7 @@
           "en": "Plenary Room"
         },
         "icon": "location_1.png",
-        "capacity": 200
+        "capacity": 250
       },
       {
         "id": "2",
@@ -111,7 +111,7 @@
           "en": "Bibliotheque"
         },
         "icon": "location_2.png",
-        "capacity": 200
+        "capacity": 52
       },
       {
         "id": "3",
@@ -120,7 +120,7 @@
           "en": "Het Binnenhof"
         },
         "icon": "location_3.png",
-        "capacity": 200
+        "capacity": 40
       },
       {
         "id": "4",
@@ -129,7 +129,7 @@
           "en": "Paris"
         },
         "icon": "location_4.png",
-        "capacity": 200
+        "capacity": 40
       },
       {
         "id": "5",
@@ -138,7 +138,7 @@
           "en": "Brussel"
         },
         "icon": "location_5.png",
-        "capacity": 200
+        "capacity": 40
       },
       {
         "id": "6",
@@ -147,7 +147,7 @@
           "en": "Berlijn"
         },
         "icon": "location_6.png",
-        "capacity": 200
+        "capacity": 40
       },
       {
         "id": "7",
@@ -325,7 +325,7 @@
       },
       "trackId": "3",
       "audienceId": "1",
-      "locationId": "4",
+      "locationId": "2",
       "speakerIds": [ "5" ],
       "languageId": "1"
     },
@@ -375,7 +375,7 @@
       },
       "trackId": "3",
       "audienceId": "1",
-      "locationId": "4",
+      "locationId": "2",
       "speakerIds": [ "7" ],
       "languageId": "1"
     },
@@ -425,7 +425,7 @@
       },
       "trackId": "3",
       "audienceId": "1",
-      "locationId": "4",
+      "locationId": "2",
       "speakerIds": [ "9" ],
       "languageId": "1"
     },
@@ -456,7 +456,7 @@
     },
     {
       "id": "20",
-      "start": "2019-05-14T18:45:00",
+      "start": "2019-05-14T18:30:00",
       "end": "2019-05-14T21:00:00",
       "title": "Dinner in the woods",
       "abstractText": "",
@@ -552,7 +552,7 @@
       },
       "trackId": "3",
       "audienceId": "1",
-      "locationId": "1",
+      "locationId": "3",
       "speakerIds": [
         "12"
       ],
@@ -606,7 +606,7 @@
       },
       "trackId": "4",
       "audienceId": "1",
-      "locationId": "3",
+      "locationId": "4",
       "speakerIds": [
         "15"
       ],
@@ -633,7 +633,7 @@
       },
       "trackId": "7",
       "audienceId": "1",
-      "locationId": "4",
+      "locationId": "6",
       "speakerIds": [
         "16"
       ],
@@ -660,7 +660,7 @@
       },
       "trackId": "7",
       "audienceId": "1",
-      "locationId": "4",
+      "locationId": "6",
       "speakerIds": [
         "17"
       ],
@@ -687,7 +687,7 @@
       },
       "trackId": "3",
       "audienceId": "1",
-      "locationId": "5",
+      "locationId": "2",
       "speakerIds": [
         "18"
       ],
@@ -714,7 +714,7 @@
       },
       "trackId": "3",
       "audienceId": "1",
-      "locationId": "6",
+      "locationId": "1",
       "speakerIds": [
         "19"
       ],
@@ -741,7 +741,7 @@
       },
       "trackId": "3",
       "audienceId": "1",
-      "locationId": "6",
+      "locationId": "1",
       "speakerIds": [
         "20"
       ],
@@ -876,7 +876,7 @@
       "trackId": "7",
       "audienceId": "1",
       "typeId": "1",
-      "locationId": "3",
+      "locationId": "4",
       "speakerIds": [
         "24"
       ],
@@ -904,7 +904,7 @@
       "trackId": "7",
       "audienceId": "1",
       "typeId": "1",
-      "locationId": "4",
+      "locationId": "6",
       "speakerIds": [
         "25"
       ],
@@ -932,7 +932,7 @@
       "trackId": "5",
       "audienceId": "1",
       "typeId": "1",
-      "locationId": "6",
+      "locationId": "2",
       "speakerIds": [
         "26"
       ],
@@ -960,7 +960,7 @@
       "trackId": "1",
       "audienceId": "1",
       "typeId": "1",
-      "locationId": "3",
+      "locationId": "4",
       "speakerIds": [
         "27"
       ],
@@ -1016,7 +1016,7 @@
       "trackId": "1",
       "audienceId": "1",
       "typeId": "1",
-      "locationId": "3",
+      "locationId": "4",
       "speakerIds": [
         "22"
       ],
@@ -1044,7 +1044,7 @@
       "trackId": "3",
       "audienceId": "1",
       "typeId": "1",
-      "locationId": "4",
+      "locationId": "6",
       "speakerIds": [
         "31"
       ],
@@ -1072,7 +1072,7 @@
       "trackId": "5",
       "audienceId": "1",
       "typeId": "1",
-      "locationId": "6",
+      "locationId": "2",
       "speakerIds": [
         "32", "33"
       ],
@@ -1134,9 +1134,9 @@
     },
     {
       "id": "45",
-      "start": "2019-05-15T18:45:00",
+      "start": "2019-05-15T18:30:00",
       "end": "2019-05-15T21:00:00",
-      "title": "Dinner in the woods",
+      "title": "Dinner",
       "abstractText": "",
       "demo": true,
       "simultan": false,
@@ -1230,7 +1230,7 @@
       },
       "trackId": "7",
       "audienceId": "1",
-      "locationId": "2",
+      "locationId": "3",
       "speakerIds": [],
       "languageId": "1"
     },
@@ -1255,7 +1255,7 @@
       },
       "trackId": "8",
       "audienceId": "1",
-      "locationId": "7",
+      "locationId": "5",
       "speakerIds": [],
       "languageId": "1"
     },
@@ -1280,7 +1280,32 @@
       },
       "trackId": "8",
       "audienceId": "1",
-      "locationId": "7",
+      "locationId": "3",
+      "speakerIds": [],
+      "languageId": "1"
+    },
+    {
+      "id": "51",
+      "start": "2019-05-16T11:00:00",
+      "end": "2019-05-16T12:15:00",
+      "title": "Follow up sessions slot 3",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "8",
+      "audienceId": "1",
+      "locationId": "5",
       "speakerIds": [],
       "languageId": "1"
     }
