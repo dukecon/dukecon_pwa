@@ -250,7 +250,7 @@
       "audienceId": "1",
       "locationId": "1",
       "speakerIds": [
-        "3"
+        "3", "4", "36", "37"
       ],
       "languageId": "1"
     },
@@ -669,7 +669,7 @@
     {
       "id": "28",
       "start": "2019-05-15T09:30:00",
-      "end": "2019-05-15T10:30:00",
+      "end": "2019-05-15T10:45:00",
       "title": "The Security TOP 5",
       "abstractText": "The OWASP Top 10 is awesome and it's great, but it also reflects the state of Security in the whole world rather than the current state at TOPdesk. That's why we present the TOPdesk Security Top 5. This lists the items which are most relevant to <strong>us</strong>, and it will be easier to handle than the OWASP Top 10. I'll introduce the separate items, along with examples from our very own TOPdesk world. After the intitial introduction we'll start the discussion to see how we can make this list obsolete as quickly as possible.",
       "demo": true,
@@ -1358,9 +1358,9 @@
     },
     {
       "id": "3",
-      "name": "DeniseH",
-      "firstname": "Denise",
-      "lastname": "van der Helm",
+      "name": "KatalinS",
+      "firstname": "",
+      "lastname": "",
       "company": "TOPdesk",
       "website": "",
       "twitter": "",
@@ -1387,7 +1387,7 @@
       "bio": "",
       "photoId": "",
       "eventIds": [
-        "13"
+        "13", "11"
       ]
     },
     {
@@ -1915,6 +1915,40 @@
       "photoId": "",
       "eventIds": [
         "46"
+      ]
+    },
+    {
+      "id": "36",
+      "name": "BrigittaZ",
+      "firstname": "",
+      "lastname": "",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
+        "11"
+      ]
+    },
+    {
+      "id": "37",
+      "name": "SándorH",
+      "firstname": "",
+      "lastname": "",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
+        "11"
       ]
     }
   ]
