@@ -222,7 +222,6 @@
       "locationId": "1",
       "speakerIds": [
         "0",
-        "1",
         "2"
       ],
       "languageId": "1"
@@ -1316,20 +1315,6 @@
       "name": "WolterS",
       "firstname": "Wolter",
       "lastname": "Smit",
-      "company": "TOPdesk",
-      "website": "",
-      "twitter": "",
-      "bio": "",
-      "photoId": "",
-      "eventIds": [
-        "10"
-      ]
-    },
-    {
-      "id": "1",
-      "name": "SanderJ",
-      "firstname": "Sander",
-      "lastname": "Jansz",
       "company": "TOPdesk",
       "website": "",
       "twitter": "",
