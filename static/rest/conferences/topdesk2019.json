@@ -561,8 +561,8 @@
       "id": "24",
       "start": "2019-05-15T11:15:00",
       "end": "2019-05-15T12:30:00",
-      "title": "Service Infrastructure and its Concerns",
-      "abstractText": "This session is all about infrastructure required for the service architecture and some concerns that may come into play from an Operations viewpoint when new services are deployed.",
+      "title": "Service Infrastructure and smart cats",
+      "abstractText": "This session is about how Alfonzo and Ops had to work together to get the Smartcat project successfully deployed in production. We think it is a prime example of devops in action and hope to get a discussion going on how to fine tune collaboration even further.",
       "demo": true,
       "simultan": false,
       "veryPopular": false,
@@ -576,7 +576,7 @@
         "manuscript": null,
         "other": null
       },
-      "trackId": "3",
+      "trackId": "7",
       "audienceId": "1",
       "locationId": "2",
       "speakerIds": [
