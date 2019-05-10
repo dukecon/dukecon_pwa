@@ -60,7 +60,7 @@ function ensureUniqueId () {
   return id
 }
 
-function syncWithServer () {
+function syncWithServer (vueNode) {
   const noAuthEnableIdParam = Conference.getConference().noAuthEnableIdParam && !Dukecloak.getKeycloak().isLoggedIn
   if (Dukecloak.getKeycloak().isLoggedIn || noAuthEnableIdParam) {
     if (syncIsRunning) {
@@ -115,6 +115,7 @@ function syncWithServer () {
               })
               .catch((e) => {
                 syncIsRunning = false
+                vueNode.eventbus.$emit('message.popup', { message: 'Unable to save favorites', error: true })
                 console.log('unable to save favorites', e)
               })
           } else {
@@ -127,6 +128,7 @@ function syncWithServer () {
             Dukecloak.logout()
           }
           syncIsRunning = false
+          vueNode.eventbus.$emit('message.popup', { message: 'Unable to load favorites', error: true })
           console.log('unable to load favorites', e)
         })
     }
@@ -137,6 +139,7 @@ function syncWithServer () {
         .success(performSync)
         .error(function () {
           syncIsRunning = false
+          vueNode.eventbus.$emit('message.popup', { message: 'Error updating your token', error: true })
           console.log('Error updating Keycloak token!')
         })
     } else {
@@ -159,7 +162,7 @@ function saveToSettings () {
 }
 
 export default class Favorites {
-  static toggleFavorite (eventId) {
+  static toggleFavorite (eventId, vueNode) {
     let events = Conference.getAllEvents()
     if (favorites[eventId] === true) {
       if (Dukecloak.getKeycloak().isLoggedIn && events[eventId].numberOfFavorites !== undefined && events[eventId].numberOfFavorites > 0) {
@@ -186,7 +189,7 @@ export default class Favorites {
       }
     }
     saveToSettings()
-    syncWithServer()
+    syncWithServer(vueNode)
   }
 
   /**

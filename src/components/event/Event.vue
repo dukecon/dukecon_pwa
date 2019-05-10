@@ -51,7 +51,7 @@ export default {
     return {
       speakers: Conference.getAllSpeakers(),
       languages: Conference.getAllLanguages(),
-      longTalkThresholdMinutes: Conference.getConference().longTalkThresholdMinutes
+      longTalkThresholdMinutes: Conference.getConference().longTalkThresholdMinutes || 60
     }
   },
   computed: {
