@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     toggleFavourite: function () {
-      Favourites.toggleFavorite(this.event.id)
+      Favourites.toggleFavorite(this.event.id, this)
     }
   },
   computed: {
