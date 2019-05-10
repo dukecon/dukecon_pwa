@@ -27,12 +27,15 @@
           <event-feedback :event-id="event.id" :event-start="event.start" :event-end="event.end"></event-feedback>
 
           <template v-if="documents.length > 0">
-            <div class="label" style="margin-top: 1em">{{ $t('documentDownload') }}</div>
+            <div class="label">{{ $t('documentDownload') }}</div>
             <ul>
               <li v-for="entry in documents" :key="entry[0]">
                 <a :href="entry[1]" target="_blank">{{ $t('document.' + entry[0]) }}</a>
               </li>
             </ul>
+          </template>
+          <template v-else>
+            <div class="label">{{ $t('document.noDocuments')}}</div>
           </template>
 
         </td>
@@ -50,6 +53,12 @@
     </template>
   </div>
 </template>
+
+<style scoped>
+  div.label {
+    margin-top: 1em;
+  }
+</style>
 
 <script>
 import Conference from '../../Conference'
