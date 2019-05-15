@@ -7,6 +7,9 @@ LOCATIONS
 6: Berlijn
 7: Hotel Grounds
 8: Coffee Area
+9: Megaron
+10: Zappeion
+11: Hitel Bar
 
 TRACKS
 1: Green - Inspirational

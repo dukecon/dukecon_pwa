@@ -166,6 +166,33 @@
         },
         "icon": "location_7.png",
         "capacity": 0
+      },
+      {
+        "id": "9",
+        "order": 9,
+        "names": {
+          "en": "Megaron"
+        },
+        "icon": "location_9.png",
+        "capacity": 50
+      },
+      {
+        "id": "10",
+        "order": 10,
+        "names": {
+          "en": "Zappeion"
+        },
+        "icon": "location_7.png",
+        "capacity": 0
+      },
+      {
+        "id": "11",
+        "order": 11,
+        "names": {
+          "en": "Hotel Bar"
+        },
+        "icon": "location_7.png",
+        "capacity": 0
       }
     ],
     "defaultIcon": "Unknown.png"
@@ -1177,7 +1204,7 @@
       },
       "trackId": "8",
       "audienceId": "1",
-      "locationId": "7",
+      "locationId": "11",
       "speakerIds": [
         "35"
       ],
@@ -1186,8 +1213,8 @@
     {
       "id": "47",
       "start": "2019-05-16T09:30:00",
-      "end": "2019-05-16T12:15:00",
-      "title": "Open Sessions",
+      "end": "2019-05-16T10:45:00",
+      "title": "AI In Depth",
       "abstractText": "",
       "demo": true,
       "simultan": false,
@@ -1204,14 +1231,39 @@
       },
       "trackId": "8",
       "audienceId": "1",
-      "locationId": "1",
-      "speakerIds": [],
+      "locationId": "9",
+      "speakerIds": [ "38" ],
+      "languageId": "1"
+    },
+    {
+      "id": "47a",
+      "start": "2019-05-16T11:00:00",
+      "end": "2019-05-16T11:15:00",
+      "title": "Overlapping Concepts Collaboration Platform",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "8",
+      "audienceId": "1",
+      "locationId": "9",
+      "speakerIds": [ "39" ],
       "languageId": "1"
     },
     {
       "id": "48",
-      "start": "2019-05-16T09:30:00",
-      "end": "2019-05-16T10:45:00",
+      "start": "2019-05-16T11:00:00",
+      "end": "2019-05-16T12:15:00",
       "title": "Service Posters Session",
       "abstractText": "",
       "demo": true,
@@ -1230,39 +1282,14 @@
       "trackId": "7",
       "audienceId": "1",
       "locationId": "3",
-      "speakerIds": [],
+      "speakerIds": [ "31" ],
       "languageId": "1"
     },
     {
       "id": "49",
       "start": "2019-05-16T09:30:00",
       "end": "2019-05-16T10:45:00",
-      "title": "Follow up sessions slot 1",
-      "abstractText": "",
-      "demo": true,
-      "simultan": false,
-      "veryPopular": false,
-      "fullyBooked": false,
-      "numberOfFavorites": 0,
-      "keywords": {
-        "en": []
-      },
-      "documents": {
-        "slides": null,
-        "manuscript": null,
-        "other": null
-      },
-      "trackId": "8",
-      "audienceId": "1",
-      "locationId": "5",
-      "speakerIds": [],
-      "languageId": "1"
-    },
-    {
-      "id": "50",
-      "start": "2019-05-16T11:00:00",
-      "end": "2019-05-16T12:15:00",
-      "title": "Follow up sessions slot 2",
+      "title": "User Research Follow Up",
       "abstractText": "",
       "demo": true,
       "simultan": false,
@@ -1280,14 +1307,14 @@
       "trackId": "8",
       "audienceId": "1",
       "locationId": "3",
-      "speakerIds": [],
+      "speakerIds": [ "15" ],
       "languageId": "1"
     },
     {
-      "id": "51",
-      "start": "2019-05-16T11:00:00",
-      "end": "2019-05-16T12:15:00",
-      "title": "Follow up sessions slot 3",
+      "id": "50",
+      "start": "2019-05-16T09:30:00",
+      "end": "2019-05-16T10:45:00",
+      "title": "Future of E&A",
       "abstractText": "",
       "demo": true,
       "simultan": false,
@@ -1305,6 +1332,106 @@
       "trackId": "8",
       "audienceId": "1",
       "locationId": "5",
+      "speakerIds": [ "40" ],
+      "languageId": "1"
+    },
+    {
+      "id": "51",
+      "start": "2019-05-16T11:00:00",
+      "end": "2019-05-16T12:15:00",
+      "title": "Programmer Alignment Follow Up",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "8",
+      "audienceId": "1",
+      "locationId": "10",
+      "speakerIds": [ "22", "23" ],
+      "languageId": "1"
+    },
+    {
+      "id": "52",
+      "start": "2019-05-16T11:00:00",
+      "end": "2019-05-16T12:15:00",
+      "title": "Tasks & Workflows",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "8",
+      "audienceId": "1",
+      "locationId": "5",
+      "speakerIds": [ "41" ],
+      "languageId": "1"
+    },
+    {
+      "id": "53",
+      "start": "2019-05-16T09:00:00",
+      "end": "2019-05-16T09:30:00",
+      "title": "Organizers & Hosts",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "8",
+      "audienceId": "1",
+      "locationId": "9",
+      "speakerIds": [],
+      "languageId": "1"
+    },
+    {
+      "id": "54",
+      "start": "2019-05-16T09:00:00",
+      "end": "2019-05-16T09:30:00",
+      "title": "GTS Alignment",
+      "abstractText": "",
+      "demo": true,
+      "simultan": false,
+      "veryPopular": false,
+      "fullyBooked": false,
+      "numberOfFavorites": 0,
+      "keywords": {
+        "en": []
+      },
+      "documents": {
+        "slides": null,
+        "manuscript": null,
+        "other": null
+      },
+      "trackId": "8",
+      "audienceId": "1",
+      "locationId": "11",
       "speakerIds": [],
       "languageId": "1"
     }
@@ -1445,9 +1572,9 @@
     },
     {
       "id": "9",
-      "name": "NienkeB",
-      "firstname": "Nienke",
-      "lastname": "Best",
+      "name": "MarcoT",
+      "firstname": "",
+      "lastname": "",
       "company": "TOPdesk",
       "website": "",
       "twitter": "",
@@ -1559,7 +1686,7 @@
       "bio": "",
       "photoId": "",
       "eventIds": [
-        "25"
+        "25", "49"
       ]
     },
     {
@@ -1831,7 +1958,7 @@
       "bio": "",
       "photoId": "",
       "eventIds": [
-        "41"
+        "41", "48"
       ]
     },
     {
@@ -1934,6 +2061,74 @@
       "photoId": "",
       "eventIds": [
         "11"
+      ]
+    },
+    {
+      "id": "38",
+      "name": "KarelA",
+      "firstname": "",
+      "lastname": "",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
+        "11"
+      ]
+    },
+    {
+      "id": "39",
+      "name": "KoenH",
+      "firstname": "",
+      "lastname": "",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
+        "47a"
+      ]
+    },
+    {
+      "id": "40",
+      "name": "IrisH",
+      "firstname": "",
+      "lastname": "",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
+        "50"
+      ]
+    },
+    {
+      "id": "41",
+      "name": "Geoffrey",
+      "firstname": "",
+      "lastname": "",
+      "company": "TOPdesk",
+      "website": "",
+      "twitter": "",
+      "facebook": "",
+      "xing": "",
+      "linkedin": "",
+      "bio": "",
+      "photoId": "",
+      "eventIds": [
+        "52"
       ]
     }
   ]
