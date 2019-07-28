@@ -47,7 +47,7 @@ pipeline {
           sh "echo \$(jx-release-version) > VERSION"
           sh "mvn versions:set -DnewVersion=\$(cat VERSION)"
           sh "jx step tag --version \$(cat VERSION)"
-          sh 'mvn clean package -DskipTests' // test'
+          sh 'mvn clean test'
           sh "mvn -Pdocker-build resources:copy-resources@copy-dockerfile resources:copy-resources@copy-dist docker:build"
           sh "skaffold version"
           sh "export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml"
