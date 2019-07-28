@@ -33,7 +33,7 @@ pipeline {
     }
     stage('Build Release') {
       when {
-        branch 'develop'
+        branch 'bugfix/*'
       }
       steps {
         container('mavennodejs') {
