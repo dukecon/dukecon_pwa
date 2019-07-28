@@ -3,7 +3,7 @@ kind: Config
 build:
   artifacts:
   - image: jxtest-199909/dukecon-pwa
-    context: .
+    context: target/docker-build
     docker: {}
   tagPolicy:
     envTemplate:
