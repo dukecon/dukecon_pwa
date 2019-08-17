@@ -10,6 +10,8 @@ exec docker run -i ${tty_option} --rm \
   -v "$PWD/.npm:$USER_HOME/.npm" \
   -v "$PWD":/usr/src \
   -w /usr/src \
+  -p 8080:8080 \
+  -p 9229:9229 \
   -e MAVEN_CONFIG=$USER_HOME/.m2 \
   gcr.io/jenkinsxio/builder-maven-nodejs:0.1.617 \
   "$@"
