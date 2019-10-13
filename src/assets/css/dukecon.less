@@ -78,7 +78,7 @@ table, th, td {
     vertical-align: top;
     img {
         color: @white;
-        &:hover {
+        &:hover, &:focus {
             opacity: 0.8;
             cursor: pointer;
         }
@@ -99,7 +99,7 @@ table, th, td {
         line-height: 2em;
         color: white;
     }
-    a.username:hover {
+    a.username:hover, a.username:focus {
         color: @white;
         text-decoration: underline;
     }
@@ -134,12 +134,12 @@ button, .button {
     &:active {
         box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 0 6px rgba(0, 0, 0, 0.2) inset;
     }
-    &:hover {
+    &:hover, &:focus {
         opacity: 0.7;
     }
 }
 button {
-    &.highlightBack:hover {
+    &.highlightBack:hover, &.highlightBack:focus {
         cursor: default;
     }
     &.day-widescreen {
@@ -230,7 +230,7 @@ h1 {
         color: @white;
         margin: 0;
     }
-    a:hover {
+    a:hover, a:focus {
         color: @white;
     }
     a#logo {
@@ -360,7 +360,8 @@ h2 {
 			padding-right:3px;
 			vertical-align:middle;
 		}
-		div:hover {
+    /* does hover make sense here???? (a11y) */
+		div:hover, div:focus {
 			background: @lightGray;
 		}
 	}
@@ -1347,7 +1348,7 @@ a .speakerinfo {
     height: 32px;
     border-radius: 100%;
 }
-.timeline-menu input:hover {
+.timeline-menu input:hover, .timeline-menu input:focus {
     background: #ddd;
 }
 @media (max-width: 768px) {
