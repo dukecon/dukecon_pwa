@@ -1,5 +1,5 @@
 <template>
-  <a class="mainmenu darkBack" id="language-select" v-on:click='change' v-if="languageSwitchVisible">
+  <a class="mainmenu darkBack" href="#" id="language-select" @click.prevent='change' v-if="languageSwitchVisible">
     <img class="language" alt="Sprache umschalten / Change language" title="Sprache umschalten / Change language"
          :src="img"/>
   </a>
@@ -19,7 +19,7 @@ export default {
     }
   },
   methods: {
-    change: function (event) {
+    change: function () {
       if (this.$i18n.locale === 'de') {
         this.$i18n.locale = 'en'
       } else {
@@ -33,10 +33,7 @@ export default {
       return require('@/assets/img/' + this.$i18n.locale + '.png')
     },
     languageSwitchVisible: function () {
-      if (Object.keys(this.languages).length <= 1) {
-        return false
-      }
-      return true
+      return Object.keys(this.languages).length > 1
     }
   },
   watch: {
