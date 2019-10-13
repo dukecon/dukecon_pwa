@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/timetable" class="mainmenu darkBack">{{ $t('timetable') }}</router-link>
+  <router-link to="/timetable" class="mainmenu darkBack hide-on-small-screen a11y-dont-read" aria-hidden="true">{{ $t('timetable') }}</router-link>
 </template>
 
 <script language="">
