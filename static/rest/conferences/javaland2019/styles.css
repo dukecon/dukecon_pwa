@@ -42,9 +42,6 @@ a {
 a:hover, a:focus {
   color: #00c3d7;
 }
-h1 a:hover, h1 a:focus  {
-  background-color: #00c3d7;
-}
 h1 a.active:hover, h1 a.active:focus {
   background-color:#fff;
   color: #1aa3b1;

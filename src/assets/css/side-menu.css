@@ -22,10 +22,13 @@ Add transition to containers so they can push in and out.
   -o-transition: left 0.2s ease-out;
   transition: left 0.2s ease-out;
 }
+#menuLink:hover, #menuLink:focus {
+  border: 2px solid;
+}
 
-/*
-This is the parent `<div>` that contains the menu and the content area.
-*/
+  /*
+  This is the parent `<div>` that contains the menu and the content area.
+  */
 #layout {
     position: relative;
     padding-left: 0;

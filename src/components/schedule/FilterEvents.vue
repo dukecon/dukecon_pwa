@@ -1,6 +1,6 @@
 <template>
   <div v-if="Object.keys(events).length > 0">
-    <a href="#menu" id="menuLink" class="menu-link" @click.prevent="toggleMenu" :class="{active: menuVisible}">
+    <a href="#menu" id="menuLink" class="menu-link a11y-dont-read" aria-hidden="true" @click.prevent="toggleMenu" :class="{active: menuVisible}">
       <!-- Hamburger icon -->
       <span class="stretch">&nbsp;
             <span class="badge highlightBack"
@@ -32,12 +32,12 @@
           <!-- END OF HACK -->
           <div v-for="filter in filters" v-bind:key="filter.filterKey">
             <div :class="{ collapsed: filterStatus[filter.filterKey].open === false} " v-if="filter.visible">
-                        <span class="filter-category darkBack reverse" @click="toggleCategory(filter)">
+                        <a class="filter-category darkBack reverse" href="#" @click.prevent="toggleCategory(filter)">
                             <span>{{filter.title}}</span>
                             <img class="filter-button" src="../../assets/img/group_expanded_16.svg" alt="+ -"/>
                             <span class="badge highlightBack"
                                   v-if="filter.selectedFilterCount > 0">{{ filter.selectedFilterCount }} </span>
-                        </span>
+                        </a>
               <div class="filter-values">
                 <div v-for="filterValue in filter.filterValues" :key="filterValue.id">
                   <input :id="filter.filterKey + '-' + filterValue.id" type="checkbox"
