@@ -140,7 +140,7 @@ button, .button {
         box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 0 6px rgba(0, 0, 0, 0.2) inset;
     }
     &:hover, &:focus {
-        opacity: 0.7;
+        opacity: 0.85;
     }
 }
 button {
@@ -227,20 +227,20 @@ h1 {
         display: none;
     }
     a, span {
-        vertical-align: top;
-        padding-top: 0;
-        padding-bottom: 0;
-        height: 2em;
-        display: inline-block;
-        color: @white;
-        margin: 0;
+      vertical-align: top;
+      padding-top: 0;
+      padding-bottom: 0;
+      height: 2em;
+      display: inline-block;
+      color: @white;
+      margin: 0;
+      border: 1px solid rgba(0,0,0,0);
     }
     a:hover, a:focus {
-        color: @white;
-        opacity: 0.8;
+      color: @white;
     }
     a:focus {
-      border: 1px solid;
+      border-color: black;
     }
     a#logo {
         display: inline-block;
@@ -334,9 +334,13 @@ h2 {
 		display: block;
 		padding: 5px;
 		margin: 0 0 5px 0;
+    border:1px solid;
     &:hover, &:focus {
       color: white;
-      opacity: 0.8;
+      opacity: 0.85;
+    }
+    &:focus {
+      border-color: black;
     }
 		button {
 			vertical-align:middle;
@@ -347,7 +351,6 @@ h2 {
 
 		}
 	}
-
 	.filter-values {
 		margin-left: 5px;
 		margin-right:5px;
@@ -357,22 +360,28 @@ h2 {
 		input[type=checkbox] {
       height: 13px;
       width: 13px;
+      flex-grow: 0;
+      border: 1px solid;
 		}
 		input[type="checkbox"] + label {
-			padding: 2px;
+      flex-grow: 1;
+			padding: 2px 2px 2px 5px;
 			margin-left: 0;
 			vertical-align:middle;
 			cursor:pointer;
 		}
-		input[type="checkbox"]:checked + label:before {
-		}
-
-		input[type="checkbox"] + label:before {
-			vertical-align:middle;
-		}
-		div:hover, div:focus {
-			background: @lightGray;
-		}
+    input[type="checkbox"]:hover + label, input[type="checkbox"]:focus + label {
+      color: #333;
+      background: @lightGray;
+    }
+    div {
+      padding-left: 2px;
+      display: flex;
+      align-items: center;
+      &:hover, &:focus {
+        background: @lightGray;
+      }
+    }
 	}
 	.collapsed {
 		.filter-button {
@@ -1031,8 +1040,8 @@ a .speakerinfo {
                     box-shadow: 0 2px 3px 0 @boxShadowColor;
                 }
                 a {
-                    display: block;
-                    max-width: none;
+                  display: block;
+                  max-width: none;
                 }
             }
         }

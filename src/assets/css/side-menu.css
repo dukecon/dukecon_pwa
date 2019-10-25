@@ -23,7 +23,7 @@ Add transition to containers so they can push in and out.
   transition: left 0.2s ease-out;
 }
 #menuLink:hover, #menuLink:focus {
-  border: 2px solid;
+  border: 1px solid;
 }
 
   /*

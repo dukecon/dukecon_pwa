@@ -48,20 +48,17 @@ a {
     color: #888;
     fill: #888;
 }
-a:hover {
+a:hover, a:focus {
     color: #aaa;
 }
 
-h1 a:hover {
-    background-color: #aaa;
+h1 a:hover, h1 a:focus {
+  background-color: #fff;
+  color: #666;
+  fill: #666;
 }
 
-h1 a.active:hover {
-    background-color: #fff;
-    color: #aaa;
-    fill: #aaa;
-}
-button.highlightBack:hover {
+button.highlightBack:hover, button.highlightBack:focus {
     background-color: #aaa;
 }
 
