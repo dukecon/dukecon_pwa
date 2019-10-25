@@ -60,7 +60,7 @@ describe('FilterEvents.vue', () => {
     // ... item is shown
     expect(vm.$el.querySelector('.filter-settings > span > span').textContent)
       .to.equal('Filter-Optionen')
-    expect(vm.$el.querySelector('.filter-box > div:nth-child(1) > div > span').textContent.trim())
+    expect(vm.$el.querySelector('.filter-box > div:nth-child(1) > div > a').textContent.trim())
       .to.equal('Zielgruppe')
   })
 })
