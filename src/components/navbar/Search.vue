@@ -1,6 +1,7 @@
 <template>
   <div v-if="visible === true" id="search-area">
-    <input class="quicksearch" v-model="term" type="search" :placeholder="$t('search')">
+    <label for="quicksearch" class="a11y-only">Search:</label>
+    <input id="quicksearch" class="quicksearch" v-model="term" type="search" :placeholder="$t('search')">
     <img src="../../assets/img/search.svg">
   </div>
 </template>

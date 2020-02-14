@@ -46,8 +46,16 @@ table, th, td {
     }
     input {
         -webkit-appearance: none;
+        background-color: #ddd;
         &::placeholder {
+            color: #888;
+            opacity: 1;
+        }
+        &:focus {
+          background-color: #fff;
+          &::placeholder {
             color: #aaa;
+          }
         }
         font-size: smaller;
         font-weight: normal;
@@ -61,6 +69,12 @@ table, th, td {
 }
 .a11y-dont-read {
   speak: none;
+}
+.a11y-only {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  left: -9999px;
 }
 .search-result {
     #talks-grid {
