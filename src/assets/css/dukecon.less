@@ -81,12 +81,12 @@ table, th, td {
     display: inline-block;
     width: auto;
     vertical-align: top;
-    img {
+    img, svg {
         color: @white;
-        &:hover, &:focus {
-            opacity: 0.8;
-            cursor: pointer;
-        }
+        fill: white;
+    }
+    svg {
+      margin-top: 3px;
     }
     .button, .username {
         font-size:80%;
@@ -97,6 +97,9 @@ table, th, td {
         background: transparent;
         padding:0;
         margin:0;
+        &:hover, &:focus {
+          opacity: 0.8;
+        }
     }
     .username {
         margin-right:0;
@@ -1121,7 +1124,7 @@ a .speakerinfo {
     }
     #login-area {
         position: absolute;
-        right: 1em;
+        right: 2em;
         .username {
             display:none;
         }

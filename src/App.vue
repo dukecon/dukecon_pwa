@@ -6,9 +6,7 @@
         <homeicon></homeicon>
         <backbutton></backbutton>
         <search></search>
-        <div id="login-area" class="darkBack" v-if="conference.authEnabled">
-          <login></login>
-        </div>
+        <login></login>
         <div id="mainmenu-items" :class="{ darkBack: true, shown: mobileMenuOpen}">
           <talks></talks>
           <timetable></timetable>
