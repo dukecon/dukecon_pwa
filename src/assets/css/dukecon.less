@@ -84,6 +84,13 @@ table, th, td {
     img, svg {
         color: @white;
         fill: white;
+        path {
+          transition: fill 0.5s;
+          fill: none;
+          &.line {
+            fill: white;
+          }
+        }
     }
     svg {
       margin-top: 3px;
@@ -98,7 +105,16 @@ table, th, td {
         padding:0;
         margin:0;
         &:hover, &:focus {
-          opacity: 0.8;
+          background-color: #fff;
+          path {
+            fill: #fff;
+            &.line {
+              fill: #666;
+            }
+          }
+        }
+        &:focus {
+          border: 1px solid black;
         }
     }
     .username {
