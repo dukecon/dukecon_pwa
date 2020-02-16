@@ -38,6 +38,8 @@ const messages = Object.freeze({
     'or': ' oder ',
     'disablefavorites': 'Ist eventuell die Einstellung "Nur Favoriten" aktiviert?',
     'loggedIn': 'eingeloggt',
+    'doLogin': 'einloggen',
+    'doLogout': 'abmelden',
     'search': 'Suchen',
     'timetable': 'Stundenplan',
     'favoriteAlertTitle': 'Favoriten',
@@ -57,7 +59,13 @@ const messages = Object.freeze({
     'feedback.text': 'Bitte erkläre deine Wahl',
     'feedback.submit': 'Abschicken',
     'feedback.cancel': 'Abbrechen',
-    'feedback.loginMessage': 'Bitte log dich ein, um Feedback zu geben.'
+    'feedback.loginMessage': 'Bitte log dich ein, um Feedback zu geben.',
+    'menu.open': 'Menü öffnen',
+    'menu.close': 'Menü schließen',
+    'filter.open': 'Filter-Menü öffnen',
+    'filter.close': 'Filter-Menü schließen',
+    'filter.hide': 'Bereich verbergen',
+    'filter.show': 'Bereich anzeigen'
   },
   en: {
     'termsOfUse': 'Terms of use',
@@ -93,6 +101,8 @@ const messages = Object.freeze({
     'or': ' or ',
     'disablefavorites': 'Also check if you have "Only Favourites" selected.',
     'loggedIn': 'logged in',
+    'doLogin': 'log in',
+    'doLogout': 'log out',
     'search': 'Search',
     'timetable': 'Timetable',
     'favoriteAlertTitle': 'Favourites',
@@ -112,7 +122,13 @@ const messages = Object.freeze({
     'feedback.text': 'Please explain your choice',
     'feedback.submit': 'Submit feedback',
     'feedback.cancel': 'Cancel',
-    'feedback.loginMessage': 'Log in to leave feedback'
+    'feedback.loginMessage': 'Log in to leave feedback',
+    'menu.open': 'Open menu',
+    'menu.close': 'Close menu',
+    'filter.open': 'Open Filter-Menu',
+    'filter.close': 'Close Filter-Menü',
+    'filter.hide': 'Hide section',
+    'filter.show': 'Show section'
   }
 })
 

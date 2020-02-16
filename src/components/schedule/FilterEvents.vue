@@ -1,6 +1,11 @@
 <template>
   <div v-if="Object.keys(events).length > 0">
-    <a href="#menu" id="menuLink" class="menu-link a11y-dont-read" aria-hidden="true" @click.prevent="toggleMenu" :class="{active: menuVisible}">
+    <a href="#menu"
+       id="menuLink"
+       class="menu-link"
+       @click.prevent="toggleMenu"
+       :title="menuVisible ? $t('filter.close') : $t('filter.open')"
+       :class="{active: menuVisible}">
       <!-- Hamburger icon -->
       <span class="stretch">&nbsp;
             <span class="badge highlightBack"
@@ -32,7 +37,10 @@
           <!-- END OF HACK -->
           <div v-for="filter in filters" v-bind:key="filter.filterKey">
             <div :class="{ collapsed: filterStatus[filter.filterKey].open === false} " v-if="filter.visible">
-                        <a class="filter-category darkBack reverse" href="#" @click.prevent="toggleCategory(filter)">
+                        <a class="filter-category darkBack reverse"
+                           href="#"
+                           :title="filterStatus[filter.filterKey].open === false ? $t('filter.show') : $t('filter.hide')"
+                           @click.prevent="toggleCategory(filter)">
                             <span>{{filter.title}}</span>
                             <img class="filter-button" src="../../assets/img/group_expanded_16.svg" alt="+ -"/>
                             <span class="badge highlightBack"

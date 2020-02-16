@@ -30,11 +30,11 @@
       {{ startDayTime }} - {{endTime}}
     </div>
     <div class="room">
-      <img width="16" height="16" src="../../assets/img/Home.png" alt="Raum" title="Raum"/>
+      <img width="16" height="16" src="../../assets/img/Home.png" alt="Raum" title="Location"/>
       {{ locationName }}
       <template v-if="location.capacity">
         &nbsp;&nbsp;
-        <img width="16" height="16" src="../../assets/img/chair.svg" alt="Plätze"/>
+        <img width="16" height="16" src="../../assets/img/chair.svg" alt="Seats"/>
         {{ location.capacity }}
       </template>
       <template v-if="numberOfFavorites !== undefined">
