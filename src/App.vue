@@ -7,6 +7,12 @@
         <backbutton></backbutton>
         <search></search>
         <login></login>
+        <a id="mainmenu-button" @click.prevent="toggle" href="#">
+          <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </a>
         <div id="mainmenu-items" :class="{ darkBack: true, shown: mobileMenuOpen}">
           <talks></talks>
           <timetable></timetable>
@@ -15,7 +21,6 @@
           <conference-link></conference-link>
           <language></language>
         </div>
-        <div id="mainmenu-button"><img @click="toggle" src="./assets/img/menu_24px.svg"></div>
       </h1>
     </div>
     <div id="loading" class="alternate" v-if="conference.loadingFinished === false && conference.loadingFailed === false">
