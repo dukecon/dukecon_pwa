@@ -20,7 +20,7 @@
   "startDate": "2019-03-19",
   "endDate": "2019-03-21",
   "longTalkThresholdMinutes": 60,
-  "authEnabled": false,
+  "authEnabled": true,
   "noAuthEnableIdParam": false,
   "admin": "../rest/admin/javaland2019",
   "forceUpdate": "../rest/conferences/update/javaland2019",
