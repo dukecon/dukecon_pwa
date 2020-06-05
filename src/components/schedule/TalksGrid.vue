@@ -44,12 +44,22 @@ import Moment from 'moment'
 import Event from '../event/Event.vue'
 import SearchMixin from '../navbar/SearchMixin'
 
-const sortByOrder = function (o1, o2) {
+const sortByTimeslot = function (o1, o2) {
   const l1 = o1.slot
   const l2 = o2.slot
   if (l1 === l2) {
     return 0
   } else if (l1 < l2) {
+    return -1
+  } else {
+    return 1
+  }
+}
+
+const sortEventsByProp = (prop) => (e1, e2) => {
+  if (e1[prop] === e2[prop]) {
+    return 0
+  } else if (e1[prop] < e2[prop]) {
     return -1
   } else {
     return 1
@@ -173,10 +183,10 @@ export default {
             // the key must be unique, but slotDisplay is not as it only contains the time
             slotKey: Moment(a[0]).locale(this.$i18n.locale).format('dd-MM HH:mm'),
             slotDisplay: Moment(a[0]).locale(this.$i18n.locale).format('HH:mm'),
-            talks: a[1]
+            talks: a[1].sort(sortEventsByProp('locationOrder'))
           }
         })
-        .sort(sortByOrder)
+        .sort(sortByTimeslot)
     }
   },
   created () {

@@ -90,7 +90,7 @@ function durationInMinutes (event) {
   return millis / 1000 / 60
 }
 
-function enrichEventData (event) {
+function enrichEventData (event, locations, tracks) {
   // in case event spans several time slots
   event.startOfSlice = event.start
   event.endOfSlice = null
@@ -98,6 +98,12 @@ function enrichEventData (event) {
   event.htmlId = event.id
   event.durationInMinutes = durationInMinutes(event)
   event.showInTimetable = true
+
+  // for additional sorting
+  const location = locations.find(l => l.id === event.locationId)
+  event.locationOrder = location ? location.order : null
+  const track = tracks.find(t => t.id === event.trackId)
+  event.trackOrder = track ? track.order : null
 }
 
 function getDateOnly (dateString) {
@@ -151,7 +157,7 @@ function getEvents () {
   axios.get(base + 'rest/conferences/' + getConferenceId())
     .then(function (response) {
       response.data.events.forEach(v => {
-        enrichEventData(v)
+        enrichEventData(v, response.data.metaData.locations, response.data.metaData.tracks)
       })
       const timeslots = calculateTimeslots(response.data.events)
       const splitEvents = splitLongEvents(response.data.events, timeslots)
