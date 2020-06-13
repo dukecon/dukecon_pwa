@@ -188,7 +188,7 @@
       </build>
     </profile>
     <profile>
-      <id>chromeheadless</id>
+      <id>headless</id>
       <build>
         <plugins>
           <plugin>

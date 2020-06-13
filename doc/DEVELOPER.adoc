@@ -109,6 +109,22 @@ To lock the package versions to ensure that they are not incidentially updated b
 
 === Testing the application
 
+Testing can be performed in the following modes
+
+Testing with NPM:: cf. <<Testing with NPM>>.
+
+NOTE:
+Both of the following modes are based on this mode and effectively call `npm` but are used via Maven which enables a local installation of the desired NPM and Node versions first.
+It then uses these versions to perform the build and test of the application.
+On CI (https://dev.dukecon.org/jenkins/job/dukecon_pwa/[The DukeCon Jenkins]) the build and tests are performed via this mode.
+
+Build with Maven (directly):: cf. <<Testing with Maven (direct)>>
+
+Build with Maven (in Docker):: cf. <<Testing with Maven (Docker)>>
+
+==== Testing with NPM
+
+===== Unit testing
 To run all unit tests run
 
 ----
@@ -124,21 +140,60 @@ npm run unitloop
 NOTE: It might happen that PhantomJS terminates due to inactivity.
 In this case open up the URL in Chrome: http://localhost:9876/
 
+===== Integration testing (End-to-End testing)
+
 To run the integration tests you need a local Chrome browser installed.
 You'll also need a connection to the internet as this will start the frontend in development mode that will proxy all _/rest_ resources to _https://latest.dukecon.org/javaland/2019_.
 It will also connect to the Dukecon's Keycloak instance.
+
+[[caution:chrome-does-not-work]]
+[CAUTION]
+.Chrome does not work for automatic browser testing
+====
+This does not work with current versions of Chrome (as they might be installed on your local machine as well as with current Linux distributions as used by Docker).
+Therefor end-to-end testing is recommended based on the headless mode (see <<Headless integration testing>>).
+====
+
 Use the following command to run them:
 
 ----
 npm run e2e
 ----
 
-To run the integration tests in a Chrome browser in the background (headless) use the following command.
-At the time this is written this still need a display when build on Travis CI using _xvfb-run_.
-See _.travis.yml_ for details.
+===== Headless integration testing
+
+To run the integration tests in a Firefox browser in the background (headless) use the following command.
+At the time this is written this still needs a display using _xvfb-run_.
+See link:../docker-mvn.sh[docker-mvn.sh] for details.
 
 ----
 npm run e2e_headless
+----
+
+==== Testing with Maven (direct)
+
+The Maven build is based on the Maven Frontend Plugin.
+During the build lifecycle a local installation of NPM and Node in the desired versions is performed first:
+
+[source,xml]
+----
+include::../pom.xml[tag=node-npm-versions]
+----
+
+In all subsequent build stages these versions are used
+
+`mvn test`:: can be used to perform the the build and unit test.
+`mvn verify`:: can be used to perform the build and test including the end-to-end test with a real browser (see <<caution:chrome-does-not-work>>).
+`mvn verify -Pheadless`:: Used to run with Firefox instead of Chrome (cf. <<Headless integration testing>>)
+`mvn clean`:: may be used as usual to clean up the local build.
+`mvn clean -Pveryclean`:: also cleans up the NPM and Node installation.
+
+==== Testing with Maven (Docker)
+
+If you want to run the build as it is done on our CI-Server (Jenkins), please run `./docker-mvn.sh` with the deired Maven goals, e.g.,
+
+----
+./docker-mvn.sh clean verify -Pheadless
 ----
 
 == Offline Functionality
