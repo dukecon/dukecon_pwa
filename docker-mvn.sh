@@ -10,6 +10,8 @@ exec docker run -i ${tty_option} --rm \
   -v "$HOME/.m2:$USER_HOME/.m2" \
   -v "$PWD/.npm:$USER_HOME/.npm" \
   -v "$PWD":/usr/src \
+  -v "$PWD/.docker/node":/usr/src/node \
+  -v "$PWD/.docker/node_modules":/usr/src/node_modules \
   -w /usr/src \
   -e MAVEN_CONFIG=$USER_HOME/.m2 \
   dukecon/dukecon-maven:3.6.3-adoptopenjdk-14 \
