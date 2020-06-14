@@ -7,7 +7,7 @@ tty -s && tty_option="-t"
 
 : ${USER:="dukecon"}
 : ${USER_HOME:="/home"}
-: ${MAVEN_CMD:="mvn -Pheadless"}
+: ${MAVEN_CMD:="mvn"}
 : ${MAVEN_OPTS:=""}
 
 # Setting of Java user.home property is necessary when using '-u' on Docker call since the Docker container
