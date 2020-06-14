@@ -21,7 +21,7 @@ pipeline {
     stage('Build') {
        steps {
          withMaven {
-           sh './docker-mvn.sh clean verify'
+           sh './docker-mvn.sh clean verify -Pheadless'
         }
       }
     }
