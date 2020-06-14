@@ -11,6 +11,10 @@ tty -s && tty_option="-t"
 : ${MAVEN_OPTS:=""}
 
 mkdir -p ${PWD}/.docker/{home,node,node_modules,npm}
+# Setting of Java user.home property is necessary when using '-u' on Docker call since the Docker container
+# cannot determine a valid Home for this use. Then Maven uses '?' as the user home, settings.xml etc. cannot be
+# found and this results in subsequent problems.
+
 
 exec docker run -i ${tty_option} --rm \
   -v "${PWD}:/usr/src" \
