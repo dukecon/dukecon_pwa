@@ -3,6 +3,7 @@
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
+const { VueLoaderPlugin } = require('vue-loader')
 const vueLoaderConfig = require('./vue-loader.conf')
 var webpack = require("webpack")
 
@@ -23,7 +24,8 @@ module.exports = {
   },
   plugins: [
     // include only specific languages from momentJS, en included already by default
-    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /de/)
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /de/),
+    new VueLoaderPlugin()
   ],
   resolve: {
     extensions: ['.js', '.vue', '.json'],
