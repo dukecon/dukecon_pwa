@@ -1,5 +1,6 @@
 .DS_Store
 .npm/
+.npmrc
 node_modules/
 node/
 dist/
