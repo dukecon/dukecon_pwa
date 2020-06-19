@@ -67,7 +67,7 @@ var toUrl = function (media, url) {
   return url
 }
 export default {
-  components: {Event},
+  components: { Event },
   name: 'speaker',
   props: ['speaker', 'parentEventId'],
   data () {

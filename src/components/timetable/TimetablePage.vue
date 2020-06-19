@@ -48,7 +48,6 @@ const sortByOrder = function (o1, o2) {
 }
 
 export default {
-  components: {Event},
   name: 'timetable-page',
   data () {
     // add timeline, items, group and + shownComponents outside of watched elements
@@ -121,8 +120,8 @@ export default {
     hiddenDates: function () {
       // these don't normally need to change because of the "repeat", so leave it hard-coded
       // Vis hiddenDates only seem to work as long as the year matches the year of the conference
-      let startDate = this.minStartTime().startOf('day').set('hour', 20)
-      let endDate = startDate.clone().add(1, 'day').set('hour', 7).set('minute', 30)
+      const startDate = this.minStartTime().startOf('day').set('hour', 20)
+      const endDate = startDate.clone().add(1, 'day').set('hour', 7).set('minute', 30)
       return [
         {
           start: startDate,
@@ -155,9 +154,9 @@ export default {
       return newMoment
     },
     generateLocations: function () {
-      let locations = []
+      const locations = []
       Object.values(this.locations).sort(sortByOrder).forEach(l => {
-        locations.push({id: l.id, order: l.order, content: l.names[this.$i18n.locale]})
+        locations.push({ id: l.id, order: l.order, content: l.names[this.$i18n.locale] })
       })
       return locations
     },
@@ -210,7 +209,7 @@ export default {
       }
     },
     generateTableItems: function () {
-      let tableItems = []
+      const tableItems = []
       Object.values(this.events).forEach(event => {
         if (event !== undefined && event.showInTimetable) {
           tableItems.push({
@@ -226,8 +225,8 @@ export default {
       return tableItems
     },
     zoom: function (percentage) {
-      let range = this.timeline.getWindow()
-      let interval = range.end - range.start
+      const range = this.timeline.getWindow()
+      const interval = range.end - range.start
       this.timeline.setWindow({
         start: range.start.valueOf() - interval * percentage,
         end: range.end.valueOf() + interval * percentage
@@ -240,9 +239,9 @@ export default {
       })
     },
     rebindVueTimetableItems: function (clear) {
-      let timeline = this.timeline
-      let items = timeline.getVisibleItems()
-      let shownComponents = this.shownComponents
+      const timeline = this.timeline
+      const items = timeline.getVisibleItems()
+      const shownComponents = this.shownComponents
       if (clear === true) {
         shownComponents.forEach((item, key, map) => {
           item.$destroy()
@@ -252,8 +251,8 @@ export default {
       let boundComponents = false
       items.filter(id => !shownComponents.has(id)).forEach(id => {
         if (this.$el.querySelector('#ev-' + id) !== null) {
-          let e = this.events[id]
-          let vm = new Vue({
+          const e = this.events[id]
+          const vm = new Vue({
             ...TimetableItem,
             propsData: {
               event: e,
@@ -292,7 +291,7 @@ export default {
       })
     },
     draw: function () {
-      let container = this.$refs.visualization
+      const container = this.$refs.visualization
       // create timeline
       this.timeline = new Vis.Timeline(container)
       const timeline = this.timeline

@@ -68,15 +68,15 @@ function syncWithServer (vueNode) {
       return
     }
 
-    let performSync = function () {
-      let config = {
+    const performSync = function () {
+      const config = {
       }
       let preferencesUrl = 'rest/preferences'
       if (noAuthEnableIdParam) {
         console.log('Alternate call to preferences: using UNID: ', ensureUniqueId())
         preferencesUrl += '/' + ensureUniqueId()
       } else {
-        config.headers = {'Authorization': 'bearer ' + Dukecloak.getKeycloak().token}
+        config.headers = { Authorization: 'bearer ' + Dukecloak.getKeycloak().token }
       }
       axios.get(preferencesUrl,
         config)
@@ -98,11 +98,11 @@ function syncWithServer (vueNode) {
           if (favoritesToRemove.size > 0 || favoritesToAdd.size > 0) {
             // there are pending changes.
             // let's memorize the additions and removals now before making the next request
-            let favoritesToAddInThisRequest = Array.from(favoritesToAdd.keys())
-            let favoritesToRemoveInThisRequest = Array.from(favoritesToRemove.keys())
-            let newServerState = Object.keys(favorites)
+            const favoritesToAddInThisRequest = Array.from(favoritesToAdd.keys())
+            const favoritesToRemoveInThisRequest = Array.from(favoritesToRemove.keys())
+            const newServerState = Object.keys(favorites)
               .filter(e => e !== undefined && e !== 'undefined')
-              .map(e => { return {'eventId': e, 'version': '1'} })
+              .map(e => { return { eventId: e, version: '1' } })
             axios.post(preferencesUrl,
               newServerState,
               config)
@@ -163,7 +163,7 @@ function saveToSettings () {
 
 export default class Favorites {
   static toggleFavorite (eventId, vueNode) {
-    let events = Conference.getAllEvents()
+    const events = Conference.getAllEvents()
     if (favorites[eventId] === true) {
       if (Dukecloak.getKeycloak().isLoggedIn && events[eventId].numberOfFavorites !== undefined && events[eventId].numberOfFavorites > 0) {
         // Paranoia: don't allow numberOfFavorites to be negative
@@ -197,7 +197,7 @@ export default class Favorites {
    * waiting to be saved on the server.
    */
   static updateEventsWithLocalFavorites () {
-    let events = Conference.getAllEvents()
+    const events = Conference.getAllEvents()
     favoritesToAdd.forEach(e => {
       if (Dukecloak.getKeycloak().isLoggedIn && events[e] !== undefined && events[e].numberOfFavorites !== undefined) {
         events[e].numberOfFavorites++

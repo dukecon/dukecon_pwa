@@ -111,15 +111,15 @@ function getDateOnly (dateString) {
 }
 
 function splitSingleEvent (event, timeSlotsOnSameDay) {
-  let split = []
+  const split = []
   const thresholdInMinutes = conference.longTalkThresholdMinutes || 60
   split.push(event)
   if (event.durationInMinutes > thresholdInMinutes) {
-    for (let t in timeSlotsOnSameDay) {
+    for (const t in timeSlotsOnSameDay) {
       const timeslot = timeSlotsOnSameDay[t]
       const timeSlotNext = timeSlotsOnSameDay[parseInt(t) + 1]
       if (moment(timeslot.time).isAfter(moment(event.start)) && moment(timeslot.time).isBefore(event.end)) {
-        let eventSlice = JSON.parse(JSON.stringify(event))
+        const eventSlice = JSON.parse(JSON.stringify(event))
         eventSlice.startOfSlice = timeslot.time
         if (timeSlotNext) {
           eventSlice.endOfSlice = timeSlotNext.time
@@ -134,7 +134,7 @@ function splitSingleEvent (event, timeSlotsOnSameDay) {
 }
 
 function splitLongEvents (events, timeslots) {
-  let splitEvents = []
+  const splitEvents = []
   events.forEach(e => {
     const timeSlotsOnSameDay = timeslots[getDateOnly(e.start)]
     splitEvents.push(...splitSingleEvent(e, timeSlotsOnSameDay))
@@ -147,7 +147,7 @@ function splitLongEvents (events, timeslots) {
 function calculateTimeslots (events) {
   const groupedTimes = Object.keys(groupBy(events, event => event.start))
   const allTimeSlots = groupedTimes.map(item => {
-    return {timeslot: moment(item).format('HH:mm'), time: item, day: getDateOnly(item)}
+    return { timeslot: moment(item).format('HH:mm'), time: item, day: getDateOnly(item) }
   })
     .sort((a, b) => { return (a.timeslot < b.timeslot ? -1 : 1) })
   return groupBy(allTimeSlots, slot => slot.day)
@@ -262,7 +262,7 @@ const init = function () {
       conference.loadingFailed = false
 
       for (const key in response.data) {
-        if (response.data.hasOwnProperty(key)) {
+        if (Object.prototype.hasOwnProperty.call(response.data, key)) {
           Vue.set(conference, key, response.data[key])
         }
         if (!conference.homeTitle) {

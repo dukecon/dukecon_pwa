@@ -31,7 +31,6 @@
 
 <script>
 import Conference from '../../Conference'
-import Speaker from './Speaker.vue'
 import Twitter from './Twitter.vue'
 import Event from './Event.vue'
 import SearchMixin from '../navbar/SearchMixin'
@@ -46,8 +45,7 @@ if (window.location.href.indexOf('http://localhost:5000') !== -1) {
 export default {
   components: {
     Event,
-    Twitter,
-    Speaker
+    Twitter
   },
   mixins: [SearchMixin],
   name: 'speakersPage',

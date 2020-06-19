@@ -7,9 +7,9 @@
 import Event from '../event/Event.vue'
 
 export default {
-  components: {Event},
+  components: { Event },
   name: 'timetable-item',
-  props: [ 'event' ]
+  props: ['event']
 }
 </script>
 

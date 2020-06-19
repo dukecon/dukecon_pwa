@@ -35,7 +35,7 @@ export default {
   },
   watch: {
     // the route information might change if someone changes the URL or uses a bookmark
-    '$route': 'fetchSpeakerId'
+    $route: 'fetchSpeakerId'
   },
   methods: {
     fetchSpeakerId () {

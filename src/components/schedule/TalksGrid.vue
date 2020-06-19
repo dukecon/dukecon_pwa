@@ -67,7 +67,7 @@ const sortEventsByProp = (prop) => (e1, e2) => {
 }
 
 export default {
-  components: {Event},
+  components: { Event },
   mixins: [SearchMixin],
   name: 'talks-grid',
   props: {
@@ -88,14 +88,14 @@ export default {
         // ensure that the day given i.e. as parameter really exists
         return this.day
       }
-      let dates = Object.keys(this.eventsByDay).sort()
+      const dates = Object.keys(this.eventsByDay).sort()
       if (dates.length > 0) {
         return dates[0]
       }
       return null
     },
     days: function () {
-      let dates = Object.keys(this.eventsByDay).sort()
+      const dates = Object.keys(this.eventsByDay).sort()
       return dates.map(e => {
         const m = Moment(e)
           .locale(this.$i18n.locale)
@@ -108,7 +108,7 @@ export default {
       })
     },
     selectedDay: function () {
-      let dates = Object.keys(this.eventsByDay).sort()
+      const dates = Object.keys(this.eventsByDay).sort()
       if (this.isoDate === null && dates.length > 0) {
         return dates[0]
       } else {
@@ -116,7 +116,7 @@ export default {
       }
     },
     groupedTalks: function () {
-      let groupedTalks = {}
+      const groupedTalks = {}
       if (this.selectedDay === null) {
         // no data has been loaded yet
         return {}
@@ -125,8 +125,8 @@ export default {
       if (this.searchTerm.length >= 3) {
         filteredTalks = Object.values(this.events)
           .filter(e => {
-            let abstractText = e.abstractText || ''
-            let speakerInfos = e.speakerIds
+            const abstractText = e.abstractText || ''
+            const speakerInfos = e.speakerIds
               .map(id => this.speakers[id])
               .filter(s => s != null)
               .map(s => [s.name, s.company].join()).join()

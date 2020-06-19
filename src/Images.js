@@ -43,7 +43,7 @@ const init = function () {
   axios.get(base + 'rest/image-resources.json')
     .then(function (response) {
       for (const key in response.data) {
-        if (response.data.hasOwnProperty(key)) {
+        if (Object.prototype.hasOwnProperty.call(response.data, key)) {
           Vue.set(images, key, response.data[key])
         }
       }
@@ -65,6 +65,7 @@ export default class Conference {
     init()
     return images
   }
+
   static reset () {
     reset()
   }
