@@ -88,9 +88,9 @@ const filterKeys = ['level', 'language', 'track', 'location']
 export default {
   name: 'filter-events',
   data () {
-    let filterStatus = {}
+    const filterStatus = {}
     filterKeys.forEach(k => {
-      filterStatus[k] = {open: false, values: {}}
+      filterStatus[k] = { open: false, values: {} }
       Settings.getSetting(filterActivePrefix + k, []).forEach(v => {
         filterStatus[k].values[v] = true
       })
@@ -109,7 +109,7 @@ export default {
   },
   computed: {
     filters: function () {
-      let filters = [
+      const filters = [
         {
           filterKey: 'level'
         },
@@ -127,12 +127,12 @@ export default {
         .sort(sortByOrder)
         .map(
           (l) => {
-            if (this.filterStatus['level'].values[l.id] === undefined) {
-              Vue.set(this.filterStatus['level'].values, l.id, false)
+            if (this.filterStatus.level.values[l.id] === undefined) {
+              Vue.set(this.filterStatus.level.values, l.id, false)
             }
             return {
-              'id': l.id,
-              'name': l.names[this.$i18n.locale]
+              id: l.id,
+              name: l.names[this.$i18n.locale]
             }
           }
         )
@@ -140,12 +140,12 @@ export default {
         .sort(sortByOrder)
         .map(
           (l) => {
-            if (this.filterStatus['language'].values[l.id] === undefined) {
-              Vue.set(this.filterStatus['language'].values, l.id, false)
+            if (this.filterStatus.language.values[l.id] === undefined) {
+              Vue.set(this.filterStatus.language.values, l.id, false)
             }
             return {
-              'id': l.id,
-              'name': l.names[this.$i18n.locale]
+              id: l.id,
+              name: l.names[this.$i18n.locale]
             }
           }
         )
@@ -153,12 +153,12 @@ export default {
         .sort(sortByOrder)
         .map(
           (l) => {
-            if (this.filterStatus['track'].values[l.id] === undefined) {
-              Vue.set(this.filterStatus['track'].values, l.id, false)
+            if (this.filterStatus.track.values[l.id] === undefined) {
+              Vue.set(this.filterStatus.track.values, l.id, false)
             }
             return {
-              'id': l.id,
-              'name': l.names[this.$i18n.locale]
+              id: l.id,
+              name: l.names[this.$i18n.locale]
             }
           }
         )
@@ -166,12 +166,12 @@ export default {
         .sort(sortByOrder)
         .map(
           (l) => {
-            if (this.filterStatus['location'].values[l.id] === undefined) {
-              Vue.set(this.filterStatus['location'].values, l.id, false)
+            if (this.filterStatus.location.values[l.id] === undefined) {
+              Vue.set(this.filterStatus.location.values, l.id, false)
             }
             return {
-              'id': l.id,
-              'name': l.names[this.$i18n.locale]
+              id: l.id,
+              name: l.names[this.$i18n.locale]
             }
           }
         )

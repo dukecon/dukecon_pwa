@@ -17,8 +17,8 @@ export default {
   },
   watch: {
     '$route' (to, from) {
-      if (to.query['search']) {
-        this.term = to.query['search']
+      if (to.query.search) {
+        this.term = to.query.search
       }
     },
     term: function (newValue) {
@@ -30,8 +30,8 @@ export default {
     this.eventbus.$on('search.reset', this.resetSearchTerm)
     this.eventbus.$on('search.visible', this.setVisible)
     this.eventbus.$on('search.init', this.publishCurrentStatus)
-    if (this.$route.query['search']) {
-      this.term = this.$route.query['search']
+    if (this.$route.query.search) {
+      this.term = this.$route.query.search
     }
   },
   beforeDestroy: function () {
@@ -51,15 +51,15 @@ export default {
     },
     updateQueryParam: function (term) {
       // only update the route if it needs to be updated
-      if (term !== this.$route.query['search']) {
+      if (term !== this.$route.query.search) {
         // clone the existing query and replace the current term
-        let newQuery = Object.assign({}, this.$route.query)
+        const newQuery = Object.assign({}, this.$route.query)
         if (term && term !== '') {
-          newQuery['search'] = term
+          newQuery.search = term
         } else {
-          delete newQuery['search']
+          delete newQuery.search
         }
-        this.$router.replace({path: this.$route.path, query: newQuery})
+        this.$router.replace({ path: this.$route.path, query: newQuery })
       }
     }
   }

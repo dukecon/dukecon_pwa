@@ -19,7 +19,7 @@ describe('Images.js', () => {
     // when ...
     // ... initialized
     moxios.wait(function () {
-      let request = moxios.requests.mostRecent()
+      const request = moxios.requests.mostRecent()
       expect(request.url).to.equal('rest/image-resources.json')
       request.respondWith({
         status: 200,
@@ -46,7 +46,7 @@ describe('Images.js', () => {
     // when ...
     // ... initialized
     moxios.wait(function () {
-      let request = moxios.requests.mostRecent()
+      const request = moxios.requests.mostRecent()
       expect(request.url).to.equal('rest/image-resources.json')
       request.respondWith({
         status: 200,

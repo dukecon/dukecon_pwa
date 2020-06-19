@@ -215,7 +215,7 @@ export default {
       Dukecloak.getKeycloak().updateToken()
         .success(function () {
           var config = {
-            headers: {'Authorization': 'bearer ' + Dukecloak.getKeycloak().token}
+            headers: { Authorization: 'bearer ' + Dukecloak.getKeycloak().token }
           }
           axios.put('rest/feedback/event/' + self.conference.id + '/' + self.eventId,
             data,

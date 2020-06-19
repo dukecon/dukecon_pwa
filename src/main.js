@@ -45,14 +45,14 @@ function initVue () {
   Vue.use(VueRouter)
 
   // for each page, store the scroll position
-  let positionStore = {}
+  const positionStore = {}
 
   const router = new VueRouter({
     linkActiveClass: 'dark reverseBack active',
     scrollBehavior (to, from, savedPosition) {
       const oldPosition = positionStore[to.path]
       if (!oldPosition) {
-        return {x: 0, y: 0}
+        return { x: 0, y: 0 }
       } else {
         return oldPosition
       }
@@ -107,7 +107,7 @@ function initVue () {
     el: '#app',
     router,
     template: '<App/>',
-    components: {App},
+    components: { App },
     i18n
   })
 
@@ -130,7 +130,7 @@ if (window.location.href.indexOf('&state=') === -1) {
 // show available storage space in log
 // https://developers.google.com/web/updates/2017/08/estimating-available-storage-space
 if ('storage' in navigator && 'estimate' in navigator.storage) {
-  navigator.storage.estimate().then(({usage, quota}) => {
+  navigator.storage.estimate().then(({ usage, quota }) => {
     console.log(`Using ${usage} out of ${quota} bytes.`)
   })
 }

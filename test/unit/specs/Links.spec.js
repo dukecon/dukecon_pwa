@@ -38,16 +38,16 @@ describe('Links.vue', () => {
     // when ...
     // ... conference is loaded
     Vue.set(conference, 'imprint', {
-      'de': 'https://www.javaland.eu/de/impressum/',
-      'en': 'https://www.javaland.eu/en/imprint/'
+      de: 'https://www.javaland.eu/de/impressum/',
+      en: 'https://www.javaland.eu/en/imprint/'
     })
     Vue.set(conference, 'termsOfUse', {
-      'de': 'https://www.javaland.eu/de/nutzungsbedingungen/',
-      'en': 'https://www.javaland.eu/en/term-of-use/'
+      de: 'https://www.javaland.eu/de/nutzungsbedingungen/',
+      en: 'https://www.javaland.eu/en/term-of-use/'
     })
     Vue.set(conference, 'privacy', {
-      'de': 'https://www.javaland.eu/de/datenschutz/',
-      'en': 'https://www.javaland.eu/en/privacy/'
+      de: 'https://www.javaland.eu/de/datenschutz/',
+      en: 'https://www.javaland.eu/en/privacy/'
     })
     /* ******************** */
     // then ...

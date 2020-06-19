@@ -77,7 +77,7 @@ export default class DukeconKeycloak {
   }
 
   static login () {
-    keycloak.login({scope: 'offline_access'})
+    keycloak.login({ scope: 'offline_access' })
   }
 
   static logout () {

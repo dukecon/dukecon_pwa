@@ -17,7 +17,7 @@ describe('PleaseLogin.vue', () => {
   it('should render alert box on callback', done => {
     // given ...
     // ... a mocked Favorites
-    let callbackFavourites = sandbox.stub(Favorites, 'getFavorites')
+    const callbackFavourites = sandbox.stub(Favorites, 'getFavorites')
     var favourites = {
     }
     callbackFavourites.returns(favourites)

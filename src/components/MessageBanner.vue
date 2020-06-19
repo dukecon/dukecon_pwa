@@ -40,7 +40,7 @@ export default {
         this.status.message = ''
         this.status.error = false
         if (this.messages.length > 0) {
-          let message = this.messages.shift()
+          const message = this.messages.shift()
           this.status.error = message.error
           this.status.message = message.message
         }

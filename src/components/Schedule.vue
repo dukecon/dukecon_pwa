@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     day: function () {
-      return Settings.getSetting('scheduleWithDay', this.$route.params['day'])
+      return Settings.getSetting('scheduleWithDay', this.$route.params.day)
     }
   },
   methods: {
@@ -31,7 +31,7 @@ export default {
       this.menuVisible = newValue
     },
     onDayChanged (day) {
-      this.$router.push({name: 'scheduleWithDay', params: {day: day}})
+      this.$router.push({ name: 'scheduleWithDay', params: { day: day } })
       Settings.saveSetting('scheduleWithDay', day)
     }
   }

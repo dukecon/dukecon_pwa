@@ -14,11 +14,11 @@ export default {
     var twitterString = this.url
     if (twitterString && this.url.length > 1) {
       if (twitterString.startsWith('http')) {
-        let urlRegex = new RegExp('.*/(.+)')
+        const urlRegex = new RegExp('.*/(.+)')
         tUrl = twitterString
         tHandle = '@' + twitterString.replace(urlRegex, '$1')
       } else if (twitterString.startsWith('twitter.com/')) {
-        let urlRegex = new RegExp('.*/(.+)')
+        const urlRegex = new RegExp('.*/(.+)')
         tUrl = 'https://' + twitterString
         tHandle = '@' + twitterString.replace(urlRegex, '$1')
       } else {
