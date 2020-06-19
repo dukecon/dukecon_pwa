@@ -76,7 +76,7 @@ describe('TimetablePage.vue', () => {
           .to.not.equal(null)
         done()
         // TODO: currently the items don't render in PhantomJS, therefore I'm currently unable to test more
-      }, 1000)
+      }, 0)
     })
   })
 })
