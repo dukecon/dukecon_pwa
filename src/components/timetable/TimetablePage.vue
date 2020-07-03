@@ -31,8 +31,7 @@ import Moment from 'moment'
 // use this one instead of 'vis' to have a smaller dependency
 // and avoid two instances of moment.js that would lead to not-changing date locale
 // to make this work, the babel-loader in the webpack.base.conf.js needs to include the vis files
-// as they will not be transpiled otherwise and would not work in phantomJS and Internet Explorer
-import Vis from '../../../node_modules/vis/index-timeline-graph2d'
+import Vis from 'vis/index-timeline-graph2d'
 import Vue from 'vue'
 
 const sortByOrder = function (o1, o2) {

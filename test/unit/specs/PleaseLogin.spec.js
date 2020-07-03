@@ -31,7 +31,7 @@ describe('PleaseLogin.vue', () => {
       i18n
     }).$mount()
     // ... alert box not visible
-    expect(vm.$el.querySelector('#alert-window')).to.equal(null)
+    chaiExpect(vm.$el.querySelector('#alert-window')).to.equal(null)
     // when ...
     // ... favourites changed
     Vue.set(favourites, '1', true)
@@ -39,7 +39,7 @@ describe('PleaseLogin.vue', () => {
     vm.$nextTick(() => {
       // then ...
       // ... alert box is shown
-      expect(vm.$el.querySelector('#alert-window')).not.to.be.an('undefined')
+      chaiExpect(vm.$el.querySelector('#alert-window')).not.to.be.an('undefined')
       done()
     })
   })

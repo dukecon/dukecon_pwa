@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Vue from 'vue'
-import groupBy from 'lodash-es/groupBy'
+import { groupBy } from 'ramda'
 import Favorites from './Favourites'
 import moment from 'moment'
 
@@ -45,6 +45,11 @@ let talkUpdateIsRunning = false
 let eventUpdateIntervalHandle
 
 let favoritesUpdateIntervalHandle
+
+function lodashGroupBy (collection, func) {
+  const array = Array.isArray(collection) ? collection : Object.values(collection)
+  return groupBy(func, array)
+}
 
 function getFavoritesAndBookingsUpdates () {
   if (talkUpdateIsRunning) {
@@ -145,12 +150,12 @@ function splitLongEvents (events, timeslots) {
 }
 
 function calculateTimeslots (events) {
-  const groupedTimes = Object.keys(groupBy(events, event => event.start))
+  const groupedTimes = Object.keys(lodashGroupBy(events, event => event.start))
   const allTimeSlots = groupedTimes.map(item => {
     return { timeslot: moment(item).format('HH:mm'), time: item, day: getDateOnly(item) }
   })
     .sort((a, b) => { return (a.timeslot < b.timeslot ? -1 : 1) })
-  return groupBy(allTimeSlots, slot => slot.day)
+  return lodashGroupBy(allTimeSlots, slot => slot.day)
 }
 
 function getEvents () {
@@ -179,7 +184,7 @@ function getEvents () {
       response.data.metaData.tracks.forEach(v => {
         Vue.set(tracks, v.id, Object.freeze(v))
       })
-      const days = groupBy(events, function (event) { return event.startOfSlice ? event.startOfSlice.substr(0, 10) : null })
+      const days = lodashGroupBy(events, function (event) { return event.startOfSlice ? event.startOfSlice.substr(0, 10) : null })
       Object.entries(days).forEach(e => {
         Vue.set(eventsByDay, e[0], e[1])
       })

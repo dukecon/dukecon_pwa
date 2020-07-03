@@ -70,9 +70,9 @@ describe('TimetablePage.vue', () => {
       window.setTimeout(() => {
         // ... locations should be rendered
         // console.log(vm.$el.querySelector('#visualization').textContent)
-        expect(vm.$el.querySelector('#visualization').textContent.indexOf('Wintergarten'))
+        chaiExpect(vm.$el.querySelector('#visualization').textContent.indexOf('Wintergarten'))
           .to.equal(0)
-        expect(vm.$el.querySelector('#ev-529697'))
+        chaiExpect(vm.$el.querySelector('#ev-529697'))
           .to.not.equal(null)
         done()
         // TODO: currently the items don't render in PhantomJS, therefore I'm currently unable to test more

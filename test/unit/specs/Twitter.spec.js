@@ -9,8 +9,8 @@ describe('Twitter.vue', () => {
       },
       template: '<div><twitter url="@test"></twitter></div>'
     }).$mount()
-    expect(vm.$el.querySelector('a').textContent).to.equal('@test')
-    expect(vm.$el.querySelector('a').href).to.equal('https://twitter.com/test')
+    chaiExpect(vm.$el.querySelector('a').textContent).to.equal('@test')
+    chaiExpect(vm.$el.querySelector('a').href).to.equal('https://twitter.com/test')
   })
 
   it('should render twitter for handle "test"', () => {
@@ -20,8 +20,8 @@ describe('Twitter.vue', () => {
       },
       template: '<div><twitter url="test"></twitter></div>'
     }).$mount()
-    expect(vm.$el.querySelector('a').textContent).to.equal('@test')
-    expect(vm.$el.querySelector('a').href).to.equal('https://twitter.com/test')
+    chaiExpect(vm.$el.querySelector('a').textContent).to.equal('@test')
+    chaiExpect(vm.$el.querySelector('a').href).to.equal('https://twitter.com/test')
   })
 
   it('should render twitter for handle "twitter.com/test"', () => {
@@ -31,8 +31,8 @@ describe('Twitter.vue', () => {
       },
       template: '<div><twitter url="twitter.com/test"></twitter></div>'
     }).$mount()
-    expect(vm.$el.querySelector('a').textContent).to.equal('@test')
-    expect(vm.$el.querySelector('a').href).to.equal('https://twitter.com/test')
+    chaiExpect(vm.$el.querySelector('a').textContent).to.equal('@test')
+    chaiExpect(vm.$el.querySelector('a').href).to.equal('https://twitter.com/test')
   })
 
   it('should render twitter for handle "https://twitter.com/test"', () => {
@@ -42,8 +42,8 @@ describe('Twitter.vue', () => {
       },
       template: '<div><twitter url="https://twitter.com/test"></twitter></div>'
     }).$mount()
-    expect(vm.$el.querySelector('a').textContent).to.equal('@test')
-    expect(vm.$el.querySelector('a').href).to.equal('https://twitter.com/test')
+    chaiExpect(vm.$el.querySelector('a').textContent).to.equal('@test')
+    chaiExpect(vm.$el.querySelector('a').href).to.equal('https://twitter.com/test')
   })
 
   it('should render twitter for handle "https://twitter.com/test/"', () => {
@@ -53,8 +53,8 @@ describe('Twitter.vue', () => {
       },
       template: '<div><twitter url="https://twitter.com/test/"></twitter></div>'
     }).$mount()
-    expect(vm.$el.querySelector('a').textContent).to.equal('@test')
-    expect(vm.$el.querySelector('a').href).to.equal('https://twitter.com/test/')
+    chaiExpect(vm.$el.querySelector('a').textContent).to.equal('@test')
+    chaiExpect(vm.$el.querySelector('a').href).to.equal('https://twitter.com/test/')
   })
 
   it('should render twitter for handle "https://twitter.com/test?lang=..."', () => {
@@ -64,7 +64,7 @@ describe('Twitter.vue', () => {
       },
       template: '<div><twitter url="https://twitter.com/test?lang=..."></twitter></div>'
     }).$mount()
-    expect(vm.$el.querySelector('a').textContent).to.equal('@test')
-    expect(vm.$el.querySelector('a').href).to.equal('https://twitter.com/test?lang=...')
+    chaiExpect(vm.$el.querySelector('a').textContent).to.equal('@test')
+    chaiExpect(vm.$el.querySelector('a').href).to.equal('https://twitter.com/test?lang=...')
   })
 })

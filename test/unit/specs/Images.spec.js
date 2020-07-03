@@ -20,7 +20,7 @@ describe('Images.js', () => {
     // ... initialized
     moxios.wait(function () {
       const request = moxios.requests.mostRecent()
-      expect(request.url).to.equal('rest/image-resources.json')
+      chaiExpect(request.url).to.equal('rest/image-resources.json')
       request.respondWith({
         status: 200,
         responseText: '{}'
@@ -29,9 +29,9 @@ describe('Images.js', () => {
         // ... image data is filled
         var image = require('@/assets/img/logo_dukecon.png')
         var favicon = require('@/assets/img/favicon.ico')
-        expect(images.conferenceImage).to.include(image)
-        expect(images.conferenceFavIcon).to.include(favicon)
-        expect(images.defaultImage).to.include('data:image/gif;base64,R0lGOD')
+        chaiExpect(images.conferenceImage).to.include(image)
+        chaiExpect(images.conferenceFavIcon).to.include(favicon)
+        chaiExpect(images.defaultImage).to.include('data:image/gif;base64,R0lGOD')
         done()
       })
     })
@@ -41,20 +41,20 @@ describe('Images.js', () => {
     // given ....
     // ... an empty conference image
     const images = Images.getImages()
-    expect(images.defaultImage).to.include('data:image/gif;base64,R0lGOD')
+    chaiExpect(images.defaultImage).to.include('data:image/gif;base64,R0lGOD')
 
     // when ...
     // ... initialized
     moxios.wait(function () {
       const request = moxios.requests.mostRecent()
-      expect(request.url).to.equal('rest/image-resources.json')
+      chaiExpect(request.url).to.equal('rest/image-resources.json')
       request.respondWith({
         status: 200,
         responseText: '{"conferenceImage":"a-new-image"}'
       }).then(function () {
         // then ...
         // ... image data is filled
-        expect(images.conferenceImage).to.equal('a-new-image')
+        chaiExpect(images.conferenceImage).to.equal('a-new-image')
         done()
       })
     })

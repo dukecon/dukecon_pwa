@@ -82,13 +82,13 @@ describe('ScheduledEvent.vue', () => {
     }).$mount()
     // then ...
     // ... item is shown
-    expect(vm.$el.querySelector('.content span').textContent)
+    chaiExpect(vm.$el.querySelector('.content span').textContent)
       .to.equal('Fallacies of Distributed Computing: What If Networks Fail?')
-    expect(vm.$el.querySelector('.speaker-contact h2').textContent)
+    chaiExpect(vm.$el.querySelector('.speaker-contact h2').textContent)
       .to.equal('Bert Ertman')
-    expect(vm.$el.querySelector('.time').textContent)
+    chaiExpect(vm.$el.querySelector('.time').textContent)
       .to.contain('Dienstag, 28. März, 14:00 - 14:40')
-    expect(vm.$el.querySelector('.as-favorite > span').textContent)
+    chaiExpect(vm.$el.querySelector('.as-favorite > span').textContent)
       .to.equal('Als Favorit speichern')
   })
 })

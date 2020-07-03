@@ -53,13 +53,13 @@ describe('Links.vue', () => {
     // then ...
     vm.$nextTick(() => {
       // ... data is shown
-      expect(vm.$el.querySelector('.imprint').textContent).to.equal('Impressum')
-      expect(vm.$el.querySelector('.imprint').href).to.equal('https://www.javaland.eu/de/impressum/')
+      chaiExpect(vm.$el.querySelector('.imprint').textContent).to.equal('Impressum')
+      chaiExpect(vm.$el.querySelector('.imprint').href).to.equal('https://www.javaland.eu/de/impressum/')
       // ... text changes once language changes
       i18n.locale = 'en'
       vm.$nextTick(() => {
-        expect(vm.$el.querySelector('.imprint').textContent).to.equal('Legal mentions')
-        expect(vm.$el.querySelector('.imprint').href).to.equal('https://www.javaland.eu/en/imprint/')
+        chaiExpect(vm.$el.querySelector('.imprint').textContent).to.equal('Legal mentions')
+        chaiExpect(vm.$el.querySelector('.imprint').href).to.equal('https://www.javaland.eu/en/imprint/')
         done()
       })
     })

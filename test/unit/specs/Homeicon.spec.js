@@ -42,7 +42,7 @@ describe('Homeicon.vue', () => {
     // then ...
     vm.$nextTick(() => {
       // ... data is shown
-      expect(vm.$el.querySelector('img').src).to.include('/ci')
+      chaiExpect(vm.$el.querySelector('img').src).to.include('/ci')
       done()
     })
   })

@@ -17,12 +17,12 @@ describe('Conference.js', () => {
     // given ....
     // ... an empty conference
     const conference = Conference.getConference()
-    expect(conference.imprint.de).to.be.an('undefined')
+    chaiExpect(conference.imprint.de).to.be.an('undefined')
     // when ...
     // ... initialized
     moxios.wait(function () {
       const request = moxios.requests.mostRecent()
-      expect(request.url).to.equal('rest/init.json')
+      chaiExpect(request.url).to.equal('rest/init.json')
       request.respondWith({
         status: 200,
         // TODO: move to minimalConferenceData.js
@@ -30,7 +30,7 @@ describe('Conference.js', () => {
       }).then(function () {
         // then ...
         // ... conference data is filled
-        expect(conference.imprint.de).to.equal('https://www.javaland.eu/de/impressum/')
+        chaiExpect(conference.imprint.de).to.equal('https://www.javaland.eu/de/impressum/')
         done()
       })
     })
@@ -41,13 +41,13 @@ describe('Conference.js', () => {
     // ... an empty conference
     const events = Conference.getAllEvents()
     const eventsByDay = Conference.getEventsByDay()
-    expect(size(events)).to.equal(0)
-    expect(size(eventsByDay)).to.equal(0)
+    chaiExpect(size(events)).to.equal(0)
+    chaiExpect(size(eventsByDay)).to.equal(0)
     // when ...
     // ... initialized
     moxios.wait(function () {
       const request = moxios.requests.mostRecent()
-      expect(request.url).to.equal('rest/init.json')
+      chaiExpect(request.url).to.equal('rest/init.json')
       request.respondWith({
         status: 200,
         // TODO: move to minimalConferenceData.js
@@ -55,15 +55,15 @@ describe('Conference.js', () => {
       }).then(function () {
         moxios.wait(function () {
           const request = moxios.requests.mostRecent()
-          expect(request.url).to.equal('rest/conferences/javaland2017')
+          chaiExpect(request.url).to.equal('rest/conferences/javaland2017')
           request.respondWith({
             status: 200,
             responseText: JSON.stringify(minimalConferenceData.data)
           }).then(function () {
             // then ...
             // ... conference data is filled
-            expect(size(events)).to.equal(3)
-            expect(size(eventsByDay)).to.equal(2)
+            chaiExpect(size(events)).to.equal(3)
+            chaiExpect(size(eventsByDay)).to.equal(2)
             done()
           })
         })
