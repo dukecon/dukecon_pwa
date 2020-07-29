@@ -21,7 +21,7 @@ exec docker run -i ${tty_option} --rm \
   -w /usr/src \
   \
   -u "$(id -u)" \
-  -e "MAVEN_OPTS=-Duser.home=${USER_HOME} ${MAVEN_OPTS}" \
+  -e "MAVEN_OPTS=-Duser.home=${USER_HOME} -Duser.name=${USER} ${MAVEN_OPTS}" \
   \
   -v "${HOME}/.m2:${USER_HOME}/.m2" \
   -e "HOME=${USER_HOME}" \
