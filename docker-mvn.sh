@@ -38,6 +38,3 @@ exec docker run -i ${tty_option} --rm \
   \
   dukecon/dukecon-maven:3.6.3-adoptopenjdk-14 \
   /bin/sh -c "/usr/bin/xvfb-run -s \"-screen 0 2560x1440x8\" -a -e logs/xvfb.err -- ${MAVEN_CMD} ${*:-}"
-
-  maven:3.6.3-adoptopenjdk-14 /bin/sh -c "${MAVEN_CMD} ${*}"
-
