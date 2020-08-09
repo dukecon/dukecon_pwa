@@ -9,6 +9,7 @@ tty -s && tty_option="-t"
 : ${USER_HOME:="/home"}
 : ${MAVEN_CMD:="mvn"}
 : ${MAVEN_OPTS:=""}
+: ${HOSTNAME:="unknown"}
 
 # Setting of Java user.home property is necessary when using '-u' on Docker call since the Docker container
 # cannot determine a valid Home for this use. Then Maven uses '?' as the user home, settings.xml etc. cannot be
@@ -26,6 +27,7 @@ exec docker run -i ${tty_option} --rm \
   -v "${HOME}/.m2:${USER_HOME}/.m2" \
   \
   -e "DOCKER=true" \
+  -e "HOSTNAME=${HOSTNAME}" \
   -e "HOME=${USER_HOME}" \
   -e "USER_HOME_DIR=${USER_HOME}" \
   -e "MAVEN_CONFIG=${USER_HOME}/.m2" \
