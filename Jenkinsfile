@@ -22,7 +22,8 @@ pipeline {
        steps {
          withMaven {
            sh './docker-mvn.sh clean verify -Pheadless'
-        }
+         }
+         findBuildScans()
       }
     }
     stage('Docker Build') {
