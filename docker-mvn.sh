@@ -7,7 +7,7 @@ tty -s && tty_option="-t"
 
 : ${USER:="dukecon"}
 : ${USER_HOME:="/home"}
-: ${MAVEN_CMD:="mvn"}
+: ${MAVEN_CMD:="./mvnw"}
 : ${MAVEN_OPTS:=""}
 : ${HOSTNAME:="unknown"}
 
