@@ -34,6 +34,7 @@ module.exports = {
         javascriptEnabled: true,
         acceptSslCerts: true,
         chromeOptions: {
+          w3c: false,
           args: [
             'disable-gpu', 'no-sandbox', 'window-size=1920,1080', 'verbose'
           ]
