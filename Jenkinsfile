@@ -21,8 +21,9 @@ pipeline {
     stage('Build') {
        steps {
          withMaven {
-           sh 'mvn clean test'
-        }
+           sh './docker-mvn.sh clean verify -Pheadless'
+         }
+         findBuildScans()
       }
     }
     stage('Docker Build') {
@@ -31,7 +32,7 @@ pipeline {
       }
       steps {
         withMaven {
-          sh 'mvn  -Pdocker-build resources:copy-resources@copy-dockerfile resources:copy-resources@copy-dist docker:build docker:push'
+          sh 'mvn -Pdocker-build resources:copy-resources@copy-dockerfile resources:copy-resources@copy-dist docker:build docker:push -Dscan=false'
           build job: 'docker_restart_develop_latest'
         }
       }
