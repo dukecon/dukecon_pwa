@@ -16,6 +16,7 @@
     <!-- Plugins and Dependency Versions - keep them in Alphabetical order! -->
     <docker-maven-plugin.version>0.28.0</docker-maven-plugin.version>
     <frontend-maven-plugin.version>1.7.5</frontend-maven-plugin.version>
+    <gradle-enterprise-maven-extension.version>1.5.3</gradle-enterprise-maven-extension.version>
     <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
     <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
     <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
@@ -84,6 +85,11 @@
             <npmVersion>${npm.version}</npmVersion>
             <workingDirectory>${project.basedir}</workingDirectory>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>com.gradle</groupId>
+          <artifactId>gradle-enterprise-maven-extension</artifactId>
+          <version>${gradle-enterprise-maven-extension.version}</version>
         </plugin>
         <plugin>
           <groupId>io.fabric8</groupId>

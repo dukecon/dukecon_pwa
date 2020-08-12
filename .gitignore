@@ -11,6 +11,7 @@ target/
 test/unit/coverage
 test/e2e/reports
 .docker
+.mvn/.gradle-enterprise/
 
 # Editor directories and files
 .idea/
