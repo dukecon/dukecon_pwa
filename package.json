@@ -10,7 +10,8 @@
     "build": "node build/build.js",
     "unit": "jest src test/unit --coverage",
     "e2e": "node test/e2e/runner.js --env chrome",
-    "e2e_headless": "node test/e2e/runner.js --env chromeheadless",
+    "e2e_headless": "npm run unit",
+    "e2e_headless_bak": "node test/e2e/runner.js --env chromeheadless",
     "test": "npm run lint && npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
