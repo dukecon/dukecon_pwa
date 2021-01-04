@@ -16,7 +16,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "keycloak-js": "^8.0.1",
     "lodash-es": "^4.17.15",
     "moment": "^2.22.1",
