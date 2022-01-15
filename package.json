@@ -93,7 +93,7 @@
     "rimraf": "^2.7.1",
     "selenium-server": "^3.11.0",
     "semver": "^5.7.1",
-    "shelljs": "^0.7.8",
+    "shelljs": "^0.8.5",
     "sinon": "^4.4.6",
     "sinon-chai": "^2.14.0",
     "sw-precache-webpack-plugin": "^0.11.5",
